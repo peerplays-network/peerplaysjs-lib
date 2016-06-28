@@ -1,6 +1,6 @@
 {
   "name": "graphenejs-ws",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pure JavaScript Bitshares/Graphene websocket interface for node.js and browsers.",
   "browser": {
       "websocket": false
@@ -34,7 +34,7 @@
   },
   "main": "./dist/index.js",
   "dependencies": {
-    "ReconnectingWebSocket": "git+https://github.com/joewalnes/reconnecting-websocket.git",
+    "ReconnectingWebSocket": "git+https://github.com/svk31/reconnecting-websocket",
     "websocket": "^1.0.23"
   },
   "devDependencies": {
