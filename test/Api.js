@@ -9,24 +9,24 @@ describe("Connection", () => {
         Apis.close();
     });
 
-    it("Connect to localhost", function() {
-        return new Promise( function(resolve) {
-            Apis.instance("ws://localhost:8090").init_promise.then(function (result) {
-                coreAsset = result[0].network.core_asset;
-
-                if (typeof coreAsset === "string") {
-                    resolve();
-                } else {
-                    reject(new Error("Expected coreAsset to be a string"));
-                }
-            });
-        });
-    });
+    // it("Connect to localhost", function() {
+    //     return new Promise( function(resolve) {
+    //         Apis.instance("ws://localhost:8090").init_promise.then(function (result) {
+    //             coreAsset = result[0].network.core_asset;
+    //
+    //             if (typeof coreAsset === "string") {
+    //                 resolve();
+    //             } else {
+    //                 reject(new Error("Expected coreAsset to be a string"));
+    //             }
+    //         });
+    //     });
+    // });
 
 
     it("Connect to Openledger", function() {
         return new Promise( function(resolve) {
-            Apis.instance("wss://bitshares.openledger.info/ws").init_promise.then(function (result) {
+            Apis.instance("wss://bitshares.openledger.info/ws", true).init_promise.then(function (result) {
                 coreAsset = result[0].network.core_asset;
                 assert(coreAsset === "BTS");
                 resolve();
@@ -36,7 +36,7 @@ describe("Connection", () => {
 
     it("Connect to Testnet", function() {
         return new Promise( function(resolve) {
-            Apis.instance("wss://testnet.bitshares.eu/ws").init_promise.then(function (result) {
+            Apis.instance("wss://testnet.bitshares.eu/ws", true).init_promise.then(function (result) {
                 coreAsset = result[0].network.core_asset;
                 assert(coreAsset === "TEST");
                 resolve();
@@ -47,7 +47,7 @@ describe("Connection", () => {
 
 describe("Api", () => {
 
-    let cs = "ws://localhost:8090";
+    let cs = "wss://bitshares.openledger.info/ws";
 
 
     // after(function() {
@@ -57,7 +57,7 @@ describe("Api", () => {
     describe("Subscriptions", function() {
 
         beforeEach(function() {
-            return Apis.instance(cs).init_promise.then(function (result) {
+            return Apis.instance(cs, true).init_promise.then(function (result) {
                 coreAsset = result[0].network.core_asset;
             });
         });
@@ -68,7 +68,7 @@ describe("Api", () => {
 
         it("Set subscribe callback", function() {
             return new Promise( function(resolve) {
-                Apis.instance(cs).db_api().exec( "set_subscribe_callback", [ callback, true ] ).then(function(sub) {
+                Apis.instance().db_api().exec( "set_subscribe_callback", [ callback, true ] ).then(function(sub) {
                     if (sub === null) {
                         resolve();
                     } else {
@@ -130,7 +130,7 @@ describe("Api", () => {
 
         // Connect once for all tests
         before(function() {
-            return Apis.instance(cs).init_promise.then(function (result) {
+            return Apis.instance(cs, true).init_promise.then(function (result) {
                 coreAsset = result[0].network.core_asset;
             });
         });

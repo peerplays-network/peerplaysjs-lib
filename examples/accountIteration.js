@@ -8,7 +8,7 @@ let wsStringLocal = "ws://127.0.0.1:8090";
 
 let holders = {};
 
-Apis.instance(wsString).init_promise.then((res) => {
+Apis.instance(wsStringLocal, true).init_promise.then((res) => {
     console.log("connected to:", res[0].network);
 
     Apis.instance().db_api().exec("lookup_asset_symbols", [["OBITS"]]).then(assets => {

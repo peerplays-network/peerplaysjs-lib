@@ -20,7 +20,7 @@
 
         let server = "wss://bitshares.openledger.info/ws";
 
-        Api.instance().init_promise.then((res) => {
+        Api.instance(server, true).init_promise.then((res) => {
             console.log("Api ready:", res);
             var sucessDiv = document.getElementById("success");
             sucessDiv.innerText = "Successfully connected to the Openledger API, now fetching the global properties:"
