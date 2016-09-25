@@ -1,6 +1,6 @@
 {
   "name": "graphenejs-ws",
-  "version": "0.1.6",
+  "version": "0.1.6-peerplays.1",
   "description": "Pure JavaScript Bitshares/Graphene websocket interface for node.js and browsers.",
   "browser": {
     "ws": false
