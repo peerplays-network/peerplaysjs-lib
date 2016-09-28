@@ -8,7 +8,7 @@
   "scripts": {
     "test": "mocha --recursive",
     "test:watch": "npm test -- --watch",
-    "clean": "rm -rf ./dist/* & rm -rf ./build/*",
+    "clean": "del-cli -f dist/* build/*",
     "prebuild": "npm run clean",
     "build": "babel lib --presets babel-preset-es2015 --out-dir dist",
     "postbuild": "npm run browserify",
@@ -42,6 +42,7 @@
     "babel-cli": "^6.9.0",
     "babel-preset-es2015": "^6.9.0",
     "browserify": "^13.0.1",
+    "del-cli": "^0.2.0",
     "mocha": "^2.3.4",
     "uglifyjs": "^2.4.10"
   }
