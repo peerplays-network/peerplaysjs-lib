@@ -1,6 +1,6 @@
 {
-  "name": "graphenejs-ws",
-  "version": "0.1.6-peerplays.1",
+  "name": "peerplaysjs-ws",
+  "version": "0.4.21",
   "description": "Pure JavaScript Bitshares/Graphene websocket interface for node.js and browsers.",
   "browser": {
     "ws": false
@@ -19,30 +19,31 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/svk31/graphenejs-ws.git"
+    "url": "git+https://github.com/pbsa/peerplaysjs-ws.git"
   },
-  "author": "Sigve Kvalsvik <bitsharesblocks@gmail.com> (https://github.com/svk31)",
   "contributors": [
+    "Sigve Kvalsvik <bitsharesblocks@gmail.com> (https://github.com/svk31)",
     "James Calfee <james@jcalfee.info> (https://github.com/jcalfee/)"
   ],
   "license": "BSD-2-Clause-FreeBSD",
   "bugs": {
-    "url": "https://github.com/svk31/graphenejs-ws/issues"
+    "url": "https://github.com/pbsa/peerplaysjs-ws/issues"
   },
   "engines": {
     "node": ">= 6.0.0"
   },
   "main": "./dist/index.js",
   "dependencies": {
-    "ReconnectingWebSocket": "git+https://github.com/svk31/reconnecting-websocket",
-    "ws": "^1.1.1"
+    "ws": "2.3.1"
   },
   "devDependencies": {
     "assert": "^1.3.0",
-    "babel-cli": "^6.9.0",
-    "babel-preset-es2015": "^6.9.0",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-1": "^6.16.0",
     "browserify": "^13.0.1",
-    "del-cli": "^0.2.0",
     "mocha": "^2.3.4",
     "uglifyjs": "^2.4.10"
   }

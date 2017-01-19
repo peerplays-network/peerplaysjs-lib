@@ -1,5 +1,5 @@
-var assert = require("assert");
-var {Apis} = require("../lib");
+import assert from "assert";
+import {Apis} from "../lib";
 
 var coreAsset;
 
