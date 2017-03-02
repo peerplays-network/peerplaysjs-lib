@@ -8,7 +8,8 @@
   "scripts": {
     "test": "mocha --recursive",
     "test:watch": "npm test -- --watch",
-    "clean": "del-cli -f dist/* build/*",
+    "test:manager": "BABEL_ENV=test mocha --compilers js:babel-core/register ./test/Manager --watch",
+    "clean": "rm -rf ./cjs/* & rm -rf ./build/* & rm -rf ./es/*",
     "prebuild": "npm run clean",
     "build": "babel lib --presets babel-preset-es2015 --out-dir dist",
     "postbuild": "npm run browserify",
