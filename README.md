@@ -1,11 +1,11 @@
 # Peerplays WebSocket interface (peerplaysjs-ws)
 
-Pure JavaScript Bitshares websocket library for node.js and browsers. Can be used to easily connect to and obtain data from the Bitshares blockchain via public apis or local nodes.
+Pure JavaScript Peerplays websocket library for node.js and browsers. Can be used to easily connect to and obtain data from the Peerplays blockchain via public apis or local nodes.
 
 Credit for the original implementation goes to [jcalfee](https://github.com/jcalfee).
 
-[![npm version](https://img.shields.io/npm/v/bitsharesjs-ws.svg?style=flat-square)](https://www.npmjs.com/package/bitsharesjs-ws)
-[![npm downloads](https://img.shields.io/npm/dm/bitsharesjs-ws.svg?style=flat-square)](https://www.npmjs.com/package/bitsharesjs-ws)
+[![npm version](https://img.shields.io/npm/v/peerplaysjs-ws.svg?style=flat-square)](https://www.npmjs.com/package/peerplaysjs-ws)
+[![npm downloads](https://img.shields.io/npm/dm/peerplaysjs-ws.svg?style=flat-square)](https://www.npmjs.com/package/peerplaysjs-ws)
 
 
 ## Setup
@@ -17,13 +17,13 @@ npm install peerplaysjs-ws
 
 ## Usage
 
-Browser bundles are provided in /build/, for testing purposes you can access this from rawgit:
+Browser bundles are provided in /build/
 
 ```
 <script type="text/javascript" src="https://cdn.rawgit.com/pbsa/peerplayshs-ws/build/peerplaysjs-ws.js" />
 ```
 
-A variable bitshares_ws will be available in window.
+A variable peerplays_ws will be available in window.
 
 For use in a webpack/browserify context, see the example below for how to open a websocket connection to the Openledger API and subscribe to any object updates:
 
