@@ -14,7 +14,6 @@
     "build": "babel lib --presets babel-preset-es2015 --out-dir dist",
     "postbuild": "npm run browserify",
     "prepublish": "npm run build",
-    "install": "npm run build",
     "browserify": "NODE_ENV=production browserify cjs/src/ApiInstances.js --standalone peerplays_ws -o build/peerplaysjs-ws.js -d",
     "postbrowserify": "NODE_ENV=production uglifyjs --compress --mangle --sequences --drop_console --mangle-props --screw-ie8 --output build/peerplaysjs-ws.min.js -- build/peerplaysjs-ws.js",
     "bundle": "npm run browserify && npm run minify"
