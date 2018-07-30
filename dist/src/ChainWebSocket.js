@@ -1,17 +1,18 @@
-let SOCKET_DEBUG = false;
+'use strict';
 
-const SUBSCRIBE_OPERATIONS = [
-  'set_subscribe_callback',
-  'subscribe_to_market',
-  'broadcast_transaction_with_callback',
-  'set_pending_transaction_callback'
-];
+exports.__esModule = true;
 
-const UNSUBSCRIBE_OPERATIONS = ['unsubscribe_from_market', 'unsubscribe_from_accounts'];
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-const HEALTH_CHECK_INTERVAL = 10000;
+var SOCKET_DEBUG = false;
 
-class ChainWebSocket {
+var SUBSCRIBE_OPERATIONS = ['set_subscribe_callback', 'subscribe_to_market', 'broadcast_transaction_with_callback', 'set_pending_transaction_callback'];
+
+var UNSUBSCRIBE_OPERATIONS = ['unsubscribe_from_market', 'unsubscribe_from_accounts'];
+
+var HEALTH_CHECK_INTERVAL = 10000;
+
+var ChainWebSocket = function () {
   /**
    *Creates an instance of ChainWebSocket.
    * @param {string}    serverAddress           The address of the websocket to connect to.
@@ -19,7 +20,11 @@ class ChainWebSocket {
    * @param {number}    [connectTimeout=10000]  The time for a connection attempt to complete.
    * @memberof ChainWebSocket
    */
-  constructor(serverAddress, statusCb, connectTimeout = 10000) {
+  function ChainWebSocket(serverAddress, statusCb) {
+    var connectTimeout = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 10000;
+
+    _classCallCheck(this, ChainWebSocket);
+
     this.statusCb = statusCb;
     this.serverAddress = serverAddress;
     this.timeoutInterval = connectTimeout;
@@ -71,7 +76,9 @@ class ChainWebSocket {
    * @returns
    * @memberof ChainWebSocket
    */
-  createConnection() {
+
+
+  ChainWebSocket.prototype.createConnection = function createConnection() {
     this.debug('!!! ChainWebSocket create connection');
 
     // Clear any possible reconnect timers.
@@ -94,14 +101,16 @@ class ChainWebSocket {
 
     // Handle timeouts to the websocket's initial connection.
     this.connectionTimeout = setTimeout(this.onConnectionTimeout, this.timeoutInterval);
-  }
+  };
 
   /**
    * Reset the connection to the BlockChain.
    *
    * @memberof ChainWebSocket
    */
-  resetConnection() {
+
+
+  ChainWebSocket.prototype.resetConnection = function resetConnection() {
     // Close the Websocket if its still 'half-open'
     this.close();
 
@@ -113,22 +122,24 @@ class ChainWebSocket {
 
     // Reject the current promise if there is one.
     if (this.currentReject) {
-      this.currentReject(new Error(`Connection attempt failed: ${this.serverAddress}`));
+      this.currentReject(new Error('Connection attempt failed: ' + this.serverAddress));
     }
-  }
+  };
 
   /**
    * Add event listeners to the WebSocket.
    *
    * @memberof ChainWebSocket
    */
-  addEventListeners() {
+
+
+  ChainWebSocket.prototype.addEventListeners = function addEventListeners() {
     this.debug('!!! ChainWebSocket add event listeners');
     this.ws.addEventListener('open', this.onConnectionOpen);
     this.ws.addEventListener('close', this.onConnectionClose);
     this.ws.addEventListener('error', this.onConnectionError);
     this.ws.addEventListener('message', this.listener);
-  }
+  };
 
   /**
    * Remove the event listers from the WebSocket. Its important to remove the event listerers
@@ -138,13 +149,15 @@ class ChainWebSocket {
    *
    * @memberof ChainWebSocket
    */
-  removeEventListeners() {
+
+
+  ChainWebSocket.prototype.removeEventListeners = function removeEventListeners() {
     this.debug('!!! ChainWebSocket remove event listeners');
     this.ws.removeEventListener('open', this.onConnectionOpen);
     this.ws.removeEventListener('close', this.onConnectionClose);
     this.ws.removeEventListener('error', this.onConnectionError);
     this.ws.removeEventListener('message', this.listener);
-  }
+  };
 
   /**
    * A function that is passed to a new promise that stores the resolve and reject callbacks
@@ -154,18 +167,22 @@ class ChainWebSocket {
    * @param {function} reject A callback to be executed when the promise is rejected.
    * @memberof ChainWebSocket
    */
-  createConnectionPromise(resolve, reject) {
+
+
+  ChainWebSocket.prototype.createConnectionPromise = function createConnectionPromise(resolve, reject) {
     this.debug('!!! ChainWebSocket createPromise');
     this.currentResolve = resolve;
     this.currentReject = reject;
-  }
+  };
 
   /**
    * Called when a new Websocket connection is opened.
    *
    * @memberof ChainWebSocket
    */
-  onConnectionOpen() {
+
+
+  ChainWebSocket.prototype.onConnectionOpen = function onConnectionOpen() {
     this.debug('!!! ChainWebSocket Connected ');
 
     this.connected = true;
@@ -185,27 +202,31 @@ class ChainWebSocket {
     if (this.statusCb) {
       this.statusCb(ChainWebSocket.status.OPEN);
     }
-  }
+  };
 
   /**
    * called when the connection attempt times out.
    *
    * @memberof ChainWebSocket
    */
-  onConnectionTimeout() {
+
+
+  ChainWebSocket.prototype.onConnectionTimeout = function onConnectionTimeout() {
     this.debug('!!! ChainWebSocket timeout');
     this.onConnectionClose(new Error('Connection timed out.'));
-  }
+  };
 
   /**
    * Called when the Websocket is not responding to the health checks.
    *
    * @memberof ChainWebSocket
    */
-  onConnectionTerminate() {
+
+
+  ChainWebSocket.prototype.onConnectionTerminate = function onConnectionTerminate() {
     this.debug('!!! ChainWebSocket terminate');
     this.onConnectionClose(new Error('Connection was terminated.'));
-  }
+  };
 
   /**
    * Called when the connection to the Blockchain is closed.
@@ -213,7 +234,9 @@ class ChainWebSocket {
    * @param {*} error
    * @memberof ChainWebSocket
    */
-  onConnectionClose(error) {
+
+
+  ChainWebSocket.prototype.onConnectionClose = function onConnectionClose(error) {
     this.debug('!!! ChainWebSocket Close ', error);
 
     this.resetConnection();
@@ -221,7 +244,7 @@ class ChainWebSocket {
     if (this.statusCb) {
       this.statusCb(ChainWebSocket.status.CLOSED);
     }
-  }
+  };
 
   /**
    * Called when the Websocket encounters an error.
@@ -229,7 +252,9 @@ class ChainWebSocket {
    * @param {*} error
    * @memberof ChainWebSocket
    */
-  onConnectionError(error) {
+
+
+  ChainWebSocket.prototype.onConnectionError = function onConnectionError(error) {
     this.debug('!!! ChainWebSocket On Connection Error ', error);
 
     this.resetConnection();
@@ -237,7 +262,7 @@ class ChainWebSocket {
     if (this.statusCb) {
       this.statusCb(ChainWebSocket.status.ERROR);
     }
-  }
+  };
 
   /**
    * Entry point to make RPC calls on the BlockChain.
@@ -246,7 +271,11 @@ class ChainWebSocket {
    * @returns A new promise for this specific call.
    * @memberof ChainWebSocket
    */
-  call(params) {
+
+
+  ChainWebSocket.prototype.call = function call(params) {
+    var _this = this;
+
     if (!this.connected) {
       this.debug('!!! ChainWebSocket Call not connected. ');
       return Promise.reject(new Error('Disconnected from the BlockChain.'));
@@ -254,9 +283,9 @@ class ChainWebSocket {
 
     this.debug('!!! ChainWebSocket Call connected. ', params);
 
-    let request = {
+    var request = {
       method: params[1],
-      params,
+      params: params,
       id: this.cbId + 1
     };
 
@@ -277,10 +306,11 @@ class ChainWebSocket {
         throw new Error('First parameter of unsub must be the original callback');
       }
 
-      let unSubCb = request.params[2].splice(0, 1)[0];
+      var unSubCb = request.params[2].splice(0, 1)[0];
 
       // Find the corresponding subscription
-      for (let id in this.subs) { // eslint-disable-line
+      for (var id in this.subs) {
+        // eslint-disable-line
         if (this.subs[id].callback === unSubCb) {
           this.unsub[request.id] = id;
           break;
@@ -292,23 +322,23 @@ class ChainWebSocket {
       this.healthCheck = setTimeout(this.onConnectionTerminate.bind(this), HEALTH_CHECK_INTERVAL);
     }
 
-    return new Promise((resolve, reject) => {
-      this.cbs[request.id] = {
+    return new Promise(function (resolve, reject) {
+      _this.cbs[request.id] = {
         time: new Date(),
-        resolve,
-        reject
+        resolve: resolve,
+        reject: reject
       };
 
       // Set all requests to be 'call' methods.
       request.method = 'call';
 
       try {
-        this.ws.send(JSON.stringify(request));
+        _this.ws.send(JSON.stringify(request));
       } catch (error) {
-        this.debug('Caught a nasty error : ', error);
+        _this.debug('Caught a nasty error : ', error);
       }
     });
-  }
+  };
 
   /**
    * Called when messages are received on the Websocket.
@@ -316,13 +346,15 @@ class ChainWebSocket {
    * @param {*} response The message received.
    * @memberof ChainWebSocket
    */
-  listener(response) {
-    let responseJSON = null;
+
+
+  ChainWebSocket.prototype.listener = function listener(response) {
+    var responseJSON = null;
 
     try {
       responseJSON = JSON.parse(response.data);
     } catch (error) {
-      responseJSON.error = `Error parsing response: ${error.stack}`;
+      responseJSON.error = 'Error parsing response: ' + error.stack;
       this.debug('Error parsing response: ', response);
     }
 
@@ -332,8 +364,8 @@ class ChainWebSocket {
       this.healthCheck = null;
     }
 
-    let sub = false;
-    let callback = null;
+    var sub = false;
+    var callback = null;
 
     if (responseJSON.method === 'notice') {
       sub = true;
@@ -365,7 +397,7 @@ class ChainWebSocket {
     } else {
       this.debug('Warning: unknown websocket responseJSON: ', responseJSON);
     }
-  }
+  };
 
   /**
    * Login to the Blockchain.
@@ -375,17 +407,25 @@ class ChainWebSocket {
    * @returns A promise that is fulfilled after login.
    * @memberof ChainWebSocket
    */
-  login(user, password) {
+
+
+  ChainWebSocket.prototype.login = function login(user, password) {
+    var _this2 = this;
+
     this.debug('!!! ChainWebSocket login.', user, password);
-    return this.connect_promise.then(() => this.call([1, 'login', [user, password]]));
-  }
+    return this.connect_promise.then(function () {
+      return _this2.call([1, 'login', [user, password]]);
+    });
+  };
 
   /**
    * Close the connection to the Blockchain.
    *
    * @memberof ChainWebSocket
    */
-  close() {
+
+
+  ChainWebSocket.prototype.close = function close() {
     if (this.ws) {
       this.removeEventListeners();
 
@@ -408,16 +448,24 @@ class ChainWebSocket {
 
     // Toggle the connected flag.
     this.connected = false;
-  }
+  };
 
-  debug(...params) {
+  ChainWebSocket.prototype.debug = function debug() {
     if (SOCKET_DEBUG) {
+      for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
+        params[_key] = arguments[_key];
+      }
+
       console.log.apply(null, params);
     }
-  }
-}
+  };
+
+  return ChainWebSocket;
+}();
 
 // Constants for STATE
+
+
 ChainWebSocket.status = {
   RECONNECTED: 'reconnected',
   OPEN: 'open',
@@ -425,4 +473,4 @@ ChainWebSocket.status = {
   ERROR: 'error'
 };
 
-export default ChainWebSocket;
+exports.default = ChainWebSocket;
