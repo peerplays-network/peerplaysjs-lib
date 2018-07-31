@@ -37,9 +37,9 @@ var Manager = function () {
     var url = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.url;
 
     return new Promise(function (resolve, reject) {
-      _ApiInstances2.default.instance(url, _connect).init_promise.then(resolve).catch(function () {
+      _ApiInstances2.default.instance(url, _connect).init_promise.then(resolve).catch(function (error) {
         _ApiInstances2.default.instance().close();
-        reject();
+        reject(error);
       });
     });
   };

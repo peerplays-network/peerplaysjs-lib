@@ -5,6 +5,13 @@ exports.__esModule = true;
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var SOCKET_DEBUG = false;
+var WebSocketClient = null;
+
+if (typeof WebSocket !== 'undefined') {
+  WebSocketClient = WebSocket;
+} else {
+  WebSocketClient = require('ws'); // eslint-disable-line global-require
+}
 
 var SUBSCRIBE_OPERATIONS = ['set_subscribe_callback', 'subscribe_to_market', 'broadcast_transaction_with_callback', 'set_pending_transaction_callback'];
 
@@ -91,7 +98,7 @@ var ChainWebSocket = function () {
 
     // Attempt to create the websocket
     try {
-      this.ws = new WebSocket(this.serverAddress);
+      this.ws = new WebSocketClient(this.serverAddress);
     } catch (error) {
       // Set a timeout to try and reconnect here.
       return this.resetConnection();
@@ -238,7 +245,6 @@ var ChainWebSocket = function () {
 
   ChainWebSocket.prototype.onConnectionClose = function onConnectionClose(error) {
     this.debug('!!! ChainWebSocket Close ', error);
-
     this.resetConnection();
 
     if (this.statusCb) {
@@ -256,7 +262,6 @@ var ChainWebSocket = function () {
 
   ChainWebSocket.prototype.onConnectionError = function onConnectionError(error) {
     this.debug('!!! ChainWebSocket On Connection Error ', error);
-
     this.resetConnection();
 
     if (this.statusCb) {

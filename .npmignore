@@ -6,4 +6,5 @@ esdoc.json
 .prettierrc
 .gitignore
 .eslintrc
+.eslintignore
 .editorconfig

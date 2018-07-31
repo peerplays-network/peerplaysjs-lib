@@ -1,59 +1,24 @@
-import assert from 'assert';
 import {Apis} from '../lib';
 
-let coreAsset;
+let coreAsset = 'PPYTEST';
+let defaultUrl = 'wss://api.ppytest.blckchnd.com';
 
 describe('Connection', () => {
   afterEach(() => {
     Apis.close();
   });
 
-  // it("Connect to localhost", function() {
-  //     return new Promise( function(resolve) {
-  //         Apis.instance("ws://localhost:8090").init_promise.then(function (result) {
-  //             coreAsset = result[0].network.core_asset;
-  //
-  //             if (typeof coreAsset === "string") {
-  //                 resolve();
-  //             } else {
-  //                 reject(new Error("Expected coreAsset to be a string"));
-  //             }
-  //         });
-  //     });
-  // });
-
-  it('Connect to Openledger', () => new Promise(((resolve, reject) => {
-    Apis.instance('wss://bitshares.openledger.info/ws', true).init_promise.then((result) => {
-      coreAsset = result[0].network.core_asset;
-      assert(coreAsset === 'BTS');
-      resolve();
-    }).catch((reason) => reject(reason));
-  })));
-
-  it('Connect to Testnet', () => new Promise(((resolve, reject) => {
-    Apis.instance('wss://testnet.bitshares.eu/ws', true).init_promise.then((result) => {
-      coreAsset = result[0].network.core_asset;
-      assert(coreAsset === 'TEST');
+  it('Connect to Node', () => new Promise(((resolve, reject) => {
+    Apis.instance(defaultUrl, true).init_promise.then(() => {
       resolve();
     }).catch((reason) => reject(reason));
   })));
 });
 
 describe('Api', () => {
-  let cs = 'wss://bitshares.openledger.info/ws';
-
-  // after(function() {
-  //     ChainConfig.reset();
-  // });
-
   describe('Subscriptions', () => {
-    beforeEach(() => Apis.instance(cs, true).init_promise.then((result) => {
-      coreAsset = result[0].network.core_asset;
-    }));
-
-    afterEach(() => {
-      Apis.close();
-    });
+    beforeEach(() => Apis.instance(defaultUrl, true).init_promise);
+    afterEach(() => Apis.close());
 
     it('Set subscribe callback', () => new Promise(((resolve, reject) => {
       function callback(obj) {
@@ -118,9 +83,7 @@ describe('Api', () => {
 
   describe('Api methods', () => {
     // Connect once for all tests
-    before(() => Apis.instance(cs, true).init_promise.then((result) => {
-      coreAsset = result[0].network.core_asset;
-    }));
+    before(() => Apis.instance(defaultUrl, true).init_promise);
 
     it('Get object', () => new Promise(((resolve, reject) => {
       Apis.instance()
@@ -206,54 +169,5 @@ describe('Api', () => {
           }
         });
     })));
-
-    it('Get market data', () => new Promise(((resolve, reject) => {
-      if (coreAsset !== 'BTS') {
-        reject(new Error('This test will only work when connected to a BTS api'));
-      }
-
-      Apis.instance()
-        .history_api()
-        .exec('get_fill_order_history', ['1.3.121', '1.3.0', 10])
-        .then((history) => {
-          if (history.length > 0) {
-            resolve();
-          } else {
-            reject(new Error('Expected market history of at least one entry'));
-          }
-        });
-    })));
   });
-  /*
-
-
-        it("Asset by id", function() {
-            return new Promise( function(resolve) {
-                ChainStore.subscribe(function() {
-                    assert(ChainStore.getAsset("1.3.0") != null)
-                    resolve()
-                })
-                assert(ChainStore.getAsset("1.3.0") === undefined)
-            })
-        })
-
-        it("Object by id", function() {
-            return new Promise( function(resolve) {
-                ChainStore.subscribe(function() {
-                    assert(ChainStore.getAsset("2.0.0") != null)
-                    resolve()
-                })
-                assert(ChainStore.getAsset("2.0.0") === undefined)
-            })
-        })
-
-        */
-
-  //     ChainStore.getAccount("not found")
-  //
-  //     ChainStore.unsubscribe(cb)
-  //     // return FetchChain("getAccount", "notfound")
-  //     let cb = res => console.log('res',res)
-  //     // })
-  // })
 });

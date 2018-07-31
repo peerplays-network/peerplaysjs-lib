@@ -1,7 +1,7 @@
 import assert from 'assert';
 import {Manager} from '../lib';
 
-let defaultUrl = 'ws://127.0.0.1:8090';
+let defaultUrl = 'wss://api.ppytest.blckchnd.com';
 let faultyNodeList = [
   {url: 'wss://bitsqsdqsdhares.openledger.info/ws', location: 'Nuremberg, Germany'},
   {url: 'wss://bitazdazdshares.openledger.info/ws', location: 'Nuremberg, Germany'},
@@ -28,7 +28,7 @@ let noWorkingNodes = [
 ];
 
 let goodNodeList = [
-  {url: 'wss://api.ppytest.blckchnd.com', location: 'Nuremberg, Germany'},
+  {url: defaultUrl, location: 'unknown'},
   // {url: 'wss://bit.btsabc.org/ws', location: 'Hong Kong'},
   // {url: 'wss://bts.transwiser.com/ws', location: 'Hangzhou, China'},
   // {url: 'wss://bitshares.dacplay.org:8089/ws', location: 'Hangzhou, China'},
@@ -39,13 +39,19 @@ let goodNodeList = [
 
 describe('Connection Manager', () => {
   it('Instantiates', () => {
-    let man = new Manager({url: defaultUrl, urls: faultyNodeList.map((a) => a.url)});
+    let man = new Manager({
+      url: defaultUrl,
+      urls: faultyNodeList.map((a) => a.url)
+    });
     assert.equal(man.url, defaultUrl);
   });
 
   it('Tries to connect default url', function test() {
     this.timeout(3000);
-    let man = new Manager({url: defaultUrl, urls: faultyNodeList.map((a) => a.url)});
+    let man = new Manager({
+      url: defaultUrl,
+      urls: faultyNodeList.map((a) => a.url)
+    });
     return new Promise((resolve, reject) => {
       man
         .connect()
@@ -56,7 +62,10 @@ describe('Connection Manager', () => {
 
   it('Tries to connect to fallback', function test() {
     this.timeout(15000);
-    let man = new Manager({url: 'ws://127.0.0.1:8092', urls: faultyNodeList.map((a) => a.url)});
+    let man = new Manager({
+      url: defaultUrl,
+      urls: faultyNodeList.map((a) => a.url)
+    });
     return new Promise((resolve, reject) => {
       man
         .connectWithFallback()
@@ -67,7 +76,10 @@ describe('Connection Manager', () => {
 
   it('Rejects if no connections are successful ', function test() {
     this.timeout(15000);
-    let man = new Manager({url: 'ws://127.0.0.1:8092', urls: noWorkingNodes.map((a) => a.url)});
+    let man = new Manager({
+      url: 'wss://invalidurl',
+      urls: noWorkingNodes.map((a) => a.url)
+    });
     return new Promise((resolve, reject) => {
       man
         .connectWithFallback()
@@ -78,7 +90,10 @@ describe('Connection Manager', () => {
 
   it('Can check connection times for all connections', function test() {
     this.timeout(20000);
-    let man = new Manager({url: 'ws://127.0.0.1:8090', urls: goodNodeList.map((a) => a.url)});
+    let man = new Manager({
+      url: defaultUrl,
+      urls: goodNodeList.map((a) => a.url)
+    });
     return new Promise((resolve, reject) => {
       man
         .checkConnections()

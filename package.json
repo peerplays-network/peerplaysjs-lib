@@ -6,9 +6,9 @@
     "ws": false
   },
   "scripts": {
-    "test": "mocha --recursive",
+    "test": "mocha --recursive --compilers js:babel-core/register",
     "test:watch": "npm test -- --watch",
-    "test:manager": "BABEL_ENV=test mocha --compilers js:babel-core/register ./test/Manager --watch",
+    "test:manager": "mocha --compilers js:babel-core/register ./test/Manager --watch",
     "clean": "rm -rf ./dist/* & rm -rf ./build/*",
     "prebuild": "npm run clean",
     "build": "babel lib -d dist",
