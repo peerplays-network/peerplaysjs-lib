@@ -16,8 +16,7 @@ var _ChainConfig2 = _interopRequireDefault(_ChainConfig);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } // var { List } = require("immutable");
-
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var inst = void 0;
 
@@ -29,8 +28,6 @@ var ApisInstance = function () {
   /** @arg {string} connection .. */
   ApisInstance.prototype.connect = function connect(cs, connectTimeout) {
     var _this = this;
-
-    // console.log("INFO\tApiInstances\tconnect\t", cs);
 
     var rpc_user = '';
     var rpc_password = '';
@@ -46,13 +43,12 @@ var ApisInstance = function () {
       _this._db = new _GrapheneApi2.default(_this.ws_rpc, 'database');
       _this._net = new _GrapheneApi2.default(_this.ws_rpc, 'network_broadcast');
       _this._hist = new _GrapheneApi2.default(_this.ws_rpc, 'history');
-      _this._crypt = new _GrapheneApi2.default(_this.ws_rpc, 'crypto');
+      _this._crypto = new _GrapheneApi2.default(_this.ws_rpc, 'crypto');
       _this._bookie = new _GrapheneApi2.default(_this.ws_rpc, 'bookie');
       var db_promise = _this._db.init().then(function () {
         return _this._db.exec('get_chain_id', []).then(function (_chain_id) {
           _this.chain_id = _chain_id;
           return _ChainConfig2.default.setChainId(_chain_id);
-          // DEBUG console.log("chain_id1",this.chain_id)
         });
       });
 
@@ -65,14 +61,14 @@ var ApisInstance = function () {
           });
           _this._net.init();
           _this._hist.init();
-          _this._crypt.init();
+          _this._crypto.init();
           _this._bookie.init();
         });
       };
 
       return Promise.all([db_promise, _this._net.init(), _this._hist.init(),
       // Temporary squash crypto API error until the API is upgraded everywhere
-      _this._crypt.init().catch(function (e) {
+      _this._crypto.init().catch(function (e) {
         return console.error('ApiInstance\tCrypto API Error', e);
       }), _this._bookie.init()]);
     });
@@ -99,7 +95,7 @@ var ApisInstance = function () {
   };
 
   ApisInstance.prototype.crypto_api = function crypto_api() {
-    return this._crypt;
+    return this._crypto;
   };
 
   ApisInstance.prototype.bookie_api = function bookie_api() {

@@ -245,6 +245,7 @@ var ChainWebSocket = function () {
 
   ChainWebSocket.prototype.onConnectionClose = function onConnectionClose(error) {
     this.debug('!!! ChainWebSocket Close ', error);
+
     this.resetConnection();
 
     if (this.statusCb) {
@@ -262,6 +263,7 @@ var ChainWebSocket = function () {
 
   ChainWebSocket.prototype.onConnectionError = function onConnectionError(error) {
     this.debug('!!! ChainWebSocket On Connection Error ', error);
+
     this.resetConnection();
 
     if (this.statusCb) {
