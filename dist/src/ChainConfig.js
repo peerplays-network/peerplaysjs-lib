@@ -1,61 +1,56 @@
 'use strict';
 
 exports.__esModule = true;
-var ecc_config = {
-  address_prefix: process.env.npm_config__graphene_ecc_default_address_prefix || 'GPH'
-};
 
-var _this = {
-  core_asset: 'CORE',
-  address_prefix: 'GPH',
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var defaults = {
+  core_asset: 'PPY',
+  address_prefix: 'PPY',
   expire_in_secs: 15,
   expire_in_secs_proposal: 24 * 60 * 60,
-  review_in_secs_committee: 24 * 60 * 60,
+  review_in_secs_committee: 24 * 60 * 60
+};
+
+var networks = {
   networks: {
-    BitShares: {
-      core_asset: 'BTS',
-      address_prefix: 'BTS',
-      chain_id: '4018d7844c78f6a6c41c6a552b898022310fc5dec06da467ee7905a8dad512c8'
-    },
-    Muse: {
-      core_asset: 'MUSE',
-      address_prefix: 'MUSE',
-      chain_id: '45ad2d3f9ef92a49b55c2227eb06123f613bb35dd08bd876f2aea21925a67a67'
-    },
-    Test: {
-      core_asset: 'TEST',
-      address_prefix: 'TEST',
-      chain_id: '39f5e2ede1f8bc1a3a54a7914414e3779e33193f1f5693510e73cb7a87617447'
-    },
-    Obelisk: {
-      core_asset: 'GOV',
-      address_prefix: 'FEW',
-      chain_id: '1cfde7c388b9e8ac06462d68aadbd966b58f88797637d9af805b4560b0e9661e'
-    },
     Peerplays: {
       core_asset: 'PPY',
       address_prefix: 'PPY',
-      chain_id: '594e284d3c733afaaa34a5e99a39edb31e5192fab023101d691d952034902237'
+      chain_id: '6b6b5f0ce7a36d323768e534f3edb41c6d6332a541a95725b98e28d140850134'
+    },
+    PeerplaysTestnet: {
+      core_asset: 'PPYTEST',
+      address_prefix: 'PPYTEST',
+      chain_id: 'be6b79295e728406cbb7494bcb626e62ad278fa4018699cf8f75739f4c1a81fd'
     }
-  },
+  }
+};
 
-  /** Set a few properties for known chain IDs. */
-  setChainId: function setChainId(chain_id) {
-    var ref = Object.keys(_this.networks);
+var ChainConfig = function () {
+  function ChainConfig() {
+    _classCallCheck(this, ChainConfig);
+
+    this.reset();
+  }
+
+  ChainConfig.prototype.reset = function reset() {
+    Object.assign(this, defaults);
+  };
+
+  ChainConfig.prototype.setChainId = function setChainId(chainID) {
+    var ref = Object.keys(networks);
 
     for (var i = 0, len = ref.length; i < len; i++) {
       var network_name = ref[i];
-      var network = _this.networks[network_name];
+      var network = networks[network_name];
 
-      if (network.chain_id === chain_id) {
-        _this.network_name = network_name;
+      if (network.chain_id === chainID) {
+        this.network_name = network_name;
 
         if (network.address_prefix) {
-          _this.address_prefix = network.address_prefix;
-          ecc_config.address_prefix = network.address_prefix;
+          this.address_prefix = network.address_prefix;
         }
-
-        // console.log("INFO    Configured for", network_name, ":", network.core_asset, "\n");
 
         return {
           network_name: network_name,
@@ -64,25 +59,18 @@ var _this = {
       }
     }
 
-    if (!_this.network_name) {
-      console.log('Unknown chain id (this may be a testnet)', chain_id);
+    if (!this.network_name) {
+      console.log('Unknown chain id (this may be a testnet)', chainID);
     }
-  },
-  reset: function reset() {
-    _this.core_asset = 'CORE';
-    _this.address_prefix = 'GPH';
-    ecc_config.address_prefix = 'GPH';
-    _this.expire_in_secs = 15;
-    _this.expire_in_secs_proposal = 24 * 60 * 60;
+  };
 
-    console.log('Chain config reset');
-  },
-  setPrefix: function setPrefix() {
-    var prefix = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'GPH';
+  ChainConfig.prototype.setPrefix = function setPrefix() {
+    var prefix = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'PPY';
 
-    _this.address_prefix = prefix;
-    ecc_config.address_prefix = prefix;
-  }
-};
+    this.address_prefix = prefix;
+  };
 
-exports.default = _this;
+  return ChainConfig;
+}();
+
+exports.default = new ChainConfig();
