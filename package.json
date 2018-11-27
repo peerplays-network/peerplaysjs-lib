@@ -6,23 +6,24 @@
     "ws": false
   },
   "scripts": {
-    "test": "mocha --recursive",
+    "test": "mocha --recursive --compilers js:babel-core/register",
     "test:watch": "npm test -- --watch",
+    "test:manager": "mocha --compilers js:babel-core/register ./test/Manager --watch",
     "clean": "rm -rf ./dist/* & rm -rf ./build/*",
     "prebuild": "npm run clean",
-    "build": "babel lib --presets babel-preset-es2015 --out-dir dist",
+    "build": "babel lib -d dist",
     "postbuild": "npm run browserify",
-    "prepublish": "npm run build",
-    "browserify": "browserify dist/src/ApiInstances.js --standalone peerplaysWS -o build/peerplaysjs-ws.js -d",
-    "postbrowserify": "uglifyjs --compress --mangle --sequences --drop_console --mangle-props --screw-ie8 --output build/peerplaysjs-ws.min.js -- build/peerplaysjs-ws.js",
-    "bundle": "npm run browserify && npm run minify"
+    "build:watch": "babel lib -d dist --watch",
+    "prebrowserify": "rm -rf ./build/*",
+    "browserify": "browserify dist/index.js --standalone peerplays_ws -o build/peerplaysjs-ws.js -d",
+    "postbrowserify": "uglifyjs --compress --mangle --sequences --drop_console --output build/peerplaysjs-ws.min.js -- build/peerplaysjs-ws.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PBSA/peerplaysjs-ws.git"
+    "url": "git+https://github.com/pbsa/peerplaysjs-ws.git"
   },
-  "author": "Sigve Kvalsvik <bitsharesblocks@gmail.com> (https://github.com/svk31)",
   "contributors": [
+    "Sigve Kvalsvik <bitsharesblocks@gmail.com> (https://github.com/svk31)",
     "James Calfee <james@jcalfee.info> (https://github.com/jcalfee/)"
   ],
   "license": "BSD-2-Clause-FreeBSD",
@@ -32,26 +33,27 @@
   "engines": {
     "node": ">= 6.0.0"
   },
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
+  "jsnext:main": "lib/index.js",
   "dependencies": {
-    "ReconnectingWebSocket": "git+https://github.com/svk31/reconnecting-websocket.git",
-    "ws": "^1.1.4"
+    "ws": "2.3.1"
   },
   "devDependencies": {
     "assert": "^1.3.0",
-    "babel-cli": "^6.9.0",
-    "babel-preset-es2015": "^6.9.0",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-1": "^6.16.0",
     "browserify": "^13.0.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.10.0",
     "mocha": "^2.3.4",
-    "uglifyjs": "^2.4.10"
-  },
-  "homepage": "https://github.com/PBSA/peerplaysjs-ws#readme",
-  "directories": {
-    "example": "examples",
-    "lib": "lib",
-    "test": "test"
-  },
-  "keywords": [
-    "peerplays"
-  ]
+    "prettier": "^1.13.7",
+    "uglify-js": "^3.0.27"
+  }
 }
