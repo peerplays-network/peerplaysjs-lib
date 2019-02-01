@@ -812,7 +812,6 @@ var ChainStore = function () {
 	}, {
 		key: "fetchWitnessAccounts",
 		value: function fetchWitnessAccounts() {
-			var _this24 = this;
 			return new Promise(function (resolve, reject) {
 				Apis.instance().db_api().exec("lookup_witness_accounts", [0, 1000]).then(function (w) {
 					if (w) {
@@ -822,9 +821,9 @@ var ChainStore = function () {
 							witnessArr.push(w[i][1]); // ids only
 						}
 
-						_this24.witnesses = _this24.witnesses.merge(witnessArr);
-						_this24._updateObject(witnessArr, true);
-						resolve(_this24.witnesses);
+						this.witnesses = this.witnesses.merge(witnessArr);
+						this._updateObject(witnessArr, true);
+						resolve(this.witnesses);
 					} else {
 						resolve(null);
 					}
