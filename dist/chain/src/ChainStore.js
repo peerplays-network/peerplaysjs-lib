@@ -825,8 +825,8 @@ var ChainStore = function () {
 						}
 
 						_this13.witnesses = _this13.witnesses.merge(witnessArr);
-						var witnesses_object = _this13._updateObject(witnessArr, true);
-						resolve(witnesses_object);
+						_this13._updateObject(witnessArr, true);
+						resolve(_this13.witnesses);
 					} else {
 						resolve(null);
 					}
