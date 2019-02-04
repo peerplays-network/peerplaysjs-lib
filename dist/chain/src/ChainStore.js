@@ -824,7 +824,7 @@ var ChainStore = function () {
 							witnessArr.push(w[i][1]); // ids only
 						}
 
-						_this13.witnesses = _this13.witnesses.set(witnessArr);
+						_this13.witnesses = _this13.witnesses.merge(witnessArr);
 						var witnesses_object = _this13._updateObject(witnessArr, true);
 						resolve(witnesses_object);
 					} else {
