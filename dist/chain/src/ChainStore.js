@@ -97,6 +97,7 @@ var ChainStore = function () {
 			this.get_account_refs_of_keys_calls = Immutable.Set();
 			this.account_history_requests = new Map(); ///< tracks pending history requests
 			this.witness_by_account_id = new Map();
+			this.witnesses = new Map();
 			this.account_by_witness_id = new Map();
 			this.committee_by_account_id = new Map();
 			this.objects_by_vote_id = new Map();
@@ -812,6 +813,8 @@ var ChainStore = function () {
 	}, {
 		key: "fetchWitnessAccounts",
 		value: function fetchWitnessAccounts() {
+			var _this13 = this;
+
 			return new Promise(function (resolve, reject) {
 				Apis.instance().db_api().exec("lookup_witness_accounts", [0, 1000]).then(function (w) {
 					if (w) {
@@ -821,8 +824,8 @@ var ChainStore = function () {
 							witnessArr.push(w[i][1]); // ids only
 						}
 
-						this.witnesses = this.witnesses.set(witnessArr);
-						var witnesses_object = this._updateObject(witnessArr, true);
+						_this13.witnesses = _this13.witnesses.set(witnessArr);
+						var witnesses_object = _this13._updateObject(witnessArr, true);
 						resolve(witnesses_object);
 					} else {
 						resolve(null);
@@ -839,17 +842,17 @@ var ChainStore = function () {
 	}, {
 		key: "fetchWitnessByAccount",
 		value: function fetchWitnessByAccount(account_id) {
-			var _this13 = this;
+			var _this14 = this;
 
 			return new Promise(function (resolve, reject) {
 				Apis.instance().db_api().exec("get_witness_by_account", [account_id]).then(function (optional_witness_object) {
 					if (optional_witness_object) {
-						_this13.witness_by_account_id = _this13.witness_by_account_id.set(optional_witness_object.witness_account, optional_witness_object.id);
-						var witness_object = _this13._updateObject(optional_witness_object, true);
+						_this14.witness_by_account_id = _this14.witness_by_account_id.set(optional_witness_object.witness_account, optional_witness_object.id);
+						var witness_object = _this14._updateObject(optional_witness_object, true);
 						resolve(witness_object);
 					} else {
-						_this13.witness_by_account_id = _this13.witness_by_account_id.set(account_id, null);
-						_this13.notifySubscribers();
+						_this14.witness_by_account_id = _this14.witness_by_account_id.set(account_id, null);
+						_this14.notifySubscribers();
 						resolve(null);
 					}
 				}, reject);
@@ -864,17 +867,17 @@ var ChainStore = function () {
 	}, {
 		key: "fetchCommitteeMemberByAccount",
 		value: function fetchCommitteeMemberByAccount(account_id) {
-			var _this14 = this;
+			var _this15 = this;
 
 			return new Promise(function (resolve, reject) {
 				Apis.instance().db_api().exec("get_committee_member_by_account", [account_id]).then(function (optional_committee_object) {
 					if (optional_committee_object) {
-						_this14.committee_by_account_id = _this14.committee_by_account_id.set(optional_committee_object.committee_member_account, optional_committee_object.id);
-						var committee_object = _this14._updateObject(optional_committee_object, true);
+						_this15.committee_by_account_id = _this15.committee_by_account_id.set(optional_committee_object.committee_member_account, optional_committee_object.id);
+						var committee_object = _this15._updateObject(optional_committee_object, true);
 						resolve(committee_object);
 					} else {
-						_this14.committee_by_account_id = _this14.committee_by_account_id.set(account_id, null);
-						_this14.notifySubscribers();
+						_this15.committee_by_account_id = _this15.committee_by_account_id.set(account_id, null);
+						_this15.notifySubscribers();
 						resolve(null);
 					}
 				}, reject);
@@ -894,7 +897,7 @@ var ChainStore = function () {
 	}, {
 		key: "fetchFullAccount",
 		value: function fetchFullAccount(name_or_id) {
-			var _this15 = this;
+			var _this16 = this;
 
 			if (DEBUG) console.log("Fetch full account: ", name_or_id);
 
@@ -917,8 +920,8 @@ var ChainStore = function () {
 				Apis.instance().db_api().exec("get_full_accounts", [[name_or_id], true]).then(function (results) {
 					if (results.length === 0) {
 						if (ChainValidation.is_object_id(name_or_id)) {
-							_this15.objects_by_id = _this15.objects_by_id.set(name_or_id, null);
-							_this15.notifySubscribers();
+							_this16.objects_by_id = _this16.objects_by_id.set(name_or_id, null);
+							_this16.notifySubscribers();
 						}
 						return;
 					}
@@ -938,7 +941,7 @@ var ChainStore = function () {
 					    proposals = full_account.proposals;
 
 
-					_this15.accounts_by_name = _this15.accounts_by_name.set(account.name, account.id);
+					_this16.accounts_by_name = _this16.accounts_by_name.set(account.name, account.id);
 					account.referrer_name = referrer_name;
 					account.lifetime_referrer_name = lifetime_referrer_name;
 					account.registrar_name = registrar_name;
@@ -951,57 +954,57 @@ var ChainStore = function () {
 					account.proposals = new Immutable.Set();
 					account.vesting_balances = account.vesting_balances.withMutations(function (set) {
 						vesting_balances.forEach(function (vb) {
-							_this15._updateObject(vb, false);
+							_this16._updateObject(vb, false);
 							set.add(vb.id);
 						});
 					});
 
 					votes.forEach(function (v) {
-						return _this15._updateObject(v, false);
+						return _this16._updateObject(v, false);
 					});
 
 					account.balances = account.balances.withMutations(function (map) {
 						full_account.balances.forEach(function (b) {
-							_this15._updateObject(b, false);
+							_this16._updateObject(b, false);
 							map.set(b.asset_type, b.id);
 						});
 					});
 
 					account.orders = account.orders.withMutations(function (set) {
 						limit_orders.forEach(function (order) {
-							_this15._updateObject(order, false);
+							_this16._updateObject(order, false);
 							set.add(order.id);
 						});
 					});
 
 					account.pending_dividend_payments = account.pending_dividend_payments.withMutations(function (set) {
 						pending_dividend_payments.forEach(function (payments) {
-							_this15._updateObject(payments, false);
+							_this16._updateObject(payments, false);
 							set.add(payments);
 						});
 					});
 
 					account.call_orders = account.call_orders.withMutations(function (set) {
 						call_orders.forEach(function (co) {
-							_this15._updateObject(co, false);
+							_this16._updateObject(co, false);
 							set.add(co.id);
 						});
 					});
 
 					account.proposals = account.proposals.withMutations(function (set) {
 						proposals.forEach(function (p) {
-							_this15._updateObject(p, false);
+							_this16._updateObject(p, false);
 							set.add(p.id);
 						});
 					});
 
-					_this15._updateObject(statistics, false);
-					var updated_account = _this15._updateObject(account, false);
-					_this15.fetchRecentHistory(updated_account);
-					_this15.notifySubscribers();
+					_this16._updateObject(statistics, false);
+					var updated_account = _this16._updateObject(account, false);
+					_this16.fetchRecentHistory(updated_account);
+					_this16.notifySubscribers();
 				}, function (error) {
 					console.log("Error: ", error);
-					if (ChainValidation.is_object_id(name_or_id)) _this15.objects_by_id = _this15.objects_by_id.delete(name_or_id);else _this15.accounts_by_name = _this15.accounts_by_name.delete(name_or_id);
+					if (ChainValidation.is_object_id(name_or_id)) _this16.objects_by_id = _this16.objects_by_id.delete(name_or_id);else _this16.accounts_by_name = _this16.accounts_by_name.delete(name_or_id);
 				});
 			}
 			return undefined;
@@ -1044,7 +1047,7 @@ var ChainStore = function () {
 	}, {
 		key: "fetchRecentHistory",
 		value: function fetchRecentHistory(account) {
-			var _this16 = this;
+			var _this17 = this;
 
 			var limit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
 
@@ -1076,7 +1079,7 @@ var ChainStore = function () {
 
 			pending_request.promise = new Promise(function (resolve, reject) {
 				Apis.instance().history_api().exec("get_account_history", [account_id, most_recent, limit, start]).then(function (operations) {
-					var current_account = _this16.objects_by_id.get(account_id);
+					var current_account = _this17.objects_by_id.get(account_id);
 					var current_history = current_account.get('history');
 					if (!current_history) current_history = Immutable.List();
 					var updated_history = Immutable.fromJS(operations);
@@ -1086,18 +1089,18 @@ var ChainStore = function () {
 						}
 					});
 					var updated_account = current_account.set('history', updated_history);
-					_this16.objects_by_id = _this16.objects_by_id.set(account_id, updated_account);
+					_this17.objects_by_id = _this17.objects_by_id.set(account_id, updated_account);
 
 					//if( current_history != updated_history )
 					//   this._notifyAccountSubscribers( account_id )
 
-					var pending_request = _this16.account_history_requests.get(account_id);
-					_this16.account_history_requests.delete(account_id);
+					var pending_request = _this17.account_history_requests.get(account_id);
+					_this17.account_history_requests.delete(account_id);
 					if (pending_request.requests > 0) {
 						// it looks like some more history may have come in while we were
 						// waiting on the result, lets fetch anything new before we resolve
 						// this query.
-						_this16.fetchRecentHistory(updated_account, limit).then(resolve, reject);
+						_this17.fetchRecentHistory(updated_account, limit).then(resolve, reject);
 					} else resolve(updated_account);
 				}); // end then
 			});
@@ -1403,7 +1406,7 @@ var ChainStore = function () {
 	}, {
 		key: "getTournaments",
 		value: function getTournaments(last_tournament_id) {
-			var _this17 = this;
+			var _this18 = this;
 
 			var limit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5;
 			var start_tournament_id = arguments[2];
@@ -1412,17 +1415,17 @@ var ChainStore = function () {
 			return Apis.instance().db_api().exec("get_tournaments", [last_tournament_id, limit, start_tournament_id]).then(function (tournaments) {
 				var list = Immutable.List();
 
-				_this17.setLastTournamentId(null);
+				_this18.setLastTournamentId(null);
 
 				if (tournaments && tournaments.length) {
 					list = list.withMutations(function (l) {
 						tournaments.forEach(function (tournament) {
 
-							if (!_this17.objects_by_id.has(tournament.id)) {
-								_this17._updateObject(tournament, false);
+							if (!_this18.objects_by_id.has(tournament.id)) {
+								_this18._updateObject(tournament, false);
 							}
 
-							l.unshift(_this17.objects_by_id.get(tournament.id));
+							l.unshift(_this18.objects_by_id.get(tournament.id));
 						});
 					});
 				}
@@ -1433,34 +1436,34 @@ var ChainStore = function () {
 	}, {
 		key: "getLastTournamentId",
 		value: function getLastTournamentId() {
-			var _this18 = this;
+			var _this19 = this;
 
 			return new Promise(function (resolve, reject) {
-				if (_this18.last_tournament_id === undefined) {
+				if (_this19.last_tournament_id === undefined) {
 
 					Apis.instance().db_api().exec("get_tournaments", [tournament_prefix + '0', 1, tournament_prefix + '0']).then(function (tournaments) {
 
-						_this18.setLastTournamentId(null);
+						_this19.setLastTournamentId(null);
 
 						if (tournaments && tournaments.length) {
 
 							tournaments.forEach(function (tournament) {
-								_this18._updateObject(tournament, false);
+								_this19._updateObject(tournament, false);
 							});
 						}
 
-						resolve(_this18.last_tournament_id);
+						resolve(_this19.last_tournament_id);
 					});
 				} else {
 
-					resolve(_this18.last_tournament_id);
+					resolve(_this19.last_tournament_id);
 				}
 			});
 		}
 	}, {
 		key: "getObjectsByVoteIds",
 		value: function getObjectsByVoteIds(vote_ids) {
-			var _this19 = this;
+			var _this20 = this;
 
 			var result = [];
 			var missing = [];
@@ -1479,7 +1482,7 @@ var ChainStore = function () {
 					console.log("vote objects ===========> ", vote_obj_array);
 					for (var _i2 = 0; _i2 < vote_obj_array.length; ++_i2) {
 						if (vote_obj_array[_i2]) {
-							_this19._updateObject(vote_obj_array[_i2]);
+							_this20._updateObject(vote_obj_array[_i2]);
 						}
 					}
 				}, function (error) {
@@ -1513,17 +1516,17 @@ var ChainStore = function () {
 	}, {
 		key: "addProposalData",
 		value: function addProposalData(approvals, objectId) {
-			var _this20 = this;
+			var _this21 = this;
 
 			approvals.forEach(function (id) {
-				var impactedAccount = _this20.objects_by_id.get(id);
+				var impactedAccount = _this21.objects_by_id.get(id);
 				if (impactedAccount) {
 					var proposals = impactedAccount.get("proposals");
 
 					if (!proposals.includes(objectId)) {
 						proposals = proposals.add(objectId);
 						impactedAccount = impactedAccount.set("proposals", proposals);
-						_this20._updateObject(impactedAccount.toJS(), false);
+						_this21._updateObject(impactedAccount.toJS(), false);
 					}
 				}
 			});
@@ -1540,16 +1543,16 @@ var ChainStore = function () {
 	}, {
 		key: "__getBlocksForScan",
 		value: function __getBlocksForScan(lastBlock) {
-			var _this21 = this;
+			var _this22 = this;
 
 			var db_api = Apis.instance().db_api();
 			return new Promise(function (success, fail) {
 
-				var scanToBlock = _this21.last_processed_block;
+				var scanToBlock = _this22.last_processed_block;
 				if (lastBlock) return success({ lastBlock: lastBlock, scanToBlock: scanToBlock });
 
 				db_api.exec("get_dynamic_global_properties", []).then(function (globalProperties) {
-					lastBlock = _this21.last_processed_block = globalProperties['head_block_number'];
+					lastBlock = _this22.last_processed_block = globalProperties['head_block_number'];
 					scanToBlock = globalProperties['head_block_number'] - 2000;
 					scanToBlock = scanToBlock < 0 ? 1 : scanToBlock;
 					return success({ lastBlock: lastBlock, scanToBlock: scanToBlock });
@@ -1559,7 +1562,7 @@ var ChainStore = function () {
 	}, {
 		key: "__bindBlock",
 		value: function __bindBlock(lastBlock, scanToBlock, isInit) {
-			var _this22 = this;
+			var _this23 = this;
 
 			var db_api = Apis.instance().db_api();
 			return new Promise(function (success, fail) {
@@ -1567,22 +1570,22 @@ var ChainStore = function () {
 					block.id = lastBlock;
 					if (typeof block.timestamp === "string") block.timestamp += "+00:00";
 					block.timestamp = new Date(block.timestamp);
-					_this22.getWitnessAccount(block.witness).then(function (witness) {
+					_this23.getWitnessAccount(block.witness).then(function (witness) {
 						block.witness_account_name = witness.name;
 
-						if (!_this22.recent_blocks_by_id.get(lastBlock)) {
+						if (!_this23.recent_blocks_by_id.get(lastBlock)) {
 
-							_this22.recent_blocks_by_id = _this22.recent_blocks_by_id.set(lastBlock, block);
+							_this23.recent_blocks_by_id = _this23.recent_blocks_by_id.set(lastBlock, block);
 
-							if (_this22.last_processed_block < lastBlock) _this22.last_processed_block = lastBlock;
+							if (_this23.last_processed_block < lastBlock) _this23.last_processed_block = lastBlock;
 
 							if (!isInit) {
-								_this22.recent_blocks = _this22.recent_blocks.unshift(block);
-								if (_this22.recent_blocks.size > block_stack_size) {
-									_this22.recent_blocks = _this22.recent_blocks.pop();
+								_this23.recent_blocks = _this23.recent_blocks.unshift(block);
+								if (_this23.recent_blocks.size > block_stack_size) {
+									_this23.recent_blocks = _this23.recent_blocks.pop();
 								}
-							} else if (_this22.recent_blocks.size < block_stack_size) {
-								_this22.recent_blocks = _this22.recent_blocks.push(block);
+							} else if (_this23.recent_blocks.size < block_stack_size) {
+								_this23.recent_blocks = _this23.recent_blocks.push(block);
 							}
 
 							block.transactions.forEach(function (tx) {
@@ -1590,17 +1593,17 @@ var ChainStore = function () {
 									op[1].block_id = lastBlock;
 									op[1].created_at = block.timestamp;
 									if (!isInit) {
-										_this22.recent_operations = _this22.recent_operations.unshift(op);
+										_this23.recent_operations = _this23.recent_operations.unshift(op);
 									} else {
-										if (_this22.recent_operations.size < operations_stack_size) {
-											_this22.recent_operations = _this22.recent_operations.push(op);
+										if (_this23.recent_operations.size < operations_stack_size) {
+											_this23.recent_operations = _this23.recent_operations.push(op);
 										}
-										if (_this22.recent_operations.size >= operations_stack_size && _this22.recent_blocks.size >= block_stack_size) {
+										if (_this23.recent_operations.size >= operations_stack_size && _this23.recent_blocks.size >= block_stack_size) {
 											scanToBlock = lastBlock;
 										}
 									}
-									if (_this22.recent_operations.size > operations_stack_size) {
-										_this22.recent_operations = _this22.recent_operations.pop();
+									if (_this23.recent_operations.size > operations_stack_size) {
+										_this23.recent_operations = _this23.recent_operations.pop();
 									}
 								});
 							});
@@ -1609,7 +1612,7 @@ var ChainStore = function () {
 						if (lastBlock <= scanToBlock) {
 							return success();
 						}
-						_this22.__bindBlock(lastBlock, scanToBlock, isInit).then(function () {
+						_this23.__bindBlock(lastBlock, scanToBlock, isInit).then(function () {
 							return success();
 						});
 					});
@@ -1619,7 +1622,7 @@ var ChainStore = function () {
 	}, {
 		key: "fetchRecentOperations",
 		value: function fetchRecentOperations() {
-			var _this23 = this;
+			var _this24 = this;
 
 			var lastBlock = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
@@ -1630,9 +1633,9 @@ var ChainStore = function () {
 				var lastBlock = _ref.lastBlock,
 				    scanToBlock = _ref.scanToBlock;
 
-				_this23.__bindBlock(lastBlock, scanToBlock, isInit).then(function () {
+				_this24.__bindBlock(lastBlock, scanToBlock, isInit).then(function () {
 					if (isInit) {
-						_this23.store_initialized = true;
+						_this24.store_initialized = true;
 					}
 				});
 			});
