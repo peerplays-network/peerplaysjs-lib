@@ -1,6 +1,6 @@
 {
   "name": "peerplaysjs-ws",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Pure JavaScript Peerplays/Graphene websocket interface for node.js and browsers.",
   "browser": {
     "ws": false
