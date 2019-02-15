@@ -1,17 +1,19 @@
 "use strict";
 
+exports.__esModule = true;
+exports.default = template;
 /** Console print any transaction object with zero default values. */
-module.exports = function template(op) {
+function template(op) {
+  var object = op.toObject(undefined, { use_default: true, annotate: true });
 
-    var object = op.toObject(void 0, { use_default: true, annotate: true });
+  // visual (with descriptions)
+  console.error(JSON.stringify(object, null, 4));
 
-    // visual (with descriptions)
-    console.error(JSON.stringify(object, null, 4));
+  // usable in a copy-paste
 
-    // usable in a copy-paste
+  object = op.toObject(undefined, { use_default: true, annotate: false });
 
-    object = op.toObject(void 0, { use_default: true, annotate: false });
-
-    // copy-paste one-lineer
-    console.error(JSON.stringify(object));
-};
+  // copy-paste one-lineer
+  console.error(JSON.stringify(object));
+}
+module.exports = exports["default"];
