@@ -2,10 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.6.3](https://github.com/peerplays-network/peerplaysjs-lib/compare/v0.6.0...v0.6.3) (2019-12-12)
-
-### [0.6.2](https://github.com/peerplays-network/peerplaysjs-lib/compare/v0.6.0...v0.6.2) (2019-12-12)
-
 <a name="0.6.1"></a>
 ## [0.6.1](https://github.com/peerplays-network/peerplaysjs-lib/compare/v0.6.0...v0.6.1) (2019-05-10)
 
