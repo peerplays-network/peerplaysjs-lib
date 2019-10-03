@@ -7,6 +7,8 @@
     "crypto": false
   },
   "scripts": {
+    "sonar": "node scripts/sonar.js",
+    "lint": "eslint lib/**/*.js",
     "init": "npm install commitizen -g && npm i",
     "commit": "git-cz",
     "pre-release": "npm run release -- --prerelease rc",
@@ -66,7 +68,8 @@
     "immutable": "^3.7.6",
     "secure-random": "^1.1.2",
     "uglify-js": "^3.6.0",
-    "ws": "^7.1.2"
+    "ws": "^7.1.2",
+    "inquirer": "^6.3.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
@@ -94,6 +97,20 @@
     "prettier": "^1.18.2",
     "standard-version": "^7.0.0",
     "uglifyjs": "^2.4.10"
+  },
+  "hooks": {
+    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+  },
+  "lint-staged": {
+    "linters": {
+      "lib/**/*.js": [
+        "eslint --fix",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "**/dist/*.min.js"
+    ]
   },
   "config": {
     "commitizen": {
