@@ -803,9 +803,7 @@ var committee_member_update_global_parameters = new Serializer('committee_member
 });
 
 var linear_vesting_policy_initializer = new Serializer('linear_vesting_policy_initializer', {
-  begin_timestamp: time_point_sec,
-  vesting_cliff_seconds: uint32,
-  vesting_duration_seconds: uint32
+  begin_timestamp: time_point_sec
 });
 
 var cdd_vesting_policy_initializer = new Serializer('cdd_vesting_policy_initializer', {
@@ -813,7 +811,7 @@ var cdd_vesting_policy_initializer = new Serializer('cdd_vesting_policy_initiali
   vesting_seconds: uint32
 });
 
-var vesting_policy_initializer = static_variant([linear_vesting_policy_initializer, cdd_vesting_policy_initializer]);
+var vesting_policy_initializer = static_variant([linear_vesting_policy_initializer]);
 
 var vesting_balance_create = new Serializer('vesting_balance_create', {
   fee: asset,
@@ -821,7 +819,7 @@ var vesting_balance_create = new Serializer('vesting_balance_create', {
   owner: protocol_id_type('account'),
   amount: asset,
   policy: vesting_policy_initializer,
-  vesting_balance_type: string
+  balance_type: bool
 });
 
 var vesting_balance_withdraw = new Serializer('vesting_balance_withdraw', {
