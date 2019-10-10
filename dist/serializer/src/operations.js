@@ -819,7 +819,7 @@ var vesting_balance_create = new Serializer('vesting_balance_create', {
   owner: protocol_id_type('account'),
   amount: asset,
   policy: vesting_policy_initializer,
-  balance_type: bool
+  balance_type: string
 });
 
 var vesting_balance_withdraw = new Serializer('vesting_balance_withdraw', {
