@@ -808,10 +808,12 @@ var linear_vesting_policy_initializer = new Serializer('linear_vesting_policy_in
 
 var cdd_vesting_policy_initializer = new Serializer('cdd_vesting_policy_initializer', {
   start_claim: time_point_sec,
+  vesting_cliff_seconds: uint32,
+  vesting_duration_seconds: uint32,
   vesting_seconds: uint32
 });
 
-var vesting_policy_initializer = static_variant([linear_vesting_policy_initializer]);
+var vesting_policy_initializer = static_variant([linear_vesting_policy_initializer, cdd_vesting_policy_initializer]);
 
 var vesting_balance_type = enumeration(['normal', 'gpos']);
 
