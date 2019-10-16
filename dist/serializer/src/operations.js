@@ -803,13 +803,13 @@ var committee_member_update_global_parameters = new Serializer('committee_member
 });
 
 var linear_vesting_policy_initializer = new Serializer('linear_vesting_policy_initializer', {
-  begin_timestamp: time_point_sec
+  begin_timestamp: time_point_sec,
+  vesting_cliff_seconds: uint32,
+  vesting_duration_seconds: uint32
 });
 
 var cdd_vesting_policy_initializer = new Serializer('cdd_vesting_policy_initializer', {
   start_claim: time_point_sec,
-  vesting_cliff_seconds: uint32,
-  vesting_duration_seconds: uint32,
   vesting_seconds: uint32
 });
 
