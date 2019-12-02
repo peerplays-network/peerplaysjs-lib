@@ -153,4 +153,4 @@ var ChainTypes = {
 };
 
 exports.default = ChainTypes;
-module.exports = exports.default;
+module.exports = exports["default"];

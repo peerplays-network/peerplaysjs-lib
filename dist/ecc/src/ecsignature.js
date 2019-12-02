@@ -143,4 +143,4 @@ ECSignature.prototype.toScriptSignature = function toScriptSignature(hashType) {
 };
 
 exports.default = ECSignature;
-module.exports = exports.default;
+module.exports = exports['default'];

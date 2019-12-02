@@ -192,4 +192,4 @@ var ConnectionManager = function () {
 }();
 
 exports.default = ConnectionManager;
-module.exports = exports.default;
+module.exports = exports['default'];

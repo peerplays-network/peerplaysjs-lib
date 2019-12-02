@@ -103,4 +103,4 @@ var helper = {
   }
 };
 exports.default = helper;
-module.exports = exports.default;
+module.exports = exports['default'];

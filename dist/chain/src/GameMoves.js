@@ -71,4 +71,4 @@ var GameMoves = function () {
 }();
 
 exports.default = GameMoves;
-module.exports = exports.default;
+module.exports = exports['default'];

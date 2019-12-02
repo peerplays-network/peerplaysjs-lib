@@ -400,4 +400,4 @@ var _my = {
 };
 
 exports.default = _my;
-module.exports = exports.default;
+module.exports = exports['default'];

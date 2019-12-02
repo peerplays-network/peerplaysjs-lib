@@ -90,4 +90,4 @@ var Address = function () {
 }();
 
 exports.default = Address;
-module.exports = exports.default;
+module.exports = exports['default'];

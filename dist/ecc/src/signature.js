@@ -197,4 +197,4 @@ var Signature = function () {
 }();
 
 exports.default = Signature;
-module.exports = exports.default;
+module.exports = exports['default'];

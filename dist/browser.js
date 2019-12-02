@@ -36,4 +36,4 @@ exports.default = {
   TransactionBuilder: _TransactionBuilder2.default,
   Login: _AccountLogin2.default
 };
-module.exports = exports.default;
+module.exports = exports['default'];

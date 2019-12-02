@@ -74,4 +74,4 @@ var ChainConfig = function () {
 }();
 
 exports.default = new ChainConfig();
-module.exports = exports.default;
+module.exports = exports['default'];

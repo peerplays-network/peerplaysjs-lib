@@ -82,4 +82,4 @@ var FastParser = function () {
 }();
 
 exports.default = FastParser;
-module.exports = exports.default;
+module.exports = exports['default'];

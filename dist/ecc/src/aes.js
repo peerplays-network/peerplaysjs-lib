@@ -315,4 +315,4 @@ var Aes = function () {
 }();
 
 exports.default = Aes;
-module.exports = exports.default;
+module.exports = exports['default'];

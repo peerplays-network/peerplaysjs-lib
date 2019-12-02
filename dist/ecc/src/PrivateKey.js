@@ -222,4 +222,4 @@ var PrivateKey = function () {
 }();
 
 exports.default = PrivateKey;
-module.exports = exports.default;
+module.exports = exports['default'];

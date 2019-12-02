@@ -67,4 +67,4 @@ function enforce(type, value) {
 
   throw new TypeError('Expected ' + (getName(type) || type) + ', got ' + value);
 }
-module.exports = exports.default;
+module.exports = exports['default'];
