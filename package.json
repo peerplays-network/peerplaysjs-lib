@@ -66,7 +66,7 @@
     "immutable": "^3.7.6",
     "secure-random": "^1.1.1",
     "uglify-js": "^3.5.2",
-    "ws": "2.3.1"
+    "ws": "3.3.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",
