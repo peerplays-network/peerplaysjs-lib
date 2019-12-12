@@ -2,8 +2,17 @@ test
 tools
 examples
 esdoc.json
+lib
+scripts
+commitlint.config.js
+config.fish
+sonar-scanner
+.scannerwork
+.sonarlint
 .babelrc
 .prettierrc
 .gitignore
 .eslintrc
 .editorconfig
+.sonarcloud.properties
+.prettierrc
