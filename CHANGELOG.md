@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.4](https://github.com/peerplays-network/peerplaysjs-lib/compare/v0.6.2...v0.6.4) (2019-12-16)
+
+
+### Features
+
+* add balance_type to vesting balance withdraw ([c560b84](https://github.com/peerplays-network/peerplaysjs-lib/commit/c560b845713d563c8fe6278eded9b261f8eb0219))
+* **account_update:** added value.update_last_voting_time ([00dbac4](https://github.com/peerplays-network/peerplaysjs-lib/commit/00dbac4a9ac1f1ac78c752378a4293650bda1db5))
+
+
+### Bug Fixes
+
+* add export data for vesting balance type ([24138cc](https://github.com/peerplays-network/peerplaysjs-lib/commit/24138ccc15d0e8ea0218c2a5018fbaba967fa7e9))
+* add vesting_policy_initializer to exports ([982b859](https://github.com/peerplays-network/peerplaysjs-lib/commit/982b85930f4d0c85b269308521d8b730b31921e9))
+* remove wrong export item ([0d8d0a1](https://github.com/peerplays-network/peerplaysjs-lib/commit/0d8d0a1d96e7d6db65a47ed2fad8a680557db9aa))
+* use string instead of bool for balance type in vesting create ([da0dec9](https://github.com/peerplays-network/peerplaysjs-lib/commit/da0dec97b82925676f1318bb5fc94cee98a49d72))
+
 ### [0.6.3](https://github.com/peerplays-network/peerplaysjs-lib/compare/v0.6.2...v0.6.3) (2019-12-12)
 
 <a name="0.6.2"></a>
