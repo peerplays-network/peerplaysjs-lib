@@ -130,4 +130,4 @@ var AccountLogin = function () {
 }();
 
 exports.default = new AccountLogin();
-module.exports = exports['default'];
+module.exports = exports.default;
