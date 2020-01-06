@@ -2346,4 +2346,4 @@ function FetchChain(methodName, objectIds) {
 chain_store.FetchChain = FetchChain;
 
 exports.default = chain_store;
-module.exports = exports['default'];
+module.exports = exports.default;

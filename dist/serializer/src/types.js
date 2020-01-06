@@ -1208,4 +1208,4 @@ Types.enumeration = function (values) {
 Types.sha256 = Types.bytes(32);
 
 exports.default = Types;
-module.exports = exports['default'];
+module.exports = exports.default;

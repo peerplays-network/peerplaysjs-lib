@@ -41,4 +41,4 @@ function toByteBuffer(type, object) {
   return b.copy(0, b.offset);
 }
 
-module.exports = exports['default'];
+module.exports = exports.default;

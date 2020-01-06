@@ -531,13 +531,20 @@ var account_create = new Serializer('account_create', {
   extensions: set(future_extensions)
 });
 
+// op.extensions.value.update_last_voting_time = true
+var account_update_last_voting_time = new Serializer('update_last_voting_time', {
+  value: {
+    update_last_voting_time: bool
+  }
+});
+
 var account_update = new Serializer('account_update', {
   fee: asset,
   account: protocol_id_type('account'),
   owner: optional(authority),
   active: optional(authority),
   new_options: optional(account_options),
-  extensions: set(future_extensions)
+  extensions: set(account_update_last_voting_time)
 });
 
 var account_whitelist = new Serializer('account_whitelist', {
@@ -873,19 +880,23 @@ var cdd_vesting_policy_initializer = new Serializer('cdd_vesting_policy_initiali
 
 var vesting_policy_initializer = static_variant([linear_vesting_policy_initializer, cdd_vesting_policy_initializer]);
 
+var vesting_balance_type = enumeration(['normal', 'gpos']);
+
 var vesting_balance_create = new Serializer('vesting_balance_create', {
   fee: asset,
   creator: protocol_id_type('account'),
   owner: protocol_id_type('account'),
   amount: asset,
-  policy: vesting_policy_initializer
+  policy: vesting_policy_initializer,
+  balance_type: vesting_balance_type
 });
 
 var vesting_balance_withdraw = new Serializer('vesting_balance_withdraw', {
   fee: asset,
   vesting_balance: protocol_id_type('vesting_balance'),
   owner: protocol_id_type('account'),
-  amount: asset
+  amount: asset,
+  balance_type: vesting_balance_type
 });
 
 var refund_worker_initializer = new Serializer('refund_worker_initializer');
@@ -1552,6 +1563,7 @@ exports.fill_order = fill_order;
 exports.authority = authority;
 exports.account_options = account_options;
 exports.account_create = account_create;
+exports.account_update_last_voting_time = account_update_last_voting_time;
 exports.account_update = account_update;
 exports.account_whitelist = account_whitelist;
 exports.account_upgrade = account_upgrade;
@@ -1586,6 +1598,8 @@ exports.chain_parameters = chain_parameters;
 exports.committee_member_update_global_parameters = committee_member_update_global_parameters;
 exports.linear_vesting_policy_initializer = linear_vesting_policy_initializer;
 exports.cdd_vesting_policy_initializer = cdd_vesting_policy_initializer;
+exports.vesting_policy_initializer = vesting_policy_initializer;
+exports.vesting_balance_type = vesting_balance_type;
 exports.vesting_balance_create = vesting_balance_create;
 exports.vesting_balance_withdraw = vesting_balance_withdraw;
 exports.refund_worker_initializer = refund_worker_initializer;
