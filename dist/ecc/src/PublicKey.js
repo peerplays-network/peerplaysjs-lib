@@ -230,4 +230,4 @@ var PublicKey = function () {
 }();
 
 exports.default = PublicKey;
-module.exports = exports['default'];
+module.exports = exports.default;
