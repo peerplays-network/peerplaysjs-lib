@@ -19,4 +19,4 @@ exports.default = {
     return _emitter;
   }
 };
-module.exports = exports['default'];
+module.exports = exports.default;

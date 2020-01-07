@@ -16,4 +16,4 @@ function template(op) {
   // copy-paste one-lineer
   console.error(JSON.stringify(object));
 }
-module.exports = exports["default"];
+module.exports = exports.default;

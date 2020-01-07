@@ -185,4 +185,4 @@ exports.default = {
   // crypto: (method, ...args) => Apis.instance().crypto_api().exec(method, toStrings(args))
 
 };
-module.exports = exports['default'];
+module.exports = exports.default;

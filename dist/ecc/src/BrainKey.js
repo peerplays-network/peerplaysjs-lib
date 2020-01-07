@@ -10,4 +10,4 @@ function normalize(brainKey) {
   brainKey = brainKey.trim();
   return brainKey.split(/[\t\n\v\f\r ]+/).join(' ');
 }
-module.exports = exports['default'];
+module.exports = exports.default;

@@ -171,4 +171,4 @@ var ChainValidation = {
 };
 
 exports.default = ChainValidation;
-module.exports = exports['default'];
+module.exports = exports.default;
