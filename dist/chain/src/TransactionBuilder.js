@@ -672,4 +672,4 @@ var TransactionBuilder = function () {
 }();
 
 exports.default = TransactionBuilder;
-module.exports = exports['default'];
+module.exports = exports.default;
