@@ -146,7 +146,7 @@ The auths object should contain the auth arrays from the account object. An exam
 ```json
 {
     active: [
-        ["GPH5Abm5dCdy3hJ1C5ckXkqUH2Me7dXqi9Y7yjn9ACaiSJ9h8r8mL", 1]
+        ["PPY∂5Abm5dCdy3hJ1C5ckXkqUH2Me7dXqi9Y7yjn9ACaiSJ9h8r8mL", 1]
     ]
 }
 ```
