@@ -2,13 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.6.6-alpha](https://github.com/peerplays-network/peerplaysjs-lib/compare/v0.6.5-alpha...v0.6.6-alpha) (2020-01-29)
-
-
-### Bug Fixes
-
-* remove vesting_balance_type from vesting_balance_withdraw_operation ([#37](https://github.com/peerplays-network/peerplaysjs-lib/issues/37)) ([6d3293b](https://github.com/peerplays-network/peerplaysjs-lib/commit/6d3293b03834529d899d25c8e3db6fdacdc8e576))
-
 ### [0.6.5](https://github.com/peerplays-network/peerplaysjs-lib/compare/v0.6.0...v0.6.5) (2019-12-24)
 
 
