@@ -128,8 +128,8 @@ var PublicKey = function () {
   };
 
   /**
-        @arg {string} public_key - like GPHXyz...
-        @arg {string} address_prefix - like GPH
+        @arg {string} public_key - like PPYXyz...
+        @arg {string} address_prefix - like PPY
         @throws {Error} if public key is invalid
         @return PublicKey
     */
