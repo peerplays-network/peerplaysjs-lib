@@ -39,6 +39,8 @@ var op_history = parseInt(object_type.operation_history, 10);
 var limit_order = parseInt(object_type.limit_order, 10);
 var call_order = parseInt(object_type.call_order, 10);
 var proposal = parseInt(object_type.proposal, 10);
+var balance_type = parseInt(object_type.balance, 10);
+var vesting_balance_type = parseInt(object_type.vesting_balance, 10);
 var witness_object_type = parseInt(object_type.witness, 10);
 var worker_object_type = parseInt(object_type.worker, 10);
 var committee_member_object_type = parseInt(object_type.committee_member, 10);
@@ -58,6 +60,7 @@ var account_transaction_history_prefix = '2.' + parseInt(impl_object_type.accoun
 var asset_dynamic_data_prefix = '2.' + parseInt(impl_object_type.asset_dynamic_data, 10) + '.';
 var bitasset_data_prefix = '2.' + parseInt(impl_object_type.asset_bitasset_data, 10) + '.';
 var block_summary_prefix = '2.' + parseInt(impl_object_type.block_summary, 10) + '.';
+var vesting_balance_prefix = '1.' + vesting_balance_type + '.';
 var witness_prefix = '1.' + witness_object_type + '.';
 var worker_prefix = '1.' + worker_object_type + '.';
 var committee_prefix = '1.' + committee_member_object_type + '.';
@@ -131,6 +134,8 @@ var ChainStore = function () {
     this.recent_blocks_by_id = _immutable2.default.Map();
     this.last_processed_block = null;
     this.simple_objects_by_id = _immutable2.default.Map();
+    this.lotteries_ids = _immutable2.default.List();
+    this.lotteries_ids_initialized = false;
 
     clearTimeout(this.timeout);
 
@@ -1791,6 +1796,14 @@ var ChainStore = function () {
         current = current.set('bitasset', bad);
         this.objects_by_id = this.objects_by_id.set(object.id, current);
       }
+      //lottery asset
+      if (object.lottery_options && this.lotteries_ids.findIndex(function (item) {
+        return item === object.id;
+      }) === -1) {
+        this.lotteries_ids = this.lotteries_ids.push(object.id).sortBy(function (item) {
+          return -parseInt(item.split('.')[2]);
+        });
+      }
     } else if (objectSpace === asset_dynamic_data_prefix) {
       // ASSET DYNAMIC DATA OBJECT
       var asset_id = current.get('asset_id');
@@ -2195,6 +2208,66 @@ var ChainStore = function () {
     }
 
     return this.recent_operations;
+  };
+
+  ChainStore.prototype.getLastIdLottery = function getLastIdLottery() {
+    return _ws.Apis.instance().db_api().exec("get_lotteries", ['1.3.0', 1, '1.3.0']).then(function (lotteries) {
+
+      if (!lotteries || !lotteries.length) {
+        return '1.3.0';
+      }
+
+      return lotteries[0]['id'];
+    });
+  };
+
+  ChainStore.prototype.getAllLotteriesIds = function getAllLotteriesIds() {
+    var _this27 = this;
+
+    return new Promise(function (resolve) {
+
+      if (_this27.lotteries_ids_initialized) {
+        return resolve(_this27.lotteries_ids);
+      }
+
+      _this27.getLastIdLottery().then(function (lastId) {
+
+        var self = _this27;
+
+        var fetchLotteries = function fetchLotteries(prevId, limit, nextId, isLastRequest) {
+
+          if (isLastRequest) {
+            self.lotteries_ids_initialized = true;
+            return resolve(self.lotteries_ids);
+          }
+
+          return _ws.Apis.instance().db_api().exec("get_lotteries", [prevId, limit, nextId]).then(function (lotteries) {
+
+            if (!lotteries.length || !lotteries.length) {
+              self.lotteries_ids_initialized = true;
+              return resolve(self.lotteries_ids);
+            }
+
+            lotteries.forEach(function (lotteryAsset) {
+              self._updateObject(lotteryAsset, false, false);
+            });
+
+            if (lotteries.length < limit) {
+              self.lotteries_ids_initialized = true;
+              return resolve(self.lotteries_ids);
+            }
+
+            var firstId = lotteries[0]['id'],
+                firstIdNum = parseInt(firstId.split('.')[2]),
+                nextNumId = firstIdNum - limit;
+
+            return fetchLotteries('1.3.0', limit, '1.3.' + Math.max(nextNumId, 0), firstIdNum - limit < 0 || !nextNumId);
+          });
+        };
+
+        fetchLotteries('1.3.0', 100, lastId, false);
+      });
+    });
   };
 
   return ChainStore;

@@ -409,6 +409,11 @@ Types.array = function (st_operation) {
   return array;
 };
 
+Types.nosort_array = function (st_operation) {
+  st_operation.nosort = true;
+  return Types.array(st_operation);
+};
+
 Types.time_point_sec = {
   fromByteBuffer: function fromByteBuffer(b) {
     return b.readUint32();

@@ -55,11 +55,13 @@ var impl_object_type = {
   special_authority: 14,
   buyback: 15,
   fba_accumulator: 16,
-  betting_market_position: 17,
-  global_betting_statistics: 18,
-  asset_dividend_data: 19,
-  pending_dividend_payout_balance_for_holder: 20,
-  distributed_dividend_balance_data: 21
+  asset_dividend_data: 17,
+  pending_dividend_payout_balance_for_holder: 18,
+  distributed_dividend_balance_data: 19,
+  betting_market_position: 20,
+  global_betting_statistics: 21,
+  lottery_balance: 22,
+  sweeps_vesting_balance: 23
 };
 
 var vote_type = {
@@ -141,7 +143,16 @@ var operations = {
   bet_canceled: 69,
   betting_market_group_update: 70,
   betting_market_update: 71,
-  event_update_status: 72
+  event_update_status: 72,
+  sport_delete: 73,
+  event_group_delete: 74,
+  affiliate_payout: 75,
+  affiliate_referral_payout: 76,
+  lottery_asset_create: 77,
+  ticket_purchase: 78,
+  lottery_reward: 79,
+  lottery_end: 80,
+  sweeps_vesting_claim: 81
 };
 
 var ChainTypes = {

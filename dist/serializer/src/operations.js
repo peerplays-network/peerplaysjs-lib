@@ -1,7 +1,8 @@
 'use strict';
 
 exports.__esModule = true;
-exports.stealth_memo_data = exports.global_betting_statistics = exports.betting_market_position = exports.bet = exports.betting_market = exports.betting_market_group = exports.betting_market_rules = exports.event = exports.event_group = exports.sport = exports.signed_transaction = exports.transaction = exports.bet_adjusted = exports.betting_market_update = exports.betting_market_group_update = exports.tournament_leave = exports.tournament_payout = exports.payout_type = exports.bet_canceled = exports.bet_cancel = exports.bet_matched = exports.betting_market_group_cancel_unmatched_bets = exports.betting_market_group_resolved = exports.betting_market_group_resolve = exports.betting_market_resolution_type = exports.bet_place = exports.bet_type = exports.betting_market_create = exports.betting_market_group_create = exports.betting_market_rules_update = exports.betting_market_rules_create = exports.event_update = exports.event_create = exports.event_group_update = exports.event_group_create = exports.sport_update = exports.sport_create = exports.asset_dividend_distribution = exports.asset_update_dividend = exports.dividend_asset_options = exports.game_move = exports.rock_paper_scissors_throw_reveal = exports.rock_paper_scissors_throw_commit = exports.rock_paper_scissors_gesture = exports.tournament_join = exports.tournament_create = exports.tournament_options = exports.rock_paper_scissors_game_options = exports.fba_distribute = exports.asset_claim_fees = exports.asset_settle_cancel = exports.transfer_from_blind = exports.blind_transfer = exports.blind_input = exports.transfer_to_blind = exports.blind_output = exports.stealth_confirmation = exports.override_transfer = exports.balance_claim = exports.assert = exports.block_id_predicate = exports.asset_symbol_eq_lit_predicate = exports.account_name_eq_lit_predicate = exports.custom = exports.worker_create = exports.burn_worker_initializer = exports.vesting_balance_worker_initializer = exports.refund_worker_initializer = exports.vesting_balance_withdraw = exports.vesting_balance_create = exports.vesting_balance_type = exports.vesting_policy_initializer = exports.cdd_vesting_policy_initializer = exports.linear_vesting_policy_initializer = exports.committee_member_update_global_parameters = exports.chain_parameters = exports.committee_member_update = exports.committee_member_create = exports.withdraw_permission_delete = exports.withdraw_permission_claim = exports.withdraw_permission_update = exports.withdraw_permission_create = exports.proposal_delete = exports.proposal_update = exports.proposal_create = exports.op_wrapper = exports.witness_update = exports.witness_create = exports.asset_publish_feed = exports.price_feed = exports.asset_global_settle = exports.asset_settle = exports.asset_fund_fee_pool = exports.asset_reserve = exports.asset_issue = exports.asset_update_feed_producers = undefined;
+exports.sweeps_vesting_claim = exports.lottery_end = exports.lottery_reward = exports.ticket_purchase = exports.lottery_asset_create = exports.affiliate_referral_payout = undefined;
+exports.affiliate_payout = exports.event_group_delete = exports.sport_delete = exports.event_update_status = exports.stealth_memo_data = exports.global_betting_statistics = exports.betting_market_position = exports.bet = exports.betting_market = exports.betting_market_group = exports.betting_market_rules = exports.event = exports.event_group = exports.sport = exports.signed_transaction = exports.transaction = exports.bet_adjusted = exports.betting_market_update = exports.betting_market_group_update = exports.tournament_leave = exports.tournament_payout = exports.payout_type = exports.bet_canceled = exports.bet_cancel = exports.bet_matched = exports.betting_market_group_cancel_unmatched_bets = exports.betting_market_group_resolved = exports.betting_market_group_resolve = exports.betting_market_resolution_type = exports.bet_place = exports.bet_type = exports.betting_market_create = exports.betting_market_group_create = exports.betting_market_rules_update = exports.betting_market_rules_create = exports.event_update = exports.event_create = exports.event_group_update = exports.event_group_create = exports.sport_update = exports.sport_create = exports.asset_dividend_distribution = exports.asset_update_dividend = exports.dividend_asset_options = exports.game_move = exports.rock_paper_scissors_throw_reveal = exports.rock_paper_scissors_throw_commit = exports.rock_paper_scissors_gesture = exports.tournament_join = exports.tournament_create = exports.tournament_options = exports.rock_paper_scissors_game_options = exports.fba_distribute = exports.asset_claim_fees = exports.asset_settle_cancel = exports.transfer_from_blind = exports.blind_transfer = exports.blind_input = exports.transfer_to_blind = exports.blind_output = exports.stealth_confirmation = exports.override_transfer = exports.balance_claim = exports.assert = exports.block_id_predicate = exports.asset_symbol_eq_lit_predicate = exports.account_name_eq_lit_predicate = exports.custom = exports.worker_create = exports.burn_worker_initializer = exports.vesting_balance_worker_initializer = exports.refund_worker_initializer = exports.vesting_balance_withdraw = exports.vesting_balance_create = exports.vesting_balance_type = exports.vesting_policy_initializer = exports.cdd_vesting_policy_initializer = exports.linear_vesting_policy_initializer = exports.committee_member_update_global_parameters = exports.chain_parameters = exports.committee_member_update = exports.committee_member_create = exports.withdraw_permission_delete = exports.withdraw_permission_claim = exports.withdraw_permission_update = exports.withdraw_permission_create = exports.proposal_delete = exports.proposal_update = exports.proposal_create = exports.op_wrapper = exports.witness_update = exports.witness_create = exports.asset_publish_feed = exports.price_feed = exports.asset_global_settle = exports.asset_settle = exports.asset_fund_fee_pool = exports.asset_reserve = exports.asset_issue = exports.asset_update_feed_producers = undefined;
 exports.asset_update_bitasset = exports.asset_update = exports.asset_create = exports.bitasset_options = exports.asset_options = exports.price = exports.account_transfer = exports.account_upgrade = exports.account_whitelist = exports.account_update = exports.account_update_last_voting_time = exports.account_create = exports.account_options = exports.authority = exports.fill_order = exports.call_order_update = exports.limit_order_cancel = exports.limit_order_create = exports.transfer = exports.memo_data = exports.signed_block_header = exports.block_header = exports.signed_block = exports.processed_transaction = exports.asset = exports.void_result = exports.fee_schedule = exports.bet_adjusted_operation_fee_parameters = exports.betting_market_update_operation_fee_parameters = exports.betting_market_group_update_operation_fee_parameters = exports.tournament_leave_operation_fee_parameters = exports.tournament_payout_operation_fee_parameters = exports.game_move_operation_fee_parameters = exports.tournament_join_operation_fee_parameters = exports.tournament_create_operation_fee_parameters = exports.bet_canceled_operation_fee_parameters = exports.bet_cancel_operation_fee_parameters = exports.bet_matched_operation_fee_parameters = exports.betting_market_group_cancel_unmatched_bets_operation_fee_parameters = exports.betting_market_group_resolved_operation_fee_parameters = exports.betting_market_group_resolve_operation_fee_parameters = exports.bet_place_operation_fee_parameters = exports.betting_market_create_operation_fee_parameters = exports.betting_market_group_create_operation_fee_parameters = exports.betting_market_rules_update_operation_fee_parameters = exports.betting_market_rules_create_operation_fee_parameters = exports.event_update_operation_fee_parameters = exports.event_create_operation_fee_parameters = exports.event_group_update_operation_fee_parameters = exports.event_group_create_operation_fee_parameters = exports.sport_update_operation_fee_parameters = exports.sport_create_operation_fee_parameters = exports.asset_dividend_distribution_operation_fee_parameters = exports.asset_update_dividend_operation_fee_parameters = exports.fba_distribute_operation_fee_parameters = exports.asset_claim_fees_operation_fee_parameters = exports.asset_settle_cancel_operation_fee_parameters = exports.transfer_from_blind_operation_fee_parameters = exports.blind_transfer_operation_fee_parameters = exports.transfer_to_blind_operation_fee_parameters = exports.override_transfer_operation_fee_parameters = exports.balance_claim_operation_fee_parameters = exports.assert_operation_fee_parameters = exports.custom_operation_fee_parameters = exports.worker_create_operation_fee_parameters = exports.vesting_balance_withdraw_operation_fee_parameters = exports.vesting_balance_create_operation_fee_parameters = exports.committee_member_update_global_parameters_operation_fee_parameters = exports.committee_member_update_operation_fee_parameters = exports.committee_member_create_operation_fee_parameters = exports.withdraw_permission_delete_operation_fee_parameters = exports.withdraw_permission_claim_operation_fee_parameters = exports.withdraw_permission_update_operation_fee_parameters = exports.withdraw_permission_create_operation_fee_parameters = exports.proposal_delete_operation_fee_parameters = exports.proposal_update_operation_fee_parameters = exports.proposal_create_operation_fee_parameters = exports.witness_update_operation_fee_parameters = exports.witness_create_operation_fee_parameters = exports.asset_publish_feed_operation_fee_parameters = exports.asset_global_settle_operation_fee_parameters = exports.asset_settle_operation_fee_parameters = exports.asset_fund_fee_pool_operation_fee_parameters = exports.asset_reserve_operation_fee_parameters = exports.asset_issue_operation_fee_parameters = exports.asset_update_feed_producers_operation_fee_parameters = exports.asset_update_bitasset_operation_fee_parameters = exports.asset_update_operation_fee_parameters = exports.asset_create_operation_fee_parameters = exports.account_transfer_operation_fee_parameters = exports.account_upgrade_operation_fee_parameters = exports.account_whitelist_operation_fee_parameters = exports.account_update_operation_fee_parameters = exports.account_create_operation_fee_parameters = exports.fill_order_operation_fee_parameters = exports.call_order_update_operation_fee_parameters = exports.limit_order_cancel_operation_fee_parameters = exports.limit_order_create_operation_fee_parameters = exports.transfer_operation_fee_parameters = exports.operation = undefined;
 
 var _types = require('./types');
@@ -23,6 +24,7 @@ var uint8 = _types2.default.uint8,
     bytes = _types2.default.bytes,
     bool = _types2.default.bool,
     array = _types2.default.array,
+    nosort_array = _types2.default.nosort_array,
     protocol_id_type = _types2.default.protocol_id_type,
     object_id_type = _types2.default.object_id_type,
     vote_id = _types2.default.vote_id,
@@ -356,9 +358,44 @@ var betting_market_update_operation_fee_parameters = new Serializer('betting_mar
 
 var bet_adjusted_operation_fee_parameters = new Serializer('bet_adjusted_operation_fee_parameters');
 
-var fee_parameters = static_variant([transfer_operation_fee_parameters, limit_order_create_operation_fee_parameters, limit_order_cancel_operation_fee_parameters, call_order_update_operation_fee_parameters, fill_order_operation_fee_parameters, account_create_operation_fee_parameters, account_update_operation_fee_parameters, account_whitelist_operation_fee_parameters, account_upgrade_operation_fee_parameters, account_transfer_operation_fee_parameters, asset_create_operation_fee_parameters, asset_update_operation_fee_parameters, asset_update_bitasset_operation_fee_parameters, asset_update_feed_producers_operation_fee_parameters, asset_issue_operation_fee_parameters, asset_reserve_operation_fee_parameters, asset_fund_fee_pool_operation_fee_parameters, asset_settle_operation_fee_parameters, asset_global_settle_operation_fee_parameters, asset_publish_feed_operation_fee_parameters, witness_create_operation_fee_parameters, witness_update_operation_fee_parameters, proposal_create_operation_fee_parameters, proposal_update_operation_fee_parameters, proposal_delete_operation_fee_parameters, withdraw_permission_create_operation_fee_parameters, withdraw_permission_update_operation_fee_parameters, withdraw_permission_claim_operation_fee_parameters, withdraw_permission_delete_operation_fee_parameters, committee_member_create_operation_fee_parameters, committee_member_update_operation_fee_parameters, committee_member_update_global_parameters_operation_fee_parameters, vesting_balance_create_operation_fee_parameters, vesting_balance_withdraw_operation_fee_parameters, worker_create_operation_fee_parameters, custom_operation_fee_parameters, assert_operation_fee_parameters, balance_claim_operation_fee_parameters, override_transfer_operation_fee_parameters, transfer_to_blind_operation_fee_parameters, blind_transfer_operation_fee_parameters, transfer_from_blind_operation_fee_parameters, asset_settle_cancel_operation_fee_parameters, asset_claim_fees_operation_fee_parameters, fba_distribute_operation_fee_parameters, tournament_create_operation_fee_parameters, tournament_join_operation_fee_parameters, game_move_operation_fee_parameters, asset_update_dividend_operation_fee_parameters, asset_dividend_distribution_operation_fee_parameters, tournament_payout_operation_fee_parameters, tournament_leave_operation_fee_parameters, sport_create_operation_fee_parameters, sport_update_operation_fee_parameters, event_group_create_operation_fee_parameters, event_group_update_operation_fee_parameters, event_create_operation_fee_parameters, event_update_operation_fee_parameters, betting_market_rules_create_operation_fee_parameters, betting_market_rules_update_operation_fee_parameters, betting_market_group_create_operation_fee_parameters, betting_market_create_operation_fee_parameters, bet_place_operation_fee_parameters, betting_market_group_resolve_operation_fee_parameters, betting_market_group_resolved_operation_fee_parameters, bet_adjusted_operation_fee_parameters, betting_market_group_cancel_unmatched_bets_operation_fee_parameters, bet_matched_operation_fee_parameters, bet_cancel_operation_fee_parameters, bet_canceled_operation_fee_parameters, betting_market_group_update_operation_fee_parameters, betting_market_update_operation_fee_parameters
-// Missing event_update_status
-]);
+var event_update_status_operation_fee_parameters = new Serializer('event_update_status_operation_fee_parameters', {
+  fee: uint64
+});
+
+var sport_delete_operation_fee_parameters = new Serializer('sport_delete_operation_fee_parameters', {
+  fee: uint64
+});
+
+var event_group_delete_operation_fee_parameters = new Serializer('event_group_delete_operation_fee_parameters', {
+  fee: uint64
+});
+
+var affiliate_payout_operation_fee_parameters = new Serializer('affiliate_payout_operation_fee_parameters');
+
+var affiliate_referral_payout_operation_fee_parameters = new Serializer('affiliate_referral_payout_operation_fee_parameters');
+
+var lottery_asset_create_operation_fee_parameters = new Serializer('lottery_asset_create_operation_fee_parameters', {
+  lottery_asset: uint64,
+  price_per_kbyte: uint32
+});
+
+var ticket_purchase_operation_fee_parameters = new Serializer('ticket_purchase_operation_fee_parameters', {
+  fee: uint64
+});
+
+var lottery_reward_operation_fee_parameters = new Serializer('lottery_reward_operation_fee_parameters', {
+  fee: uint64
+});
+
+var lottery_end_operation_fee_parameters = new Serializer('lottery_end_operation_fee_parameters', {
+  fee: uint64
+});
+
+var sweeps_vesting_claim_operation_fee_parameters = new Serializer('sweeps_vesting_claim_operation_fee_parameters', {
+  fee: uint64
+});
+
+var fee_parameters = static_variant([transfer_operation_fee_parameters, limit_order_create_operation_fee_parameters, limit_order_cancel_operation_fee_parameters, call_order_update_operation_fee_parameters, fill_order_operation_fee_parameters, account_create_operation_fee_parameters, account_update_operation_fee_parameters, account_whitelist_operation_fee_parameters, account_upgrade_operation_fee_parameters, account_transfer_operation_fee_parameters, asset_create_operation_fee_parameters, asset_update_operation_fee_parameters, asset_update_bitasset_operation_fee_parameters, asset_update_feed_producers_operation_fee_parameters, asset_issue_operation_fee_parameters, asset_reserve_operation_fee_parameters, asset_fund_fee_pool_operation_fee_parameters, asset_settle_operation_fee_parameters, asset_global_settle_operation_fee_parameters, asset_publish_feed_operation_fee_parameters, witness_create_operation_fee_parameters, witness_update_operation_fee_parameters, proposal_create_operation_fee_parameters, proposal_update_operation_fee_parameters, proposal_delete_operation_fee_parameters, withdraw_permission_create_operation_fee_parameters, withdraw_permission_update_operation_fee_parameters, withdraw_permission_claim_operation_fee_parameters, withdraw_permission_delete_operation_fee_parameters, committee_member_create_operation_fee_parameters, committee_member_update_operation_fee_parameters, committee_member_update_global_parameters_operation_fee_parameters, vesting_balance_create_operation_fee_parameters, vesting_balance_withdraw_operation_fee_parameters, worker_create_operation_fee_parameters, custom_operation_fee_parameters, assert_operation_fee_parameters, balance_claim_operation_fee_parameters, override_transfer_operation_fee_parameters, transfer_to_blind_operation_fee_parameters, blind_transfer_operation_fee_parameters, transfer_from_blind_operation_fee_parameters, asset_settle_cancel_operation_fee_parameters, asset_claim_fees_operation_fee_parameters, fba_distribute_operation_fee_parameters, tournament_create_operation_fee_parameters, tournament_join_operation_fee_parameters, game_move_operation_fee_parameters, asset_update_dividend_operation_fee_parameters, asset_dividend_distribution_operation_fee_parameters, tournament_payout_operation_fee_parameters, tournament_leave_operation_fee_parameters, sport_create_operation_fee_parameters, sport_update_operation_fee_parameters, event_group_create_operation_fee_parameters, event_group_update_operation_fee_parameters, event_create_operation_fee_parameters, event_update_operation_fee_parameters, betting_market_rules_create_operation_fee_parameters, betting_market_rules_update_operation_fee_parameters, betting_market_group_create_operation_fee_parameters, betting_market_create_operation_fee_parameters, bet_place_operation_fee_parameters, betting_market_group_resolve_operation_fee_parameters, betting_market_group_resolved_operation_fee_parameters, bet_adjusted_operation_fee_parameters, betting_market_group_cancel_unmatched_bets_operation_fee_parameters, bet_matched_operation_fee_parameters, bet_cancel_operation_fee_parameters, bet_canceled_operation_fee_parameters, betting_market_group_update_operation_fee_parameters, betting_market_update_operation_fee_parameters, event_update_status_operation_fee_parameters, sport_delete_operation_fee_parameters, event_group_delete_operation_fee_parameters, affiliate_payout_operation_fee_parameters, affiliate_referral_payout_operation_fee_parameters, lottery_asset_create_operation_fee_parameters, ticket_purchase_operation_fee_parameters, lottery_reward_operation_fee_parameters, lottery_end_operation_fee_parameters, sweeps_vesting_claim_operation_fee_parameters]);
 
 var fee_schedule = new Serializer('fee_schedule', {
   parameters: set(fee_parameters),
@@ -562,6 +599,21 @@ var bitasset_options = new Serializer('bitasset_options', {
   extensions: set(future_extensions)
 });
 
+var benefactor = new Serializer('benefactor', {
+  id: protocol_id_type('account'),
+  share: uint16
+});
+
+var lottery_asset_options = new Serializer('lottery_asset_options', {
+  benefactors: array(benefactor),
+  owner: protocol_id_type('asset'),
+  winning_tickets: nosort_array(uint16),
+  ticket_price: asset,
+  end_date: time_point_sec,
+  ending_on_soldout: bool,
+  is_active: bool
+});
+
 var asset_create = new Serializer('asset_create', {
   fee: asset,
   issuer: protocol_id_type('account'),
@@ -753,6 +805,17 @@ var committee_member_update = new Serializer('committee_member_update', {
   new_url: optional(string)
 });
 
+var parameter_extension = new Serializer('parameter_extension', {
+  min_bet_multiplier: optional(uint32),
+  max_bet_multiplier: optional(uint32),
+  betting_rake_fee_percentage: optional(uint16),
+  permitted_betting_odds_increments: optional(map(uint32, uint32)),
+  live_betting_delay_time: optional(uint16),
+  sweeps_distribution_percentage: optional(uint16),
+  sweeps_distribution_asset: optional(protocol_id_type('asset')),
+  sweeps_vesting_accumulator_account: optional(protocol_id_type('account'))
+});
+
 var chain_parameters = new Serializer('chain_parameters', {
   current_fees: fee_schedule,
   block_interval: uint8,
@@ -782,12 +845,7 @@ var chain_parameters = new Serializer('chain_parameters', {
   accounts_per_fee_scale: uint16,
   account_fee_scale_bitshifts: uint8,
   max_authority_depth: uint8,
-  min_bet_multiplier: uint32,
-  max_bet_multiplier: uint32,
-  betting_rake_fee_percentage: uint16,
-  permitted_betting_odds_increments: map(uint32, uint32),
   witness_schedule_algorithm: uint8,
-  live_betting_delay_time: uint16,
   min_round_delay: uint32,
   max_round_delay: uint32,
   min_time_per_commit_move: uint32,
@@ -1242,7 +1300,58 @@ var bet_adjusted = new Serializer('bet_adjusted', {
   stake_returned: asset
 });
 
-operation.st_operations = [transfer, limit_order_create, limit_order_cancel, call_order_update, fill_order, account_create, account_update, account_whitelist, account_upgrade, account_transfer, asset_create, asset_update, asset_update_bitasset, asset_update_feed_producers, asset_issue, asset_reserve, asset_fund_fee_pool, asset_settle, asset_global_settle, asset_publish_feed, witness_create, witness_update, proposal_create, proposal_update, proposal_delete, withdraw_permission_create, withdraw_permission_update, withdraw_permission_claim, withdraw_permission_delete, committee_member_create, committee_member_update, committee_member_update_global_parameters, vesting_balance_create, vesting_balance_withdraw, worker_create, custom, assert, balance_claim, override_transfer, transfer_to_blind, blind_transfer, transfer_from_blind, asset_settle_cancel, asset_claim_fees, fba_distribute, tournament_create, tournament_join, game_move, asset_update_dividend, asset_dividend_distribution, tournament_payout, tournament_leave, sport_create, sport_update, event_group_create, event_group_update, event_create, event_update, betting_market_rules_create, betting_market_rules_update, betting_market_group_create, betting_market_create, bet_place, betting_market_group_resolve, betting_market_group_resolved, bet_adjusted, betting_market_group_cancel_unmatched_bets, bet_matched, bet_cancel, bet_canceled, betting_market_group_update, betting_market_update];
+//dummy operations for missing operations - To be added if required in frontend
+var event_update_status = new Serializer('event_update_status');
+var sport_delete = new Serializer('sport_delete');
+var event_group_delete = new Serializer('event_group_delete');
+var affiliate_payout = new Serializer('affiliate_payout');
+var affiliate_referral_payout = new Serializer('affiliate_referral_payout');
+
+//lottery operations
+var lottery_asset_create = new Serializer('lottery_asset_create', {
+  fee: asset,
+  issuer: protocol_id_type('account'),
+  symbol: string,
+  precision: uint8,
+  common_options: asset_options,
+  bitasset_opts: optional(bitasset_options),
+  is_prediction_market: bool,
+  extensions: lottery_asset_options
+});
+
+var ticket_purchase = new Serializer('ticket_purchase', {
+  fee: asset,
+  lottery: protocol_id_type('asset'),
+  buyer: protocol_id_type('account'),
+  tickets_to_buy: uint64,
+  amount: asset,
+  extensions: set(future_extensions)
+});
+
+var lottery_reward = new Serializer('lottery_reward', {
+  fee: asset,
+  lottery: protocol_id_type('asset'),
+  winner: protocol_id_type('account'),
+  amount: asset,
+  win_percentage: uint16,
+  is_benefactor_reward: bool,
+  extensions: set(future_extensions)
+});
+
+var lottery_end = new Serializer('lottery_end', {
+  fee: asset,
+  lottery: protocol_id_type('asset'),
+  participants: map(protocol_id_type('account'), array(uint16)),
+  extensions: set(future_extensions)
+});
+
+var sweeps_vesting_claim = new Serializer('sweeps_vesting_claim', { fee: asset,
+  account: protocol_id_type('account'),
+  amount_to_claim: asset,
+  extensions: set(future_extensions)
+});
+
+operation.st_operations = [transfer, limit_order_create, limit_order_cancel, call_order_update, fill_order, account_create, account_update, account_whitelist, account_upgrade, account_transfer, asset_create, asset_update, asset_update_bitasset, asset_update_feed_producers, asset_issue, asset_reserve, asset_fund_fee_pool, asset_settle, asset_global_settle, asset_publish_feed, witness_create, witness_update, proposal_create, proposal_update, proposal_delete, withdraw_permission_create, withdraw_permission_update, withdraw_permission_claim, withdraw_permission_delete, committee_member_create, committee_member_update, committee_member_update_global_parameters, vesting_balance_create, vesting_balance_withdraw, worker_create, custom, assert, balance_claim, override_transfer, transfer_to_blind, blind_transfer, transfer_from_blind, asset_settle_cancel, asset_claim_fees, fba_distribute, tournament_create, tournament_join, game_move, asset_update_dividend, asset_dividend_distribution, tournament_payout, tournament_leave, sport_create, sport_update, event_group_create, event_group_update, event_create, event_update, betting_market_rules_create, betting_market_rules_update, betting_market_group_create, betting_market_create, bet_place, betting_market_group_resolve, betting_market_group_resolved, bet_adjusted, betting_market_group_cancel_unmatched_bets, bet_matched, bet_cancel, bet_canceled, betting_market_group_update, betting_market_update, event_update_status, sport_delete, event_group_delete, affiliate_payout, affiliate_referral_payout, lottery_asset_create, ticket_purchase, lottery_reward, lottery_end, sweeps_vesting_claim];
 
 var transaction = new Serializer('transaction', {
   ref_block_num: uint16,
@@ -1560,3 +1669,13 @@ exports.bet = bet;
 exports.betting_market_position = betting_market_position;
 exports.global_betting_statistics = global_betting_statistics;
 exports.stealth_memo_data = stealth_memo_data;
+exports.event_update_status = event_update_status;
+exports.sport_delete = sport_delete;
+exports.event_group_delete = event_group_delete;
+exports.affiliate_payout = affiliate_payout;
+exports.affiliate_referral_payout = affiliate_referral_payout;
+exports.lottery_asset_create = lottery_asset_create;
+exports.ticket_purchase = ticket_purchase;
+exports.lottery_reward = lottery_reward;
+exports.lottery_end = lottery_end;
+exports.sweeps_vesting_claim = sweeps_vesting_claim;
