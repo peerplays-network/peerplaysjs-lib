@@ -64,20 +64,48 @@ var AccountLogin = function () {
   function AccountLogin() {
     _classCallCheck(this, AccountLogin);
 
-    var state = { loggedIn: false, roles: ['active', 'owner', 'memo'] };
+    var state = { loggedIn: false, roles: ['owner', 'active', 'memo'] };
     this.get = (0, _state.get)(state);
     this.set = (0, _state.set)(state);
 
     this.subs = {};
   }
 
+  /**
+   * Subscribe to provided item.
+   *
+   * @param {*} cb
+   * @memberof AccountLogin
+   */
+
+
   AccountLogin.prototype.addSubscription = function addSubscription(cb) {
     this.subs[cb] = cb;
   };
 
+  /**
+   * Set the roles. Used for key generation.
+   *
+   * @param {Array} roles - ['owner', 'active', 'memo']
+   * @memberof AccountLogin
+   */
+
+
   AccountLogin.prototype.setRoles = function setRoles(roles) {
     this.set('roles', roles);
   };
+
+  /**
+   * Call this function to generate Peerplays user account keys.
+   *
+   * @param {String} accountName - The users' account name (username).
+   * @param {String} password - The users' password.
+   * @param {Array} roles - ['owner', 'active', 'memo']
+   * @param {String} prefix - Optional. The core token symbol (1.3.0 = 'PPY')
+   * @returns {Object} - Keys object: `{privKeys, pubKeys}`
+   * @memberof AccountLogin
+   */
+
 
   AccountLogin.prototype.generateKeys = function generateKeys(accountName, password, roles, prefix) {
     if (!accountName || !password) {
@@ -105,12 +133,32 @@ var AccountLogin = function () {
     return { privKeys: privKeys, pubKeys: pubKeys };
   };
 
+  /**
+   * Accepts an account name {string}, password {string}, and an auths object. We loop over the
+   * provided auths whichcontains the keys associated with the account we are working with.
+   *
+   * We verify that the keys provided (which are pulled from the blockchain prior) match up with
+   * keys we generate with the provided account name and password.
+   *
+   * This function is dependant upon the roles array being specified in the correct order:
+   * 1. owner
+   * 2. active
+   * 3. memo
+   *
+   * @param {Object} {accountName, password, auths} - string, string, array
+   * @param {String} prefix - Optional. The core token symbol (1.3.0 = 'PPY')
+   * @returns {Boolean}
+   * @memberof AccountLogin
+   */
+
+
   AccountLogin.prototype.checkKeys = function checkKeys(_ref) {
     var _this = this;
 
     var accountName = _ref.accountName,
         password = _ref.password,
         auths = _ref.auths;
+    var prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'PPY';
 
     if (!accountName || !password || !auths) {
       throw new Error('checkKeys: Missing inputs');
@@ -122,11 +170,12 @@ var AccountLogin = function () {
     var _loop = function _loop(i, len) {
       var role = roles[i];
 
-      var _generateKeys = _this.generateKeys(accountName, password, [role]),
+      var _generateKeys = _this.generateKeys(accountName, password, [role], prefix),
           privKeys = _generateKeys.privKeys,
           pubKeys = _generateKeys.pubKeys;
 
       auths[role].forEach(function (roleKey) {
+        // Check if the active key matches
         if (roleKey[0] === pubKeys[role]) {
           hasKey = true;
           _this.set(role, { priv: privKeys[role], pub: pubKeys[role] });
@@ -146,6 +195,18 @@ var AccountLogin = function () {
 
     return hasKey;
   };
+
+  /**
+   * Call this function and provide a valid transaction object to sign it with
+   * the users' Active key.
+   * Pre-requisite is that AccountLogin.js (`Login`) has had its roles set and
+   * the users' keys were generated with AccountLogin.js (`Login`)
+   *
+   * @param {Object} tr - Transaction object built via TransactionBuilder.js
+   * @returns {Object} tr - Transaction object that was passed in but signed.
+   * @memberof AccountLogin
+   */
+
 
   AccountLogin.prototype.signTransaction = function signTransaction(tr) {
     var _this2 = this;
@@ -1755,8 +1816,8 @@ var PublicKey = function () {
   };
 
   /**
-        @arg {string} public_key - like GPHXyz...
-        @arg {string} address_prefix - like GPH
+        @arg {string} public_key - like PPYXyz...
+        @arg {string} address_prefix - like PPY
         @throws {Error} if public key is invalid
         @return PublicKey
     */
@@ -4446,8 +4507,7 @@ var vesting_balance_withdraw = new Serializer('vesting_balance_withdraw', {
   fee: asset,
   vesting_balance: protocol_id_type('vesting_balance'),
   owner: protocol_id_type('account'),
-  amount: asset,
-  balance_type: vesting_balance_type
+  amount: asset
 });
 
 var refund_worker_initializer = new Serializer('refund_worker_initializer');

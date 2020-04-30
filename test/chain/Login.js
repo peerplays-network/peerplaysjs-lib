@@ -2,12 +2,12 @@ import assert from 'assert';
 import {Login as login, Login as login2} from '../../lib';
 
 let auths = {
-  active: [['GPH5Abm5dCdy3hJ1C5ckXkqUH2Me7dXqi9Y7yjn9ACaiSJ9h8r8mL', 1]]
+  active: [['PPY5Abm5dCdy3hJ1C5ckXkqUH2Me7dXqi9Y7yjn9ACaiSJ9h8r8mL', 1]]
 };
 
 describe('AccountLogin', () => {
   afterEach(() => {
-    login.setRoles(['active', 'owner', 'memo']);
+    login.setRoles(['owner', 'active', 'memo']);
   });
 
   describe('Instance', () => {
@@ -15,8 +15,8 @@ describe('AccountLogin', () => {
       let roles = login.get('roles');
 
       assert(roles.length);
-      assert(roles[0] === 'active');
-      assert(roles[1] === 'owner');
+      assert(roles[0] === 'owner');
+      assert(roles[1] === 'active');
       assert(roles[2] === 'memo');
     });
 

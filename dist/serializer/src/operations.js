@@ -895,8 +895,7 @@ var vesting_balance_withdraw = new Serializer('vesting_balance_withdraw', {
   fee: asset,
   vesting_balance: protocol_id_type('vesting_balance'),
   owner: protocol_id_type('account'),
-  amount: asset,
-  balance_type: vesting_balance_type
+  amount: asset
 });
 
 var refund_worker_initializer = new Serializer('refund_worker_initializer');

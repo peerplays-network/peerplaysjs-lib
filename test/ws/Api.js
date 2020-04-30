@@ -1,7 +1,7 @@
-import {Apis} from '../lib';
+import {Apis} from '../../lib';
 
 let coreAsset = 'PPYTEST';
-let defaultUrl = 'wss://api.ppytest.blckchnd.com';
+let defaultUrl = 'wss://pma.blockveritas.co/ws';
 
 describe('Connection', () => {
   afterEach(() => {
