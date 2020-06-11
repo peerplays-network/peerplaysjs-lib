@@ -34,7 +34,9 @@ var object_type = {
   betting_market_rules: 23,
   betting_market_group: 24,
   betting_market: 25,
-  bet: 26
+  bet: 26,
+  custom_permission: 27,
+  custom_account_authority: 28
 };
 
 var impl_object_type = {
@@ -152,7 +154,13 @@ var operations = {
   ticket_purchase: 78,
   lottery_reward: 79,
   lottery_end: 80,
-  sweeps_vesting_claim: 81
+  sweeps_vesting_claim: 81,
+  custom_permission_create: 82,
+  custom_permission_update: 83,
+  custom_permission_delete: 84,
+  custom_account_authority_create: 85,
+  custom_account_authority_update: 86,
+  custom_account_authority_delete: 87
 };
 
 var ChainTypes = {
