@@ -1386,7 +1386,7 @@ var custom_permission_create = new Serializer('custom_permission_create', {
 var custom_permission_update = new Serializer('custom_permission_update', {
   fee: asset,
   permission_id: protocol_id_type('custom_permission'),
-  new_auth: optiona(authority),
+  new_auth: optional(authority),
   owner_account: protocol_id_type('account')
 });
 
@@ -1396,7 +1396,8 @@ var custom_permission_delete = new Serializer('custom_permission_delete', {
   owner_account: protocol_id_type('account')
 });
 
-var custom_account_authority_create = new Serializer('custom_account_authority_create', { fee: asset,
+var custom_account_authority_create = new Serializer('custom_account_authority_create', {
+  fee: asset,
   permission_id: protocol_id_type('custom_permission'),
   operation_type: varint32,
   valid_from: time_point_sec,
