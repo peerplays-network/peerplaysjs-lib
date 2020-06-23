@@ -15,8 +15,7 @@ var _serializer2 = _interopRequireDefault(_serializer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var varint32 = _types2.default.varint32,
-    uint8 = _types2.default.uint8,
+var uint8 = _types2.default.uint8,
     uint16 = _types2.default.uint16,
     uint32 = _types2.default.uint32,
     int64 = _types2.default.int64,
@@ -1399,7 +1398,7 @@ var custom_permission_delete = new Serializer('custom_permission_delete', {
 var custom_account_authority_create = new Serializer('custom_account_authority_create', {
   fee: asset,
   permission_id: protocol_id_type('custom_permission'),
-  operation_type: varint32,
+  operation_type: uint32,
   valid_from: time_point_sec,
   valid_to: time_point_sec,
   owner_account: protocol_id_type('account')
