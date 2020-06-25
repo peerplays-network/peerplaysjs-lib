@@ -34,7 +34,8 @@ var object_type = {
   betting_market_rules: 23,
   betting_market_group: 24,
   betting_market: 25,
-  bet: 26
+  bet: 26,
+  nft: 27
 };
 
 var impl_object_type = {
@@ -152,7 +153,11 @@ var operations = {
   ticket_purchase: 78,
   lottery_reward: 79,
   lottery_end: 80,
-  sweeps_vesting_claim: 81
+  sweeps_vesting_claim: 81,
+  nft_create_operation: 82,
+  nft_safe_transfer_from_operation: 83,
+  nft_approve_operation: 84,
+  nft_set_approval_for_all_operation: 85
 };
 
 var ChainTypes = {

@@ -1796,6 +1796,7 @@ var ChainStore = function () {
         current = current.set('bitasset', bad);
         this.objects_by_id = this.objects_by_id.set(object.id, current);
       }
+
       //lottery asset
       if (object.lottery_options && this.lotteries_ids.findIndex(function (item) {
         return item === object.id;
@@ -2211,7 +2212,7 @@ var ChainStore = function () {
   };
 
   ChainStore.prototype.getLastIdLottery = function getLastIdLottery() {
-    return _ws.Apis.instance().db_api().exec("get_lotteries", ['1.3.0', 1, '1.3.0']).then(function (lotteries) {
+    return _ws.Apis.instance().db_api().exec('get_lotteries', ['1.3.0', 1, '1.3.0']).then(function (lotteries) {
 
       if (!lotteries || !lotteries.length) {
         return '1.3.0';
@@ -2241,9 +2242,9 @@ var ChainStore = function () {
             return resolve(self.lotteries_ids);
           }
 
-          return _ws.Apis.instance().db_api().exec("get_lotteries", [prevId, limit, nextId]).then(function (lotteries) {
+          return _ws.Apis.instance().db_api().exec('get_lotteries', [prevId, limit, nextId]).then(function (lotteries) {
 
-            if (!lotteries.length || !lotteries.length) {
+            if (!lotteries.length) {
               self.lotteries_ids_initialized = true;
               return resolve(self.lotteries_ids);
             }
