@@ -38,6 +38,7 @@ var uint8 = _types2.default.uint8,
     optional = _types2.default.optional,
     variant_object = _types2.default.variant_object,
     enumeration = _types2.default.enumeration,
+    double = _types2.default.double,
     sha256 = _types2.default.sha256;
 
 
@@ -1424,7 +1425,9 @@ var nft_metadata_create_operation = new Serializer('nft_metadata_create_operatio
   owner: protocol_id_type('account'),
   name: string,
   symbol: string,
-  base_uri: string
+  base_uri: string,
+  revenue_partner: optional(protocol_id_type('account')),
+  revenue_split: optional(double)
 });
 
 var nft_metadata_update_operation = new Serializer('nft_metadata_update_operation', {
@@ -1433,7 +1436,9 @@ var nft_metadata_update_operation = new Serializer('nft_metadata_update_operatio
   nft_metadata_id: protocol_id_type('nft_metadata_id'),
   name: optional(string),
   symbol: optional(string),
-  base_uri: optional(string)
+  base_uri: optional(string),
+  revenue_partner: optional(protocol_id_type('account')),
+  revenue_split: optional(double)
 });
 
 var nft_mint_operation = new Serializer('nft_mint_operation', {
