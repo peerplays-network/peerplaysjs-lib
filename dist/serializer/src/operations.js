@@ -1,7 +1,7 @@
 'use strict';
 
 exports.__esModule = true;
-exports.finalize_offer_operation = exports.result_type = exports.bid_operation = exports.offer_operation = exports.nft_set_approval_for_all_operation = exports.nft_approve_operation = exports.nft_safe_transfer_from_operation = exports.nft_mint_operation = exports.nft_metadata_update_operation = exports.nft_metadata_create_operation = exports.sweeps_vesting_claim = exports.lottery_end = exports.lottery_reward = exports.ticket_purchase = exports.lottery_asset_create = exports.affiliate_referral_payout = exports.affiliate_payout = exports.event_group_delete = exports.sport_delete = exports.event_update_status = exports.stealth_memo_data = exports.global_betting_statistics = exports.betting_market_position = exports.bet = exports.betting_market = undefined;
+exports.finalize_offer = exports.result_type = exports.bid = exports.offer = exports.nft_set_approval_for_all = exports.nft_approve = exports.nft_safe_transfer_from = exports.nft_mint = exports.nft_metadata_update = exports.nft_metadata_create = exports.sweeps_vesting_claim = exports.lottery_end = exports.lottery_reward = exports.ticket_purchase = exports.lottery_asset_create = exports.affiliate_referral_payout = exports.affiliate_payout = exports.event_group_delete = exports.sport_delete = exports.event_update_status = exports.stealth_memo_data = exports.global_betting_statistics = exports.betting_market_position = exports.bet = exports.betting_market = undefined;
 exports.betting_market_group = exports.betting_market_rules = exports.event = exports.event_group = exports.sport = exports.signed_transaction = exports.transaction = exports.bet_adjusted = exports.betting_market_update = exports.betting_market_group_update = exports.tournament_leave = exports.tournament_payout = exports.payout_type = exports.bet_canceled = exports.bet_cancel = exports.bet_matched = exports.betting_market_group_cancel_unmatched_bets = exports.betting_market_group_resolved = exports.betting_market_group_resolve = exports.betting_market_resolution_type = exports.bet_place = exports.bet_type = exports.betting_market_create = exports.betting_market_group_create = exports.betting_market_rules_update = exports.betting_market_rules_create = exports.event_update = exports.event_create = exports.event_group_update = exports.event_group_create = exports.sport_update = exports.sport_create = exports.asset_dividend_distribution = exports.asset_update_dividend = exports.dividend_asset_options = exports.game_move = exports.rock_paper_scissors_throw_reveal = exports.rock_paper_scissors_throw_commit = exports.rock_paper_scissors_gesture = exports.tournament_join = exports.tournament_create = exports.tournament_options = exports.rock_paper_scissors_game_options = exports.fba_distribute = exports.asset_claim_fees = exports.asset_settle_cancel = exports.transfer_from_blind = exports.blind_transfer = exports.blind_input = exports.transfer_to_blind = exports.blind_output = exports.stealth_confirmation = exports.override_transfer = exports.balance_claim = exports.assert = exports.block_id_predicate = exports.asset_symbol_eq_lit_predicate = exports.account_name_eq_lit_predicate = exports.custom = exports.worker_create = exports.burn_worker_initializer = exports.vesting_balance_worker_initializer = exports.refund_worker_initializer = exports.vesting_balance_withdraw = exports.vesting_balance_create = exports.vesting_balance_type = exports.vesting_policy_initializer = exports.cdd_vesting_policy_initializer = exports.linear_vesting_policy_initializer = exports.committee_member_update_global_parameters = exports.chain_parameters = exports.committee_member_update = exports.committee_member_create = exports.withdraw_permission_delete = exports.withdraw_permission_claim = exports.withdraw_permission_update = exports.withdraw_permission_create = exports.proposal_delete = exports.proposal_update = exports.proposal_create = exports.op_wrapper = exports.witness_update = exports.witness_create = exports.asset_publish_feed = exports.price_feed = exports.asset_global_settle = exports.asset_settle = exports.asset_fund_fee_pool = exports.asset_reserve = exports.asset_issue = exports.asset_update_feed_producers = exports.asset_update_bitasset = exports.asset_update = exports.asset_create = exports.bitasset_options = exports.asset_options = exports.price = exports.account_transfer = exports.account_upgrade = exports.account_whitelist = undefined;
 exports.account_update = exports.account_update_last_voting_time = exports.account_create = exports.account_options = exports.authority = exports.fill_order = exports.call_order_update = exports.limit_order_cancel = exports.limit_order_create = exports.transfer = exports.memo_data = exports.signed_block_header = exports.block_header = exports.signed_block = exports.processed_transaction = exports.asset = exports.void_result = exports.fee_schedule = exports.nft_set_approval_for_all_operation_fee_parameters = exports.nft_approve_operation_fee_parameters = exports.nft_safe_transfer_from_operation_fee_parameters = exports.finalize_offer_operation_fee_parameters = exports.bid_operation_fee_parameters = exports.offer_operation_fee_parameters = exports.nft_mint_operation_fee_parameters = exports.nft_metadata_update_operation_fee_parameters = exports.nft_metadata_create_operation_fee_parameters = exports.bet_adjusted_operation_fee_parameters = exports.betting_market_update_operation_fee_parameters = exports.betting_market_group_update_operation_fee_parameters = exports.tournament_leave_operation_fee_parameters = exports.tournament_payout_operation_fee_parameters = exports.game_move_operation_fee_parameters = exports.tournament_join_operation_fee_parameters = exports.tournament_create_operation_fee_parameters = exports.bet_canceled_operation_fee_parameters = exports.bet_cancel_operation_fee_parameters = exports.bet_matched_operation_fee_parameters = exports.betting_market_group_cancel_unmatched_bets_operation_fee_parameters = exports.betting_market_group_resolved_operation_fee_parameters = exports.betting_market_group_resolve_operation_fee_parameters = exports.bet_place_operation_fee_parameters = exports.betting_market_create_operation_fee_parameters = exports.betting_market_group_create_operation_fee_parameters = exports.betting_market_rules_update_operation_fee_parameters = exports.betting_market_rules_create_operation_fee_parameters = exports.event_update_operation_fee_parameters = exports.event_create_operation_fee_parameters = exports.event_group_update_operation_fee_parameters = exports.event_group_create_operation_fee_parameters = exports.sport_update_operation_fee_parameters = exports.sport_create_operation_fee_parameters = exports.asset_dividend_distribution_operation_fee_parameters = exports.asset_update_dividend_operation_fee_parameters = exports.fba_distribute_operation_fee_parameters = exports.asset_claim_fees_operation_fee_parameters = exports.asset_settle_cancel_operation_fee_parameters = exports.transfer_from_blind_operation_fee_parameters = exports.blind_transfer_operation_fee_parameters = exports.transfer_to_blind_operation_fee_parameters = exports.override_transfer_operation_fee_parameters = exports.balance_claim_operation_fee_parameters = exports.assert_operation_fee_parameters = exports.custom_operation_fee_parameters = exports.worker_create_operation_fee_parameters = exports.vesting_balance_withdraw_operation_fee_parameters = exports.vesting_balance_create_operation_fee_parameters = exports.committee_member_update_global_parameters_operation_fee_parameters = exports.committee_member_update_operation_fee_parameters = exports.committee_member_create_operation_fee_parameters = exports.withdraw_permission_delete_operation_fee_parameters = exports.withdraw_permission_claim_operation_fee_parameters = exports.withdraw_permission_update_operation_fee_parameters = exports.withdraw_permission_create_operation_fee_parameters = exports.proposal_delete_operation_fee_parameters = exports.proposal_update_operation_fee_parameters = exports.proposal_create_operation_fee_parameters = exports.witness_update_operation_fee_parameters = exports.witness_create_operation_fee_parameters = exports.asset_publish_feed_operation_fee_parameters = exports.asset_global_settle_operation_fee_parameters = exports.asset_settle_operation_fee_parameters = exports.asset_fund_fee_pool_operation_fee_parameters = exports.asset_reserve_operation_fee_parameters = exports.asset_issue_operation_fee_parameters = exports.asset_update_feed_producers_operation_fee_parameters = exports.asset_update_bitasset_operation_fee_parameters = exports.asset_update_operation_fee_parameters = exports.asset_create_operation_fee_parameters = exports.account_transfer_operation_fee_parameters = exports.account_upgrade_operation_fee_parameters = exports.account_whitelist_operation_fee_parameters = exports.account_update_operation_fee_parameters = exports.account_create_operation_fee_parameters = exports.fill_order_operation_fee_parameters = exports.call_order_update_operation_fee_parameters = exports.limit_order_cancel_operation_fee_parameters = exports.limit_order_create_operation_fee_parameters = exports.transfer_operation_fee_parameters = exports.operation = undefined;
 
@@ -1390,7 +1390,7 @@ var sweeps_vesting_claim = new Serializer('sweeps_vesting_claim', { fee: asset,
   extensions: set(future_extensions)
 });
 
-var offer_operation = new Serializer('offer_operation', {
+var offer = new Serializer('offer', {
   item_ids: set(protocol_id_type('nft')),
   fee: asset,
   issuer: protocol_id_type('account'),
@@ -1402,7 +1402,7 @@ var offer_operation = new Serializer('offer_operation', {
   extensions: set(future_extensions)
 });
 
-var bid_operation = new Serializer('bid_operation', {
+var bid = new Serializer('bid', {
   fee: asset,
   bidder: protocol_id_type('account'),
   bid_price: asset,
@@ -1412,7 +1412,7 @@ var bid_operation = new Serializer('bid_operation', {
 
 var result_type = enumeration(['Expired', 'ExpiredNoBid']);
 
-var finalize_offer_operation = new Serializer('finalize_offer_operation', {
+var finalize_offer = new Serializer('finalize_offer', {
   fee: asset,
   fee_paying_account: protocol_id_type('account'),
   offer_id: protocol_id_type('offer'),
@@ -1420,7 +1420,7 @@ var finalize_offer_operation = new Serializer('finalize_offer_operation', {
   extensions: set(future_extensions)
 });
 
-var nft_metadata_create_operation = new Serializer('nft_metadata_create_operation', {
+var nft_metadata_create = new Serializer('nft_metadata_create', {
   fee: asset,
   owner: protocol_id_type('account'),
   name: string,
@@ -1430,7 +1430,7 @@ var nft_metadata_create_operation = new Serializer('nft_metadata_create_operatio
   revenue_split: optional(double)
 });
 
-var nft_metadata_update_operation = new Serializer('nft_metadata_update_operation', {
+var nft_metadata_update = new Serializer('nft_metadata_update', {
   fee: asset,
   owner: protocol_id_type('account'),
   nft_metadata_id: protocol_id_type('nft_metadata_id'),
@@ -1441,7 +1441,7 @@ var nft_metadata_update_operation = new Serializer('nft_metadata_update_operatio
   revenue_split: optional(double)
 });
 
-var nft_mint_operation = new Serializer('nft_mint_operation', {
+var nft_mint = new Serializer('nft_mint', {
   fee: asset,
   payer: protocol_id_type('account'),
   nft_metadata_id: optional(protocol_id_type('nft_metadata')),
@@ -1451,7 +1451,7 @@ var nft_mint_operation = new Serializer('nft_mint_operation', {
   token_uri: string
 });
 
-var nft_safe_transfer_from_operation = new Serializer('nft_safe_transfer_from_operation', {
+var nft_safe_transfer_from = new Serializer('nft_safe_transfer_from', {
   fee: asset,
   operator_: protocol_id_type('account'),
   from: protocol_id_type('account'),
@@ -1460,21 +1460,21 @@ var nft_safe_transfer_from_operation = new Serializer('nft_safe_transfer_from_op
   data: string
 });
 
-var nft_approve_operation = new Serializer('nft_approve_operation', {
+var nft_approve = new Serializer('nft_approve', {
   fee: asset,
   operator_: protocol_id_type('account'),
   approved: protocol_id_type('account'),
   token_id: protocol_id_type('nft')
 });
 
-var nft_set_approval_for_all_operation = new Serializer('nft_set_approval_for_all_operation', {
+var nft_set_approval_for_all = new Serializer('nft_set_approval_for_all', {
   fee: asset,
   owner: protocol_id_type('account'),
   operator_: protocol_id_type('account'),
   approved: bool
 });
 
-operation.st_operations = [transfer, limit_order_create, limit_order_cancel, call_order_update, fill_order, account_create, account_update, account_whitelist, account_upgrade, account_transfer, asset_create, asset_update, asset_update_bitasset, asset_update_feed_producers, asset_issue, asset_reserve, asset_fund_fee_pool, asset_settle, asset_global_settle, asset_publish_feed, witness_create, witness_update, proposal_create, proposal_update, proposal_delete, withdraw_permission_create, withdraw_permission_update, withdraw_permission_claim, withdraw_permission_delete, committee_member_create, committee_member_update, committee_member_update_global_parameters, vesting_balance_create, vesting_balance_withdraw, worker_create, custom, assert, balance_claim, override_transfer, transfer_to_blind, blind_transfer, transfer_from_blind, asset_settle_cancel, asset_claim_fees, fba_distribute, tournament_create, tournament_join, game_move, asset_update_dividend, asset_dividend_distribution, tournament_payout, tournament_leave, sport_create, sport_update, event_group_create, event_group_update, event_create, event_update, betting_market_rules_create, betting_market_rules_update, betting_market_group_create, betting_market_create, bet_place, betting_market_group_resolve, betting_market_group_resolved, bet_adjusted, betting_market_group_cancel_unmatched_bets, bet_matched, bet_cancel, bet_canceled, betting_market_group_update, betting_market_update, event_update_status, sport_delete, event_group_delete, affiliate_payout, affiliate_referral_payout, lottery_asset_create, ticket_purchase, lottery_reward, lottery_end, sweeps_vesting_claim, offer_operation, bid_operation, finalize_offer_operation, nft_metadata_create_operation, nft_metadata_update_operation, nft_mint_operation, nft_safe_transfer_from_operation, nft_approve_operation, nft_set_approval_for_all_operation];
+operation.st_operations = [transfer, limit_order_create, limit_order_cancel, call_order_update, fill_order, account_create, account_update, account_whitelist, account_upgrade, account_transfer, asset_create, asset_update, asset_update_bitasset, asset_update_feed_producers, asset_issue, asset_reserve, asset_fund_fee_pool, asset_settle, asset_global_settle, asset_publish_feed, witness_create, witness_update, proposal_create, proposal_update, proposal_delete, withdraw_permission_create, withdraw_permission_update, withdraw_permission_claim, withdraw_permission_delete, committee_member_create, committee_member_update, committee_member_update_global_parameters, vesting_balance_create, vesting_balance_withdraw, worker_create, custom, assert, balance_claim, override_transfer, transfer_to_blind, blind_transfer, transfer_from_blind, asset_settle_cancel, asset_claim_fees, fba_distribute, tournament_create, tournament_join, game_move, asset_update_dividend, asset_dividend_distribution, tournament_payout, tournament_leave, sport_create, sport_update, event_group_create, event_group_update, event_create, event_update, betting_market_rules_create, betting_market_rules_update, betting_market_group_create, betting_market_create, bet_place, betting_market_group_resolve, betting_market_group_resolved, bet_adjusted, betting_market_group_cancel_unmatched_bets, bet_matched, bet_cancel, bet_canceled, betting_market_group_update, betting_market_update, event_update_status, sport_delete, event_group_delete, affiliate_payout, affiliate_referral_payout, lottery_asset_create, ticket_purchase, lottery_reward, lottery_end, sweeps_vesting_claim, offer, bid, finalize_offer, nft_metadata_create, nft_metadata_update, nft_mint, nft_safe_transfer_from, nft_approve, nft_set_approval_for_all];
 
 var transaction = new Serializer('transaction', {
   ref_block_num: uint16,
@@ -1811,13 +1811,13 @@ exports.ticket_purchase = ticket_purchase;
 exports.lottery_reward = lottery_reward;
 exports.lottery_end = lottery_end;
 exports.sweeps_vesting_claim = sweeps_vesting_claim;
-exports.nft_metadata_create_operation = nft_metadata_create_operation;
-exports.nft_metadata_update_operation = nft_metadata_update_operation;
-exports.nft_mint_operation = nft_mint_operation;
-exports.nft_safe_transfer_from_operation = nft_safe_transfer_from_operation;
-exports.nft_approve_operation = nft_approve_operation;
-exports.nft_set_approval_for_all_operation = nft_set_approval_for_all_operation;
-exports.offer_operation = offer_operation;
-exports.bid_operation = bid_operation;
+exports.nft_metadata_create = nft_metadata_create;
+exports.nft_metadata_update = nft_metadata_update;
+exports.nft_mint = nft_mint;
+exports.nft_safe_transfer_from = nft_safe_transfer_from;
+exports.nft_approve = nft_approve;
+exports.nft_set_approval_for_all = nft_set_approval_for_all;
+exports.offer = offer;
+exports.bid = bid;
 exports.result_type = result_type;
-exports.finalize_offer_operation = finalize_offer_operation;
+exports.finalize_offer = finalize_offer;
