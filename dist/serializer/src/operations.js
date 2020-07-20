@@ -1444,7 +1444,7 @@ var nft_metadata_update = new Serializer('nft_metadata_update', {
 var nft_mint = new Serializer('nft_mint', {
   fee: asset,
   payer: protocol_id_type('account'),
-  nft_metadata_id: optional(protocol_id_type('nft_metadata')),
+  nft_metadata_id: protocol_id_type('nft_metadata'),
   owner: protocol_id_type('account'),
   approved: protocol_id_type('account'),
   approved_operators: set(protocol_id_type('account')),
