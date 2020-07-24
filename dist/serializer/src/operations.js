@@ -1458,8 +1458,8 @@ var custom_account_authority_delete = new Serializer('custom_account_authority_d
 });
 
 var offer = new Serializer('offer', {
-  item_ids: array(protocol_id_type('nft')),
   fee: asset,
+  item_ids: set(protocol_id_type('nft')),
   issuer: protocol_id_type('account'),
   minimum_price: asset,
   maximum_price: asset,
