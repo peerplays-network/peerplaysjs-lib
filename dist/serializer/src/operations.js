@@ -1492,7 +1492,7 @@ var cancel_offer = new Serializer('cancel_offer', {
   extensions: set(future_extensions)
 });
 
-var result_type = enumeration(['Expired', 'ExpiredNoBid']);
+var result_type = enumeration(['Expired', 'ExpiredNoBid', 'Cancelled']);
 
 var finalize_offer = new Serializer('finalize_offer', {
   fee: asset,
