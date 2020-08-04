@@ -167,13 +167,14 @@ var operations = {
   custom_account_authority_delete: 87,
   offer: 88,
   bid: 89,
-  finalize_offer: 90,
-  nft_metadata_create: 91,
-  nft_metadata_update: 92,
-  nft_mint: 93,
-  nft_safe_transfer_from: 94,
-  nft_approve: 95,
-  nft_set_approval_for_all: 96
+  cancel_offer: 90,
+  finalize_offer: 91,
+  nft_metadata_create: 92,
+  nft_metadata_update: 93,
+  nft_mint: 94,
+  nft_safe_transfer_from: 95,
+  nft_approve: 96,
+  nft_set_approval_for_all: 97
 };
 
 var ChainTypes = {
