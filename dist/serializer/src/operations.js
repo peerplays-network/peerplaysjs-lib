@@ -1510,8 +1510,8 @@ var nft_metadata_create = new Serializer('nft_metadata_create', {
   base_uri: string,
   revenue_partner: optional(protocol_id_type('account')),
   revenue_split: optional(double),
-  isTransferable: bool,
-  isSellable: bool
+  is_transferable: bool,
+  is_sellable: bool
 });
 
 var nft_metadata_update = new Serializer('nft_metadata_update', {
@@ -1523,8 +1523,8 @@ var nft_metadata_update = new Serializer('nft_metadata_update', {
   base_uri: optional(string),
   revenue_partner: optional(protocol_id_type('account')),
   revenue_split: optional(double),
-  isTransferable: optional(bool),
-  isSellable: optional(bool)
+  is_transferable: optional(bool),
+  is_sellable: optional(bool)
 });
 
 var nft_mint = new Serializer('nft_mint', {
