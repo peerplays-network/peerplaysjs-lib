@@ -38,7 +38,6 @@ var uint8 = _types2.default.uint8,
     optional = _types2.default.optional,
     variant_object = _types2.default.variant_object,
     enumeration = _types2.default.enumeration,
-    double = _types2.default.double,
     sha256 = _types2.default.sha256;
 
 
@@ -397,7 +396,8 @@ var sweeps_vesting_claim_operation_fee_parameters = new Serializer('sweeps_vesti
 });
 
 var custom_permission_create_operation_fee_parameters = new Serializer('custom_permission_create_operation_fee_parameters', {
-  fee: uint64
+  fee: uint64,
+  price_per_kbyte: uint32
 });
 
 var custom_permission_update_operation_fee_parameters = new Serializer('custom_permission_update_operation_fee_parameters', {
@@ -409,7 +409,8 @@ var custom_permission_delete_operation_fee_parameters = new Serializer('custom_p
 });
 
 var custom_account_authority_create_operation_fee_parameters = new Serializer('custom_account_authority_create_operation_fee_parameters', {
-  fee: uint64
+  fee: uint64,
+  price_per_kbyte: uint32
 });
 
 var custom_account_authority_update_operation_fee_parameters = new Serializer('custom_account_authority_update_operation_fee_parameters', {
@@ -426,13 +427,11 @@ var offer_operation_fee_parameters = new Serializer('offer_operation_fee_paramet
 });
 
 var bid_operation_fee_parameters = new Serializer('bid_operation_fee_parameters', {
-  fee: uint64,
-  price_per_kbyte: uint32
+  fee: uint64
 });
 
 var cancel_offer_operation_fee_parameters = new Serializer('cancel_offer_operation_fee_parameters', {
-  fee: uint64,
-  price_per_kbyte: uint32
+  fee: uint64
 });
 
 var finalize_offer_operation_fee_parameters = new Serializer('finalize_offer_operation_fee_parameters', {
@@ -440,7 +439,8 @@ var finalize_offer_operation_fee_parameters = new Serializer('finalize_offer_ope
 });
 
 var nft_metadata_create_operation_fee_parameters = new Serializer('nft_metadata_create_operation_fee_parameters', {
-  fee: uint64
+  fee: uint64,
+  price_per_kbyte: uint32
 });
 
 var nft_metadata_update_operation_fee_parameters = new Serializer('nft_metadata_update_operation_fee_parameters', {
@@ -448,11 +448,13 @@ var nft_metadata_update_operation_fee_parameters = new Serializer('nft_metadata_
 });
 
 var nft_mint_operation_fee_parameters = new Serializer('nft_mint_operation_fee_parameters', {
-  fee: uint64
+  fee: uint64,
+  price_per_kbyte: uint32
 });
 
 var nft_safe_transfer_from_operation_fee_parameters = new Serializer('nft_safe_transfer_from_operation_fee_parameters', {
-  fee: uint64
+  fee: uint64,
+  price_per_kbyte: uint32
 });
 
 var nft_approve_operation_fee_parameters = new Serializer('nft_approve_operation_fee_parameters', {
@@ -1509,7 +1511,7 @@ var nft_metadata_create = new Serializer('nft_metadata_create', {
   symbol: string,
   base_uri: string,
   revenue_partner: optional(protocol_id_type('account')),
-  revenue_split: optional(double),
+  revenue_split: optional(uint16),
   is_transferable: bool,
   is_sellable: bool
 });
@@ -1522,7 +1524,7 @@ var nft_metadata_update = new Serializer('nft_metadata_update', {
   symbol: optional(string),
   base_uri: optional(string),
   revenue_partner: optional(protocol_id_type('account')),
-  revenue_split: optional(double),
+  revenue_split: optional(uint16),
   is_transferable: optional(bool),
   is_sellable: optional(bool)
 });
