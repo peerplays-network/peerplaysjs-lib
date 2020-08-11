@@ -34,7 +34,12 @@ var object_type = {
   betting_market_rules: 23,
   betting_market_group: 24,
   betting_market: 25,
-  bet: 26
+  bet: 26,
+  custom_permission: 27,
+  custom_account_authority: 28,
+  offer: 29,
+  nft_metadata: 30,
+  nft: 31
 };
 
 var impl_object_type = {
@@ -61,7 +66,8 @@ var impl_object_type = {
   betting_market_position: 20,
   global_betting_statistics: 21,
   lottery_balance: 22,
-  sweeps_vesting_balance: 23
+  sweeps_vesting_balance: 23,
+  offer_history: 24
 };
 
 var vote_type = {
@@ -152,7 +158,23 @@ var operations = {
   ticket_purchase: 78,
   lottery_reward: 79,
   lottery_end: 80,
-  sweeps_vesting_claim: 81
+  sweeps_vesting_claim: 81,
+  custom_permission_create: 82,
+  custom_permission_update: 83,
+  custom_permission_delete: 84,
+  custom_account_authority_create: 85,
+  custom_account_authority_update: 86,
+  custom_account_authority_delete: 87,
+  offer: 88,
+  bid: 89,
+  cancel_offer: 90,
+  finalize_offer: 91,
+  nft_metadata_create: 92,
+  nft_metadata_update: 93,
+  nft_mint: 94,
+  nft_safe_transfer_from: 95,
+  nft_approve: 96,
+  nft_set_approval_for_all: 97
 };
 
 var ChainTypes = {
