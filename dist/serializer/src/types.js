@@ -409,6 +409,11 @@ Types.array = function (st_operation) {
   return array;
 };
 
+Types.nosort_array = function (st_operation) {
+  st_operation.nosort = true;
+  return Types.array(st_operation);
+};
+
 Types.time_point_sec = {
   fromByteBuffer: function fromByteBuffer(b) {
     return b.readUint32();
@@ -1198,6 +1203,31 @@ Types.enumeration = function (values) {
   };
 
   return enumeration;
+};
+
+Types.double = {
+  fromByteBuffer: function fromByteBuffer(b) {
+    return b.readDouble();
+  },
+  appendByteBuffer: function appendByteBuffer(b, object) {
+    _SerializerValidation2.default.required(object);
+    _SerializerValidation2.default.number(object);
+    b.writeDouble(object);
+  },
+  fromObject: function fromObject(object) {
+    _SerializerValidation2.default.number(object);
+    return object;
+  },
+  toObject: function toObject(object) {
+    var debug = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    if (debug.use_default && object === undefined) {
+      return '0';
+    }
+
+    _SerializerValidation2.default.required(object);
+    return parseFloat(object);
+  }
 };
 
 Types.sha256 = Types.bytes(32);
