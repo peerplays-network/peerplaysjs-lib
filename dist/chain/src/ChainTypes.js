@@ -39,7 +39,8 @@ var object_type = {
   custom_account_authority: 28,
   offer: 29,
   nft_metadata: 30,
-  nft: 31
+  nft: 31,
+  account_role: 32
 };
 
 var impl_object_type = {
@@ -174,7 +175,10 @@ var operations = {
   nft_mint: 94,
   nft_safe_transfer_from: 95,
   nft_approve: 96,
-  nft_set_approval_for_all: 97
+  nft_set_approval_for_all: 97,
+  account_role_create: 98,
+  account_role_update: 99,
+  account_role_delete: 100
 };
 
 var ChainTypes = {
