@@ -1446,7 +1446,7 @@ var custom_permission_create = new Serializer('custom_permission_create', {
   owner_account: protocol_id_type('account'),
   permission_name: string,
   auth: authority,
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var custom_permission_update = new Serializer('custom_permission_update', {
@@ -1454,14 +1454,14 @@ var custom_permission_update = new Serializer('custom_permission_update', {
   permission_id: protocol_id_type('custom_permission'),
   new_auth: optional(authority),
   owner_account: protocol_id_type('account'),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var custom_permission_delete = new Serializer('custom_permission_delete', {
   fee: asset,
   permission_id: protocol_id_type('custom_permission'),
   owner_account: protocol_id_type('account'),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var custom_account_authority_create = new Serializer('custom_account_authority_create', {
@@ -1471,7 +1471,7 @@ var custom_account_authority_create = new Serializer('custom_account_authority_c
   valid_from: time_point_sec,
   valid_to: time_point_sec,
   owner_account: protocol_id_type('account'),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var custom_account_authority_update = new Serializer('custom_account_authority_update', {
@@ -1480,14 +1480,14 @@ var custom_account_authority_update = new Serializer('custom_account_authority_u
   new_valid_from: optional(time_point_sec),
   new_valid_to: optional(time_point_sec),
   owner_account: protocol_id_type('account'),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var custom_account_authority_delete = new Serializer('custom_account_authority_delete', {
   fee: asset,
   auth_id: protocol_id_type('custom_account_authority'),
   owner_account: protocol_id_type('account'),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var offer = new Serializer('offer', {
@@ -1538,7 +1538,7 @@ var nft_metadata_create = new Serializer('nft_metadata_create', {
   is_transferable: bool,
   is_sellable: bool,
   account_role: optional(protocol_id_type('account_role')),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var nft_metadata_update = new Serializer('nft_metadata_update', {
@@ -1553,7 +1553,7 @@ var nft_metadata_update = new Serializer('nft_metadata_update', {
   is_transferable: optional(bool),
   is_sellable: optional(bool),
   account_role: optional(protocol_id_type('account_role')),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var nft_mint = new Serializer('nft_mint', {
@@ -1564,7 +1564,7 @@ var nft_mint = new Serializer('nft_mint', {
   approved: protocol_id_type('account'),
   approved_operators: set(protocol_id_type('account')),
   token_uri: string,
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var nft_safe_transfer_from = new Serializer('nft_safe_transfer_from', {
@@ -1574,7 +1574,7 @@ var nft_safe_transfer_from = new Serializer('nft_safe_transfer_from', {
   to: protocol_id_type('account'),
   token_id: protocol_id_type('nft'),
   data: string,
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var nft_approve = new Serializer('nft_approve', {
@@ -1582,7 +1582,7 @@ var nft_approve = new Serializer('nft_approve', {
   operator_: protocol_id_type('account'),
   approved: protocol_id_type('account'),
   token_id: protocol_id_type('nft'),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var nft_set_approval_for_all = new Serializer('nft_set_approval_for_all', {
@@ -1590,7 +1590,7 @@ var nft_set_approval_for_all = new Serializer('nft_set_approval_for_all', {
   owner: protocol_id_type('account'),
   operator_: protocol_id_type('account'),
   approved: bool,
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var account_role_create = new Serializer('account_role_create', {
@@ -1601,7 +1601,7 @@ var account_role_create = new Serializer('account_role_create', {
   allowed_operations: set(uint32),
   whitelisted_accounts: set(protocol_id_type('account')),
   valid_from: time_point_sec,
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var account_role_update = new Serializer('account_role_update', {
@@ -1615,14 +1615,14 @@ var account_role_update = new Serializer('account_role_update', {
   accounts_to_add: set(protocol_id_type('account')),
   accounts_to_remove: set(protocol_id_type('account')),
   valid_to: optional(time_point_sec),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var account_role_delete = new Serializer('account_role_delete', {
   fee: asset,
   owner: protocol_id_type('account'),
   account_role_id: protocol_id_type('account_role'),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 operation.st_operations = [transfer, limit_order_create, limit_order_cancel, call_order_update, fill_order, account_create, account_update, account_whitelist, account_upgrade, account_transfer, asset_create, asset_update, asset_update_bitasset, asset_update_feed_producers, asset_issue, asset_reserve, asset_fund_fee_pool, asset_settle, asset_global_settle, asset_publish_feed, witness_create, witness_update, proposal_create, proposal_update, proposal_delete, withdraw_permission_create, withdraw_permission_update, withdraw_permission_claim, withdraw_permission_delete, committee_member_create, committee_member_update, committee_member_update_global_parameters, vesting_balance_create, vesting_balance_withdraw, worker_create, custom, assert, balance_claim, override_transfer, transfer_to_blind, blind_transfer, transfer_from_blind, asset_settle_cancel, asset_claim_fees, fba_distribute, tournament_create, tournament_join, game_move, asset_update_dividend, asset_dividend_distribution, tournament_payout, tournament_leave, sport_create, sport_update, event_group_create, event_group_update, event_create, event_update, betting_market_rules_create, betting_market_rules_update, betting_market_group_create, betting_market_create, bet_place, betting_market_group_resolve, betting_market_group_resolved, bet_adjusted, betting_market_group_cancel_unmatched_bets, bet_matched, bet_cancel, bet_canceled, betting_market_group_update, betting_market_update, event_update_status, sport_delete, event_group_delete, affiliate_payout, affiliate_referral_payout, lottery_asset_create, ticket_purchase, lottery_reward, lottery_end, sweeps_vesting_claim, custom_permission_create, custom_permission_update, custom_permission_delete, custom_account_authority_create, custom_account_authority_update, custom_account_authority_delete, offer, bid, cancel_offer, finalize_offer, nft_metadata_create, nft_metadata_update, nft_mint, nft_safe_transfer_from, nft_approve, nft_set_approval_for_all, account_role_create, account_role_update, account_role_delete];
