@@ -1540,7 +1540,7 @@ var custom_permission_create = new Serializer('custom_permission_create', {
   owner_account: protocol_id_type('account'),
   permission_name: string,
   auth: authority,
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var custom_permission_update = new Serializer('custom_permission_update', {
@@ -1548,14 +1548,14 @@ var custom_permission_update = new Serializer('custom_permission_update', {
   permission_id: protocol_id_type('custom_permission'),
   new_auth: optional(authority),
   owner_account: protocol_id_type('account'),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var custom_permission_delete = new Serializer('custom_permission_delete', {
   fee: asset,
   permission_id: protocol_id_type('custom_permission'),
   owner_account: protocol_id_type('account'),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var custom_account_authority_create = new Serializer('custom_account_authority_create', {
@@ -1565,7 +1565,7 @@ var custom_account_authority_create = new Serializer('custom_account_authority_c
   valid_from: time_point_sec,
   valid_to: time_point_sec,
   owner_account: protocol_id_type('account'),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var custom_account_authority_update = new Serializer('custom_account_authority_update', {
@@ -1574,14 +1574,14 @@ var custom_account_authority_update = new Serializer('custom_account_authority_u
   new_valid_from: optional(time_point_sec),
   new_valid_to: optional(time_point_sec),
   owner_account: protocol_id_type('account'),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var custom_account_authority_delete = new Serializer('custom_account_authority_delete', {
   fee: asset,
   auth_id: protocol_id_type('custom_account_authority'),
   owner_account: protocol_id_type('account'),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var offer = new Serializer('offer', {
@@ -1632,7 +1632,7 @@ var nft_metadata_create = new Serializer('nft_metadata_create', {
   is_transferable: bool,
   is_sellable: bool,
   account_role: optional(protocol_id_type('account_role')),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var nft_metadata_update = new Serializer('nft_metadata_update', {
@@ -1647,7 +1647,7 @@ var nft_metadata_update = new Serializer('nft_metadata_update', {
   is_transferable: optional(bool),
   is_sellable: optional(bool),
   account_role: optional(protocol_id_type('account_role')),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var nft_mint = new Serializer('nft_mint', {
@@ -1658,7 +1658,7 @@ var nft_mint = new Serializer('nft_mint', {
   approved: protocol_id_type('account'),
   approved_operators: set(protocol_id_type('account')),
   token_uri: string,
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var nft_safe_transfer_from = new Serializer('nft_safe_transfer_from', {
@@ -1668,7 +1668,7 @@ var nft_safe_transfer_from = new Serializer('nft_safe_transfer_from', {
   to: protocol_id_type('account'),
   token_id: protocol_id_type('nft'),
   data: string,
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var nft_approve = new Serializer('nft_approve', {
@@ -1676,7 +1676,7 @@ var nft_approve = new Serializer('nft_approve', {
   operator_: protocol_id_type('account'),
   approved: protocol_id_type('account'),
   token_id: protocol_id_type('nft'),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var nft_set_approval_for_all = new Serializer('nft_set_approval_for_all', {
@@ -1684,7 +1684,7 @@ var nft_set_approval_for_all = new Serializer('nft_set_approval_for_all', {
   owner: protocol_id_type('account'),
   operator_: protocol_id_type('account'),
   approved: bool,
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var account_role_create = new Serializer('account_role_create', {
@@ -1695,7 +1695,7 @@ var account_role_create = new Serializer('account_role_create', {
   allowed_operations: set(uint32),
   whitelisted_accounts: set(protocol_id_type('account')),
   valid_from: time_point_sec,
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var account_role_update = new Serializer('account_role_update', {
@@ -1709,14 +1709,14 @@ var account_role_update = new Serializer('account_role_update', {
   accounts_to_add: set(protocol_id_type('account')),
   accounts_to_remove: set(protocol_id_type('account')),
   valid_to: optional(time_point_sec),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var account_role_delete = new Serializer('account_role_delete', {
   fee: asset,
   owner: protocol_id_type('account'),
   account_role_id: protocol_id_type('account_role'),
-  extensions: future_extensions
+  extensions: set(future_extensions)
 });
 
 var sidechain_type = enumeration(['unknown', 'bitcoin', 'ethereum', 'eos', 'peerplays']);
