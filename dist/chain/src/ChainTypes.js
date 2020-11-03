@@ -47,7 +47,8 @@ var object_type = {
   son_wallet_deposit: 36,
   son_wallet_withdraw: 37,
   sidechain_address: 38,
-  sidechain_transaction: 39
+  sidechain_transaction: 39,
+  random_number: 40
 };
 
 var impl_object_type = {
@@ -77,7 +78,8 @@ var impl_object_type = {
   sweeps_vesting_balance: 23,
   offer_history: 24,
   son_statistics: 25,
-  son_schedule: 26
+  son_schedule: 26,
+  nft_lottery_balance: 27
 };
 
 var vote_type = {
