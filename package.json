@@ -29,7 +29,7 @@
     "build:watch": "babel lib -d dist --watch",
     "prebrowserify": "rm -rf ./build/*",
     "browserify": "browserify -t [browserify-package-json --global=true] -p [bundle-collapser/plugin] dist/browser.js --full-path=false --standalone peerplays_js -o build/peerplaysjs-lib.js -d",
-    "postbrowserify": "uglifyjs --compress --mangle --sequences --drop_console --output build/peerplaysjs-lib.min.js -- build/peerplaysjs-lib.js",
+    "postbrowserify": "uglifyjs --compress --mangle --output build/peerplaysjs-lib.min.js -- build/peerplaysjs-lib.js",
     "doc": "esdoc -c esdoc.json",
     "example:transfer": "babel-node examples/transfer",
     "example:chainStore": "babel-node examples/chainStore",
