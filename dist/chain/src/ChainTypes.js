@@ -208,7 +208,11 @@ var operations = {
   sidechain_transaction_create: 116,
   sidechain_transaction_sign: 117,
   sidechain_transaction_send: 118,
-  sidechain_transaction_settle: 119
+  sidechain_transaction_settle: 119,
+  nft_lottery_token_purchase: 120,
+  nft_lottery_reward: 121,
+  nft_lottery_end: 122,
+  random_number_store: 123
 };
 
 var ChainTypes = {
