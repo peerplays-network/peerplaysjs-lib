@@ -1,9 +1,9 @@
 'use strict';
 
 exports.__esModule = true;
-exports.account_role_delete = exports.account_role_update = exports.account_role_create = exports.finalize_offer = exports.result_type = exports.cancel_offer = exports.bid = exports.offer = exports.nft_set_approval_for_all = exports.nft_approve = exports.nft_safe_transfer_from = exports.nft_mint = exports.nft_metadata_update = exports.nft_metadata_create = exports.custom_account_authority_delete = exports.custom_account_authority_update = exports.custom_account_authority_create = exports.custom_permission_delete = exports.custom_permission_update = exports.custom_permission_create = exports.sweeps_vesting_claim = exports.lottery_end = exports.lottery_reward = exports.ticket_purchase = exports.lottery_asset_create = exports.affiliate_referral_payout = exports.affiliate_payout = exports.event_group_delete = exports.sport_delete = exports.event_update_status = exports.stealth_memo_data = exports.global_betting_statistics = exports.betting_market_position = exports.bet = exports.betting_market = exports.betting_market_group = exports.betting_market_rules = exports.event = exports.event_group = exports.sport = exports.signed_transaction = exports.transaction = exports.bet_adjusted = exports.betting_market_update = exports.betting_market_group_update = undefined;
-exports.tournament_leave = exports.tournament_payout = exports.payout_type = exports.bet_canceled = exports.bet_cancel = exports.bet_matched = exports.betting_market_group_cancel_unmatched_bets = exports.betting_market_group_resolved = exports.betting_market_group_resolve = exports.betting_market_resolution_type = exports.bet_place = exports.bet_type = exports.betting_market_create = exports.betting_market_group_create = exports.betting_market_rules_update = exports.betting_market_rules_create = exports.event_update = exports.event_create = exports.event_group_update = exports.event_group_create = exports.sport_update = exports.sport_create = exports.asset_dividend_distribution = exports.asset_update_dividend = exports.dividend_asset_options = exports.game_move = exports.rock_paper_scissors_throw_reveal = exports.rock_paper_scissors_throw_commit = exports.rock_paper_scissors_gesture = exports.tournament_join = exports.tournament_create = exports.tournament_options = exports.rock_paper_scissors_game_options = exports.fba_distribute = exports.asset_claim_fees = exports.asset_settle_cancel = exports.transfer_from_blind = exports.blind_transfer = exports.blind_input = exports.transfer_to_blind = exports.blind_output = exports.stealth_confirmation = exports.override_transfer = exports.balance_claim = exports.assert = exports.block_id_predicate = exports.asset_symbol_eq_lit_predicate = exports.account_name_eq_lit_predicate = exports.custom = exports.worker_create = exports.burn_worker_initializer = exports.vesting_balance_worker_initializer = exports.refund_worker_initializer = exports.vesting_balance_withdraw = exports.vesting_balance_create = exports.vesting_balance_type = exports.vesting_policy_initializer = exports.cdd_vesting_policy_initializer = exports.linear_vesting_policy_initializer = exports.committee_member_update_global_parameters = exports.chain_parameters = exports.committee_member_update = exports.committee_member_create = exports.withdraw_permission_delete = exports.withdraw_permission_claim = exports.withdraw_permission_update = exports.withdraw_permission_create = exports.proposal_delete = exports.proposal_update = exports.proposal_create = exports.op_wrapper = exports.witness_update = exports.witness_create = exports.asset_publish_feed = exports.price_feed = exports.asset_global_settle = exports.asset_settle = exports.asset_fund_fee_pool = exports.asset_reserve = exports.asset_issue = exports.asset_update_feed_producers = exports.asset_update_bitasset = exports.asset_update = exports.asset_create = exports.bitasset_options = exports.asset_options = exports.price = exports.account_transfer = exports.account_upgrade = exports.account_whitelist = exports.account_update = exports.account_update_last_voting_time = exports.account_create = exports.account_options = exports.authority = exports.fill_order = exports.call_order_update = exports.limit_order_cancel = exports.limit_order_create = exports.transfer = undefined;
-exports.memo_data = exports.signed_block_header = exports.block_header = exports.signed_block = exports.processed_transaction = exports.asset = exports.void_result = exports.fee_schedule = exports.account_role_delete_operation_fee_parameters = exports.account_role_update_operation_fee_parameters = exports.account_role_create_operation_fee_parameters = exports.nft_set_approval_for_all_operation_fee_parameters = exports.nft_approve_operation_fee_parameters = exports.nft_safe_transfer_from_operation_fee_parameters = exports.finalize_offer_operation_fee_parameters = exports.cancel_offer_operation_fee_parameters = exports.bid_operation_fee_parameters = exports.offer_operation_fee_parameters = exports.nft_mint_operation_fee_parameters = exports.nft_metadata_update_operation_fee_parameters = exports.nft_metadata_create_operation_fee_parameters = exports.custom_account_authority_delete_operation_fee_parameters = exports.custom_account_authority_update_operation_fee_parameters = exports.custom_account_authority_create_operation_fee_parameters = exports.custom_permission_delete_operation_fee_parameters = exports.custom_permission_update_operation_fee_parameters = exports.custom_permission_create_operation_fee_parameters = exports.bet_adjusted_operation_fee_parameters = exports.betting_market_update_operation_fee_parameters = exports.betting_market_group_update_operation_fee_parameters = exports.tournament_leave_operation_fee_parameters = exports.tournament_payout_operation_fee_parameters = exports.game_move_operation_fee_parameters = exports.tournament_join_operation_fee_parameters = exports.tournament_create_operation_fee_parameters = exports.bet_canceled_operation_fee_parameters = exports.bet_cancel_operation_fee_parameters = exports.bet_matched_operation_fee_parameters = exports.betting_market_group_cancel_unmatched_bets_operation_fee_parameters = exports.betting_market_group_resolved_operation_fee_parameters = exports.betting_market_group_resolve_operation_fee_parameters = exports.bet_place_operation_fee_parameters = exports.betting_market_create_operation_fee_parameters = exports.betting_market_group_create_operation_fee_parameters = exports.betting_market_rules_update_operation_fee_parameters = exports.betting_market_rules_create_operation_fee_parameters = exports.event_update_operation_fee_parameters = exports.event_create_operation_fee_parameters = exports.event_group_update_operation_fee_parameters = exports.event_group_create_operation_fee_parameters = exports.sport_update_operation_fee_parameters = exports.sport_create_operation_fee_parameters = exports.asset_dividend_distribution_operation_fee_parameters = exports.asset_update_dividend_operation_fee_parameters = exports.fba_distribute_operation_fee_parameters = exports.asset_claim_fees_operation_fee_parameters = exports.asset_settle_cancel_operation_fee_parameters = exports.transfer_from_blind_operation_fee_parameters = exports.blind_transfer_operation_fee_parameters = exports.transfer_to_blind_operation_fee_parameters = exports.override_transfer_operation_fee_parameters = exports.balance_claim_operation_fee_parameters = exports.assert_operation_fee_parameters = exports.custom_operation_fee_parameters = exports.worker_create_operation_fee_parameters = exports.vesting_balance_withdraw_operation_fee_parameters = exports.vesting_balance_create_operation_fee_parameters = exports.committee_member_update_global_parameters_operation_fee_parameters = exports.committee_member_update_operation_fee_parameters = exports.committee_member_create_operation_fee_parameters = exports.withdraw_permission_delete_operation_fee_parameters = exports.withdraw_permission_claim_operation_fee_parameters = exports.withdraw_permission_update_operation_fee_parameters = exports.withdraw_permission_create_operation_fee_parameters = exports.proposal_delete_operation_fee_parameters = exports.proposal_update_operation_fee_parameters = exports.proposal_create_operation_fee_parameters = exports.witness_update_operation_fee_parameters = exports.witness_create_operation_fee_parameters = exports.asset_publish_feed_operation_fee_parameters = exports.asset_global_settle_operation_fee_parameters = exports.asset_settle_operation_fee_parameters = exports.asset_fund_fee_pool_operation_fee_parameters = exports.asset_reserve_operation_fee_parameters = exports.asset_issue_operation_fee_parameters = exports.asset_update_feed_producers_operation_fee_parameters = exports.asset_update_bitasset_operation_fee_parameters = exports.asset_update_operation_fee_parameters = exports.asset_create_operation_fee_parameters = exports.account_transfer_operation_fee_parameters = exports.account_upgrade_operation_fee_parameters = exports.account_whitelist_operation_fee_parameters = exports.account_update_operation_fee_parameters = exports.account_create_operation_fee_parameters = exports.fill_order_operation_fee_parameters = exports.call_order_update_operation_fee_parameters = exports.limit_order_cancel_operation_fee_parameters = exports.limit_order_create_operation_fee_parameters = exports.transfer_operation_fee_parameters = exports.operation = undefined;
+exports.sidechain_transaction_settle = exports.sidechain_transaction_send = exports.sidechain_transaction_sign = exports.sidechain_transaction_create = exports.sidechain_address_delete = exports.sidechain_address_update = exports.sidechain_address_add = exports.son_wallet_withdraw_process = exports.son_wallet_withdraw_create = exports.son_wallet_deposit_process = exports.son_wallet_deposit_create = exports.son_wallet_update = exports.son_wallet_recreate = exports.son_maintenance = exports.son_report_down = exports.son_heartbeat = exports.son_deregister = exports.son_update = exports.son_create = exports.account_role_delete = exports.account_role_update = exports.account_role_create = exports.finalize_offer = exports.result_type = exports.cancel_offer = exports.bid = exports.offer = exports.nft_set_approval_for_all = exports.nft_approve = exports.nft_safe_transfer_from = exports.nft_mint = exports.nft_metadata_update = exports.nft_metadata_create = exports.custom_account_authority_delete = exports.custom_account_authority_update = exports.custom_account_authority_create = exports.custom_permission_delete = exports.custom_permission_update = exports.custom_permission_create = exports.sweeps_vesting_claim = exports.lottery_end = exports.lottery_reward = exports.ticket_purchase = exports.lottery_asset_create = exports.affiliate_referral_payout = exports.affiliate_payout = exports.event_group_delete = exports.sport_delete = exports.event_update_status = exports.stealth_memo_data = exports.global_betting_statistics = exports.betting_market_position = exports.bet = exports.betting_market = exports.betting_market_group = exports.betting_market_rules = exports.event = exports.event_group = exports.sport = exports.signed_transaction = exports.transaction = exports.bet_adjusted = exports.betting_market_update = exports.betting_market_group_update = exports.tournament_leave = exports.tournament_payout = exports.payout_type = exports.bet_canceled = exports.bet_cancel = exports.bet_matched = exports.betting_market_group_cancel_unmatched_bets = exports.betting_market_group_resolved = exports.betting_market_group_resolve = exports.betting_market_resolution_type = exports.bet_place = exports.bet_type = exports.betting_market_create = exports.betting_market_group_create = exports.betting_market_rules_update = exports.betting_market_rules_create = exports.event_update = exports.event_create = exports.event_group_update = exports.event_group_create = exports.sport_update = exports.sport_create = exports.asset_dividend_distribution = exports.asset_update_dividend = exports.dividend_asset_options = exports.game_move = exports.rock_paper_scissors_throw_reveal = exports.rock_paper_scissors_throw_commit = exports.rock_paper_scissors_gesture = undefined;
+exports.tournament_join = exports.tournament_create = exports.tournament_options = exports.rock_paper_scissors_game_options = exports.fba_distribute = exports.asset_claim_fees = exports.asset_settle_cancel = exports.transfer_from_blind = exports.blind_transfer = exports.blind_input = exports.transfer_to_blind = exports.blind_output = exports.stealth_confirmation = exports.override_transfer = exports.balance_claim = exports.assert = exports.block_id_predicate = exports.asset_symbol_eq_lit_predicate = exports.account_name_eq_lit_predicate = exports.custom = exports.worker_create = exports.burn_worker_initializer = exports.vesting_balance_worker_initializer = exports.refund_worker_initializer = exports.vesting_balance_withdraw = exports.vesting_balance_create = exports.vesting_balance_type = exports.vesting_policy_initializer = exports.cdd_vesting_policy_initializer = exports.linear_vesting_policy_initializer = exports.committee_member_update_global_parameters = exports.chain_parameters = exports.committee_member_update = exports.committee_member_create = exports.withdraw_permission_delete = exports.withdraw_permission_claim = exports.withdraw_permission_update = exports.withdraw_permission_create = exports.proposal_delete = exports.proposal_update = exports.proposal_create = exports.op_wrapper = exports.witness_update = exports.witness_create = exports.asset_publish_feed = exports.price_feed = exports.asset_global_settle = exports.asset_settle = exports.asset_fund_fee_pool = exports.asset_reserve = exports.asset_issue = exports.asset_update_feed_producers = exports.asset_update_bitasset = exports.asset_update = exports.asset_create = exports.bitasset_options = exports.asset_options = exports.price = exports.account_transfer = exports.account_upgrade = exports.account_whitelist = exports.account_update = exports.account_update_last_voting_time = exports.account_create = exports.account_options = exports.authority = exports.fill_order = exports.call_order_update = exports.limit_order_cancel = exports.limit_order_create = exports.transfer = exports.memo_data = exports.signed_block_header = exports.block_header = exports.signed_block = exports.processed_transaction = exports.asset = exports.void_result = exports.fee_schedule = exports.sidechain_transaction_settle_operation_fee_parameters = exports.sidechain_transaction_send_operation_fee_parameters = exports.sidechain_transaction_sign_operation_fee_parameters = exports.sidechain_transaction_create_operation_fee_parameters = exports.sidechain_address_delete_operation_fee_parameters = exports.sidechain_address_update_operation_fee_parameters = exports.sidechain_address_add_operation_fee_parameters = exports.son_wallet_withdraw_process_operation_fee_parameters = exports.son_wallet_withdraw_create_operation_fee_parameters = exports.son_wallet_deposit_process_operation_fee_parameters = exports.son_wallet_deposit_create_operation_fee_parameters = exports.son_wallet_update_operation_fee_parameters = exports.son_wallet_recreate_operation_fee_parameters = exports.son_maintenance_operation_fee_parameters = exports.son_report_down_operation_fee_parameters = exports.son_heartbeat_operation_fee_parameters = exports.son_deregister_operation_fee_parameters = exports.son_update_operation_fee_parameters = exports.son_create_operation_fee_parameters = exports.account_role_delete_operation_fee_parameters = exports.account_role_update_operation_fee_parameters = undefined;
+exports.account_role_create_operation_fee_parameters = exports.nft_set_approval_for_all_operation_fee_parameters = exports.nft_approve_operation_fee_parameters = exports.nft_safe_transfer_from_operation_fee_parameters = exports.finalize_offer_operation_fee_parameters = exports.cancel_offer_operation_fee_parameters = exports.bid_operation_fee_parameters = exports.offer_operation_fee_parameters = exports.nft_mint_operation_fee_parameters = exports.nft_metadata_update_operation_fee_parameters = exports.nft_metadata_create_operation_fee_parameters = exports.custom_account_authority_delete_operation_fee_parameters = exports.custom_account_authority_update_operation_fee_parameters = exports.custom_account_authority_create_operation_fee_parameters = exports.custom_permission_delete_operation_fee_parameters = exports.custom_permission_update_operation_fee_parameters = exports.custom_permission_create_operation_fee_parameters = exports.sweeps_vesting_claim_operation_fee_parameters = exports.lottery_end_operation_fee_parameters = exports.lottery_reward_operation_fee_parameters = exports.ticket_purchase_operation_fee_parameters = exports.lottery_asset_create_operation_fee_parameters = exports.affiliate_referral_payout_operation_fee_parameters = exports.affiliate_payout_operation_fee_parameters = exports.event_group_delete_operation_fee_parameters = exports.sport_delete_operation_fee_parameters = exports.event_update_status_operation_fee_parameters = exports.bet_adjusted_operation_fee_parameters = exports.betting_market_update_operation_fee_parameters = exports.betting_market_group_update_operation_fee_parameters = exports.tournament_leave_operation_fee_parameters = exports.tournament_payout_operation_fee_parameters = exports.game_move_operation_fee_parameters = exports.tournament_join_operation_fee_parameters = exports.tournament_create_operation_fee_parameters = exports.bet_canceled_operation_fee_parameters = exports.bet_cancel_operation_fee_parameters = exports.bet_matched_operation_fee_parameters = exports.betting_market_group_cancel_unmatched_bets_operation_fee_parameters = exports.betting_market_group_resolved_operation_fee_parameters = exports.betting_market_group_resolve_operation_fee_parameters = exports.bet_place_operation_fee_parameters = exports.betting_market_create_operation_fee_parameters = exports.betting_market_group_create_operation_fee_parameters = exports.betting_market_rules_update_operation_fee_parameters = exports.betting_market_rules_create_operation_fee_parameters = exports.event_update_operation_fee_parameters = exports.event_create_operation_fee_parameters = exports.event_group_update_operation_fee_parameters = exports.event_group_create_operation_fee_parameters = exports.sport_update_operation_fee_parameters = exports.sport_create_operation_fee_parameters = exports.asset_dividend_distribution_operation_fee_parameters = exports.asset_update_dividend_operation_fee_parameters = exports.fba_distribute_operation_fee_parameters = exports.asset_claim_fees_operation_fee_parameters = exports.asset_settle_cancel_operation_fee_parameters = exports.transfer_from_blind_operation_fee_parameters = exports.blind_transfer_operation_fee_parameters = exports.transfer_to_blind_operation_fee_parameters = exports.override_transfer_operation_fee_parameters = exports.balance_claim_operation_fee_parameters = exports.assert_operation_fee_parameters = exports.custom_operation_fee_parameters = exports.worker_create_operation_fee_parameters = exports.vesting_balance_withdraw_operation_fee_parameters = exports.vesting_balance_create_operation_fee_parameters = exports.committee_member_update_global_parameters_operation_fee_parameters = exports.committee_member_update_operation_fee_parameters = exports.committee_member_create_operation_fee_parameters = exports.withdraw_permission_delete_operation_fee_parameters = exports.withdraw_permission_claim_operation_fee_parameters = exports.withdraw_permission_update_operation_fee_parameters = exports.withdraw_permission_create_operation_fee_parameters = exports.proposal_delete_operation_fee_parameters = exports.proposal_update_operation_fee_parameters = exports.proposal_create_operation_fee_parameters = exports.witness_update_operation_fee_parameters = exports.witness_create_operation_fee_parameters = exports.asset_publish_feed_operation_fee_parameters = exports.asset_global_settle_operation_fee_parameters = exports.asset_settle_operation_fee_parameters = exports.asset_fund_fee_pool_operation_fee_parameters = exports.asset_reserve_operation_fee_parameters = exports.asset_issue_operation_fee_parameters = exports.asset_update_feed_producers_operation_fee_parameters = exports.asset_update_bitasset_operation_fee_parameters = exports.asset_update_operation_fee_parameters = exports.asset_create_operation_fee_parameters = exports.account_transfer_operation_fee_parameters = exports.account_upgrade_operation_fee_parameters = exports.account_whitelist_operation_fee_parameters = exports.account_update_operation_fee_parameters = exports.account_create_operation_fee_parameters = exports.fill_order_operation_fee_parameters = exports.call_order_update_operation_fee_parameters = exports.limit_order_cancel_operation_fee_parameters = exports.limit_order_create_operation_fee_parameters = exports.transfer_operation_fee_parameters = exports.operation = undefined;
 
 var _types = require('./types');
 
@@ -480,7 +480,83 @@ var account_role_delete_operation_fee_parameters = new Serializer('account_role_
   fee: uint64
 });
 
-var fee_parameters = static_variant([transfer_operation_fee_parameters, limit_order_create_operation_fee_parameters, limit_order_cancel_operation_fee_parameters, call_order_update_operation_fee_parameters, fill_order_operation_fee_parameters, account_create_operation_fee_parameters, account_update_operation_fee_parameters, account_whitelist_operation_fee_parameters, account_upgrade_operation_fee_parameters, account_transfer_operation_fee_parameters, asset_create_operation_fee_parameters, asset_update_operation_fee_parameters, asset_update_bitasset_operation_fee_parameters, asset_update_feed_producers_operation_fee_parameters, asset_issue_operation_fee_parameters, asset_reserve_operation_fee_parameters, asset_fund_fee_pool_operation_fee_parameters, asset_settle_operation_fee_parameters, asset_global_settle_operation_fee_parameters, asset_publish_feed_operation_fee_parameters, witness_create_operation_fee_parameters, witness_update_operation_fee_parameters, proposal_create_operation_fee_parameters, proposal_update_operation_fee_parameters, proposal_delete_operation_fee_parameters, withdraw_permission_create_operation_fee_parameters, withdraw_permission_update_operation_fee_parameters, withdraw_permission_claim_operation_fee_parameters, withdraw_permission_delete_operation_fee_parameters, committee_member_create_operation_fee_parameters, committee_member_update_operation_fee_parameters, committee_member_update_global_parameters_operation_fee_parameters, vesting_balance_create_operation_fee_parameters, vesting_balance_withdraw_operation_fee_parameters, worker_create_operation_fee_parameters, custom_operation_fee_parameters, assert_operation_fee_parameters, balance_claim_operation_fee_parameters, override_transfer_operation_fee_parameters, transfer_to_blind_operation_fee_parameters, blind_transfer_operation_fee_parameters, transfer_from_blind_operation_fee_parameters, asset_settle_cancel_operation_fee_parameters, asset_claim_fees_operation_fee_parameters, fba_distribute_operation_fee_parameters, tournament_create_operation_fee_parameters, tournament_join_operation_fee_parameters, game_move_operation_fee_parameters, asset_update_dividend_operation_fee_parameters, asset_dividend_distribution_operation_fee_parameters, tournament_payout_operation_fee_parameters, tournament_leave_operation_fee_parameters, sport_create_operation_fee_parameters, sport_update_operation_fee_parameters, event_group_create_operation_fee_parameters, event_group_update_operation_fee_parameters, event_create_operation_fee_parameters, event_update_operation_fee_parameters, betting_market_rules_create_operation_fee_parameters, betting_market_rules_update_operation_fee_parameters, betting_market_group_create_operation_fee_parameters, betting_market_create_operation_fee_parameters, bet_place_operation_fee_parameters, betting_market_group_resolve_operation_fee_parameters, betting_market_group_resolved_operation_fee_parameters, bet_adjusted_operation_fee_parameters, betting_market_group_cancel_unmatched_bets_operation_fee_parameters, bet_matched_operation_fee_parameters, bet_cancel_operation_fee_parameters, bet_canceled_operation_fee_parameters, betting_market_group_update_operation_fee_parameters, betting_market_update_operation_fee_parameters, event_update_status_operation_fee_parameters, sport_delete_operation_fee_parameters, event_group_delete_operation_fee_parameters, affiliate_payout_operation_fee_parameters, affiliate_referral_payout_operation_fee_parameters, lottery_asset_create_operation_fee_parameters, ticket_purchase_operation_fee_parameters, lottery_reward_operation_fee_parameters, lottery_end_operation_fee_parameters, sweeps_vesting_claim_operation_fee_parameters, custom_permission_create_operation_fee_parameters, custom_permission_update_operation_fee_parameters, custom_permission_delete_operation_fee_parameters, custom_account_authority_create_operation_fee_parameters, custom_account_authority_update_operation_fee_parameters, custom_account_authority_delete_operation_fee_parameters, offer_operation_fee_parameters, bid_operation_fee_parameters, cancel_offer_operation_fee_parameters, finalize_offer_operation_fee_parameters, nft_metadata_create_operation_fee_parameters, nft_metadata_update_operation_fee_parameters, nft_mint_operation_fee_parameters, nft_safe_transfer_from_operation_fee_parameters, nft_approve_operation_fee_parameters, nft_set_approval_for_all_operation_fee_parameters, account_role_create_operation_fee_parameters, account_role_update_operation_fee_parameters, account_role_delete_operation_fee_parameters]);
+var son_create_operation_fee_parameters = new Serializer('son_create_operation_fee_parameters', {
+  fee: uint64
+});
+
+var son_update_operation_fee_parameters = new Serializer('son_update_operation_fee_parameters', {
+  fee: uint64
+});
+
+var son_deregister_operation_fee_parameters = new Serializer('son_deregister_operation_fee_parameters', {
+  fee: uint64
+});
+
+var son_heartbeat_operation_fee_parameters = new Serializer('son_heartbeat_operation_fee_parameters', {
+  fee: uint64
+});
+
+var son_report_down_operation_fee_parameters = new Serializer('son_report_down_operation_fee_parameters', {
+  fee: uint64
+});
+
+var son_maintenance_operation_fee_parameters = new Serializer('son_maintenance_operation_fee_parameters', {
+  fee: uint64
+});
+
+var son_wallet_recreate_operation_fee_parameters = new Serializer('son_wallet_recreate_operation_fee_parameters', {
+  fee: uint64
+});
+
+var son_wallet_update_operation_fee_parameters = new Serializer('son_wallet_update_operation_fee_parameters', {
+  fee: uint64
+});
+
+var son_wallet_deposit_create_operation_fee_parameters = new Serializer('son_wallet_deposit_create_operation_fee_parameters', {
+  fee: uint64
+});
+
+var son_wallet_deposit_process_operation_fee_parameters = new Serializer('son_wallet_deposit_process_operation_fee_parameters', {
+  fee: uint64
+});
+
+var son_wallet_withdraw_create_operation_fee_parameters = new Serializer('son_wallet_withdraw_create_operation_fee_parameters', {
+  fee: uint64
+});
+
+var son_wallet_withdraw_process_operation_fee_parameters = new Serializer('son_wallet_withdraw_process_operation_fee_parameters', {
+  fee: uint64
+});
+
+var sidechain_address_add_operation_fee_parameters = new Serializer('sidechain_address_add_operation_fee_parameters', {
+  fee: uint64
+});
+
+var sidechain_address_update_operation_fee_parameters = new Serializer('sidechain_address_update_operation_fee_parameters', {
+  fee: uint64
+});
+
+var sidechain_address_delete_operation_fee_parameters = new Serializer('sidechain_address_delete_operation_fee_parameters', {
+  fee: uint64
+});
+
+var sidechain_transaction_create_operation_fee_parameters = new Serializer('sidechain_transaction_create_operation_fee_parameters', {
+  fee: uint64
+});
+
+var sidechain_transaction_sign_operation_fee_parameters = new Serializer('sidechain_transaction_sign_operation_fee_parameters', {
+  fee: uint64
+});
+
+var sidechain_transaction_send_operation_fee_parameters = new Serializer('sidechain_transaction_send_operation_fee_parameters', {
+  fee: uint64
+});
+
+var sidechain_transaction_settle_operation_fee_parameters = new Serializer('sidechain_transaction_settle_operation_fee_parameters', {
+  fee: uint64
+});
+
+var fee_parameters = static_variant([transfer_operation_fee_parameters, limit_order_create_operation_fee_parameters, limit_order_cancel_operation_fee_parameters, call_order_update_operation_fee_parameters, fill_order_operation_fee_parameters, account_create_operation_fee_parameters, account_update_operation_fee_parameters, account_whitelist_operation_fee_parameters, account_upgrade_operation_fee_parameters, account_transfer_operation_fee_parameters, asset_create_operation_fee_parameters, asset_update_operation_fee_parameters, asset_update_bitasset_operation_fee_parameters, asset_update_feed_producers_operation_fee_parameters, asset_issue_operation_fee_parameters, asset_reserve_operation_fee_parameters, asset_fund_fee_pool_operation_fee_parameters, asset_settle_operation_fee_parameters, asset_global_settle_operation_fee_parameters, asset_publish_feed_operation_fee_parameters, witness_create_operation_fee_parameters, witness_update_operation_fee_parameters, proposal_create_operation_fee_parameters, proposal_update_operation_fee_parameters, proposal_delete_operation_fee_parameters, withdraw_permission_create_operation_fee_parameters, withdraw_permission_update_operation_fee_parameters, withdraw_permission_claim_operation_fee_parameters, withdraw_permission_delete_operation_fee_parameters, committee_member_create_operation_fee_parameters, committee_member_update_operation_fee_parameters, committee_member_update_global_parameters_operation_fee_parameters, vesting_balance_create_operation_fee_parameters, vesting_balance_withdraw_operation_fee_parameters, worker_create_operation_fee_parameters, custom_operation_fee_parameters, assert_operation_fee_parameters, balance_claim_operation_fee_parameters, override_transfer_operation_fee_parameters, transfer_to_blind_operation_fee_parameters, blind_transfer_operation_fee_parameters, transfer_from_blind_operation_fee_parameters, asset_settle_cancel_operation_fee_parameters, asset_claim_fees_operation_fee_parameters, fba_distribute_operation_fee_parameters, tournament_create_operation_fee_parameters, tournament_join_operation_fee_parameters, game_move_operation_fee_parameters, asset_update_dividend_operation_fee_parameters, asset_dividend_distribution_operation_fee_parameters, tournament_payout_operation_fee_parameters, tournament_leave_operation_fee_parameters, sport_create_operation_fee_parameters, sport_update_operation_fee_parameters, event_group_create_operation_fee_parameters, event_group_update_operation_fee_parameters, event_create_operation_fee_parameters, event_update_operation_fee_parameters, betting_market_rules_create_operation_fee_parameters, betting_market_rules_update_operation_fee_parameters, betting_market_group_create_operation_fee_parameters, betting_market_create_operation_fee_parameters, bet_place_operation_fee_parameters, betting_market_group_resolve_operation_fee_parameters, betting_market_group_resolved_operation_fee_parameters, bet_adjusted_operation_fee_parameters, betting_market_group_cancel_unmatched_bets_operation_fee_parameters, bet_matched_operation_fee_parameters, bet_cancel_operation_fee_parameters, bet_canceled_operation_fee_parameters, betting_market_group_update_operation_fee_parameters, betting_market_update_operation_fee_parameters, event_update_status_operation_fee_parameters, sport_delete_operation_fee_parameters, event_group_delete_operation_fee_parameters, affiliate_payout_operation_fee_parameters, affiliate_referral_payout_operation_fee_parameters, lottery_asset_create_operation_fee_parameters, ticket_purchase_operation_fee_parameters, lottery_reward_operation_fee_parameters, lottery_end_operation_fee_parameters, sweeps_vesting_claim_operation_fee_parameters, custom_permission_create_operation_fee_parameters, custom_permission_update_operation_fee_parameters, custom_permission_delete_operation_fee_parameters, custom_account_authority_create_operation_fee_parameters, custom_account_authority_update_operation_fee_parameters, custom_account_authority_delete_operation_fee_parameters, offer_operation_fee_parameters, bid_operation_fee_parameters, cancel_offer_operation_fee_parameters, finalize_offer_operation_fee_parameters, nft_metadata_create_operation_fee_parameters, nft_metadata_update_operation_fee_parameters, nft_mint_operation_fee_parameters, nft_safe_transfer_from_operation_fee_parameters, nft_approve_operation_fee_parameters, nft_set_approval_for_all_operation_fee_parameters, account_role_create_operation_fee_parameters, account_role_update_operation_fee_parameters, account_role_delete_operation_fee_parameters, son_create_operation_fee_parameters, son_update_operation_fee_parameters, son_deregister_operation_fee_parameters, son_heartbeat_operation_fee_parameters, son_report_down_operation_fee_parameters, son_maintenance_operation_fee_parameters, son_wallet_recreate_operation_fee_parameters, son_wallet_update_operation_fee_parameters, son_wallet_deposit_create_operation_fee_parameters, son_wallet_deposit_process_operation_fee_parameters, son_wallet_withdraw_create_operation_fee_parameters, son_wallet_withdraw_process_operation_fee_parameters, sidechain_address_add_operation_fee_parameters, sidechain_address_update_operation_fee_parameters, sidechain_address_delete_operation_fee_parameters, sidechain_transaction_create_operation_fee_parameters, sidechain_transaction_sign_operation_fee_parameters, sidechain_transaction_send_operation_fee_parameters, sidechain_transaction_settle_operation_fee_parameters]);
 
 var fee_schedule = new Serializer('fee_schedule', {
   parameters: set(fee_parameters),
@@ -600,6 +676,7 @@ var account_options = new Serializer('account_options', {
   voting_account: protocol_id_type('account'),
   num_witness: uint16,
   num_committee: uint16,
+  num_son: uint16,
   votes: set(vote_id),
   extensions: set(future_extensions)
 });
@@ -903,7 +980,21 @@ var parameter_extension = new Serializer('parameter_extension', {
   rbac_max_account_authority_lifetime: optional(uint32),
   rbac_max_authorities_per_permission: optional(uint16),
   account_roles_max_per_account: optional(uint16),
-  account_roles_max_lifetime: optional(uint32)
+  account_roles_max_lifetime: optional(uint32),
+  gpos_period: optional(uint32),
+  gpos_subperiod: optional(uint32),
+  gpos_period_start: optional(uint32),
+  gpos_vesting_lockin_period: optional(uint32),
+  son_vesting_amount: optional(uint32),
+  son_vesting_period: optional(uint32),
+  son_pay_max: optional(uint32),
+  son_pay_time: optional(uint32),
+  son_deregister_time: optional(uint32),
+  son_heartbeat_frequency: optional(uint32),
+  son_down_time: optional(uint32),
+  son_bitcoin_min_tx_confirmations: optional(uint16),
+  son_account: optional(protocol_id_type('account')),
+  btc_asset: optional(protocol_id_type('asset'))
 });
 
 var chain_parameters = new Serializer('chain_parameters', {
@@ -920,6 +1011,7 @@ var chain_parameters = new Serializer('chain_parameters', {
   maximum_asset_feed_publishers: uint8,
   maximum_witness_count: uint16,
   maximum_committee_count: uint16,
+  maximum_son_count: uint16,
   maximum_authority_membership: uint16,
   reserve_percent_of_fee: uint16,
   network_percent_of_fee: uint16,
@@ -968,9 +1060,11 @@ var cdd_vesting_policy_initializer = new Serializer('cdd_vesting_policy_initiali
   vesting_seconds: uint32
 });
 
-var vesting_policy_initializer = static_variant([linear_vesting_policy_initializer, cdd_vesting_policy_initializer]);
+var dormant_vesting_policy_initializer = new Serializer('dormant_vesting_policy_initializer', {});
 
-var vesting_balance_type = enumeration(['normal', 'gpos']);
+var vesting_policy_initializer = static_variant([linear_vesting_policy_initializer, cdd_vesting_policy_initializer, dormant_vesting_policy_initializer]);
+
+var vesting_balance_type = enumeration(['normal', 'gpos', 'son']);
 
 var vesting_balance_create = new Serializer('vesting_balance_create', {
   fee: asset,
@@ -1625,7 +1719,190 @@ var account_role_delete = new Serializer('account_role_delete', {
   extensions: set(future_extensions)
 });
 
-operation.st_operations = [transfer, limit_order_create, limit_order_cancel, call_order_update, fill_order, account_create, account_update, account_whitelist, account_upgrade, account_transfer, asset_create, asset_update, asset_update_bitasset, asset_update_feed_producers, asset_issue, asset_reserve, asset_fund_fee_pool, asset_settle, asset_global_settle, asset_publish_feed, witness_create, witness_update, proposal_create, proposal_update, proposal_delete, withdraw_permission_create, withdraw_permission_update, withdraw_permission_claim, withdraw_permission_delete, committee_member_create, committee_member_update, committee_member_update_global_parameters, vesting_balance_create, vesting_balance_withdraw, worker_create, custom, assert, balance_claim, override_transfer, transfer_to_blind, blind_transfer, transfer_from_blind, asset_settle_cancel, asset_claim_fees, fba_distribute, tournament_create, tournament_join, game_move, asset_update_dividend, asset_dividend_distribution, tournament_payout, tournament_leave, sport_create, sport_update, event_group_create, event_group_update, event_create, event_update, betting_market_rules_create, betting_market_rules_update, betting_market_group_create, betting_market_create, bet_place, betting_market_group_resolve, betting_market_group_resolved, bet_adjusted, betting_market_group_cancel_unmatched_bets, bet_matched, bet_cancel, bet_canceled, betting_market_group_update, betting_market_update, event_update_status, sport_delete, event_group_delete, affiliate_payout, affiliate_referral_payout, lottery_asset_create, ticket_purchase, lottery_reward, lottery_end, sweeps_vesting_claim, custom_permission_create, custom_permission_update, custom_permission_delete, custom_account_authority_create, custom_account_authority_update, custom_account_authority_delete, offer, bid, cancel_offer, finalize_offer, nft_metadata_create, nft_metadata_update, nft_mint, nft_safe_transfer_from, nft_approve, nft_set_approval_for_all, account_role_create, account_role_update, account_role_delete];
+var sidechain_type = enumeration(['unknown', 'bitcoin', 'ethereum', 'eos', 'peerplays']);
+
+var son_create = new Serializer('son_create', {
+  fee: asset,
+  owner_account: protocol_id_type('account'),
+  url: string,
+  deposit: protocol_id_type('vesting_balance'),
+  signing_key: public_key,
+  sidechain_public_keys: map(sidechain_type, string),
+  pay_vb: protocol_id_type('vesting_balance')
+});
+
+var son_update = new Serializer('son_update', {
+  fee: asset,
+  son_id: protocol_id_type('son'),
+  owner_account: protocol_id_type('account'),
+  new_url: optional(string),
+  new_deposit: optional(protocol_id_type('vesting_balance')),
+  new_signing_key: optional(public_key),
+  new_sidechain_public_keys: optional(map(sidechain_type, string)),
+  new_pay_vb: optional(protocol_id_type('vesting_balance'))
+});
+
+var son_deregister = new Serializer('son_deregister', {
+  fee: asset,
+  son_id: protocol_id_type('son'),
+  payer: protocol_id_type('account')
+});
+
+var son_heartbeat = new Serializer('son_heartbeat', {
+  fee: asset,
+  son_id: protocol_id_type('son'),
+  owner_account: protocol_id_type('account'),
+  ts: time_point_sec
+});
+
+var son_report_down = new Serializer('son_report_down', {
+  fee: asset,
+  son_id: protocol_id_type('son'),
+  payer: protocol_id_type('account'),
+  down_ts: time_point_sec
+});
+
+var son_maintenance_request_type = enumeration(['request_maintenance', 'cancel_request_maintenance']);
+
+var son_maintenance = new Serializer('son_maintenance', {
+  fee: asset,
+  son_id: protocol_id_type('son'),
+  owner_account: protocol_id_type('account'),
+  request_type: son_maintenance_request_type
+});
+
+var son_info = new Serializer('son_info', {
+  son_id: protocol_id_type('son'),
+  weight: uint16,
+  signing_key: public_key,
+  sidechain_public_keys: map(sidechain_type, string)
+});
+
+var son_wallet_recreate = new Serializer('son_wallet_recreate', {
+  fee: asset,
+  payer: protocol_id_type('account'),
+  sons: set(son_info)
+});
+
+var son_wallet_update = new Serializer('son_wallet_update', {
+  fee: asset,
+  payer: protocol_id_type('account'),
+  son_wallet_id: protocol_id_type('son_wallet'),
+  sidechain: sidechain_type,
+  address: string
+});
+
+var son_wallet_deposit_create = new Serializer('son_wallet_deposit_create', {
+  fee: asset,
+  payer: protocol_id_type('account'),
+  son_id: protocol_id_type('son'),
+  timestamp: time_point_sec,
+  block_num: uint32,
+  sidechain: sidechain_type,
+  sidechain_uid: string,
+  sidechain_transaction_id: string,
+  sidechain_from: string,
+  sidechain_to: string,
+  sidechain_currency: string,
+  sidechain_amount: int64,
+  peerplays_from: protocol_id_type('account'),
+  peerplays_to: protocol_id_type('account'),
+  peerplays_asset: asset
+});
+
+var son_wallet_deposit_process = new Serializer('son_wallet_deposit_process', {
+  fee: asset,
+  payer: protocol_id_type('account'),
+  son_wallet_deposit_id: protocol_id_type('son_wallet_deposit')
+});
+
+var son_wallet_withdraw_create = new Serializer('son_wallet_withdraw_create', {
+  fee: asset,
+  payer: protocol_id_type('account'),
+  son_id: protocol_id_type('son'),
+  timestamp: time_point_sec,
+  block_num: uint32,
+  sidechain: sidechain_type,
+  peerplays_uid: string,
+  peerplays_transaction_id: string,
+  peerplays_from: protocol_id_type('account'),
+  peerplays_asset: asset,
+  withdraw_sidechain: sidechain_type,
+  withdraw_address: string,
+  withdraw_currency: string,
+  withdraw_amount: int64
+});
+
+var son_wallet_withdraw_process = new Serializer('son_wallet_withdraw_process', {
+  fee: asset,
+  payer: protocol_id_type('account'),
+  son_wallet_withdraw_id: protocol_id_type('son_wallet_withdraw')
+});
+
+var sidechain_address_add = new Serializer('sidechain_address_add', {
+  fee: asset,
+  payer: protocol_id_type('account'),
+  sidechain_address_account: protocol_id_type('account'),
+  sidechain: sidechain_type,
+  deposit_public_key: string,
+  deposit_address: string,
+  deposit_address_data: string,
+  withdraw_public_key: string,
+  withdraw_address: string
+});
+
+var sidechain_address_update = new Serializer('sidechain_address_update', {
+  fee: asset,
+  payer: protocol_id_type('account'),
+  sidechain_address_id: protocol_id_type('sidechain_address'),
+  sidechain_address_account: protocol_id_type('account'),
+  sidechain: sidechain_type,
+  deposit_public_key: optional(string),
+  deposit_address: optional(string),
+  deposit_address_data: optional(string),
+  withdraw_public_key: optional(string),
+  withdraw_address: optional(string)
+});
+
+var sidechain_address_delete = new Serializer('sidechain_address_delete', {
+  fee: asset,
+  payer: protocol_id_type('account'),
+  sidechain_address_id: protocol_id_type('sidechain_address'),
+  sidechain_address_account: protocol_id_type('account'),
+  sidechain: sidechain_type
+});
+
+var sidechain_transaction_create = new Serializer('sidechain_transaction_create', {
+  fee: asset,
+  payer: protocol_id_type('account'),
+  sidechain: sidechain_type,
+  object_id: protocol_id_type('object'),
+  transaction: string,
+  signers: set(son_info)
+});
+
+var sidechain_transaction_sign = new Serializer('sidechain_transaction_sign', {
+  fee: asset,
+  signer: protocol_id_type('son'),
+  payer: protocol_id_type('account'),
+  sidechain_transaction_id: protocol_id_type('sidechain_transaction'),
+  signature: string
+});
+
+var sidechain_transaction_send = new Serializer('sidechain_transaction_send', {
+  fee: asset,
+  payer: protocol_id_type('account'),
+  sidechain_transaction_id: protocol_id_type('sidechain_transaction'),
+  sidechain_transaction: string
+});
+
+var sidechain_transaction_settle = new Serializer('sidechain_transaction_settle', {
+  fee: asset,
+  payer: protocol_id_type('account'),
+  sidechain_transaction_id: protocol_id_type('sidechain_transaction')
+});
+
+operation.st_operations = [transfer, limit_order_create, limit_order_cancel, call_order_update, fill_order, account_create, account_update, account_whitelist, account_upgrade, account_transfer, asset_create, asset_update, asset_update_bitasset, asset_update_feed_producers, asset_issue, asset_reserve, asset_fund_fee_pool, asset_settle, asset_global_settle, asset_publish_feed, witness_create, witness_update, proposal_create, proposal_update, proposal_delete, withdraw_permission_create, withdraw_permission_update, withdraw_permission_claim, withdraw_permission_delete, committee_member_create, committee_member_update, committee_member_update_global_parameters, vesting_balance_create, vesting_balance_withdraw, worker_create, custom, assert, balance_claim, override_transfer, transfer_to_blind, blind_transfer, transfer_from_blind, asset_settle_cancel, asset_claim_fees, fba_distribute, tournament_create, tournament_join, game_move, asset_update_dividend, asset_dividend_distribution, tournament_payout, tournament_leave, sport_create, sport_update, event_group_create, event_group_update, event_create, event_update, betting_market_rules_create, betting_market_rules_update, betting_market_group_create, betting_market_create, bet_place, betting_market_group_resolve, betting_market_group_resolved, bet_adjusted, betting_market_group_cancel_unmatched_bets, bet_matched, bet_cancel, bet_canceled, betting_market_group_update, betting_market_update, event_update_status, sport_delete, event_group_delete, affiliate_payout, affiliate_referral_payout, lottery_asset_create, ticket_purchase, lottery_reward, lottery_end, sweeps_vesting_claim, custom_permission_create, custom_permission_update, custom_permission_delete, custom_account_authority_create, custom_account_authority_update, custom_account_authority_delete, offer, bid, cancel_offer, finalize_offer, nft_metadata_create, nft_metadata_update, nft_mint, nft_safe_transfer_from, nft_approve, nft_set_approval_for_all, account_role_create, account_role_update, account_role_delete, son_create, son_update, son_deregister, son_heartbeat, son_report_down, son_maintenance, son_wallet_recreate, son_wallet_update, son_wallet_deposit_create, son_wallet_deposit_process, son_wallet_withdraw_create, son_wallet_withdraw_process, sidechain_address_add, sidechain_address_update, sidechain_address_delete, sidechain_transaction_create, sidechain_transaction_sign, sidechain_transaction_send, sidechain_transaction_settle];
 
 var transaction = new Serializer('transaction', {
   ref_block_num: uint16,
@@ -1820,6 +2097,16 @@ exports.tournament_leave_operation_fee_parameters = tournament_leave_operation_f
 exports.betting_market_group_update_operation_fee_parameters = betting_market_group_update_operation_fee_parameters;
 exports.betting_market_update_operation_fee_parameters = betting_market_update_operation_fee_parameters;
 exports.bet_adjusted_operation_fee_parameters = bet_adjusted_operation_fee_parameters;
+exports.event_update_status_operation_fee_parameters = event_update_status_operation_fee_parameters;
+exports.sport_delete_operation_fee_parameters = sport_delete_operation_fee_parameters;
+exports.event_group_delete_operation_fee_parameters = event_group_delete_operation_fee_parameters;
+exports.affiliate_payout_operation_fee_parameters = affiliate_payout_operation_fee_parameters;
+exports.affiliate_referral_payout_operation_fee_parameters = affiliate_referral_payout_operation_fee_parameters;
+exports.lottery_asset_create_operation_fee_parameters = lottery_asset_create_operation_fee_parameters;
+exports.ticket_purchase_operation_fee_parameters = ticket_purchase_operation_fee_parameters;
+exports.lottery_reward_operation_fee_parameters = lottery_reward_operation_fee_parameters;
+exports.lottery_end_operation_fee_parameters = lottery_end_operation_fee_parameters;
+exports.sweeps_vesting_claim_operation_fee_parameters = sweeps_vesting_claim_operation_fee_parameters;
 exports.custom_permission_create_operation_fee_parameters = custom_permission_create_operation_fee_parameters;
 exports.custom_permission_update_operation_fee_parameters = custom_permission_update_operation_fee_parameters;
 exports.custom_permission_delete_operation_fee_parameters = custom_permission_delete_operation_fee_parameters;
@@ -1839,6 +2126,25 @@ exports.nft_set_approval_for_all_operation_fee_parameters = nft_set_approval_for
 exports.account_role_create_operation_fee_parameters = account_role_create_operation_fee_parameters;
 exports.account_role_update_operation_fee_parameters = account_role_update_operation_fee_parameters;
 exports.account_role_delete_operation_fee_parameters = account_role_delete_operation_fee_parameters;
+exports.son_create_operation_fee_parameters = son_create_operation_fee_parameters;
+exports.son_update_operation_fee_parameters = son_update_operation_fee_parameters;
+exports.son_deregister_operation_fee_parameters = son_deregister_operation_fee_parameters;
+exports.son_heartbeat_operation_fee_parameters = son_heartbeat_operation_fee_parameters;
+exports.son_report_down_operation_fee_parameters = son_report_down_operation_fee_parameters;
+exports.son_maintenance_operation_fee_parameters = son_maintenance_operation_fee_parameters;
+exports.son_wallet_recreate_operation_fee_parameters = son_wallet_recreate_operation_fee_parameters;
+exports.son_wallet_update_operation_fee_parameters = son_wallet_update_operation_fee_parameters;
+exports.son_wallet_deposit_create_operation_fee_parameters = son_wallet_deposit_create_operation_fee_parameters;
+exports.son_wallet_deposit_process_operation_fee_parameters = son_wallet_deposit_process_operation_fee_parameters;
+exports.son_wallet_withdraw_create_operation_fee_parameters = son_wallet_withdraw_create_operation_fee_parameters;
+exports.son_wallet_withdraw_process_operation_fee_parameters = son_wallet_withdraw_process_operation_fee_parameters;
+exports.sidechain_address_add_operation_fee_parameters = sidechain_address_add_operation_fee_parameters;
+exports.sidechain_address_update_operation_fee_parameters = sidechain_address_update_operation_fee_parameters;
+exports.sidechain_address_delete_operation_fee_parameters = sidechain_address_delete_operation_fee_parameters;
+exports.sidechain_transaction_create_operation_fee_parameters = sidechain_transaction_create_operation_fee_parameters;
+exports.sidechain_transaction_sign_operation_fee_parameters = sidechain_transaction_sign_operation_fee_parameters;
+exports.sidechain_transaction_send_operation_fee_parameters = sidechain_transaction_send_operation_fee_parameters;
+exports.sidechain_transaction_settle_operation_fee_parameters = sidechain_transaction_settle_operation_fee_parameters;
 exports.fee_schedule = fee_schedule;
 exports.void_result = void_result;
 exports.asset = asset;
@@ -1992,3 +2298,22 @@ exports.finalize_offer = finalize_offer;
 exports.account_role_create = account_role_create;
 exports.account_role_update = account_role_update;
 exports.account_role_delete = account_role_delete;
+exports.son_create = son_create;
+exports.son_update = son_update;
+exports.son_deregister = son_deregister;
+exports.son_heartbeat = son_heartbeat;
+exports.son_report_down = son_report_down;
+exports.son_maintenance = son_maintenance;
+exports.son_wallet_recreate = son_wallet_recreate;
+exports.son_wallet_update = son_wallet_update;
+exports.son_wallet_deposit_create = son_wallet_deposit_create;
+exports.son_wallet_deposit_process = son_wallet_deposit_process;
+exports.son_wallet_withdraw_create = son_wallet_withdraw_create;
+exports.son_wallet_withdraw_process = son_wallet_withdraw_process;
+exports.sidechain_address_add = sidechain_address_add;
+exports.sidechain_address_update = sidechain_address_update;
+exports.sidechain_address_delete = sidechain_address_delete;
+exports.sidechain_transaction_create = sidechain_transaction_create;
+exports.sidechain_transaction_sign = sidechain_transaction_sign;
+exports.sidechain_transaction_send = sidechain_transaction_send;
+exports.sidechain_transaction_settle = sidechain_transaction_settle;
