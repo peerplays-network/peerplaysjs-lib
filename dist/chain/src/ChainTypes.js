@@ -40,7 +40,14 @@ var object_type = {
   offer: 29,
   nft_metadata: 30,
   nft: 31,
-  account_role: 32
+  account_role: 32,
+  son: 33,
+  son_proposal: 34,
+  son_wallet: 35,
+  son_wallet_deposit: 36,
+  son_wallet_withdraw: 37,
+  sidechain_address: 38,
+  sidechain_transaction: 39
 };
 
 var impl_object_type = {
@@ -68,7 +75,9 @@ var impl_object_type = {
   global_betting_statistics: 21,
   lottery_balance: 22,
   sweeps_vesting_balance: 23,
-  offer_history: 24
+  offer_history: 24,
+  son_statistics: 25,
+  son_schedule: 26
 };
 
 var vote_type = {
@@ -178,7 +187,26 @@ var operations = {
   nft_set_approval_for_all: 97,
   account_role_create: 98,
   account_role_update: 99,
-  account_role_delete: 100
+  account_role_delete: 100,
+  son_create: 101,
+  son_update: 102,
+  son_delete: 103,
+  son_heartbeat: 104,
+  son_report_down: 105,
+  son_maintenance: 106,
+  son_wallet_recreate: 107,
+  son_wallet_update: 108,
+  son_wallet_deposit_create: 109,
+  son_wallet_deposit_process: 110,
+  son_wallet_withdraw_create: 111,
+  son_wallet_withdraw_process: 112,
+  sidechain_address_add: 113,
+  sidechain_address_update: 114,
+  sidechain_address_delete: 115,
+  sidechain_transaction_create: 116,
+  sidechain_transaction_sign: 117,
+  sidechain_transaction_send: 118,
+  sidechain_transaction_settle: 119
 };
 
 var ChainTypes = {
