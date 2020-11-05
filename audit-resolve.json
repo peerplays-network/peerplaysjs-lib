@@ -523,6 +523,26 @@
     "1500|mocha>yargs-parser": {
       "decision": "fix",
       "madeAt": 1604582924117
+    },
+    "1213|standard-version>conventional-changelog-conventionalcommits>compare-func>dot-prop": {
+      "decision": "fix",
+      "madeAt": 1604598681770
+    },
+    "1500|standard-version>conventional-recommended-bump>git-semver-tags>meow>yargs-parser": {
+      "decision": "fix",
+      "madeAt": 1604598681770
+    },
+    "1500|standard-version>git-semver-tags>meow>yargs-parser": {
+      "decision": "fix",
+      "madeAt": 1604598681770
+    },
+    "1500|standard-version>conventional-recommended-bump>meow>yargs-parser": {
+      "decision": "fix",
+      "madeAt": 1604598681770
+    },
+    "1500|standard-version>yargs>yargs-parser": {
+      "decision": "fix",
+      "madeAt": 1604598681770
     }
   },
   "rules": {},
