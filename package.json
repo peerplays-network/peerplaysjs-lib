@@ -73,8 +73,8 @@
     "ws": "^7.2.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-conventional": "^8.2.0",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.21.0",
     "babel-eslint": "^10.0.3",
@@ -95,7 +95,7 @@
     "eslint-plugin-react": "^7.15.1",
     "husky": "^3.1.0",
     "lint-staged": "^8.1.6",
-    "mocha": "^6.2.1",
+    "mocha": "^8.2.1",
     "prettier": "^1.18.2",
     "standard-version": "^7.0.1",
     "uglifyjs": "^2.4.10"
