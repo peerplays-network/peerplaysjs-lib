@@ -1673,7 +1673,7 @@ var nft_metadata_create = new Serializer('nft_metadata_create', {
 var nft_metadata_update = new Serializer('nft_metadata_update', {
   fee: asset,
   owner: protocol_id_type('account'),
-  nft_metadata_id: protocol_id_type('nft_metadata_id'),
+  nft_metadata_id: protocol_id_type('nft_metadata'),
   name: optional(string),
   symbol: optional(string),
   base_uri: optional(string),
