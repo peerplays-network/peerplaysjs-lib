@@ -1,39 +1,29 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
+exports["default"] = void 0;
 
-var _PrivateKey = require('./ecc/src/PrivateKey');
+var _PrivateKey = _interopRequireDefault(require("./ecc/src/PrivateKey"));
 
-var _PrivateKey2 = _interopRequireDefault(_PrivateKey);
+var _PublicKey = _interopRequireDefault(require("./ecc/src/PublicKey"));
 
-var _PublicKey = require('./ecc/src/PublicKey');
+var _signature = _interopRequireDefault(require("./ecc/src/signature"));
 
-var _PublicKey2 = _interopRequireDefault(_PublicKey);
+var _KeyUtils = _interopRequireDefault(require("./ecc/src/KeyUtils"));
 
-var _signature = require('./ecc/src/signature');
+var _TransactionBuilder = _interopRequireDefault(require("./chain/src/TransactionBuilder"));
 
-var _signature2 = _interopRequireDefault(_signature);
+var _AccountLogin = _interopRequireDefault(require("./chain/src/AccountLogin"));
 
-var _KeyUtils = require('./ecc/src/KeyUtils');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var _KeyUtils2 = _interopRequireDefault(_KeyUtils);
-
-var _TransactionBuilder = require('./chain/src/TransactionBuilder');
-
-var _TransactionBuilder2 = _interopRequireDefault(_TransactionBuilder);
-
-var _AccountLogin = require('./chain/src/AccountLogin');
-
-var _AccountLogin2 = _interopRequireDefault(_AccountLogin);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  PrivateKey: _PrivateKey2.default,
-  PublicKey: _PublicKey2.default,
-  Signature: _signature2.default,
-  key: _KeyUtils2.default,
-  TransactionBuilder: _TransactionBuilder2.default,
-  Login: _AccountLogin2.default
+var _default = {
+  PrivateKey: _PrivateKey["default"],
+  PublicKey: _PublicKey["default"],
+  Signature: _signature["default"],
+  key: _KeyUtils["default"],
+  TransactionBuilder: _TransactionBuilder["default"],
+  Login: _AccountLogin["default"]
 };
+exports["default"] = _default;
 module.exports = exports.default;
