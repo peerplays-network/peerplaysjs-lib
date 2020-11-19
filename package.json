@@ -30,7 +30,6 @@
     "prebrowserify": "rm -rf ./build/*",
     "browserify": "browserify -t [browserify-package-json --global=true] -p [bundle-collapser/plugin] dist/browser.js --full-path=false --standalone peerplays_js -o build/peerplaysjs-lib.js -d",
     "postbrowserify": "uglifyjs --compress --mangle --output build/peerplaysjs-lib.min.js -- build/peerplaysjs-lib.js",
-    "doc": "esdoc -c esdoc.json",
     "example:transfer": "babel-node examples/transfer",
     "example:chainStore": "babel-node examples/chainStore",
     "example:privKey": "babel-node examples/privKey"
@@ -86,7 +85,6 @@
     "bundle-collapser": "^1.4.0",
     "commitizen": "^4.2.2",
     "cz-conventional-changelog": "^3.3.0",
-    "esdoc": "^1.1.0",
     "eslint": "^6.7.1",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-flowtype": "^4.7.0",
