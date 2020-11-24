@@ -1652,7 +1652,7 @@ var nft_metadata_create = new Serializer('nft_metadata_create', {
   is_transferable: bool,
   is_sellable: bool,
   account_role: optional(protocol_id_type('account_role')),
-  max_supply: optional(uint16),
+  max_supply: optional(uint64),
   lottery_options: optional(nft_lottery_options),
   extensions: set(future_extensions)
 });
