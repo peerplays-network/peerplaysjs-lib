@@ -162,11 +162,15 @@ var ChainStore = function () {
     this.subError = null;
     this.clearCache();
     this.head_block_time_string = null;
-    this.init().then(function () {
+    try {
+      this.init().then(function () {
       console.log('resetCache init success');
-    }).catch(function (err) {
+      }).catch(function (err) {
       console.log('resetCache init error:', err);
-    });
+      });
+    } catch{
+      console.log('resetCache init error:');
+    }
   };
 
   ChainStore.prototype.setDispatchFrequency = function setDispatchFrequency(freq) {
@@ -242,9 +246,14 @@ var ChainStore = function () {
       });
     };
 
-    return _ws.Apis.instance().init_promise.then(function () {
-      return new Promise(_init);
-    });
+    try {
+      return _ws.Apis.instance().init_promise.then(function () 
+      {
+        return new Promise(_init);
+      })
+    } catch{
+      console.log('error in Init promise');
+    }
   };
 
   ChainStore.prototype._subTo = function _subTo(type, id) {
