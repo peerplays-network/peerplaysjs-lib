@@ -1,0 +1,574 @@
+{
+  "decisions": {
+    "1213|@commitlint/cli>@commitlint/lint>@commitlint/parse>conventional-changelog-angular>compare-func>dot-prop": {
+      "decision": "fix",
+      "madeAt": 1604582799153
+    },
+    "1500|@commitlint/cli>meow>yargs-parser": {
+      "decision": "fix",
+      "madeAt": 1604582799153
+    },
+    "1523|@commitlint/cli>@commitlint/lint>@commitlint/rules>@commitlint/ensure>lodash": {
+      "decision": "fix",
+      "madeAt": 1604582799153
+    },
+    "1523|@commitlint/cli>@commitlint/lint>lodash": {
+      "decision": "fix",
+      "madeAt": 1604582799153
+    },
+    "1523|@commitlint/cli>@commitlint/load>@commitlint/resolve-extends>lodash": {
+      "decision": "fix",
+      "madeAt": 1604582799153
+    },
+    "1523|@commitlint/cli>@commitlint/load>lodash": {
+      "decision": "fix",
+      "madeAt": 1604582799153
+    },
+    "1523|@commitlint/cli>lodash": {
+      "decision": "fix",
+      "madeAt": 1604582799153
+    },
+    "1213|@commitlint/config-conventional>conventional-changelog-conventionalcommits>compare-func>dot-prop": {
+      "decision": "fix",
+      "madeAt": 1604582816633
+    },
+    "1179|babel-plugin-add-module-exports>chokidar>fsevents>node-pre-gyp>mkdirp>minimist": {
+      "decision": "fix",
+      "madeAt": 1604598494381
+    },
+    "1179|babel-plugin-add-module-exports>chokidar>fsevents>node-pre-gyp>tar>mkdirp>minimist": {
+      "decision": "fix",
+      "madeAt": 1604598494381
+    },
+    "1179|babel-plugin-add-module-exports>chokidar>fsevents>node-pre-gyp>rc>minimist": {
+      "decision": "fix",
+      "madeAt": 1604598494381
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>braces>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>braces>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>extglob>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>extglob>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>braces>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>braces>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>extglob>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>braces>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>braces>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>extglob>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>extglob>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>braces>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>extglob>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>snapdragon>base>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>braces>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>braces>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>extglob>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>extglob>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>braces>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>braces>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>extglob>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>braces>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>braces>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>extglob>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>extglob>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>braces>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>extglob>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>snapdragon>base>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>braces>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>braces>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>extglob>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>extglob>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>nanomatch>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>braces>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>braces>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>extglob>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>braces>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>braces>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>extglob>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>extglob>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>braces>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>extglob>expand-brackets>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>extglob>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>snapdragon>base>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>braces>snapdragon-node>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>braces>snapdragon-node>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>braces>snapdragon-node>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>braces>snapdragon-node>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>braces>snapdragon-node>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>braces>snapdragon-node>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|lint-staged>micromatch>braces>snapdragon-node>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288002
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>braces>snapdragon-node>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288003
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>braces>snapdragon-node>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>braces>snapdragon-node>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>braces>snapdragon-node>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>braces>snapdragon-node>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288003
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>braces>snapdragon-node>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288003
+    },
+    "1490|lint-staged>micromatch>braces>snapdragon-node>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288003
+    },
+    "1490|babel-cli>chokidar>readdirp>micromatch>braces>snapdragon-node>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288003
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>readdirp>micromatch>braces>snapdragon-node>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>braces>snapdragon-node>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>braces>snapdragon-node>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500919
+    },
+    "1490|commitizen>find-node-modules>findup-sync>micromatch>braces>snapdragon-node>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288003
+    },
+    "1490|cz-conventional-changelog>commitizen>find-node-modules>findup-sync>micromatch>braces>snapdragon-node>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288003
+    },
+    "1490|lint-staged>micromatch>braces>snapdragon-node>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604599288003
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>extglob>define-property>is-descriptor>is-accessor-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500920
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>extglob>define-property>is-descriptor>is-data-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500920
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>extglob>define-property>is-descriptor>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500920
+    },
+    "1490|babel-plugin-add-module-exports>chokidar>anymatch>micromatch>kind-of": {
+      "decision": "fix",
+      "madeAt": 1604598500920
+    },
+    "1179|mocha>mkdirp>minimist": {
+      "decision": "fix",
+      "madeAt": 1604582924117
+    },
+    "1500|mocha>yargs-parser": {
+      "decision": "fix",
+      "madeAt": 1604582924117
+    },
+    "1213|standard-version>conventional-changelog-conventionalcommits>compare-func>dot-prop": {
+      "decision": "fix",
+      "madeAt": 1604598681770
+    },
+    "1500|standard-version>conventional-recommended-bump>git-semver-tags>meow>yargs-parser": {
+      "decision": "fix",
+      "madeAt": 1604598681770
+    },
+    "1500|standard-version>git-semver-tags>meow>yargs-parser": {
+      "decision": "fix",
+      "madeAt": 1604598681770
+    },
+    "1500|standard-version>conventional-recommended-bump>meow>yargs-parser": {
+      "decision": "fix",
+      "madeAt": 1604598681770
+    },
+    "1500|standard-version>yargs>yargs-parser": {
+      "decision": "fix",
+      "madeAt": 1604598681770
+    },
+    "786|babel-cli>chokidar>anymatch>micromatch>braces": {
+      "decision": "postpone",
+      "madeAt": 1604598778076
+    },
+    "812|esdoc>marked": {
+      "decision": "postpone",
+      "madeAt": 1604598779568
+    },
+    "1179|babel-cli>chokidar>fsevents>node-pre-gyp>mkdirp>minimist": {
+      "decision": "postpone",
+      "madeAt": 1604598780887
+    },
+    "1179|babel-cli>chokidar>fsevents>node-pre-gyp>tar>mkdirp>minimist": {
+      "decision": "postpone",
+      "madeAt": 1604598780887
+    },
+    "1179|babel-cli>chokidar>fsevents>node-pre-gyp>rc>minimist": {
+      "decision": "postpone",
+      "madeAt": 1604598780887
+    },
+    "1179|esdoc>minimist": {
+      "decision": "postpone",
+      "madeAt": 1604598780887
+    }
+  },
+  "rules": {},
+  "version": 1
+}

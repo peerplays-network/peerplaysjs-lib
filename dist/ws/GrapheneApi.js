@@ -1,18 +1,17 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
+exports["default"] = void 0;
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var GrapheneApi = function () {
+var GrapheneApi = /*#__PURE__*/function () {
   function GrapheneApi(ws_rpc, api_name) {
-    _classCallCheck(this, GrapheneApi);
-
     this.ws_rpc = ws_rpc;
     this.api_name = api_name;
   }
 
-  GrapheneApi.prototype.init = function init() {
+  var _proto = GrapheneApi.prototype;
+
+  _proto.init = function init() {
     var _this = this;
 
     return this.ws_rpc.call([1, this.api_name, []]).then(function (response) {
@@ -21,8 +20,8 @@ var GrapheneApi = function () {
     });
   };
 
-  GrapheneApi.prototype.exec = function exec(method, params) {
-    return this.ws_rpc.call([this.api_id, method, params]).catch(function (error) {
+  _proto.exec = function exec(method, params) {
+    return this.ws_rpc.call([this.api_id, method, params])["catch"](function (error) {
       console.log('!!! GrapheneApi error: ', method, params, error, JSON.stringify(error));
       throw error;
     });
@@ -31,5 +30,6 @@ var GrapheneApi = function () {
   return GrapheneApi;
 }();
 
-exports.default = GrapheneApi;
+var _default = GrapheneApi;
+exports["default"] = _default;
 module.exports = exports.default;
