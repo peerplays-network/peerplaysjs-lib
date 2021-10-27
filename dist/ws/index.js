@@ -1,17 +1,22 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
+exports.ChainConfig = exports.ConnectionManager = exports.Apis = undefined;
 
-var _ApiInstances = _interopRequireDefault(require("./ApiInstances"));
+var _ApiInstances = require('./ApiInstances');
 
-exports.Apis = _ApiInstances["default"];
+var _ApiInstances2 = _interopRequireDefault(_ApiInstances);
 
-var _ConnectionManager = _interopRequireDefault(require("./ConnectionManager"));
+var _ConnectionManager = require('./ConnectionManager');
 
-exports.ConnectionManager = _ConnectionManager["default"];
+var _ConnectionManager2 = _interopRequireDefault(_ConnectionManager);
 
-var _ChainConfig = _interopRequireDefault(require("./ChainConfig"));
+var _ChainConfig = require('./ChainConfig');
 
-exports.ChainConfig = _ChainConfig["default"];
+var _ChainConfig2 = _interopRequireDefault(_ChainConfig);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.Apis = _ApiInstances2.default;
+exports.ConnectionManager = _ConnectionManager2.default;
+exports.ChainConfig = _ChainConfig2.default; /* Websocket lib */

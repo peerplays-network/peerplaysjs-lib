@@ -1,42 +1,49 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports.hash = void 0;
+exports.key = exports.hash = exports.brainKey = exports.Signature = exports.PublicKey = exports.PrivateKey = exports.Aes = exports.Address = undefined;
 
-var _address = _interopRequireDefault(require("./src/address"));
+var _address = require('./src/address');
 
-exports.Address = _address["default"];
+var _address2 = _interopRequireDefault(_address);
 
-var _aes = _interopRequireDefault(require("./src/aes"));
+var _aes = require('./src/aes');
 
-exports.Aes = _aes["default"];
+var _aes2 = _interopRequireDefault(_aes);
 
-var _PrivateKey = _interopRequireDefault(require("./src/PrivateKey"));
+var _PrivateKey = require('./src/PrivateKey');
 
-exports.PrivateKey = _PrivateKey["default"];
+var _PrivateKey2 = _interopRequireDefault(_PrivateKey);
 
-var _PublicKey = _interopRequireDefault(require("./src/PublicKey"));
+var _PublicKey = require('./src/PublicKey');
 
-exports.PublicKey = _PublicKey["default"];
+var _PublicKey2 = _interopRequireDefault(_PublicKey);
 
-var _signature = _interopRequireDefault(require("./src/signature"));
+var _signature = require('./src/signature');
 
-exports.Signature = _signature["default"];
+var _signature2 = _interopRequireDefault(_signature);
 
-var _BrainKey = _interopRequireDefault(require("./src/BrainKey"));
+var _BrainKey = require('./src/BrainKey');
 
-exports.brainKey = _BrainKey["default"];
+var _BrainKey2 = _interopRequireDefault(_BrainKey);
 
-var hash = _interopRequireWildcard(require("./src/hash"));
+var _hash = require('./src/hash');
 
+var hash = _interopRequireWildcard(_hash);
+
+var _KeyUtils = require('./src/KeyUtils');
+
+var _KeyUtils2 = _interopRequireDefault(_KeyUtils);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.Address = _address2.default;
+exports.Aes = _aes2.default;
+exports.PrivateKey = _PrivateKey2.default;
+exports.PublicKey = _PublicKey2.default;
+exports.Signature = _signature2.default;
+exports.brainKey = _BrainKey2.default;
 exports.hash = hash;
-
-var _KeyUtils = _interopRequireDefault(require("./src/KeyUtils"));
-
-exports.key = _KeyUtils["default"];
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+exports.key = _KeyUtils2.default;

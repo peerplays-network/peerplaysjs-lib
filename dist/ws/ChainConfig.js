@@ -1,7 +1,9 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports["default"] = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var defaults = {
   core_asset: 'PPY',
   address_prefix: 'PPY',
@@ -9,6 +11,7 @@ var defaults = {
   expire_in_secs_proposal: 24 * 60 * 60,
   review_in_secs_committee: 24 * 60 * 60
 };
+
 var networks = {
   networks: {
     Peerplays: {
@@ -24,18 +27,18 @@ var networks = {
   }
 };
 
-var ChainConfig = /*#__PURE__*/function () {
+var ChainConfig = function () {
   function ChainConfig() {
+    _classCallCheck(this, ChainConfig);
+
     this.reset();
   }
 
-  var _proto = ChainConfig.prototype;
-
-  _proto.reset = function reset() {
+  ChainConfig.prototype.reset = function reset() {
     Object.assign(this, defaults);
   };
 
-  _proto.setChainId = function setChainId(chainID) {
+  ChainConfig.prototype.setChainId = function setChainId(chainID) {
     var ref = Object.keys(networks);
 
     for (var i = 0, len = ref.length; i < len; i++) {
@@ -61,10 +64,8 @@ var ChainConfig = /*#__PURE__*/function () {
     }
   };
 
-  _proto.setPrefix = function setPrefix(prefix) {
-    if (prefix === void 0) {
-      prefix = 'PPY';
-    }
+  ChainConfig.prototype.setPrefix = function setPrefix() {
+    var prefix = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'PPY';
 
     this.address_prefix = prefix;
   };
@@ -72,7 +73,5 @@ var ChainConfig = /*#__PURE__*/function () {
   return ChainConfig;
 }();
 
-var _default = new ChainConfig();
-
-exports["default"] = _default;
+exports.default = new ChainConfig();
 module.exports = exports.default;

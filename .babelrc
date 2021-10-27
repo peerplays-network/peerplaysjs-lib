@@ -1,7 +1,8 @@
 {
     "plugins": ["add-module-exports"],
     "presets": [
-        "./tools/es2015Preset"
+        "./tools/es2015Preset",
+        "stage-1"
     ],
     "env" : {
         "cjs": {

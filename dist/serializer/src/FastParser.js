@@ -1,24 +1,27 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports["default"] = void 0;
 
-var _PublicKey = _interopRequireDefault(require("../../ecc/src/PublicKey"));
+var _PublicKey = require('../../ecc/src/PublicKey');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var _PublicKey2 = _interopRequireDefault(_PublicKey);
 
-var FastParser = /*#__PURE__*/function () {
-  function FastParser() {}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var FastParser = function () {
+  function FastParser() {
+    _classCallCheck(this, FastParser);
+  }
 
   FastParser.fixed_data = function fixed_data(b, len, buffer) {
     if (!b) {
       return;
     }
-
     if (buffer) {
       var data = buffer.slice(0, len).toString('binary');
       b.append(data, 'binary');
-
       while (len-- > data.length) {
         b.writeUint8(0);
       }
@@ -30,18 +33,16 @@ var FastParser = /*#__PURE__*/function () {
   };
 
   FastParser.public_key = function public_key(b, _public_key) {
-    var buffer;
-
+    var buffer = void 0;
     if (!b) {
       return;
     }
-
     if (_public_key) {
       buffer = _public_key.toBuffer();
       b.append(buffer.toString('binary'), 'binary');
     } else {
       buffer = FastParser.fixed_data(b, 33);
-      return _PublicKey["default"].fromBuffer(buffer);
+      return _PublicKey2.default.fromBuffer(buffer);
     }
   };
 
@@ -49,7 +50,6 @@ var FastParser = /*#__PURE__*/function () {
     if (!b) {
       return;
     }
-
     if (_ripemd) {
       FastParser.fixed_data(b, 20, _ripemd);
     } else {
@@ -61,7 +61,6 @@ var FastParser = /*#__PURE__*/function () {
     if (!b) {
       return;
     }
-
     if (_sha) {
       FastParser.fixed_data(b, 32, _sha);
     } else {
@@ -75,7 +74,6 @@ var FastParser = /*#__PURE__*/function () {
       b.writeInt32(epoch);
     } else {
       epoch = b.readInt32(); // fc::time_point_sec
-
       return new Date(epoch * 1000);
     }
   };
@@ -83,6 +81,5 @@ var FastParser = /*#__PURE__*/function () {
   return FastParser;
 }();
 
-var _default = FastParser;
-exports["default"] = _default;
+exports.default = FastParser;
 module.exports = exports.default;

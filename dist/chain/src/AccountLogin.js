@@ -1,29 +1,35 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports["default"] = void 0;
 
-var _PrivateKey = _interopRequireDefault(require("../../ecc/src/PrivateKey"));
+var _PrivateKey = require('../../ecc/src/PrivateKey');
 
-var _KeyUtils = _interopRequireDefault(require("../../ecc/src/KeyUtils"));
+var _PrivateKey2 = _interopRequireDefault(_PrivateKey);
 
-var _state = require("./state");
+var _KeyUtils = require('../../ecc/src/KeyUtils');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var _KeyUtils2 = _interopRequireDefault(_KeyUtils);
+
+var _state = require('./state');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var _keyCachePriv = {};
 var _keyCachePub = {};
 
-var AccountLogin = /*#__PURE__*/function () {
+var AccountLogin = function () {
   function AccountLogin() {
-    var state = {
-      loggedIn: false,
-      roles: ['owner', 'active', 'memo']
-    };
+    _classCallCheck(this, AccountLogin);
+
+    var state = { loggedIn: false, roles: ['owner', 'active', 'memo'] };
     this.get = (0, _state.get)(state);
     this.set = (0, _state.set)(state);
+
     this.subs = {};
   }
+
   /**
    * Subscribe to provided item.
    *
@@ -32,22 +38,22 @@ var AccountLogin = /*#__PURE__*/function () {
    */
 
 
-  var _proto = AccountLogin.prototype;
-
-  _proto.addSubscription = function addSubscription(cb) {
+  AccountLogin.prototype.addSubscription = function addSubscription(cb) {
     this.subs[cb] = cb;
-  }
+  };
+
   /**
    * Set the roles. Used for key generation.
    *
    * @param {Array} roles - ['owner', 'active', 'memo']
    * @memberof AccountLogin
    */
-  ;
 
-  _proto.setRoles = function setRoles(roles) {
+
+  AccountLogin.prototype.setRoles = function setRoles(roles) {
     this.set('roles', roles);
-  }
+  };
+
   /**
    * Call this function to generate Peerplays user account keys.
    *
@@ -58,9 +64,9 @@ var AccountLogin = /*#__PURE__*/function () {
    * @returns {Object} - Keys object: `{privKeys, pubKeys}`
    * @memberof AccountLogin
    */
-  ;
 
-  _proto.generateKeys = function generateKeys(accountName, password, roles, prefix) {
+
+  AccountLogin.prototype.generateKeys = function generateKeys(accountName, password, roles, prefix) {
     if (!accountName || !password) {
       throw new Error('Account name or password required');
     }
@@ -71,19 +77,21 @@ var AccountLogin = /*#__PURE__*/function () {
 
     var privKeys = {};
     var pubKeys = {};
+
     (roles || this.get('roles')).forEach(function (role) {
       var seed = password + accountName + role;
-      var pkey = _keyCachePriv[seed] ? _keyCachePriv[seed] : _PrivateKey["default"].fromSeed(_KeyUtils["default"].normalize_brainKey(seed));
+      var pkey = _keyCachePriv[seed] ? _keyCachePriv[seed] : _PrivateKey2.default.fromSeed(_KeyUtils2.default.normalize_brainKey(seed));
       _keyCachePriv[seed] = pkey;
+
       privKeys[role] = pkey;
       pubKeys[role] = _keyCachePub[seed] ? _keyCachePub[seed] : pkey.toPublicKey().toString(prefix);
+
       _keyCachePub[seed] = pubKeys[role];
     });
-    return {
-      privKeys: privKeys,
-      pubKeys: pubKeys
-    };
-  }
+
+    return { privKeys: privKeys, pubKeys: pubKeys };
+  };
+
   /**
    * Accepts an account name {string}, password {string}, and an auths object. We loop over the
    * provided auths whichcontains the keys associated with the account we are working with.
@@ -101,18 +109,15 @@ var AccountLogin = /*#__PURE__*/function () {
    * @returns {Boolean}
    * @memberof AccountLogin
    */
-  ;
 
-  _proto.checkKeys = function checkKeys(_ref, prefix) {
+
+  AccountLogin.prototype.checkKeys = function checkKeys(_ref) {
     var _this = this;
 
     var accountName = _ref.accountName,
         password = _ref.password,
         auths = _ref.auths;
-
-    if (prefix === void 0) {
-      prefix = 'PPY';
-    }
+    var prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'PPY';
 
     if (!accountName || !password || !auths) {
       throw new Error('checkKeys: Missing inputs');
@@ -124,19 +129,15 @@ var AccountLogin = /*#__PURE__*/function () {
     var _loop = function _loop(i, len) {
       var role = roles[i];
 
-      var _this$generateKeys = _this.generateKeys(accountName, password, [role], prefix),
-          privKeys = _this$generateKeys.privKeys,
-          pubKeys = _this$generateKeys.pubKeys;
+      var _generateKeys = _this.generateKeys(accountName, password, [role], prefix),
+          privKeys = _generateKeys.privKeys,
+          pubKeys = _generateKeys.pubKeys;
 
       auths[role].forEach(function (roleKey) {
         // Check if the active key matches
         if (roleKey[0] === pubKeys[role]) {
           hasKey = true;
-
-          _this.set(role, {
-            priv: privKeys[role],
-            pub: pubKeys[role]
-          });
+          _this.set(role, { priv: privKeys[role], pub: pubKeys[role] });
         }
       });
     };
@@ -150,8 +151,10 @@ var AccountLogin = /*#__PURE__*/function () {
     }
 
     this.set('loggedIn', hasKey);
+
     return hasKey;
-  }
+  };
+
   /**
    * Call this function and provide a valid transaction object to sign it with
    * the users' Active key.
@@ -162,12 +165,13 @@ var AccountLogin = /*#__PURE__*/function () {
    * @returns {Object} tr - Transaction object that was passed in but signed.
    * @memberof AccountLogin
    */
-  ;
 
-  _proto.signTransaction = function signTransaction(tr) {
+
+  AccountLogin.prototype.signTransaction = function signTransaction(tr) {
     var _this2 = this;
 
     var hasKey = false;
+
     this.get('roles').forEach(function (role) {
       var myKey = _this2.get(role);
 
@@ -186,7 +190,5 @@ var AccountLogin = /*#__PURE__*/function () {
   return AccountLogin;
 }();
 
-var _default = new AccountLogin();
-
-exports["default"] = _default;
+exports.default = new AccountLogin();
 module.exports = exports.default;
