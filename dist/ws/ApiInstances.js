@@ -1,25 +1,32 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports["default"] = void 0;
 
-var _ChainWebSocket = _interopRequireDefault(require("./ChainWebSocket"));
+var _ChainWebSocket = require('./ChainWebSocket');
 
-var _GrapheneApi = _interopRequireDefault(require("./GrapheneApi"));
+var _ChainWebSocket2 = _interopRequireDefault(_ChainWebSocket);
 
-var _ChainConfig = _interopRequireDefault(require("./ChainConfig"));
+var _GrapheneApi = require('./GrapheneApi');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var _GrapheneApi2 = _interopRequireDefault(_GrapheneApi);
 
-var inst;
+var _ChainConfig = require('./ChainConfig');
 
-var ApisInstance = /*#__PURE__*/function () {
-  function ApisInstance() {}
+var _ChainConfig2 = _interopRequireDefault(_ChainConfig);
 
-  var _proto = ApisInstance.prototype;
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var inst = void 0;
+
+var ApisInstance = function () {
+  function ApisInstance() {
+    _classCallCheck(this, ApisInstance);
+  }
 
   /** @arg {string} connection .. */
-  _proto.connect = function connect(cs, connectTimeout) {
+  ApisInstance.prototype.connect = function connect(cs, connectTimeout) {
     var _this = this;
 
     var rpc_user = '';
@@ -29,19 +36,19 @@ var ApisInstance = /*#__PURE__*/function () {
       throw new Error('Secure domains require wss connection');
     }
 
-    this.ws_rpc = new _ChainWebSocket["default"](cs, this.statusCb, connectTimeout);
+    this.ws_rpc = new _ChainWebSocket2.default(cs, this.statusCb, connectTimeout);
+
     this.init_promise = this.ws_rpc.login(rpc_user, rpc_password).then(function () {
       console.log('Connected to API node:', cs);
-      _this._db = new _GrapheneApi["default"](_this.ws_rpc, 'database');
-      _this._net = new _GrapheneApi["default"](_this.ws_rpc, 'network_broadcast');
-      _this._hist = new _GrapheneApi["default"](_this.ws_rpc, 'history');
-      _this._crypto = new _GrapheneApi["default"](_this.ws_rpc, 'crypto');
-      _this._bookie = new _GrapheneApi["default"](_this.ws_rpc, 'bookie');
-
+      _this._db = new _GrapheneApi2.default(_this.ws_rpc, 'database');
+      _this._net = new _GrapheneApi2.default(_this.ws_rpc, 'network_broadcast');
+      _this._hist = new _GrapheneApi2.default(_this.ws_rpc, 'history');
+      _this._crypto = new _GrapheneApi2.default(_this.ws_rpc, 'crypto');
+      _this._bookie = new _GrapheneApi2.default(_this.ws_rpc, 'bookie');
       var db_promise = _this._db.init().then(function () {
         return _this._db.exec('get_chain_id', []).then(function (_chain_id) {
           _this.chain_id = _chain_id;
-          return _ChainConfig["default"].setChainId(_chain_id);
+          return _ChainConfig2.default.setChainId(_chain_id);
         });
       });
 
@@ -49,28 +56,25 @@ var ApisInstance = /*#__PURE__*/function () {
         _this.ws_rpc.login('', '').then(function () {
           _this._db.init().then(function () {
             if (_this.statusCb) {
-              _this.statusCb(_ChainWebSocket["default"].status.RECONNECTED);
+              _this.statusCb(_ChainWebSocket2.default.status.RECONNECTED);
             }
           });
-
           _this._net.init();
-
           _this._hist.init();
-
           _this._crypto.init();
-
           _this._bookie.init();
         });
       };
 
-      return Promise.all([db_promise, _this._net.init(), _this._hist.init(), // Temporary squash crypto API error until the API is upgraded everywhere
-      _this._crypto.init()["catch"](function (e) {
+      return Promise.all([db_promise, _this._net.init(), _this._hist.init(),
+      // Temporary squash crypto API error until the API is upgraded everywhere
+      _this._crypto.init().catch(function (e) {
         return console.error('ApiInstance\tCrypto API Error', e);
       }), _this._bookie.init()]);
     });
   };
 
-  _proto.close = function close() {
+  ApisInstance.prototype.close = function close() {
     if (this.ws_rpc) {
       this.ws_rpc.close();
     }
@@ -78,32 +82,33 @@ var ApisInstance = /*#__PURE__*/function () {
     this.ws_rpc = null;
   };
 
-  _proto.db_api = function db_api() {
+  ApisInstance.prototype.db_api = function db_api() {
     return this._db;
   };
 
-  _proto.network_api = function network_api() {
+  ApisInstance.prototype.network_api = function network_api() {
     return this._net;
   };
 
-  _proto.history_api = function history_api() {
+  ApisInstance.prototype.history_api = function history_api() {
     return this._hist;
   };
 
-  _proto.crypto_api = function crypto_api() {
+  ApisInstance.prototype.crypto_api = function crypto_api() {
     return this._crypto;
   };
 
-  _proto.bookie_api = function bookie_api() {
+  ApisInstance.prototype.bookie_api = function bookie_api() {
     return this._bookie;
   };
 
-  _proto.setRpcConnectionStatusCallback = function setRpcConnectionStatusCallback(callback) {
+  ApisInstance.prototype.setRpcConnectionStatusCallback = function setRpcConnectionStatusCallback(callback) {
     this.statusCb = callback;
   };
 
   return ApisInstance;
 }();
+
 /**
     Configure: configure as follows `Apis.instance("ws://localhost:8090").init_promise`.  This
     returns a promise, once resolved the connection is ready.
@@ -116,8 +121,7 @@ var ApisInstance = /*#__PURE__*/function () {
     Returns a promise with results.
 */
 
-
-var _default = {
+exports.default = {
   setRpcConnectionStatusCallback: function setRpcConnectionStatusCallback(callback) {
     this.statusCb = callback;
 
@@ -131,14 +135,10 @@ var _default = {
         @return {Apis} singleton .. Check Apis.instance().init_promise to
         know when the connection is established
     */
-  reset: function reset(cs, connect, connectTimeout) {
-    if (cs === void 0) {
-      cs = 'ws://localhost:8090';
-    }
-
-    if (connectTimeout === void 0) {
-      connectTimeout = 4000;
-    }
+  reset: function reset() {
+    var cs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'ws://localhost:8090';
+    var connect = arguments[1];
+    var connectTimeout = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 4000;
 
     if (inst) {
       inst.close();
@@ -154,14 +154,10 @@ var _default = {
 
     return inst;
   },
-  instance: function instance(cs, connect, connectTimeout) {
-    if (cs === void 0) {
-      cs = 'ws://localhost:8090';
-    }
-
-    if (connectTimeout === void 0) {
-      connectTimeout = 4000;
-    }
+  instance: function instance() {
+    var cs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'ws://localhost:8090';
+    var connect = arguments[1];
+    var connectTimeout = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 4000;
 
     if (!inst) {
       inst = new ApisInstance();
@@ -182,11 +178,11 @@ var _default = {
       inst.close();
       inst = null;
     }
-  } // db: (method, ...args) => Apis.instance().db_api().exec(method, toStrings(args)),
+  }
+  // db: (method, ...args) => Apis.instance().db_api().exec(method, toStrings(args)),
   // network: (method, ...args) => Apis.instance().network_api().exec(method, toStrings(args)),
   // history: (method, ...args) => Apis.instance().history_api().exec(method, toStrings(args)),
   // crypto: (method, ...args) => Apis.instance().crypto_api().exec(method, toStrings(args))
 
 };
-exports["default"] = _default;
 module.exports = exports.default;
