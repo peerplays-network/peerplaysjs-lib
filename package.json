@@ -33,7 +33,9 @@
     "doc": "esdoc -c esdoc.json",
     "example:transfer": "babel-node examples/transfer",
     "example:chainStore": "babel-node examples/chainStore",
-    "example:privKey": "babel-node examples/privKey"
+    "example:privKey": "babel-node examples/privKey",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -69,8 +71,9 @@
     "immutable": "^3.7.6",
     "secure-random": "^1.1.2",
     "uglify-js": "^3.6.0",
-    "inquirer": "^7.0.0",
-    "ws": "^7.2.0"
+    "inquirer": "^7.0.5",
+    "ws": "^7.2.0",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
@@ -118,5 +121,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "snyk": true
 }
