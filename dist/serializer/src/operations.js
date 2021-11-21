@@ -676,7 +676,7 @@ var account_options = new Serializer('account_options', {
   voting_account: protocol_id_type('account'),
   num_witness: uint16,
   num_committee: uint16,
-  //num_son: uint16,
+  // num_son: uint16,
   votes: set(vote_id),
   extensions: set(future_extensions)
 });
