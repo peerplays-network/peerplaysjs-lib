@@ -39,7 +39,9 @@ var op_history = parseInt(object_type.operation_history, 10);
 var limit_order = parseInt(object_type.limit_order, 10);
 var call_order = parseInt(object_type.call_order, 10);
 var proposal = parseInt(object_type.proposal, 10);
+/* eslint-disable no-unused-vars */
 var balance_type = parseInt(object_type.balance, 10);
+/* eslint-enable no-unused-vars */
 var vesting_balance_type = parseInt(object_type.vesting_balance, 10);
 var witness_object_type = parseInt(object_type.witness, 10);
 var worker_object_type = parseInt(object_type.worker, 10);
@@ -60,7 +62,9 @@ var account_transaction_history_prefix = '2.' + parseInt(impl_object_type.accoun
 var asset_dynamic_data_prefix = '2.' + parseInt(impl_object_type.asset_dynamic_data, 10) + '.';
 var bitasset_data_prefix = '2.' + parseInt(impl_object_type.asset_bitasset_data, 10) + '.';
 var block_summary_prefix = '2.' + parseInt(impl_object_type.block_summary, 10) + '.';
+/* eslint-disable no-unused-vars */
 var vesting_balance_prefix = '1.' + vesting_balance_type + '.';
+/* eslint-enable no-unused-vars */
 var witness_prefix = '1.' + witness_object_type + '.';
 var worker_prefix = '1.' + worker_object_type + '.';
 var committee_prefix = '1.' + committee_member_object_type + '.';
@@ -228,10 +232,14 @@ var ChainStore = function () {
                 return reject(_this.subError);
               }
 
-              setTimeout(_init.bind(_this, resolve, reject), 1000);
+              setTimeout(function () {
+                return _init.bind(this, resolve, reject);
+              }, 1000);
             }
           } else {
-            setTimeout(_init.bind(_this, resolve, reject), 1000);
+            setTimeout(function () {
+              return _init.bind(this, resolve, reject);
+            }, 1000);
           }
         }
       }).catch(function (error) {
@@ -457,6 +465,8 @@ var ChainStore = function () {
 
         _this3.simple_objects_by_id = _this3.simple_objects_by_id.set(id, object);
         success(object);
+      }).catch(function (error) {
+        console.error(error);
       });
     });
   };
@@ -651,6 +661,8 @@ var ChainStore = function () {
       if (tournament_id !== originalTournamentIdsInState) {
         _this7.notifySubscribers();
       }
+    }).catch(function (error) {
+      console.error(error);
     });
     return tournamentIdsForThisAccountAndState;
   };
@@ -675,6 +687,8 @@ var ChainStore = function () {
         _this8.registered_tournament_ids_by_player = _this8.registered_tournament_ids_by_player.set(accountId, newTournamentIds);
         _this8.notifySubscribers();
       }
+    }).catch(function (error) {
+      console.error(error);
     });
 
     return tournamentIds;
@@ -870,7 +884,11 @@ var ChainStore = function () {
         _this10.getSimpleObjectById(witness.witness_account).then(function (fetched_account) {
           _this10.account_by_witness_id = _this10.account_by_witness_id.set(witness_id, fetched_account);
           success(fetched_account);
+        }).catch(function (error) {
+          console.error(error);
         });
+      }).catch(function (error) {
+        console.error(error);
       });
     });
   };
@@ -960,10 +978,14 @@ var ChainStore = function () {
               if (on_update && committee) {
                 on_update();
               }
+            }).catch(function (error) {
+              console.error(error);
             });
           }
         }, function () {
           _this11.committee_by_account_id.set(id_or_account, null);
+        }).catch(function (error) {
+          console.error(error);
         });
       } else {
         var account_id = account.get('id');
@@ -980,6 +1002,8 @@ var ChainStore = function () {
             if (on_update && committee) {
               on_update();
             }
+          }).catch(function (error) {
+            console.error(error);
           });
         }
       }
@@ -998,7 +1022,9 @@ var ChainStore = function () {
   ChainStore.prototype.fetchWitnessAccounts = function fetchWitnessAccounts() {
     var _this12 = this;
 
+    /* eslint-disable no-unused-vars */
     return new Promise(function (resolve, reject) {
+      /* eslint-enable no-unused-vars */
       _ws.Apis.instance().db_api().exec('lookup_witness_accounts', [0, 1000]).then(function (w) {
         if (w) {
           var witnessArr = [];
@@ -1022,6 +1048,8 @@ var ChainStore = function () {
         } else {
           resolve(null);
         }
+      }).catch(function (error) {
+        console.error(error);
       });
     });
   };
@@ -1047,7 +1075,9 @@ var ChainStore = function () {
           _this13.notifySubscribers();
           resolve(null);
         }
-      }, reject);
+      }, reject).catch(function (error) {
+        console.error(error);
+      });
     });
   };
 
@@ -1072,7 +1102,9 @@ var ChainStore = function () {
           _this14.notifySubscribers();
           resolve(null);
         }
-      }, reject);
+      }, reject).catch(function (error) {
+        console.error(error);
+      });
     });
   };
 
@@ -1230,6 +1262,8 @@ var ChainStore = function () {
         } else {
           _this15.accounts_by_name = _this15.accounts_by_name.delete(name_or_id);
         }
+      }).catch(function (error) {
+        console.error(error);
       });
     }
 
@@ -1356,10 +1390,14 @@ var ChainStore = function () {
           // it looks like some more history may have come in while we were
           // waiting on the result, lets fetch anything new before we resolve
           // this query.
-          _this16.fetchRecentHistory(updated_account, limit).then(resolve, reject);
+          _this16.fetchRecentHistory(updated_account, limit).then(resolve, reject).catch(function (error) {
+            console.error(error);
+          });
         } else {
           resolve(updated_account);
         }
+      }).catch(function (error) {
+        console.error(error);
       }); // end then
     });
 
@@ -1379,7 +1417,9 @@ var ChainStore = function () {
         } else {
           resolve(null);
         }
-      }, reject);
+      }, reject).catch(function (error) {
+        console.error(error);
+      });
     });
   };
 
@@ -1484,7 +1524,9 @@ var ChainStore = function () {
         } else {
           resolve(null);
         }
-      }, reject);
+      }, reject).catch(function (error) {
+        console.error(error);
+      });
     });
   };
 
@@ -1496,7 +1538,9 @@ var ChainStore = function () {
         } else {
           resolve(null);
         }
-      }, reject);
+      }, reject).catch(function (error) {
+        console.error(error);
+      });
     });
   };
 
@@ -1508,7 +1552,9 @@ var ChainStore = function () {
         } else {
           resolve(null);
         }
-      }, reject);
+      }, reject).catch(function (error) {
+        console.error(error);
+      });
     });
   };
 
@@ -1520,7 +1566,9 @@ var ChainStore = function () {
         } else {
           resolve(null);
         }
-      }, reject);
+      }, reject).catch(function (error) {
+        console.error(error);
+      });
     });
   };
 
@@ -1532,7 +1580,9 @@ var ChainStore = function () {
         } else {
           resolve(null);
         }
-      }, reject);
+      }, reject).catch(function (error) {
+        console.error(error);
+      });
     });
   };
 
@@ -1544,7 +1594,9 @@ var ChainStore = function () {
         } else {
           resolve(null);
         }
-      }, reject);
+      }, reject).catch(function (error) {
+        console.error(error);
+      });
     });
   };
 
@@ -1556,7 +1608,9 @@ var ChainStore = function () {
         } else {
           resolve(null);
         }
-      }, reject);
+      }, reject).catch(function (error) {
+        console.error(error);
+      });
     });
   };
 
@@ -1568,7 +1622,9 @@ var ChainStore = function () {
         } else {
           resolve(null);
         }
-      }, reject);
+      }, reject).catch(function (error) {
+        console.error(error);
+      });
     });
   };
 
@@ -1582,7 +1638,9 @@ var ChainStore = function () {
         } else {
           resolve(null);
         }
-      }, reject);
+      }, reject).catch(function (error) {
+        console.error(error);
+      });
     });
   };
 
@@ -1651,6 +1709,7 @@ var ChainStore = function () {
     } else if (objectSpace === operation_history_prefix) {
       // operation_history object
       return; // console.log("not interested in operation_history", object);
+      // deepcode ignore DuplicateIfBody: <please specify a reason of ignoring this>
     } else if (objectSpace === block_summary_prefix) {
       // block_summary object
       return; // console.log("not interested in block_summary_prefix", object);
@@ -1965,6 +2024,8 @@ var ChainStore = function () {
       }
 
       return list;
+    }).catch(function (error) {
+      console.error(error);
     });
   };
 
@@ -1983,6 +2044,8 @@ var ChainStore = function () {
           }
 
           resolve(_this21.last_tournament_id);
+        }).catch(function (error) {
+          console.error(error);
         });
       } else {
         resolve(_this21.last_tournament_id);
@@ -2070,7 +2133,8 @@ var ChainStore = function () {
 
   ChainStore.timeStringToDate = function timeStringToDate(time_string) {
     if (!time_string) {
-      return new Date('1970-01-01T00:00:00.000Z');
+      var newLocal = new Date('1970-01-01T00:00:00.000Z');
+      return newLocal;
     }
 
     // does not end in Z
@@ -2101,6 +2165,8 @@ var ChainStore = function () {
           lastBlock: _this24.last_processed_block,
           scanToBlock: scanToBlock
         });
+      }).catch(function (error) {
+        console.error(error);
       });
     });
   };
@@ -2170,8 +2236,12 @@ var ChainStore = function () {
 
           _this25.__bindBlock(lastBlock, scanToBlock, isInit).then(function () {
             return success();
+          }).catch(function (error) {
+            console.error(error);
           });
         });
+      }).catch(function (error) {
+        console.error(error);
       });
     });
   };
@@ -2195,7 +2265,11 @@ var ChainStore = function () {
         if (isInit) {
           _this26.store_initialized = true;
         }
+      }).catch(function (error) {
+        console.error(error);
       });
+    }).catch(function (error) {
+      console.error(error);
     });
   };
 
@@ -2212,6 +2286,7 @@ var ChainStore = function () {
   };
 
   ChainStore.prototype.getLastIdLottery = function getLastIdLottery() {
+    // eslint-disable-next-line max-len
     return _ws.Apis.instance().db_api().exec('get_lotteries', ['1.3.0', 1, '1.3.0']).then(function (lotteries) {
 
       if (!lotteries || !lotteries.length) {
@@ -2219,6 +2294,8 @@ var ChainStore = function () {
       }
 
       return lotteries[0]['id'];
+    }).catch(function (error) {
+      console.error(error);
     });
   };
 
@@ -2242,6 +2319,7 @@ var ChainStore = function () {
             return resolve(self.lotteries_ids);
           }
 
+          // eslint-disable-next-line max-len
           return _ws.Apis.instance().db_api().exec('get_lotteries', [prevId, limit, nextId]).then(function (lotteries) {
 
             if (!lotteries.length) {
@@ -2262,11 +2340,14 @@ var ChainStore = function () {
                 firstIdNum = parseInt(firstId.split('.')[2]),
                 nextNumId = firstIdNum - limit;
 
+            // eslint-disable-next-line max-len
             return fetchLotteries('1.3.0', limit, '1.3.' + Math.max(nextNumId, 0), firstIdNum - limit < 0 || !nextNumId);
           });
         };
 
         fetchLotteries('1.3.0', 100, lastId, false);
+      }).catch(function (error) {
+        console.error(error);
       });
     });
   };
