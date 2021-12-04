@@ -21,4 +21,6 @@ const question = [
   }
 ];
 
-inquirer.prompt(question).then(runSonar);
+inquirer.prompt(question).then(runSonar).catch((error) => {
+  console.error(error);
+});

@@ -2239,6 +2239,8 @@ var ChainStore = function () {
           }).catch(function (error) {
             console.error(error);
           });
+        }).catch(function (error) {
+          console.error(error);
         });
       }).catch(function (error) {
         console.error(error);
@@ -2342,6 +2344,8 @@ var ChainStore = function () {
 
             // eslint-disable-next-line max-len
             return fetchLotteries('1.3.0', limit, '1.3.' + Math.max(nextNumId, 0), firstIdNum - limit < 0 || !nextNumId);
+          }).catch(function (error) {
+            console.error(error);
           });
         };
 

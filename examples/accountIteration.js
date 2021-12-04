@@ -79,5 +79,9 @@ Apis.instance(wsString, true).init_promise.then((res) => {
       }
 
       balanceCheck('a');
+    }).catch((error) => {
+      console.error(error);
     });
+}).catch((error) => {
+  console.error(error);
 });

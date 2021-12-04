@@ -35,6 +35,8 @@ describe('Api', () => {
           } else {
             reject(new Error('Expected sub to equal null'));
           }
+        }).catch((error) => {
+          console.error(error);
         });
     })));
 
@@ -52,6 +54,8 @@ describe('Api', () => {
           } else {
             reject(new Error('Expected sub to equal null'));
           }
+        }).catch((error) => {
+          console.error(error);
         });
     })));
 
@@ -75,7 +79,11 @@ describe('Api', () => {
                 } else {
                   reject(new Error('Expected unsub to equal null'));
                 }
+              }).catch((error) => {
+                console.error(error);
               });
+          }).catch((error) => {
+            console.error(error);
           });
       }));
     });
@@ -95,6 +103,8 @@ describe('Api', () => {
           } else {
             reject(new Error('Expected object with id 2.0.0'));
           }
+        }).catch((error) => {
+          console.error(error);
         });
     })));
 
@@ -108,6 +118,8 @@ describe('Api', () => {
           } else {
             reject(new Error('Expected object with id 1.2.0 and name committee-account'));
           }
+        }).catch((error) => {
+          console.error(error);
         });
     })));
 
@@ -125,6 +137,8 @@ describe('Api', () => {
               )
             );
           }
+        }).catch((error) => {
+          console.error(error);
         });
     })));
 
@@ -141,6 +155,8 @@ describe('Api', () => {
           } else {
             reject(new Error('Expected objects with id 1.2.0 and name committee-account'));
           }
+        }).catch((error) => {
+          console.error(error);
         });
     })));
 
@@ -154,6 +170,8 @@ describe('Api', () => {
           } else {
             reject(new Error(`Expected assets with symbol ${coreAsset}`));
           }
+        }).catch((error) => {
+          console.error(error);
         });
     })));
 
@@ -167,6 +185,8 @@ describe('Api', () => {
           } else {
             reject(new Error(`Expected assets with symbol ${coreAsset}`));
           }
+        }).catch((error) => {
+          console.error(error);
         });
     })));
   });
