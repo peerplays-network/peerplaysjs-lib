@@ -6,7 +6,7 @@ include:
   - template: Secret-Detection.gitlab-ci.yml
 
 # node docker image on which this would be run
-image: node:12
+image: node:16
 
 stages:
   - build
