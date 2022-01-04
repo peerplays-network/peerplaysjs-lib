@@ -8,9 +8,15 @@ var _SerializerValidation = require('../../serializer/src/SerializerValidation')
 
 var _SerializerValidation2 = _interopRequireDefault(_SerializerValidation);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {default: obj}; 
+}
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError('Cannot call a class as a function'); 
+  } 
+}
 
 var DB_MAX_INSTANCE_ID = _bytebuffer.Long.fromNumber(Math.pow(2, 48) - 1);
 
@@ -34,8 +40,10 @@ var ObjectId = function () {
       return value;
     }
 
-    var params = _SerializerValidation2.default.require_match(/^([0-9]+)\.([0-9]+)\.([0-9]+)$/, _SerializerValidation2.default.required(value, 'ObjectId'), 'ObjectId');
-    return new ObjectId(parseInt(params[1], 10), parseInt(params[2], 10), _bytebuffer.Long.fromString(params[3]));
+    var params = _SerializerValidation2.default.require_match(/^([0-9]+)\.([0-9]+)\.([0-9]+)$/, 
+      _SerializerValidation2.default.required(value, 'ObjectId'), 'ObjectId');
+    return new ObjectId(parseInt(params[1], 10), parseInt(params[2], 10), 
+      _bytebuffer.Long.fromString(params[3]));
   };
 
   ObjectId.fromLong = function fromLong(long) {
@@ -50,7 +58,8 @@ var ObjectId = function () {
   };
 
   ObjectId.prototype.toLong = function toLong() {
-    return _bytebuffer.Long.fromNumber(this.space).shiftLeft(56).or(_bytebuffer.Long.fromNumber(this.type).shiftLeft(48).or(this.instance));
+    return _bytebuffer.Long.fromNumber(this.space).shiftLeft(56).or(
+      _bytebuffer.Long.fromNumber(this.type).shiftLeft(48).or(this.instance));
   };
 
   ObjectId.prototype.appendByteBuffer = function appendByteBuffer(b) {

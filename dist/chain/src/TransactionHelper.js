@@ -14,7 +14,9 @@ var _ecc = require('../../ecc');
 
 var _serializer = require('../../serializer');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {default: obj};
+}
 
 var helper = {
   unique_nonce_entropy: null,
@@ -56,7 +58,9 @@ var helper = {
     tr.signatures = function () {
       var result = [];
 
-      for (var i = 0; private_keys.length > 0 ? i < private_keys.length : i > private_keys.length; private_keys.length > 0 ? i++ : i++) {
+      for (var i = 0; 
+        private_keys.length > 0 ? i < private_keys.length 
+          : i > private_keys.length; private_keys.length > 0 ? i++ : i++) {
         var private_key = private_keys[i];
         result.push(_ecc.Signature.signBuffer(tr_buffer, private_key).toHex());
       }
@@ -78,7 +82,8 @@ var helper = {
     @graphene/serializer { types }
   */
   template: function template(serializer_operation_type_name) {
-    var debug = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : { use_default: true, annotate: true };
+    var debug = arguments.length > 1 && arguments[1] !== undefined 
+      ? arguments[1] : {use_default: true, annotate: true};
 
     var so = _serializer.types[serializer_operation_type_name];
 
@@ -95,7 +100,7 @@ var helper = {
       throw new Error('unknown serializer_operation_type ' + serializer_operation_type_name);
     }
 
-    var object = so.toObject(undefined, { use_default: true, annotate: true });
+    var object = so.toObject(undefined, {use_default: true, annotate: true});
     return so.fromObject(object);
   },
   instance: function instance(ObjectId) {
