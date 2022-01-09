@@ -2,12 +2,7 @@
 
 exports.__esModule = true;
 
-var _typeof = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ? function (obj) {
-  return typeof obj; 
-} : function (obj) {
-  return obj && typeof Symbol === 'function' && obj.constructor === Symbol 
-    && obj !== Symbol.prototype ? 'symbol' : typeof obj; 
-};
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _immutable = require('immutable');
 
@@ -21,7 +16,7 @@ var _ChainTypes = require('./ChainTypes');
 
 var _ChainTypes2 = _interopRequireDefault(_ChainTypes);
 
-var _ChainValidation = require('./ChainValidation').default;
+var _ChainValidation = require('./ChainValidation');
 
 var _ChainValidation2 = _interopRequireDefault(_ChainValidation);
 
@@ -31,18 +26,12 @@ var _EmitterInstance2 = _interopRequireDefault(_EmitterInstance);
 
 var _ws = require('../../ws');
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {default: obj}; 
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError('Cannot call a class as a function'); 
-  } 
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var object_type = _ChainTypes2.default.object_type,
-  impl_object_type = _ChainTypes2.default.impl_object_type;
+    impl_object_type = _ChainTypes2.default.impl_object_type;
 
 var emitter = _EmitterInstance2.default.emitter();
 
@@ -69,8 +58,7 @@ var operation_history_prefix = '1.' + op_history + '.';
 var balance_prefix = '2.' + parseInt(impl_object_type.account_balance, 10) + '.';
 var account_stats_prefix = '2.' + parseInt(impl_object_type.account_statistics, 10) + '.';
 var transaction_prefix = '2.' + parseInt(impl_object_type.transaction, 10) + '.';
-var account_transaction_history_prefix = '2.' 
-  + parseInt(impl_object_type.account_transaction_history, 10) + '.';
+var account_transaction_history_prefix = '2.' + parseInt(impl_object_type.account_transaction_history, 10) + '.';
 var asset_dynamic_data_prefix = '2.' + parseInt(impl_object_type.asset_dynamic_data, 10) + '.';
 var bitasset_data_prefix = '2.' + parseInt(impl_object_type.asset_bitasset_data, 10) + '.';
 var block_summary_prefix = '2.' + parseInt(impl_object_type.block_summary, 10) + '.';
@@ -161,8 +149,7 @@ var ChainStore = function () {
     // in (open-registration tournaments or tournaments they are whitelisted for).
     // the null account maps to all tournaments
     // accounts and states will not be tracked until their first access
-    this.tournament_ids_by_state = _immutable2.default.Map().set(null, 
-      new _immutable2.default.Map());
+    this.tournament_ids_by_state = _immutable2.default.Map().set(null, new _immutable2.default.Map());
 
     // registered_tournaments_details_by_player is a map of
     //   Map(registered_account_id => Set of tournament details objects)
@@ -203,9 +190,7 @@ var ChainStore = function () {
       var db_api = _ws.Apis.instance().db_api();
 
       if (!db_api) {
-        return reject(
-          new Error('Api not found, please initialize the api instance'
-          + ' before calling the ChainStore'));
+        return reject(new Error('Api not found, please initialize the api instance before calling the ChainStore'));
       }
 
       return db_api.exec('get_objects', [['2.1.0']]).then(function (optional_objects) {
@@ -217,8 +202,7 @@ var ChainStore = function () {
 
             var head_time = new Date(optional_object.time + '+00:00').getTime();
             _this.head_block_time_string = optional_object.time;
-            _this.chain_time_offset.push(new Date().getTime() - ChainStore.timeStringToDate(
-              optional_object.time).getTime());
+            _this.chain_time_offset.push(new Date().getTime() - ChainStore.timeStringToDate(optional_object.time).getTime());
             var now = new Date().getTime();
             var delta = (now - head_time) / 1000;
             var start = Date.parse('Sep 1, 2015');
@@ -226,8 +210,7 @@ var ChainStore = function () {
             _this.progress = progress_delta / (now - start);
 
             if (delta < 60) {
-              _ws.Apis.instance().db_api().exec('set_subscribe_callback', 
-                [_this.onUpdate.bind(_this), true]).then(function () {
+              _ws.Apis.instance().db_api().exec('set_subscribe_callback', [_this.onUpdate.bind(_this), true]).then(function () {
                 console.log('synced and subscribed, chainstore ready');
                 _this.subscribed = true;
                 _this.fetchRecentOperations();
@@ -534,8 +517,7 @@ var ChainStore = function () {
       return undefined;
     }
 
-    _ws.Apis.instance().db_api().exec('lookup_asset_symbols', 
-      [[id_or_symbol]]).then(function (asset_objects) {
+    _ws.Apis.instance().db_api().exec('lookup_asset_symbols', [[id_or_symbol]]).then(function (asset_objects) {
       if (asset_objects.length && asset_objects[0]) {
         _this4._updateObject(asset_objects[0], true);
       } else {
@@ -571,8 +553,7 @@ var ChainStore = function () {
     }
 
     this.get_account_refs_of_keys_calls = this.get_account_refs_of_keys_calls.add(key);
-    _ws.Apis.instance().db_api().exec('get_key_references', 
-      [[key]]).then(function (vec_account_id) {
+    _ws.Apis.instance().db_api().exec('get_key_references', [[key]]).then(function (vec_account_id) {
       var refs = _immutable2.default.Set();
       vec_account_id = vec_account_id[0];
       refs = refs.withMutations(function (r) {
@@ -609,10 +590,8 @@ var ChainStore = function () {
        * there is no need to worry about having to update them / merge
        * them or index them in updateObject.
        */
-      this.balance_objects_by_address = this.balance_objects_by_address.set(
-        address, _immutable2.default.Set());
-      _ws.Apis.instance().db_api().exec('get_balance_objects', 
-        [[address]]).then(function (balance_objects) {
+      this.balance_objects_by_address = this.balance_objects_by_address.set(address, _immutable2.default.Set());
+      _ws.Apis.instance().db_api().exec('get_balance_objects', [[address]]).then(function (balance_objects) {
         var set = new Set();
 
         for (var i = 0; i < balance_objects.length; ++i) {
@@ -620,8 +599,7 @@ var ChainStore = function () {
           set.add(balance_objects[i].id);
         }
 
-        _this6.balance_objects_by_address = _this6.balance_objects_by_address.set(
-          address, _immutable2.default.Set(set));
+        _this6.balance_objects_by_address = _this6.balance_objects_by_address.set(address, _immutable2.default.Set(set));
         _this6.notifySubscribers();
       }, function () {
         _this6.balance_objects_by_address = _this6.balance_objects_by_address.delete(address);
@@ -642,8 +620,7 @@ var ChainStore = function () {
    */
 
 
-  ChainStore.prototype.getTournamentIdsInState = function getTournamentIdsInState(
-    accountId, stateString) {
+  ChainStore.prototype.getTournamentIdsInState = function getTournamentIdsInState(accountId, stateString) {
     var _this7 = this;
 
     var tournamentIdsForThisAccountAndState = void 0;
@@ -651,10 +628,8 @@ var ChainStore = function () {
 
     if (tournamentIdsForThisAccount === undefined) {
       tournamentIdsForThisAccountAndState = new _immutable2.default.Set();
-      tournamentIdsForThisAccount = new _immutable2.default.Map().set(
-        stateString, tournamentIdsForThisAccountAndState);
-      this.tournament_ids_by_state = this.tournament_ids_by_state.set(
-        accountId, tournamentIdsForThisAccount);
+      tournamentIdsForThisAccount = new _immutable2.default.Map().set(stateString, tournamentIdsForThisAccountAndState);
+      this.tournament_ids_by_state = this.tournament_ids_by_state.set(accountId, tournamentIdsForThisAccount);
     } else {
       tournamentIdsForThisAccountAndState = tournamentIdsForThisAccount.get(stateString);
 
@@ -663,16 +638,12 @@ var ChainStore = function () {
       }
 
       tournamentIdsForThisAccountAndState = new _immutable2.default.Set();
-      tournamentIdsForThisAccount = tournamentIdsForThisAccount.set(
-        stateString, tournamentIdsForThisAccountAndState);
-      this.tournament_ids_by_state = this.tournament_ids_by_state.set(
-        accountId, tournamentIdsForThisAccount);
+      tournamentIdsForThisAccount = tournamentIdsForThisAccount.set(stateString, tournamentIdsForThisAccountAndState);
+      this.tournament_ids_by_state = this.tournament_ids_by_state.set(accountId, tournamentIdsForThisAccount);
     }
 
-    _ws.Apis.instance().db_api().exec('get_tournaments_in_state', 
-      [stateString, 100]).then(function (tournaments) {
-      var originalTournamentIdsInState = _this7.tournament_ids_by_state.getIn(
-        [accountId, stateString]);
+    _ws.Apis.instance().db_api().exec('get_tournaments_in_state', [stateString, 100]).then(function (tournaments) {
+      var originalTournamentIdsInState = _this7.tournament_ids_by_state.getIn([accountId, stateString]);
       // call updateObject on each tournament, which will classify it
       tournaments.forEach(function (tournament) {
         /**
@@ -706,17 +677,14 @@ var ChainStore = function () {
     }
 
     tournamentIds = new _immutable2.default.Set();
-    this.registered_tournament_ids_by_player = this.registered_tournament_ids_by_player.set(
-      accountId, tournamentIds);
+    this.registered_tournament_ids_by_player = this.registered_tournament_ids_by_player.set(accountId, tournamentIds);
 
-    _ws.Apis.instance().db_api().exec('get_registered_tournaments', 
-      [accountId, 100]).then(function (registered_tournaments) {
+    _ws.Apis.instance().db_api().exec('get_registered_tournaments', [accountId, 100]).then(function (registered_tournaments) {
       var originalTournamentIds = _this8.registered_tournament_ids_by_player.get(accountId);
       var newTournamentIds = new _immutable2.default.Set(registered_tournaments);
 
       if (!originalTournamentIds.equals(newTournamentIds)) {
-        _this8.registered_tournament_ids_by_player = _this8.registered_tournament_ids_by_player.set(
-          accountId, newTournamentIds);
+        _this8.registered_tournament_ids_by_player = _this8.registered_tournament_ids_by_player.set(accountId, newTournamentIds);
         _this8.notifySubscribers();
       }
     }).catch(function (error) {
@@ -914,8 +882,7 @@ var ChainStore = function () {
 
       _this10.getSimpleObjectById(witness_id).then(function (witness) {
         _this10.getSimpleObjectById(witness.witness_account).then(function (fetched_account) {
-          _this10.account_by_witness_id = _this10.account_by_witness_id.set(
-            witness_id, fetched_account);
+          _this10.account_by_witness_id = _this10.account_by_witness_id.set(witness_id, fetched_account);
           success(fetched_account);
         }).catch(function (error) {
           console.error(error);
@@ -1006,8 +973,7 @@ var ChainStore = function () {
 
           if (committee_id === undefined) {
             _this11.fetchCommitteeMemberByAccount(account_id).then(function (committee) {
-              _this11.committee_by_account_id.set(account_id, committee 
-                ? committee.get('id') : null);
+              _this11.committee_by_account_id.set(account_id, committee ? committee.get('id') : null);
 
               if (on_update && committee) {
                 on_update();
@@ -1098,12 +1064,10 @@ var ChainStore = function () {
     var _this13 = this;
 
     return new Promise(function (resolve, reject) {
-      _ws.Apis.instance().db_api().exec('get_witness_by_account', 
-        [account_id]).then(function (optional_witness_object) {
+      _ws.Apis.instance().db_api().exec('get_witness_by_account', [account_id]).then(function (optional_witness_object) {
         if (optional_witness_object) {
           _this13._subTo('witnesses', optional_witness_object.id);
-          _this13.witness_by_account_id = _this13.witness_by_account_id.set(
-            optional_witness_object.witness_account, optional_witness_object.id);
+          _this13.witness_by_account_id = _this13.witness_by_account_id.set(optional_witness_object.witness_account, optional_witness_object.id);
           var witness_object = _this13._updateObject(optional_witness_object, true);
           resolve(witness_object);
         } else {
@@ -1123,17 +1087,14 @@ var ChainStore = function () {
    */
 
 
-  ChainStore.prototype.fetchCommitteeMemberByAccount = function fetchCommitteeMemberByAccount(
-    account_id) {
+  ChainStore.prototype.fetchCommitteeMemberByAccount = function fetchCommitteeMemberByAccount(account_id) {
     var _this14 = this;
 
     return new Promise(function (resolve, reject) {
-      _ws.Apis.instance().db_api().exec('get_committee_member_by_account', 
-        [account_id]).then(function (optional_committee_object) {
+      _ws.Apis.instance().db_api().exec('get_committee_member_by_account', [account_id]).then(function (optional_committee_object) {
         if (optional_committee_object) {
           _this14._subTo('committee', optional_committee_object.id);
-          _this14.committee_by_account_id = _this14.committee_by_account_id.set(
-            optional_committee_object.committee_member_account, optional_committee_object.id);
+          _this14.committee_by_account_id = _this14.committee_by_account_id.set(optional_committee_object.committee_member_account, optional_committee_object.id);
           var committee_object = _this14._updateObject(optional_committee_object, true);
           resolve(committee_object);
         } else {
@@ -1187,12 +1148,10 @@ var ChainStore = function () {
     }
 
     // / only fetch once every 5 seconds if it wasn't found
-    if (!this.fetching_get_full_accounts.has(name_or_id) || 
-      Date.now() - this.fetching_get_full_accounts.get(name_or_id) > 5000) {
+    if (!this.fetching_get_full_accounts.has(name_or_id) || Date.now() - this.fetching_get_full_accounts.get(name_or_id) > 5000) {
       this.fetching_get_full_accounts.set(name_or_id, Date.now());
       // console.log( "FETCHING FULL ACCOUNT: ", name_or_id )
-      _ws.Apis.instance().db_api().exec('get_full_accounts', [[name_or_id],
-        true]).then(function (results) {
+      _ws.Apis.instance().db_api().exec('get_full_accounts', [[name_or_id], true]).then(function (results) {
         if (results.length === 0) {
           if (_ChainValidation2.default.is_object_id(name_or_id)) {
             _this15.objects_by_id = _this15.objects_by_id.set(name_or_id, null);
@@ -1211,16 +1170,16 @@ var ChainStore = function () {
         _this15._subTo('accounts', full_account.account.id);
 
         var account = full_account.account,
-          vesting_balances = full_account.vesting_balances,
-          pending_dividend_payments = full_account.pending_dividend_payments,
-          statistics = full_account.statistics,
-          call_orders = full_account.call_orders,
-          limit_orders = full_account.limit_orders,
-          referrer_name = full_account.referrer_name,
-          registrar_name = full_account.registrar_name,
-          lifetime_referrer_name = full_account.lifetime_referrer_name,
-          votes = full_account.votes,
-          proposals = full_account.proposals;
+            vesting_balances = full_account.vesting_balances,
+            pending_dividend_payments = full_account.pending_dividend_payments,
+            statistics = full_account.statistics,
+            call_orders = full_account.call_orders,
+            limit_orders = full_account.limit_orders,
+            referrer_name = full_account.referrer_name,
+            registrar_name = full_account.registrar_name,
+            lifetime_referrer_name = full_account.lifetime_referrer_name,
+            votes = full_account.votes,
+            proposals = full_account.proposals;
 
 
         _this15.accounts_by_name = _this15.accounts_by_name.set(account.name, account.id);
@@ -1263,14 +1222,13 @@ var ChainStore = function () {
           });
         });
 
-        account.pending_dividend_payments = account.pending_dividend_payments.withMutations(
-          function (set) {
-            pending_dividend_payments.forEach(function (payments) {
-              _this15._updateObject(payments);
-              set.add(payments);
-              sub_to_objects.push(payments.id);
-            });
+        account.pending_dividend_payments = account.pending_dividend_payments.withMutations(function (set) {
+          pending_dividend_payments.forEach(function (payments) {
+            _this15._updateObject(payments);
+            set.add(payments);
+            sub_to_objects.push(payments.id);
           });
+        });
 
         account.call_orders = account.call_orders.withMutations(function (set) {
           call_orders.forEach(function (co) {
@@ -1394,7 +1352,7 @@ var ChainStore = function () {
       return pending_request.promise;
     }
 
-    pending_request = {requests: 0};
+    pending_request = { requests: 0 };
 
     var most_recent = '1.' + op_history + '.0';
     var history = account.get('history');
@@ -1408,8 +1366,7 @@ var ChainStore = function () {
     var start = '1.' + op_history + '.0';
 
     pending_request.promise = new Promise(function (resolve, reject) {
-      _ws.Apis.instance().history_api().exec('get_account_history', 
-        [account_id, most_recent, limit, start]).then(function (operations) {
+      _ws.Apis.instance().history_api().exec('get_account_history', [account_id, most_recent, limit, start]).then(function (operations) {
         var current_account = _this16.objects_by_id.get(account_id);
         var current_history = current_account.get('history');
 
@@ -1433,10 +1390,9 @@ var ChainStore = function () {
           // it looks like some more history may have come in while we were
           // waiting on the result, lets fetch anything new before we resolve
           // this query.
-          _this16.fetchRecentHistory(updated_account, limit).then(resolve, reject).catch(
-            function (error) {
-              console.error(error);
-            });
+          _this16.fetchRecentHistory(updated_account, limit).then(resolve, reject).catch(function (error) {
+            console.error(error);
+          });
         } else {
           resolve(updated_account);
         }
@@ -1477,23 +1433,19 @@ var ChainStore = function () {
     var eventGroupsList = this.event_groups_list_by_sport_id.get(sportId);
 
     if (eventGroupsList === undefined) {
-      this.event_groups_list_by_sport_id = this.event_groups_list_by_sport_id.set(
-        sportId, _immutable2.default.Set());
+      this.event_groups_list_by_sport_id = this.event_groups_list_by_sport_id.set(sportId, _immutable2.default.Set());
 
-      _ws.Apis.instance().db_api().exec('list_event_groups', 
-        [sportId]).then(function (eventGroups) {
+      _ws.Apis.instance().db_api().exec('list_event_groups', [sportId]).then(function (eventGroups) {
         var set = new Set();
 
         for (var i = 0, len = eventGroups.length; i < len; ++i) {
           set.add(eventGroups[i]);
         }
 
-        _this17.event_groups_list_by_sport_id = _this17.event_groups_list_by_sport_id.set(
-          sportId, _immutable2.default.Set(set));
+        _this17.event_groups_list_by_sport_id = _this17.event_groups_list_by_sport_id.set(sportId, _immutable2.default.Set(set));
         _this17.notifySubscribers();
       }, function () {
-        _this17.event_groups_list_by_sport_id = _this17.event_groups_list_by_sport_id.delete(
-          sportId);
+        _this17.event_groups_list_by_sport_id = _this17.event_groups_list_by_sport_id.delete(sportId);
       });
     }
 
@@ -1510,11 +1462,9 @@ var ChainStore = function () {
     var bettingMarketGroupsList = this.betting_market_groups_list_by_sport_id.get(eventId);
 
     if (bettingMarketGroupsList === undefined) {
-      this.betting_market_groups_list_by_sport_id = this.betting_market_groups_list_by_sport_id.set(
-        eventId, _immutable2.default.Set());
+      this.betting_market_groups_list_by_sport_id = this.betting_market_groups_list_by_sport_id.set(eventId, _immutable2.default.Set());
 
-      _ws.Apis.instance().db_api().exec('list_betting_market_groups', 
-        [eventId]).then(function (bettingMarketGroups) {
+      _ws.Apis.instance().db_api().exec('list_betting_market_groups', [eventId]).then(function (bettingMarketGroups) {
         var set = new Set();
 
         for (var i = 0, len = bettingMarketGroups.length; i < len; ++i) {
@@ -1522,11 +1472,11 @@ var ChainStore = function () {
         }
 
         _this18.betting_market_groups_list_by_sport_id = _this18.betting_market_groups_list_by_sport_id.set( // eslint-disable-line
-          eventId, _immutable2.default.Set(set));
+        eventId, _immutable2.default.Set(set));
         _this18.notifySubscribers();
       }, function () {
         _this18.betting_market_groups_list_by_sport_id = _this18.betting_market_groups_list_by_sport_id.delete( // eslint-disable-line
-          eventId);
+        eventId);
       });
     }
 
@@ -1537,30 +1487,25 @@ var ChainStore = function () {
    * @brief Return a list of all betting markets for a betting market group
    */
 
-  ChainStore.prototype.getBettingMarketsList = function getBettingMarketsList(
-    bettingMarketGroupId) {
+  ChainStore.prototype.getBettingMarketsList = function getBettingMarketsList(bettingMarketGroupId) {
     var _this19 = this;
 
     var bettingMarketsList = this.betting_markets_list_by_sport_id.get(bettingMarketGroupId);
 
     if (bettingMarketsList === undefined) {
-      this.betting_markets_list_by_sport_id = this.betting_markets_list_by_sport_id.set(
-        bettingMarketGroupId, _immutable2.default.Set());
+      this.betting_markets_list_by_sport_id = this.betting_markets_list_by_sport_id.set(bettingMarketGroupId, _immutable2.default.Set());
 
-      _ws.Apis.instance().db_api().exec('list_betting_markets', 
-        [bettingMarketGroupId]).then(function (bettingMarkets) {
+      _ws.Apis.instance().db_api().exec('list_betting_markets', [bettingMarketGroupId]).then(function (bettingMarkets) {
         var set = new Set();
 
         for (var i = 0, len = bettingMarkets.length; i < len; ++i) {
           set.add(bettingMarkets[i]);
         }
 
-        _this19.betting_markets_list_by_sport_id = _this19.betting_markets_list_by_sport_id.set(
-          bettingMarketGroupId, _immutable2.default.Set(set));
+        _this19.betting_markets_list_by_sport_id = _this19.betting_markets_list_by_sport_id.set(bettingMarketGroupId, _immutable2.default.Set(set));
         _this19.notifySubscribers();
       }, function () {
-        _this19.betting_markets_list_by_sport_id = _this19.betting_markets_list_by_sport_id.delete(
-          bettingMarketGroupId);
+        _this19.betting_markets_list_by_sport_id = _this19.betting_markets_list_by_sport_id.delete(bettingMarketGroupId);
       });
     }
 
@@ -1573,14 +1518,13 @@ var ChainStore = function () {
 
   ChainStore.getGlobalBettingStatistics = function getGlobalBettingStatistics() {
     return new Promise(function (resolve, reject) {
-      _ws.Apis.instance().db_api().exec('get_global_betting_statistics', []).then(
-        function (getGlobalBettingStatistics) {
-          if (getGlobalBettingStatistics) {
-            resolve(getGlobalBettingStatistics);
-          } else {
-            resolve(null);
-          }
-        }, reject).catch(function (error) {
+      _ws.Apis.instance().db_api().exec('get_global_betting_statistics', []).then(function (getGlobalBettingStatistics) {
+        if (getGlobalBettingStatistics) {
+          resolve(getGlobalBettingStatistics);
+        } else {
+          resolve(null);
+        }
+      }, reject).catch(function (error) {
         console.error(error);
       });
     });
@@ -1588,8 +1532,7 @@ var ChainStore = function () {
 
   ChainStore.getBinnedOrderBook = function getBinnedOrderBook(betting_market_id, precision) {
     return new Promise(function (resolve, reject) {
-      _ws.Apis.instance().bookie_api().exec('get_binned_order_book', 
-        [betting_market_id, precision]).then(function (order_book_object) {
+      _ws.Apis.instance().bookie_api().exec('get_binned_order_book', [betting_market_id, precision]).then(function (order_book_object) {
         if (order_book_object) {
           resolve(order_book_object);
         } else {
@@ -1601,11 +1544,9 @@ var ChainStore = function () {
     });
   };
 
-  ChainStore.getTotalMatchedBetAmountForBettingMarketGroup = 
-  function getTotalMatchedBetAmountForBettingMarketGroup(group_id) {
+  ChainStore.getTotalMatchedBetAmountForBettingMarketGroup = function getTotalMatchedBetAmountForBettingMarketGroup(group_id) {
     return new Promise(function (resolve, reject) {
-      _ws.Apis.instance().bookie_api().exec('get_total_matched_bet_amount_for_betting_market_group',
-        [group_id]).then(function (total_matched_bet_amount) {
+      _ws.Apis.instance().bookie_api().exec('get_total_matched_bet_amount_for_betting_market_group', [group_id]).then(function (total_matched_bet_amount) {
         if (total_matched_bet_amount) {
           resolve(total_matched_bet_amount);
         } else {
@@ -1617,11 +1558,9 @@ var ChainStore = function () {
     });
   };
 
-  ChainStore.getEventsContainingSubString = function getEventsContainingSubString(
-    sub_string, language) {
+  ChainStore.getEventsContainingSubString = function getEventsContainingSubString(sub_string, language) {
     return new Promise(function (resolve, reject) {
-      _ws.Apis.instance().bookie_api().exec('get_events_containing_sub_string', 
-        [sub_string, language]).then(function (events_containing_sub_string) {
+      _ws.Apis.instance().bookie_api().exec('get_events_containing_sub_string', [sub_string, language]).then(function (events_containing_sub_string) {
         if (events_containing_sub_string) {
           resolve(events_containing_sub_string);
         } else {
@@ -1633,11 +1572,9 @@ var ChainStore = function () {
     });
   };
 
-  ChainStore.getUnmatchedBetsForBettor = function getUnmatchedBetsForBettor(
-    betting_market_id_type, account_id_type) {
+  ChainStore.getUnmatchedBetsForBettor = function getUnmatchedBetsForBettor(betting_market_id_type, account_id_type) {
     return new Promise(function (resolve, reject) {
-      _ws.Apis.instance().db_api().exec('get_unmatched_bets_for_bettor', 
-        [betting_market_id_type, account_id_type]).then(function (unmatched_bets_for_bettor) {
+      _ws.Apis.instance().db_api().exec('get_unmatched_bets_for_bettor', [betting_market_id_type, account_id_type]).then(function (unmatched_bets_for_bettor) {
         if (unmatched_bets_for_bettor) {
           resolve(unmatched_bets_for_bettor);
         } else {
@@ -1651,8 +1588,7 @@ var ChainStore = function () {
 
   ChainStore.listEventsInGroup = function listEventsInGroup(event_group_id) {
     return new Promise(function (resolve, reject) {
-      _ws.Apis.instance().db_api().exec('list_events_in_group', 
-        [event_group_id]).then(function (events_in_group) {
+      _ws.Apis.instance().db_api().exec('list_events_in_group', [event_group_id]).then(function (events_in_group) {
         if (events_in_group) {
           resolve(events_in_group);
         } else {
@@ -1666,8 +1602,7 @@ var ChainStore = function () {
 
   ChainStore.getAllUnmatchedBetsForBettor = function getAllUnmatchedBetsForBettor(account_id_type) {
     return new Promise(function (resolve, reject) {
-      _ws.Apis.instance().db_api().exec('get_all_unmatched_bets_for_bettor', 
-        [account_id_type]).then(function (all_unmatched_bets_for_bettor) {
+      _ws.Apis.instance().db_api().exec('get_all_unmatched_bets_for_bettor', [account_id_type]).then(function (all_unmatched_bets_for_bettor) {
         if (all_unmatched_bets_for_bettor) {
           resolve(all_unmatched_bets_for_bettor);
         } else {
@@ -1681,8 +1616,7 @@ var ChainStore = function () {
 
   ChainStore.getMatchedBetsForBettor = function getMatchedBetsForBettor(bettor_id) {
     return new Promise(function (resolve, reject) {
-      _ws.Apis.instance().bookie_api().exec('get_matched_bets_for_bettor', 
-        [bettor_id]).then(function (matched_bets_for_bettor) {
+      _ws.Apis.instance().bookie_api().exec('get_matched_bets_for_bettor', [bettor_id]).then(function (matched_bets_for_bettor) {
         if (matched_bets_for_bettor) {
           resolve(matched_bets_for_bettor);
         } else {
@@ -1698,8 +1632,7 @@ var ChainStore = function () {
     var limit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1000;
 
     return new Promise(function (resolve, reject) {
-      _ws.Apis.instance().bookie_api().exec('get_all_matched_bets_for_bettor', 
-        [bettor_id, start, limit]).then(function (all_matched_bets_for_bettor) {
+      _ws.Apis.instance().bookie_api().exec('get_all_matched_bets_for_bettor', [bettor_id, start, limit]).then(function (all_matched_bets_for_bettor) {
         if (all_matched_bets_for_bettor) {
           resolve(all_matched_bets_for_bettor);
         } else {
@@ -1727,8 +1660,7 @@ var ChainStore = function () {
 
 
   ChainStore.prototype._updateObject = function _updateObject(object) {
-    var notify_subscribers = arguments.length > 1 && arguments[1] !== undefined 
-      ? arguments[1] : false;
+    var notify_subscribers = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
     var emit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
 
     if (!('id' in object)) {
@@ -1800,8 +1732,7 @@ var ChainStore = function () {
 
     // DYNAMIC GLOBAL OBJECT
     if (object.id === '2.1.0') {
-      object.participation = 100 
-        * ((0, _bigi2.default)(object.recent_slots_filled).bitCount() / 128.0);
+      object.participation = 100 * ((0, _bigi2.default)(object.recent_slots_filled).bitCount() / 128.0);
       this.head_block_time_string = object.time;
       this.chain_time_offset.push(Date.now() - ChainStore.timeStringToDate(object.time).getTime());
 
@@ -1821,11 +1752,9 @@ var ChainStore = function () {
     var prior = current;
 
     if (current === undefined || current === true) {
-      this.objects_by_id = this.objects_by_id.set(object.id, current 
-        = _immutable2.default.fromJS(object));
+      this.objects_by_id = this.objects_by_id.set(object.id, current = _immutable2.default.fromJS(object));
     } else {
-      this.objects_by_id = this.objects_by_id.set(object.id, current 
-        = current.mergeDeep(_immutable2.default.fromJS(object)));
+      this.objects_by_id = this.objects_by_id.set(object.id, current = current.mergeDeep(_immutable2.default.fromJS(object)));
     }
 
     // BALANCE OBJECT
@@ -1879,16 +1808,11 @@ var ChainStore = function () {
       current = current.set('active', _immutable2.default.fromJS(object.active));
       current = current.set('owner', _immutable2.default.fromJS(object.owner));
       current = current.set('options', _immutable2.default.fromJS(object.options));
-      current = current.set('pending_dividend_payments', _immutable2.default.fromJS(
-        object.pending_dividend_payments));
-      current = current.set('whitelisting_accounts', _immutable2.default.fromJS(
-        object.whitelisting_accounts));
-      current = current.set('blacklisting_accounts', _immutable2.default.fromJS(
-        object.blacklisting_accounts));
-      current = current.set('whitelisted_accounts', _immutable2.default.fromJS(
-        object.whitelisted_accounts));
-      current = current.set('blacklisted_accounts', _immutable2.default.fromJS(
-        object.blacklisted_accounts));
+      current = current.set('pending_dividend_payments', _immutable2.default.fromJS(object.pending_dividend_payments));
+      current = current.set('whitelisting_accounts', _immutable2.default.fromJS(object.whitelisting_accounts));
+      current = current.set('blacklisting_accounts', _immutable2.default.fromJS(object.blacklisting_accounts));
+      current = current.set('whitelisted_accounts', _immutable2.default.fromJS(object.whitelisted_accounts));
+      current = current.set('blacklisted_accounts', _immutable2.default.fromJS(object.blacklisted_accounts));
       this.objects_by_id = this.objects_by_id.set(object.id, current);
       this.accounts_by_name = this.accounts_by_name.set(object.name, object.id);
     } else if (objectSpace === asset_prefix) {
@@ -2012,22 +1936,19 @@ var ChainStore = function () {
       var newState = current.get('state');
 
       if (priorState !== newState) {
-        this.tournament_ids_by_state = this.tournament_ids_by_state.map(
-          function (stateMap, accountId) {
-            return stateMap.map(function (tournamentIdSet, stateString) {
-              if (stateString === priorState) {
-                return tournamentIdSet.remove(object.id);
-              }
+        this.tournament_ids_by_state = this.tournament_ids_by_state.map(function (stateMap, accountId) {
+          return stateMap.map(function (tournamentIdSet, stateString) {
+            if (stateString === priorState) {
+              return tournamentIdSet.remove(object.id);
+            }
 
-              if (stateString === newState && (accountId === null 
-                || current.getIn(['options', 'whitelist']).isEmpty() 
-                || current.getIn(['options', 'whitelist']).includes(accountId))) {
-                return tournamentIdSet.add(object.id);
-              }
+            if (stateString === newState && (accountId === null || current.getIn(['options', 'whitelist']).isEmpty() || current.getIn(['options', 'whitelist']).includes(accountId))) {
+              return tournamentIdSet.add(object.id);
+            }
 
-              return tournamentIdSet;
-            });
+            return tournamentIdSet;
           });
+        });
       }
 
       if (this.last_tournament_id !== undefined) {
@@ -2038,17 +1959,16 @@ var ChainStore = function () {
       var newRegisteredPlayers = current.get('registered_players');
 
       if (priorRegisteredPlayers !== newRegisteredPlayers) {
-        this.registered_tournament_ids_by_player = this.registered_tournament_ids_by_player.map(
-          function (tournamentIdsSet, accountId) {
-            if (newRegisteredPlayers.includes(accountId)) {
-              return tournamentIdsSet.add(current.get('tournament_id'));
-            }
+        this.registered_tournament_ids_by_player = this.registered_tournament_ids_by_player.map(function (tournamentIdsSet, accountId) {
+          if (newRegisteredPlayers.includes(accountId)) {
+            return tournamentIdsSet.add(current.get('tournament_id'));
+          }
 
-            return tournamentIdsSet;
+          return tournamentIdsSet;
 
           // currently, you can't un-register for a tournament, so we don't have
           // to deal with removing from a list
-          });
+        });
       }
     }
 
@@ -2086,8 +2006,7 @@ var ChainStore = function () {
     var limit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5;
     var start_tournament_id = arguments[2];
 
-    return _ws.Apis.instance().db_api().exec('get_tournaments', 
-      [last_tournament_id, limit, start_tournament_id]).then(function (tournaments) {
+    return _ws.Apis.instance().db_api().exec('get_tournaments', [last_tournament_id, limit, start_tournament_id]).then(function (tournaments) {
       var list = _immutable2.default.List();
 
       _this20.setLastTournamentId(null);
@@ -2115,8 +2034,7 @@ var ChainStore = function () {
 
     return new Promise(function (resolve) {
       if (_this21.last_tournament_id === undefined) {
-        _ws.Apis.instance().db_api().exec('get_tournaments', 
-          [tournament_prefix + '0', 1, tournament_prefix + '0']).then(function (tournaments) {
+        _ws.Apis.instance().db_api().exec('get_tournaments', [tournament_prefix + '0', 1, tournament_prefix + '0']).then(function (tournaments) {
           _this21.setLastTournamentId(null);
 
           if (tournaments && tournaments.length) {
@@ -2153,18 +2071,17 @@ var ChainStore = function () {
 
     if (missing.length) {
       // we may need to fetch some objects
-      _ws.Apis.instance().db_api().exec('lookup_vote_ids', [missing]).then(
-        function (vote_obj_array) {
-          for (var _i2 = 0; _i2 < vote_obj_array.length; ++_i2) {
-            if (vote_obj_array[_i2]) {
-              _this22._updateObject(vote_obj_array[_i2]);
-              var immutableMapConvert = _immutable2.default.fromJS(vote_obj_array[_i2]);
-              result.push(immutableMapConvert);
-            }
+      _ws.Apis.instance().db_api().exec('lookup_vote_ids', [missing]).then(function (vote_obj_array) {
+        for (var _i2 = 0; _i2 < vote_obj_array.length; ++_i2) {
+          if (vote_obj_array[_i2]) {
+            _this22._updateObject(vote_obj_array[_i2]);
+            var immutableMapConvert = _immutable2.default.fromJS(vote_obj_array[_i2]);
+            result.push(immutableMapConvert);
           }
-        }, function (error) {
-          return console.log('Error looking up vote ids: ', error);
-        });
+        }
+      }, function (error) {
+        return console.log('Error looking up vote ids: ', error);
+      });
     }
 
     return result;
@@ -2191,8 +2108,7 @@ var ChainStore = function () {
 
     // Immutable is fast, sorts numbers correctly, and leaves the original unmodified
     // This will fix itself if the user changes their clock
-    var median_offset = _immutable2.default.List(this.chain_time_offset).sort().get(
-      Math.floor((this.chain_time_offset.length - 1) / 2));
+    var median_offset = _immutable2.default.List(this.chain_time_offset).sort().get(Math.floor((this.chain_time_offset.length - 1) / 2));
     // console.log("median_offset", median_offset)
     return median_offset;
   };
@@ -2238,7 +2154,7 @@ var ChainStore = function () {
       var scanToBlock = _this24.last_processed_block;
 
       if (lastBlock) {
-        return success({lastBlock: lastBlock, scanToBlock: scanToBlock});
+        return success({ lastBlock: lastBlock, scanToBlock: scanToBlock });
       }
 
       db_api.exec('get_dynamic_global_properties', []).then(function (globalProperties) {
@@ -2300,8 +2216,7 @@ var ChainStore = function () {
                     _this25.recent_operations = _this25.recent_operations.push(op);
                   }
 
-                  if (_this25.recent_operations.size >= operations_stack_size 
-                    && _this25.recent_blocks.size >= block_stack_size) {
+                  if (_this25.recent_operations.size >= operations_stack_size && _this25.recent_blocks.size >= block_stack_size) {
                     scanToBlock = lastBlock;
                   }
                 }
@@ -2346,7 +2261,7 @@ var ChainStore = function () {
 
     this.__getBlocksForScan(lastBlock).then(function (_ref) {
       var last = _ref.lastBlock,
-        scanToBlock = _ref.scanToBlock;
+          scanToBlock = _ref.scanToBlock;
 
       _this26.__bindBlock(last, scanToBlock, isInit).then(function () {
         if (isInit) {
@@ -2424,8 +2339,8 @@ var ChainStore = function () {
             }
 
             var firstId = lotteries[0]['id'],
-              firstIdNum = parseInt(firstId.split('.')[2]),
-              nextNumId = firstIdNum - limit;
+                firstIdNum = parseInt(firstId.split('.')[2]),
+                nextNumId = firstIdNum - limit;
 
             // eslint-disable-next-line max-len
             return fetchLotteries('1.3.0', limit, '1.3.' + Math.max(nextNumId, 0), firstIdNum - limit < 0 || !nextNumId);
@@ -2453,8 +2368,7 @@ function FetchChainObjects(method, object_ids, timeout) {
     var timeout_handle = null;
 
     function onUpdate() {
-      var not_subscribed_yet = arguments.length > 0 && arguments[0] !== undefined 
-        ? arguments[0] : false;
+      var not_subscribed_yet = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
       var res = object_ids.map(function (id) {
         return get_object(id);
@@ -2510,10 +2424,9 @@ function FetchChain(methodName, objectIds) {
     objectIds = [objectIds];
   }
 
-  return chain_store.FetchChainObjects(method, _immutable2.default.List(objectIds), timeout).then(
-    function (res) {
-      return arrayIn ? res : res.get(0);
-    });
+  return chain_store.FetchChainObjects(method, _immutable2.default.List(objectIds), timeout).then(function (res) {
+    return arrayIn ? res : res.get(0);
+  });
 }
 
 chain_store.FetchChain = FetchChain;

@@ -1,6 +1,6 @@
 'use strict';
 
-export const __esModule = true;
+exports.__esModule = true;
 /**
     Account names may contain one or more names separated by a dot.
     Each name needs to start with a letter and may contain
@@ -170,6 +170,5 @@ var ChainValidation = {
   }
 };
 
-const _default = ChainValidation;
-export {_default as default};
-//export default _default;
+exports.default = ChainValidation;
+module.exports = exports.default;

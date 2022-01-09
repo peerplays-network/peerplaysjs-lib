@@ -1,24 +1,14 @@
 'use strict';
 
-export const __esModule = true;
+exports.__esModule = true;
 
-var _typeof = typeof Symbol === 'function' 
-  && typeof Symbol.iterator === 'symbol' 
-  ? function (obj) {
-    return typeof obj;
-  } : function (obj) { 
-    return obj && typeof Symbol === 'function' 
-      && obj.constructor === Symbol && obj !== Symbol.prototype 
-      ? 'symbol' : typeof obj; 
-  };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-import _assert from 'assert';
+var _assert = require('assert');
 
 var _assert2 = _interopRequireDefault(_assert);
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {default: obj}; 
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
     Convert 12.34 with a precision of 3 into 12340
@@ -37,22 +27,18 @@ var NumberUtils = {
       number = number.toString();
     }
 
-    (0, _assert2.default)(typeof number === 'string', 
-      'number should be an actual number or string: ' 
-      + (typeof number === 'undefined' ? 'undefined' : _typeof(number)));
+    (0, _assert2.default)(typeof number === 'string', 'number should be an actual number or string: ' + (typeof number === 'undefined' ? 'undefined' : _typeof(number)));
     number = number.trim();
     (0, _assert2.default)(/^[0-9]*\.?[0-9]*$/.test(number), 'Invalid decimal number ' + number);
 
     var _number$split = number.split('.'),
-      _number$split$ = _number$split[0],
-      whole = _number$split$ === undefined ? '' : _number$split$,
-      _number$split$2 = _number$split[1],
-      decimal = _number$split$2 === undefined ? '' : _number$split$2;
+        _number$split$ = _number$split[0],
+        whole = _number$split$ === undefined ? '' : _number$split$,
+        _number$split$2 = _number$split[1],
+        decimal = _number$split$2 === undefined ? '' : _number$split$2;
 
     var padding = precision - decimal.length;
-    (0, _assert2.default)(padding >= 0, 
-      'Too many decimal digits in ' + number 
-      + ' to create an implied decimal of ' + precision);
+    (0, _assert2.default)(padding >= 0, 'Too many decimal digits in ' + number + ' to create an implied decimal of ' + precision);
 
     for (var i = 0; i < padding; i++) {
       decimal += '0';
@@ -66,6 +52,5 @@ var NumberUtils = {
   }
 };
 
-const _default = NumberUtils;
-export {_default as default};
-//sexport default _default;
+exports.default = NumberUtils;
+module.exports = exports.default;

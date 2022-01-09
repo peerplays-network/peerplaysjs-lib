@@ -12,15 +12,9 @@ var _KeyUtils2 = _interopRequireDefault(_KeyUtils);
 
 var _state = require('./state');
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {default: obj}; 
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError('Cannot call a class as a function'); 
-  } 
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var _keyCachePriv = {};
 var _keyCachePub = {};
@@ -29,7 +23,7 @@ var AccountLogin = function () {
   function AccountLogin() {
     _classCallCheck(this, AccountLogin);
 
-    var state = {loggedIn: false, roles: ['owner', 'active', 'memo']};
+    var state = { loggedIn: false, roles: ['owner', 'active', 'memo'] };
     this.get = (0, _state.get)(state);
     this.set = (0, _state.set)(state);
 
@@ -72,8 +66,7 @@ var AccountLogin = function () {
    */
 
 
-  AccountLogin.prototype.generateKeys = function generateKeys(accountName, password, 
-    roles, prefix) {
+  AccountLogin.prototype.generateKeys = function generateKeys(accountName, password, roles, prefix) {
     if (!accountName || !password) {
       throw new Error('Account name or password required');
     }
@@ -87,8 +80,7 @@ var AccountLogin = function () {
 
     (roles || this.get('roles')).forEach(function (role) {
       var seed = password + accountName + role;
-      var pkey = _keyCachePriv[seed] ? _keyCachePriv[seed] : _PrivateKey2.default.fromSeed(
-        _KeyUtils2.default.normalize_brainKey(seed));
+      var pkey = _keyCachePriv[seed] ? _keyCachePriv[seed] : _PrivateKey2.default.fromSeed(_KeyUtils2.default.normalize_brainKey(seed));
       _keyCachePriv[seed] = pkey;
 
       privKeys[role] = pkey;
@@ -97,7 +89,7 @@ var AccountLogin = function () {
       _keyCachePub[seed] = pubKeys[role];
     });
 
-    return {privKeys: privKeys, pubKeys: pubKeys};
+    return { privKeys: privKeys, pubKeys: pubKeys };
   };
 
   /**
@@ -123,8 +115,8 @@ var AccountLogin = function () {
     var _this = this;
 
     var accountName = _ref.accountName,
-      password = _ref.password,
-      auths = _ref.auths;
+        password = _ref.password,
+        auths = _ref.auths;
     var prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'PPY';
 
     if (!accountName || !password || !auths) {
@@ -134,18 +126,18 @@ var AccountLogin = function () {
     var hasKey = false;
     var roles = Object.keys(auths);
 
-    var _loop = function _loop(i /*, len */ ) {
+    var _loop = function _loop(i, len) {
       var role = roles[i];
 
       var _generateKeys = _this.generateKeys(accountName, password, [role], prefix),
-        privKeys = _generateKeys.privKeys,
-        pubKeys = _generateKeys.pubKeys;
+          privKeys = _generateKeys.privKeys,
+          pubKeys = _generateKeys.pubKeys;
 
       auths[role].forEach(function (roleKey) {
         // Check if the active key matches
         if (roleKey[0] === pubKeys[role]) {
           hasKey = true;
-          _this.set(role, {priv: privKeys[role], pub: pubKeys[role]});
+          _this.set(role, { priv: privKeys[role], pub: pubKeys[role] });
         }
       });
     };

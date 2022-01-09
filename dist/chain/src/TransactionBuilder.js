@@ -1,30 +1,24 @@
 'use strict';
 
-export const __esModule = true;
+exports.__esModule = true;
 
-import _assert from 'assert';
+var _assert = require('assert');
 
 var _assert2 = _interopRequireDefault(_assert);
 
-import {Apis, ChainConfig} from '../../ws';
+var _ws = require('../../ws');
 
-import {hash, PublicKey, Signature} from '../../ecc';
+var _ecc = require('../../ecc');
 
-import {ops} from '../../serializer';
+var _serializer = require('../../serializer');
 
-import _ChainTypes from './ChainTypes';
+var _ChainTypes = require('./ChainTypes');
 
 var _ChainTypes2 = _interopRequireDefault(_ChainTypes);
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {default: obj}; 
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { 
-  if (!(instance instanceof Constructor)) { 
-    throw new TypeError('Cannot call a class as a function'); 
-  } 
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var TransactionBuilder = function () {
   function TransactionBuilder() {
@@ -74,12 +68,11 @@ var TransactionBuilder = function () {
     var wallet_object = cwallet.wallet.wallet_object;
 
 
-    if (Apis.instance().chain_id !== wallet_object.get('chain_id')) {
+    if (_ws.Apis.instance().chain_id !== wallet_object.get('chain_id')) {
       var wallet_chain_id = wallet_object.get('chain_id');
-      var api_chain_id = Apis.instance().chain_id;
+      var api_chain_id = _ws.Apis.instance().chain_id;
 
-      var error = new Error('Mismatched chain_id; expecting ' 
-        + wallet_chain_id + ', but got ' + api_chain_id);
+      var error = new Error('Mismatched chain_id; expecting ' + wallet_chain_id + ', but got ' + api_chain_id);
 
       return Promise.reject(error);
     }
@@ -109,7 +102,7 @@ var TransactionBuilder = function () {
 
       return _this.get_potential_signatures().then(function (_ref) {
         var pubkeys = _ref.pubkeys,
-          addys = _ref.addys;
+            addys = _ref.addys;
 
         var my_pubkeys = cwallet.getPubkeys_having_PrivateKey(pubkeys, addys);
 
@@ -150,11 +143,11 @@ var TransactionBuilder = function () {
         throw new Error('already finalized');
       }
 
-      resolve(Apis.instance().db_api().exec('get_objects', [['2.1.0']]).then(function (r) {
+      resolve(_ws.Apis.instance().db_api().exec('get_objects', [['2.1.0']]).then(function (r) {
         _this2.head_block_time_string = r[0].time;
 
         if (_this2.expiration === 0) {
-          _this2.expiration = _this2.base_expiration_sec() + ChainConfig.expire_in_secs;
+          _this2.expiration = _this2.base_expiration_sec() + _ws.ChainConfig.expire_in_secs;
         }
 
         _this2.ref_block_num = r[0].head_block_number & 0xffff; // eslint-disable-line
@@ -170,13 +163,12 @@ var TransactionBuilder = function () {
             op[1].finalize();
           }
 
-          var _type = ops.operation.st_operations[op[0]];
+          var _type = _serializer.ops.operation.st_operations[op[0]];
           var hexBuffer = _type.toBuffer(op[1]).toString('hex');
-          console.log('Operation %s: %O => %s (%d bytes)', 
-            _type.operation_name, op[1], hexBuffer, hexBuffer.length / 2);
+          console.log('Operation %s: %O => %s (%d bytes)', _type.operation_name, op[1], hexBuffer, hexBuffer.length / 2);
         }
 
-        _this2.tr_buffer = ops.transaction.toBuffer(_this2);
+        _this2.tr_buffer = _serializer.ops.transaction.toBuffer(_this2);
       }));
     });
   };
@@ -189,7 +181,7 @@ var TransactionBuilder = function () {
       throw new Error('not finalized');
     }
 
-    return hash.sha256(this.tr_buffer).toString('hex').substring(0, 40);
+    return _ecc.hash.sha256(this.tr_buffer).toString('hex').substring(0, 40);
   };
 
   /**
@@ -219,7 +211,7 @@ var TransactionBuilder = function () {
 
     (0, _assert2.default)(name, 'name');
     (0, _assert2.default)(operation, 'operation');
-    var _type = ops[name];
+    var _type = _serializer.ops[name];
     (0, _assert2.default)(_type, 'Unknown operation ' + name);
     var operation_id = _ChainTypes2.default.operations[_type.operation_name];
 
@@ -228,7 +220,7 @@ var TransactionBuilder = function () {
     }
 
     if (!operation.fee) {
-      operation.fee = {amount: 0, asset_id: 0};
+      operation.fee = { amount: 0, asset_id: 0 };
     }
 
     if (name === 'proposal_create') {
@@ -299,13 +291,12 @@ var TransactionBuilder = function () {
 
       if (!operation.expiration_time) {
         var experationTime = this.base_expiration_sec();
-        operation.expiration_time = experationTime + ChainConfig.expire_in_secs_proposal;
+        operation.expiration_time = experationTime + _ws.ChainConfig.expire_in_secs_proposal;
       }
 
       if (requiresReview) {
         var one_day = 24 * 60 * 60; // One day in seconds
-        var max = Math.max(this.commitee_min_review, one_day, 
-          ChainConfig.review_in_secs_committee);
+        var max = Math.max(this.commitee_min_review, one_day, _ws.ChainConfig.review_in_secs_committee);
 
         operation.review_period_seconds = extraReview + max;
         /*
@@ -325,10 +316,9 @@ var TransactionBuilder = function () {
   TransactionBuilder.prototype.update_head_block = function update_head_block() {
     var _this3 = this;
 
-    return Apis.instance().db_api().exec('get_objects', [['2.0.0', '2.1.0']]
-    ).then(function (res) {
+    return _ws.Apis.instance().db_api().exec('get_objects', [['2.0.0', '2.1.0']]).then(function (res) {
       var g = res[0],
-        r = res[1];
+          r = res[1];
 
       _this3.head_block_time_string = r[0].time;
       _this3.committee_min_review = g[0].parameters.committee_proposal_review_period;
@@ -361,11 +351,10 @@ var TransactionBuilder = function () {
     }
 
     (0, _assert2.default)(proposal_create_options, 'proposal_create_options');
-    (0, _assert2.default)(proposal_create_options.fee_paying_account, 
-      'proposal_create_options.fee_paying_account');
+    (0, _assert2.default)(proposal_create_options.fee_paying_account, 'proposal_create_options.fee_paying_account');
 
     var proposed_ops = this.operations.map(function (op) {
-      return {op: op};
+      return { op: op };
     });
 
     this.operations = [];
@@ -409,7 +398,7 @@ var TransactionBuilder = function () {
 
     for (var i = 0, len = this.operations.length; i < len; i++) {
       var op = this.operations[i];
-      operations.push(ops.operation.toObject(op));
+      operations.push(_serializer.ops.operation.toObject(op));
     }
 
     if (!asset_id) {
@@ -422,26 +411,24 @@ var TransactionBuilder = function () {
       }
     }
 
-    var promises = [Apis.instance().db_api().exec('get_required_fees', [operations, asset_id])];
+    var promises = [_ws.Apis.instance().db_api().exec('get_required_fees', [operations, asset_id])];
 
     if (asset_id !== '1.3.0') {
       // This handles the fallback to paying fees in BTS if the fee pool is empty.
-      promises.push(Apis.instance().db_api().exec('get_required_fees', [operations, '1.3.0']));
-      promises.push(Apis.instance().db_api().exec('get_objects', [[asset_id]]));
+      promises.push(_ws.Apis.instance().db_api().exec('get_required_fees', [operations, '1.3.0']));
+      promises.push(_ws.Apis.instance().db_api().exec('get_objects', [[asset_id]]));
     }
 
     return Promise.all(promises).then(function (results) {
       var fees = results[0],
-        coreFees = results[1],
-        asset = results[2];
+          coreFees = results[1],
+          asset = results[2];
 
       asset = asset ? asset[0] : null;
 
-      var dynamicPromise = asset_id !== '1.3.0' && asset 
-        ? Apis.instance().db_api().exec('get_objects', 
-          [[asset.dynamic_asset_data_id]]) : new Promise(function (resolve) {
-          resolve();
-        });
+      var dynamicPromise = asset_id !== '1.3.0' && asset ? _ws.Apis.instance().db_api().exec('get_objects', [[asset.dynamic_asset_data_id]]) : new Promise(function (resolve) {
+        resolve();
+      });
 
       return dynamicPromise.then(function (dynamicObject) {
         if (asset_id !== '1.3.0') {
@@ -478,14 +465,13 @@ var TransactionBuilder = function () {
         var asset_index = 0;
 
         var set_fee = function set_fee(operation) {
-          if (!operation.fee || operation.fee.amount === 0 
-            || operation.fee.amount.toString && operation.fee.amount.toString() === '0' // Long
+          if (!operation.fee || operation.fee.amount === 0 || operation.fee.amount.toString && operation.fee.amount.toString() === '0' // Long
           ) {
-            operation.fee = flat_assets[asset_index];
-            // console.log("new operation.fee", operation.fee)
-          } else {
-            // console.log("old operation.fee", operation.fee)
-          }
+              operation.fee = flat_assets[asset_index];
+              // console.log("new operation.fee", operation.fee)
+            } else {
+              // console.log("old operation.fee", operation.fee)
+            }
 
           asset_index++;
 
@@ -509,32 +495,26 @@ var TransactionBuilder = function () {
   };
 
   TransactionBuilder.prototype.get_potential_signatures = function get_potential_signatures() {
-    var tr_object = ops.signed_transaction.toObject(this);
-    return Promise.all([Apis.instance().db_api().exec(
-      'get_potential_signatures', [tr_object]), 
-    Apis.instance().db_api().exec('get_potential_address_signatures', 
-      [tr_object])]).then(function (results) {
-      return {pubkeys: results[0], addys: results[1]};
+    var tr_object = _serializer.ops.signed_transaction.toObject(this);
+    return Promise.all([_ws.Apis.instance().db_api().exec('get_potential_signatures', [tr_object]), _ws.Apis.instance().db_api().exec('get_potential_address_signatures', [tr_object])]).then(function (results) {
+      return { pubkeys: results[0], addys: results[1] };
     });
   };
 
-  TransactionBuilder.prototype.get_required_signatures = 
-    function get_required_signatures(available_keys) {
-      if (!available_keys.length) {
-        return Promise.resolve([]);
-      }
+  TransactionBuilder.prototype.get_required_signatures = function get_required_signatures(available_keys) {
+    if (!available_keys.length) {
+      return Promise.resolve([]);
+    }
 
-      var tr_object = ops.signed_transaction.toObject(this);
-      // DEBUG console.log('... tr_object',tr_object)
-      return Apis.instance().db_api().exec('get_required_signatures', 
-        [tr_object, available_keys]).then(function (required_public_keys) {
-        return required_public_keys;
-      });
-    };
+    var tr_object = _serializer.ops.signed_transaction.toObject(this);
+    // DEBUG console.log('... tr_object',tr_object)
+    return _ws.Apis.instance().db_api().exec('get_required_signatures', [tr_object, available_keys]).then(function (required_public_keys) {
+      return required_public_keys;
+    });
+  };
 
   TransactionBuilder.prototype.add_signer = function add_signer(private_key) {
-    var public_key = arguments.length > 1 && arguments[1] !== undefined 
-      ? arguments[1] : private_key.toPublicKey();
+    var public_key = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : private_key.toPublicKey();
 
     (0, _assert2.default)(private_key.d, 'required PrivateKey object');
 
@@ -543,7 +523,7 @@ var TransactionBuilder = function () {
     }
 
     if (!public_key.Q) {
-      public_key = PublicKey.fromPublicKeyString(public_key);
+      public_key = _ecc.PublicKey.fromPublicKeyString(public_key);
     }
 
     // prevent duplicates
@@ -563,8 +543,7 @@ var TransactionBuilder = function () {
   };
 
   TransactionBuilder.prototype.sign = function sign() {
-    var chain_id = arguments.length > 0 && arguments[0] !== undefined 
-      ? arguments[0] : Apis.instance().chain_id;
+    var chain_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _ws.Apis.instance().chain_id;
 
     if (!this.tr_buffer) {
       throw new Error('not finalized');
@@ -582,11 +561,10 @@ var TransactionBuilder = function () {
 
     for (var i = 0; end > 0 ? i < end : i > end; end > 0 ? i++ : i++) {
       var _signer_private_keys$ = this.signer_private_keys[i],
-        private_key = _signer_private_keys$[0],
-        public_key = _signer_private_keys$[1];
+          private_key = _signer_private_keys$[0],
+          public_key = _signer_private_keys$[1];
 
-      var sig = Signature.signBuffer(Buffer.concat(
-        [Buffer.from(chain_id, 'hex'), this.tr_buffer]), private_key, public_key);
+      var sig = _ecc.Signature.signBuffer(Buffer.concat([Buffer.from(chain_id, 'hex'), this.tr_buffer]), private_key, public_key);
       this.signatures.push(sig.toBuffer());
     }
 
@@ -595,11 +573,11 @@ var TransactionBuilder = function () {
   };
 
   TransactionBuilder.prototype.serialize = function serialize() {
-    return ops.signed_transaction.toObject(this);
+    return _serializer.ops.signed_transaction.toObject(this);
   };
 
   TransactionBuilder.prototype.toObject = function toObject() {
-    return ops.signed_transaction.toObject(this);
+    return _serializer.ops.signed_transaction.toObject(this);
   };
 
   TransactionBuilder.prototype.broadcast = function broadcast(was_broadcast_callback) {
@@ -634,12 +612,11 @@ var TransactionBuilder = function () {
         throw new Error('no operations');
       }
 
-      var tr_object = ops.signed_transaction.toObject(_this6);
+      var tr_object = _serializer.ops.signed_transaction.toObject(_this6);
       // console.log('... broadcast_transaction_with_callback !!!')
-      Apis.instance().network_api().exec(
-        'broadcast_transaction_with_callback', [function (res) {
-          return resolve(res);
-        }, tr_object]).then(function () {
+      _ws.Apis.instance().network_api().exec('broadcast_transaction_with_callback', [function (res) {
+        return resolve(res);
+      }, tr_object]).then(function () {
         // console.log('... broadcast success, waiting for callback')
         if (was_broadcast_callback) {
           was_broadcast_callback();
@@ -654,10 +631,7 @@ var TransactionBuilder = function () {
           message = '';
         }
 
-        reject(new Error(message + '\n' + 'peerplays-crypto ' 
-          + (' digest ' + hash.sha256(_this6.tr_buffer).toString('hex') 
-          + ' transaction ' + _this6.tr_buffer.toString('hex') + ' ' 
-          + JSON.stringify(tr_object))));
+        reject(new Error(message + '\n' + 'peerplays-crypto ' + (' digest ' + _ecc.hash.sha256(_this6.tr_buffer).toString('hex') + ' transaction ' + _this6.tr_buffer.toString('hex') + ' ' + JSON.stringify(tr_object))));
       });
     });
   };
@@ -697,6 +671,5 @@ var TransactionBuilder = function () {
   return TransactionBuilder;
 }();
 
-const _default = TransactionBuilder;
-export {_default as default};
-//export default _default;
+exports.default = TransactionBuilder;
+module.exports = exports.default;
