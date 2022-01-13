@@ -62,6 +62,8 @@ describe('AccountLogin', () => {
     it('Check keys', () => {
       let success = login.checkKeys({
         accountName: 'someaccountname',
+        // TODO later change this hard-coded password 
+        // file deepcode ignore NoHardcodedPasswords/test: <please specify a reason of ignoring this>
         password: 'somereallylongpassword',
         auths
       });

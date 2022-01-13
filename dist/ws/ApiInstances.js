@@ -58,11 +58,15 @@ var ApisInstance = function () {
             if (_this.statusCb) {
               _this.statusCb(_ChainWebSocket2.default.status.RECONNECTED);
             }
+          }).catch(function (error) {
+            console.error(error);
           });
           _this._net.init();
           _this._hist.init();
           _this._crypto.init();
           _this._bookie.init();
+        }).catch(function (error) {
+          console.error(error);
         });
       };
 

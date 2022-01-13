@@ -54,11 +54,15 @@ var ApisInstance = function () {
             if (_this.statusCb) {
               _this.statusCb('reconnect');
             }
+          }).catch(function (error) {
+            console.error(error);
           });
           _this._net.init();
           _this._hist.init();
           _this._crypt.init();
           _this._bookie.init();
+        }).catch(function (error) {
+          console.error(error);
         });
       };
 

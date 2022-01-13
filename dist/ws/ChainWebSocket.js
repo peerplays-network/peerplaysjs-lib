@@ -101,7 +101,8 @@ var ChainWebSocket = function () {
       this.ws = new WebSocketClient(this.serverAddress);
     } catch (error) {
       // Set a timeout to try and reconnect here.
-      return this.resetConnection();
+      this.resetConnection();
+      return;
     }
 
     this.addEventListeners();
@@ -220,6 +221,7 @@ var ChainWebSocket = function () {
 
   ChainWebSocket.prototype.onConnectionTimeout = function onConnectionTimeout() {
     this.debug('!!! ChainWebSocket timeout');
+    // deepcode ignore ExceptionIsNotThrown: <please specify a reason of ignoring this>
     this.onConnectionClose(new Error('Connection timed out.'));
   };
 
@@ -232,6 +234,7 @@ var ChainWebSocket = function () {
 
   ChainWebSocket.prototype.onConnectionTerminate = function onConnectionTerminate() {
     this.debug('!!! ChainWebSocket terminate');
+    // deepcode ignore ExceptionIsNotThrown: <please specify a reason of ignoring this>
     this.onConnectionClose(new Error('Connection was terminated.'));
   };
 

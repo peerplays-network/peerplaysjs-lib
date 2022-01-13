@@ -3,6 +3,7 @@ import {
   Aes, PrivateKey, PublicKey, Address
 } from '../../lib';
 
+// file deepcode ignore HardcodedNonCryptoSecret/test: <please specify a reason of ignoring this>
 let test = (key) => {
   describe('ECC', () => {
     describe('Key Formats', () => {

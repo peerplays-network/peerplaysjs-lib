@@ -19,9 +19,11 @@ var FastParser = function () {
     if (!b) {
       return;
     }
+
     if (buffer) {
       var data = buffer.slice(0, len).toString('binary');
       b.append(data, 'binary');
+
       while (len-- > data.length) {
         b.writeUint8(0);
       }
@@ -34,9 +36,11 @@ var FastParser = function () {
 
   FastParser.public_key = function public_key(b, _public_key) {
     var buffer = void 0;
+
     if (!b) {
       return;
     }
+
     if (_public_key) {
       buffer = _public_key.toBuffer();
       b.append(buffer.toString('binary'), 'binary');
@@ -50,6 +54,7 @@ var FastParser = function () {
     if (!b) {
       return;
     }
+
     if (_ripemd) {
       FastParser.fixed_data(b, 20, _ripemd);
     } else {
@@ -61,6 +66,7 @@ var FastParser = function () {
     if (!b) {
       return;
     }
+
     if (_sha) {
       FastParser.fixed_data(b, 32, _sha);
     } else {
