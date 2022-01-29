@@ -17,6 +17,7 @@
     </div>
 
     <script type="text/javascript" src="../build/peerplaysjs-ws.js"></script>
+
     <script type="text/javascript">
       var Api = window.peerplays_ws;
 
@@ -30,7 +31,8 @@
 
         function updateObject() {
           // deepcode ignore PromiseNotCaughtGeneral/test: <please specify a reason of ignoring this>
-          Api.instance().db_api().exec("get_objects", [["2.1.0"]]).then(response => {
+            Api.instance().db_api().exec("get_objects", [["2.1.0"]]).then(response => {
+            //Api.instance().db_api().exec("get_objects", [["2.1.0"]]).then(response => {
             sucessDiv.innerText = "Successfully connected to the Openledger API";
             console.log("get_object", response);
             var globalTable = document.getElementById("dynamic_global");
