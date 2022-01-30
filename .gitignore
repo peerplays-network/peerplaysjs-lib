@@ -2,3 +2,7 @@
 npm-debug.log
 node_modules
 /.dccache
+/.idea/.gitignore
+/.idea/modules.xml
+/.idea/peerplaysjs-lib.iml
+/.idea/vcs.xml
