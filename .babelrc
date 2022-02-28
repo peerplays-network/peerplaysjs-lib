@@ -28,7 +28,7 @@
         "@babel/plugin-proposal-do-expressions"
     ],
     "presets": [
-        "./tools/preset-env"
+        "@babel/preset-env"
     ],
     "env": {
         "cjs": {
