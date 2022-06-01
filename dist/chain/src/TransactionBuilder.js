@@ -518,7 +518,7 @@ var TransactionBuilder = function () {
   TransactionBuilder.prototype.add_signer = function add_signer(private_key) {
     var public_key = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-    if (Object.keys(private_key[0] === 'active' || Object.keys(private_key)[0] === 'posting') && _whaleVault.WhaleVaultConfig.getWhaleVault() !== null) {
+    if (Object.keys(private_key)[0] === 'whaleVaultInfo' && _whaleVault.WhaleVaultConfig.getWhaleVault() !== null) {
       this.signer_private_keys.push(private_key);
     } else {
       (0, _assert2.default)(private_key.d, 'required PrivateKey object');
@@ -601,9 +601,9 @@ var TransactionBuilder = function () {
 
     for (var i = 0; end > 0 ? i < end : i > end; end > 0 ? i++ : i++) {
       var private_key = this.signer_private_keys[i];
-      var keyType = Object.keys(private_key)[0];
+      var keyType = private_key.whaleVaultInfo.keyType;
 
-      var promise = _whaleVault.WhaleVaultConfig.getWhaleVault().promiseRequestSignBuffer('peerplaysjs', 'ppy:' + private_key[keyType], JSON.stringify(messageBuffer), keyType, 'signBuf', 'raw');
+      var promise = _whaleVault.WhaleVaultConfig.getWhaleVault().promiseRequestSignBuffer('peerplaysjs', 'ppy:' + private_key.whaleVaultInfo.account, JSON.stringify(messageBuffer), keyType, 'signBuf', 'raw');
       promises.push(promise);
     }
 
@@ -635,7 +635,7 @@ var TransactionBuilder = function () {
   TransactionBuilder.prototype._broadcast = function _broadcast(was_broadcast_callback) {
     var _this6 = this;
 
-    if ((Object.keys(this.signer_private_keys[0])[0] === 'active' || Object.keys(this.signer_private_keys[0])[0] === 'posting') && _whaleVault.WhaleVaultConfig.getWhaleVault() !== null) {
+    if (Object.keys(this.signer_private_keys[0])[0] === 'whaleVaultInfo' && _whaleVault.WhaleVaultConfig.getWhaleVault() !== null) {
       return new Promise(function (resolve, reject) {
         if (!_this6.signed) {
           _this6.signWithWhaleVault().then(function (responses) {
