@@ -644,7 +644,7 @@ var TransactionBuilder = function () {
                 _this6.signatures.push(Buffer.from(response.result, 'hex'));
               } else {
                 console.error(response);
-                throw new Error('whalevault: ' + response.error + ' [' + response.message + ']');
+                throw new Error('' + response.error);
               }
             });
 
@@ -681,8 +681,45 @@ var TransactionBuilder = function () {
 
               reject(new Error(message + '\n' + 'peerplays-crypto ' + (' digest ' + _ecc.hash.sha256(_this6.tr_buffer).toString('hex') + ' transaction ' + _this6.tr_buffer.toString('hex') + ' ' + JSON.stringify(tr_object))));
             });
+          }).catch(function (error) {
+            console.log(error);
+            reject(error);
           }); // end of signWithWhaleVault().then
-        } // end of (!this.signed)
+        } else {
+          if (!_this6.tr_buffer) {
+            throw new Error('not finalized');
+          }
+
+          if (!_this6.signatures.length) {
+            throw new Error('not signed');
+          }
+
+          if (!_this6.operations.length) {
+            throw new Error('no operations');
+          }
+
+          var tr_object = _serializer.ops.signed_transaction.toObject(_this6);
+          // console.log('... broadcast_transaction_with_callback !!!')
+          _ws.Apis.instance().network_api().exec('broadcast_transaction_with_callback', [function (res) {
+            return resolve(res);
+          }, tr_object]).then(function () {
+            // console.log('... broadcast success, waiting for callback')
+            if (was_broadcast_callback) {
+              was_broadcast_callback();
+            }
+          }).catch(function (error) {
+            // console.log may be redundant for network errors, other errors could occur
+            console.log(error);
+            var message = error.message;
+
+
+            if (!message) {
+              message = '';
+            }
+
+            reject(new Error(message + '\n' + 'peerplays-crypto ' + (' digest ' + _ecc.hash.sha256(_this6.tr_buffer).toString('hex') + ' transaction ' + _this6.tr_buffer.toString('hex') + ' ' + JSON.stringify(tr_object))));
+          });
+        }
       }); // end of new Promise
     } else {
       return new Promise(function (resolve, reject) {
