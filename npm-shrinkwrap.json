@@ -27,7 +27,7 @@
         "inquirer": "^8.2.0",
         "nth-check": "^2.0.1",
         "secure-random": "^1.1.2",
-        "synk": "0.0.2",
+        "snyk": "^1.950.0",
         "uglify-js": "^3.14.5",
         "ws": "^8.4.0"
       },
@@ -12017,6 +12017,17 @@
       "dev": true,
       "optional": true
     },
+    "node_modules/snyk": {
+      "version": "1.950.0",
+      "resolved": "https://registry.npmjs.org/snyk/-/snyk-1.950.0.tgz",
+      "integrity": "sha512-279JtY6fyhxujX4yfdACDMJOOeytTqKjkpr9F3KX2iqeADFWjx/hghhmeAdS2SEYwE2bOlRWavF8CZsWiQK6EQ==",
+      "bin": {
+        "snyk": "bin/snyk"
+      },
+      "engines": {
+        "node": ">=12"
+      }
+    },
     "node_modules/source-map": {
       "version": "0.5.7",
       "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz",
@@ -12581,14 +12592,6 @@
       "integrity": "sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==",
       "dev": true,
       "optional": true
-    },
-    "node_modules/synk": {
-      "version": "0.0.2",
-      "resolved": "https://registry.npmjs.org/synk/-/synk-0.0.02.tgz",
-      "integrity": "sha1-YVySOlh3QA05KKlE8Y29LHxQa9w=",
-      "bin": {
-        "synk": "bin/synk"
-      }
     },
     "node_modules/syntax-error": {
       "version": "1.4.0",
@@ -23085,6 +23088,11 @@
         "kind-of": "^3.2.0"
       }
     },
+    "snyk": {
+      "version": "1.950.0",
+      "resolved": "https://registry.npmjs.org/snyk/-/snyk-1.950.0.tgz",
+      "integrity": "sha512-279JtY6fyhxujX4yfdACDMJOOeytTqKjkpr9F3KX2iqeADFWjx/hghhmeAdS2SEYwE2bOlRWavF8CZsWiQK6EQ=="
+    },
     "source-map": {
       "version": "0.5.7",
       "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz",
@@ -23556,11 +23564,6 @@
       "integrity": "sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==",
       "dev": true,
       "optional": true
-    },
-    "synk": {
-      "version": "0.0.2",
-      "resolved": "https://registry.npmjs.org/synk/-/synk-0.0.02.tgz",
-      "integrity": "sha1-YVySOlh3QA05KKlE8Y29LHxQa9w="
     },
     "syntax-error": {
       "version": "1.4.0",
