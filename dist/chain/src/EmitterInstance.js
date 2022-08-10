@@ -1,22 +1,21 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
+exports["default"] = void 0;
 
-var _eventEmitter = require('event-emitter');
+var _eventEmitter = _interopRequireDefault(require("event-emitter"));
 
-var _eventEmitter2 = _interopRequireDefault(_eventEmitter);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _emitter;
 
-var _emitter = void 0;
-
-exports.default = {
+var _default = {
   emitter: function emitter() {
     if (!_emitter) {
-      _emitter = (0, _eventEmitter2.default)({});
+      _emitter = (0, _eventEmitter["default"])({});
     }
 
     return _emitter;
   }
 };
-module.exports = exports.default;
+exports["default"] = _default;
