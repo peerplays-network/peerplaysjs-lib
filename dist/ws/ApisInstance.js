@@ -1,25 +1,22 @@
-'use strict';
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+"use strict";
 
 var ChainWebSocket = require('./ChainWebSocket');
+
 var GrapheneApi = require('./GrapheneApi');
 
-var ApisInstance = function () {
+var ApisInstance = /*#__PURE__*/function () {
   function ApisInstance(ChainConfig) {
-    _classCallCheck(this, ApisInstance);
-
     this.chainConfig = ChainConfig;
   }
-
   /** @arg {string} connection .. */
 
 
-  ApisInstance.prototype.connect = function connect(cs) {
+  var _proto = ApisInstance.prototype;
+
+  _proto.connect = function connect(cs) {
     var _this = this;
 
     // console.log("INFO\tApiInstances\tconnect\t", cs);
-
     var rpc_user = '';
     var rpc_password = '';
 
@@ -28,7 +25,6 @@ var ApisInstance = function () {
     }
 
     this.ws_rpc = new ChainWebSocket(cs, this.statusCb);
-
     this.init_promise = this.ws_rpc.login(rpc_user, rpc_password).then(function () {
       // console.log("Login done");
       _this._db = new GrapheneApi(_this.ws_rpc, 'database');
@@ -36,6 +32,7 @@ var ApisInstance = function () {
       _this._hist = new GrapheneApi(_this.ws_rpc, 'history');
       _this._crypt = new GrapheneApi(_this.ws_rpc, 'crypto');
       _this._bookie = new GrapheneApi(_this.ws_rpc, 'bookie');
+
       var db_promise = _this._db.init().then(function () {
         return _this._db.exec('get_chain_id', []).then(function (_chain_id) {
           _this.chain_id = _chain_id;
@@ -57,49 +54,52 @@ var ApisInstance = function () {
           }).catch(function (error) {
             console.error(error);
           });
+
           _this._net.init();
+
           _this._hist.init();
+
           _this._crypt.init();
+
           _this._bookie.init();
         }).catch(function (error) {
           console.error(error);
         });
       };
 
-      return Promise.all([db_promise, _this._net.init(), _this._hist.init(),
-      // Temporary squash crypto API error until the API is upgraded everywhere
-      _this._crypt.init().catch(function (e) {
+      return Promise.all([db_promise, _this._net.init(), _this._hist.init(), // Temporary squash crypto API error until the API is upgraded everywhere
+      _this._crypt.init()["catch"](function (e) {
         return console.error('ApiInstance\tCrypto API Error', e);
       }), _this._bookie.init()]);
     });
   };
 
-  ApisInstance.prototype.close = function close() {
+  _proto.close = function close() {
     this.ws_rpc.close();
     this.ws_rpc = null;
   };
 
-  ApisInstance.prototype.db_api = function db_api() {
+  _proto.db_api = function db_api() {
     return this._db;
   };
 
-  ApisInstance.prototype.network_api = function network_api() {
+  _proto.network_api = function network_api() {
     return this._net;
   };
 
-  ApisInstance.prototype.history_api = function history_api() {
+  _proto.history_api = function history_api() {
     return this._hist;
   };
 
-  ApisInstance.prototype.crypto_api = function crypto_api() {
+  _proto.crypto_api = function crypto_api() {
     return this._crypt;
   };
 
-  ApisInstance.prototype.bookie_api = function bookie_api() {
+  _proto.bookie_api = function bookie_api() {
     return this._bookie;
   };
 
-  ApisInstance.prototype.setRpcConnectionStatusCallback = function setRpcConnectionStatusCallback(callback) {
+  _proto.setRpcConnectionStatusCallback = function setRpcConnectionStatusCallback(callback) {
     this.statusCb = callback;
   };
 

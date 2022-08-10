@@ -1,19 +1,14 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
+exports["default"] = void 0;
 
-var _PublicKey = require('../../ecc/src/PublicKey');
+var _PublicKey = _interopRequireDefault(require("../../ecc/src/PublicKey"));
 
-var _PublicKey2 = _interopRequireDefault(_PublicKey);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var FastParser = function () {
-  function FastParser() {
-    _classCallCheck(this, FastParser);
-  }
+var FastParser = /*#__PURE__*/function () {
+  function FastParser() {}
 
   FastParser.fixed_data = function fixed_data(b, len, buffer) {
     if (!b) {
@@ -35,7 +30,7 @@ var FastParser = function () {
   };
 
   FastParser.public_key = function public_key(b, _public_key) {
-    var buffer = void 0;
+    var buffer;
 
     if (!b) {
       return;
@@ -46,7 +41,7 @@ var FastParser = function () {
       b.append(buffer.toString('binary'), 'binary');
     } else {
       buffer = FastParser.fixed_data(b, 33);
-      return _PublicKey2.default.fromBuffer(buffer);
+      return _PublicKey["default"].fromBuffer(buffer);
     }
   };
 
@@ -80,6 +75,7 @@ var FastParser = function () {
       b.writeInt32(epoch);
     } else {
       epoch = b.readInt32(); // fc::time_point_sec
+
       return new Date(epoch * 1000);
     }
   };
@@ -87,5 +83,5 @@ var FastParser = function () {
   return FastParser;
 }();
 
-exports.default = FastParser;
-module.exports = exports.default;
+var _default = FastParser;
+exports["default"] = _default;

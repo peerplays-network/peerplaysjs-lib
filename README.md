@@ -1,6 +1,6 @@
 # PeerplaysJS (peerplaysjs-lib)
 
-Pure JavaScript Bitshares/Graphene library for node.js and browsers. Can be used to construct, sign and broadcast transactions in JavaScript, and to easily obtain data from the blockchain via public apis.
+Pure JavaScript Peerplays/Graphene library for node.js and browsers. Can be used to construct, sign and broadcast transactions in JavaScript, and to easily obtain data from the blockchain via public apis.
 
 Most of this code was written by [jcalfee](https://github.com/jcalfee).
 
@@ -200,27 +200,4 @@ console.log("Public key :", pkey.toPublicKey().toString(), "\n");
 
 TODO transaction signing example
 
-## ESDoc (beta)
 
-```bash
-npm i -g esdoc esdoc-es7-plugin
-esdoc -c ./esdoc.json
-open out/esdoc/index.html
-```
-
-## Releases
-
-This repository uses a [standard version](https://www.npmjs.com/package/standard-version) to aid in version control and release management.
-
-When using standard version to cut a release, there is automated changelog modifitions made based on commit messages.
-
-```csharp
-// If you typically use npm version to cut a new release, do this instead:
-npm run release
-// To cut a release and bump the version by major, minor, or patch, use the following respectively:
-npm run release-major // major bump
-npm run release-minor // minor bump
-npm run release-patch // patch bump
-// To cut a pre-release:
-npm run pre-release // v0.2.1 to v0.2.2-rc.0
-```
