@@ -16,7 +16,6 @@
     "test:trxbuilder": "cross-env BABEL_ENV=test mocha --require @babel/register ./test/chain/TransactionBuilder.js --watch",
     "test:ecc": "cross-env BABEL_ENV=test mocha --require @babel/register ./test/ecc --recursive --watch",
     "test:serializer": "cross-env BABEL_ENV=test mocha --require @babel/register ./test/serializer --recursive",
-    "test:ws": "cross-env BABEL_ENV=test mocha --require @babel/register ./test/ws --recursive",
     "test:watch": "npm test -- --watch",
     "clean": "rm -rf ./dist/* & rm -rf ./build/*",
     "prebuild": "npm run clean",
