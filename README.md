@@ -30,7 +30,7 @@ npm install peerplaysjs-lib
 
 ## Getting Started
 
-It is recommended to use Node v8.9.x.
+It is recommended to use Node v16+.
 
 On Ubuntu and OSX, the easiest way to install Node is to use the [Node Version Manager](https://github.com/creationix/nvm).
 For Windows users there is [NVM-Windows](https://github.com/coreybutler/nvm-windows).
@@ -39,14 +39,14 @@ To install NVM for Linux/OSX, simply copy paste the following in a terminal:
 
 ```bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
-nvm install v8
-nvm use v8
+nvm install v16+
+nvm use v16+
 ```
 
 Once you have Node installed, you can clone the repo:
 
 ```bash
-git clone https://github.com/peerplays-network/peerplaysjs-lib
+git clone https://gitlab.com/PBSA/tools-libs/peerplaysjs-lib.git
 cd peerplaysjs-lib
 ```
 
