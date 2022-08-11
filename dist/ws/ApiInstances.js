@@ -1,15 +1,17 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports['default'] = void 0;
 
-var _ChainWebSocket = _interopRequireDefault(require("./ChainWebSocket"));
+var _ChainWebSocket = _interopRequireDefault(require('./ChainWebSocket'));
 
-var _GrapheneApi = _interopRequireDefault(require("./GrapheneApi"));
+var _GrapheneApi = _interopRequireDefault(require('./GrapheneApi'));
 
-var _ChainConfig = _interopRequireDefault(require("./ChainConfig"));
+var _ChainConfig = _interopRequireDefault(require('./ChainConfig'));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {'default': obj}; 
+}
 
 var inst;
 
@@ -29,19 +31,19 @@ var ApisInstance = /*#__PURE__*/function () {
       throw new Error('Secure domains require wss connection');
     }
 
-    this.ws_rpc = new _ChainWebSocket["default"](cs, this.statusCb, connectTimeout);
+    this.ws_rpc = new _ChainWebSocket['default'](cs, this.statusCb, connectTimeout);
     this.init_promise = this.ws_rpc.login(rpc_user, rpc_password).then(function () {
       console.log('Connected to API node:', cs);
-      _this._db = new _GrapheneApi["default"](_this.ws_rpc, 'database');
-      _this._net = new _GrapheneApi["default"](_this.ws_rpc, 'network_broadcast');
-      _this._hist = new _GrapheneApi["default"](_this.ws_rpc, 'history');
-      _this._crypto = new _GrapheneApi["default"](_this.ws_rpc, 'crypto');
-      _this._bookie = new _GrapheneApi["default"](_this.ws_rpc, 'bookie');
+      _this._db = new _GrapheneApi['default'](_this.ws_rpc, 'database');
+      _this._net = new _GrapheneApi['default'](_this.ws_rpc, 'network_broadcast');
+      _this._hist = new _GrapheneApi['default'](_this.ws_rpc, 'history');
+      _this._crypto = new _GrapheneApi['default'](_this.ws_rpc, 'crypto');
+      _this._bookie = new _GrapheneApi['default'](_this.ws_rpc, 'bookie');
 
       var db_promise = _this._db.init().then(function () {
         return _this._db.exec('get_chain_id', []).then(function (_chain_id) {
           _this.chain_id = _chain_id;
-          return _ChainConfig["default"].setChainId(_chain_id);
+          return _ChainConfig['default'].setChainId(_chain_id);
         });
       });
 
@@ -49,9 +51,9 @@ var ApisInstance = /*#__PURE__*/function () {
         _this.ws_rpc.login('', '').then(function () {
           _this._db.init().then(function () {
             if (_this.statusCb) {
-              _this.statusCb(_ChainWebSocket["default"].status.RECONNECTED);
+              _this.statusCb(_ChainWebSocket['default'].status.RECONNECTED);
             }
-          })["catch"](function (error) {
+          })['catch'](function (error) {
             console.error(error);
           });
 
@@ -62,15 +64,15 @@ var ApisInstance = /*#__PURE__*/function () {
           _this._crypto.init();
 
           _this._bookie.init();
-        })["catch"](function (error) {
+        })['catch'](function (error) {
           console.error(error);
         });
       };
 
       return Promise.all([db_promise, _this._net.init(), _this._hist.init(), // Temporary squash crypto API error until the API is upgraded everywhere
-      _this._crypto.init()["catch"](function (e) {
-        return console.error('ApiInstance\tCrypto API Error', e);
-      }), _this._bookie.init()]);
+        _this._crypto.init()['catch'](function (e) {
+          return console.error('ApiInstance\tCrypto API Error', e);
+        }), _this._bookie.init()]);
     });
   };
 
@@ -192,4 +194,4 @@ var _default = {
   // crypto: (method, ...args) => Apis.instance().crypto_api().exec(method, toStrings(args))
 
 };
-exports["default"] = _default;
+exports['default'] = _default;

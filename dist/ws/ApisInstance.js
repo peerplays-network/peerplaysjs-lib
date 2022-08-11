@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var ChainWebSocket = require('./ChainWebSocket');
 
@@ -51,7 +51,7 @@ var ApisInstance = /*#__PURE__*/function () {
             if (_this.statusCb) {
               _this.statusCb('reconnect');
             }
-          })["catch"](function (error) {
+          })['catch'](function (error) {
             console.error(error);
           });
 
@@ -62,15 +62,15 @@ var ApisInstance = /*#__PURE__*/function () {
           _this._crypt.init();
 
           _this._bookie.init();
-        })["catch"](function (error) {
+        })['catch'](function (error) {
           console.error(error);
         });
       };
 
       return Promise.all([db_promise, _this._net.init(), _this._hist.init(), // Temporary squash crypto API error until the API is upgraded everywhere
-      _this._crypt.init()["catch"](function (e) {
-        return console.error('ApiInstance\tCrypto API Error', e);
-      }), _this._bookie.init()]);
+        _this._crypt.init()['catch'](function (e) {
+          return console.error('ApiInstance\tCrypto API Error', e);
+        }), _this._bookie.init()]);
     });
   };
 

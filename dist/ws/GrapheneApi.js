@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports['default'] = void 0;
 
 var GrapheneApi = /*#__PURE__*/function () {
   function GrapheneApi(ws_rpc, api_name) {
@@ -21,7 +21,7 @@ var GrapheneApi = /*#__PURE__*/function () {
   };
 
   _proto.exec = function exec(method, params) {
-    return this.ws_rpc.call([this.api_id, method, params])["catch"](function (error) {
+    return this.ws_rpc.call([this.api_id, method, params])['catch'](function (error) {
       console.log('!!! GrapheneApi error: ', method, params, error, JSON.stringify(error));
       throw error;
     });
@@ -31,4 +31,4 @@ var GrapheneApi = /*#__PURE__*/function () {
 }();
 
 var _default = GrapheneApi;
-exports["default"] = _default;
+exports['default'] = _default;

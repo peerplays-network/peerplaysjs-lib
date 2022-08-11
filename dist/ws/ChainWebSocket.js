@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports['default'] = void 0;
 var SOCKET_DEBUG = false;
 var WebSocketClient = null;
 
@@ -113,7 +113,7 @@ var ChainWebSocket = /*#__PURE__*/function () {
 
 
     if (this.currentReject) {
-      this.currentReject(new Error("Connection attempt failed: " + this.serverAddress));
+      this.currentReject(new Error('Connection attempt failed: ' + this.serverAddress));
     }
   }
   /**
@@ -327,7 +327,7 @@ var ChainWebSocket = /*#__PURE__*/function () {
     try {
       responseJSON = JSON.parse(response.data);
     } catch (error) {
-      responseJSON.error = "Error parsing response: " + error.stack;
+      responseJSON.error = 'Error parsing response: ' + error.stack;
       this.debug('Error parsing response: ', response);
     } // Clear the health check timeout, we've just received a healthy response from the server.
 
@@ -437,4 +437,4 @@ ChainWebSocket.status = {
   ERROR: 'error'
 };
 var _default = ChainWebSocket;
-exports["default"] = _default;
+exports['default'] = _default;

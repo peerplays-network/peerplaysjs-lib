@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports['default'] = void 0;
 var defaults = {
   whaleVault: null
 };
@@ -34,4 +34,4 @@ var WhaleVaultConfig = /*#__PURE__*/function () {
 
 var _default = new WhaleVaultConfig();
 
-exports["default"] = _default;
+exports['default'] = _default;

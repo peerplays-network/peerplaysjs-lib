@@ -1,18 +1,20 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports['default'] = void 0;
 
-var _ApiInstances = _interopRequireDefault(require("./ApiInstances"));
+var _ApiInstances = _interopRequireDefault(require('./ApiInstances'));
 
-var _ChainWebSocket = _interopRequireDefault(require("./ChainWebSocket"));
+var _ChainWebSocket = _interopRequireDefault(require('./ChainWebSocket'));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {'default': obj}; 
+}
 
 var ConnectionManager = /*#__PURE__*/function () {
   function ConnectionManager(_ref) {
     var url = _ref.url,
-        urls = _ref.urls;
+      urls = _ref.urls;
     this.url = url;
     this.urls = urls.filter(function (a) {
       return a !== url;
@@ -22,7 +24,7 @@ var ConnectionManager = /*#__PURE__*/function () {
   var _proto = ConnectionManager.prototype;
 
   _proto.logFailure = function logFailure(url) {
-    console.error('Unable to connect to', url + ", skipping to next full node API server");
+    console.error('Unable to connect to', url + ', skipping to next full node API server');
   };
 
   _proto.isURL = function isURL(str) {
@@ -41,8 +43,8 @@ var ConnectionManager = /*#__PURE__*/function () {
     }
 
     return new Promise(function (resolve, reject) {
-      _ApiInstances["default"].instance(url, _connect).init_promise.then(resolve)["catch"](function (error) {
-        _ApiInstances["default"].instance().close();
+      _ApiInstances['default'].instance(url, _connect).init_promise.then(resolve)['catch'](function (error) {
+        _ApiInstances['default'].instance().close();
 
         reject(error);
       });
@@ -73,7 +75,7 @@ var ConnectionManager = /*#__PURE__*/function () {
     }
 
     if (reject && index > this.urls.length - 1) {
-      return reject(new Error("Tried " + (index + 1) + " connections, none of which worked: " + JSON.stringify(this.urls.concat(this.url))));
+      return reject(new Error('Tried ' + (index + 1) + ' connections, none of which worked: ' + JSON.stringify(this.urls.concat(this.url))));
     }
 
     var fallback = function fallback(resolve, reject) {
@@ -83,13 +85,13 @@ var ConnectionManager = /*#__PURE__*/function () {
     };
 
     if (resolve && reject) {
-      return this.connect(connect, url).then(resolve)["catch"](function () {
+      return this.connect(connect, url).then(resolve)['catch'](function () {
         fallback(resolve, reject);
       });
     }
 
     return new Promise(function (resolve, reject) {
-      _this.connect(connect).then(resolve)["catch"](function () {
+      _this.connect(connect).then(resolve)['catch'](function () {
         fallback(resolve, reject);
       });
     });
@@ -117,7 +119,7 @@ var ConnectionManager = /*#__PURE__*/function () {
 
         var urlLatency = (_urlLatency = {}, _urlLatency[url] = new Date().getTime() - connectionStartTimes[url], _urlLatency);
         resolve(urlLatency);
-      })["catch"](function (err) {
+      })['catch'](function (err) {
         console.warn('PING ERROR: ', err);
         reject(err);
       });
@@ -144,7 +146,7 @@ var ConnectionManager = /*#__PURE__*/function () {
           return response[a] - response[b];
         });
         resolve(sortedList);
-      })["catch"](function (err) {
+      })['catch'](function (err) {
         reject(err);
       });
     };
@@ -163,11 +165,11 @@ var ConnectionManager = /*#__PURE__*/function () {
       var fullList = _this2.urls;
       var connectionPromises = [];
       fullList.forEach(function (url) {
-        var conn = new _ChainWebSocket["default"](url, function () {});
+        var conn = new _ChainWebSocket['default'](url, function () {});
         connectionPromises.push(function () {
           return _this2.ping(conn).then(function (urlLatency) {
             return urlLatency;
-          })["catch"](function () {
+          })['catch'](function () {
             conn.close();
             return null;
           });
@@ -183,7 +185,7 @@ var ConnectionManager = /*#__PURE__*/function () {
           f[key] = a[key];
           return f;
         }, {}));
-      })["catch"](function () {
+      })['catch'](function () {
         return _this2.checkConnections(resolve, reject);
       });
     };
@@ -199,4 +201,4 @@ var ConnectionManager = /*#__PURE__*/function () {
 }();
 
 var _default = ConnectionManager;
-exports["default"] = _default;
+exports['default'] = _default;

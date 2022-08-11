@@ -1,47 +1,49 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
 exports.FetchChainObjects = exports.FetchChain = void 0;
 
-var _ChainStore = _interopRequireDefault(require("./src/ChainStore"));
+var _ChainStore = _interopRequireDefault(require('./src/ChainStore'));
 
-exports.ChainStore = _ChainStore["default"];
+exports.ChainStore = _ChainStore['default'];
 
-var _TransactionBuilder = _interopRequireDefault(require("./src/TransactionBuilder"));
+var _TransactionBuilder = _interopRequireDefault(require('./src/TransactionBuilder'));
 
-exports.TransactionBuilder = _TransactionBuilder["default"];
+exports.TransactionBuilder = _TransactionBuilder['default'];
 
-var _ChainTypes = _interopRequireDefault(require("./src/ChainTypes"));
+var _ChainTypes = _interopRequireDefault(require('./src/ChainTypes'));
 
-exports.ChainTypes = _ChainTypes["default"];
+exports.ChainTypes = _ChainTypes['default'];
 
-var _ObjectId = _interopRequireDefault(require("./src/ObjectId"));
+var _ObjectId = _interopRequireDefault(require('./src/ObjectId'));
 
-exports.ObjectId = _ObjectId["default"];
+exports.ObjectId = _ObjectId['default'];
 
-var _NumberUtils = _interopRequireDefault(require("./src/NumberUtils"));
+var _NumberUtils = _interopRequireDefault(require('./src/NumberUtils'));
 
-exports.NumberUtils = _NumberUtils["default"];
+exports.NumberUtils = _NumberUtils['default'];
 
-var _TransactionHelper = _interopRequireDefault(require("./src/TransactionHelper"));
+var _TransactionHelper = _interopRequireDefault(require('./src/TransactionHelper'));
 
-exports.TransactionHelper = _TransactionHelper["default"];
+exports.TransactionHelper = _TransactionHelper['default'];
 
-var _ChainValidation = _interopRequireDefault(require("./src/ChainValidation"));
+var _ChainValidation = _interopRequireDefault(require('./src/ChainValidation'));
 
-exports.ChainValidation = _ChainValidation["default"];
+exports.ChainValidation = _ChainValidation['default'];
 
-var _AccountLogin = _interopRequireDefault(require("./src/AccountLogin"));
+var _AccountLogin = _interopRequireDefault(require('./src/AccountLogin'));
 
-exports.Login = _AccountLogin["default"];
+exports.Login = _AccountLogin['default'];
 
-var _GameMoves = _interopRequireDefault(require("./src/GameMoves"));
+var _GameMoves = _interopRequireDefault(require('./src/GameMoves'));
 
-exports.GameMoves = _GameMoves["default"];
+exports.GameMoves = _GameMoves['default'];
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {'default': obj}; 
+}
 
-var FetchChainObjects = _ChainStore["default"].FetchChainObjects,
-    FetchChain = _ChainStore["default"].FetchChain;
+var FetchChainObjects = _ChainStore['default'].FetchChainObjects,
+  FetchChain = _ChainStore['default'].FetchChain;
 exports.FetchChain = FetchChain;
 exports.FetchChainObjects = FetchChainObjects;

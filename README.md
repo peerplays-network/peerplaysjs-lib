@@ -57,7 +57,7 @@ Initialize the application by running `npm run init`. Doing so will install comm
 ### Commits
 
 > If you have run the init script, you can commit via `git cz`.  
-> If you have not run the init script, you must commit via `npm run commit`.  
+> If you have not run the init script, you must commit via `npm run czcommit`.  
 > If you do neither, commit message consistency will be difficult for you.
 
 This repository uses a combination of tools to aid in consistent commit messages. The reason we do this is so we can have dynamic changelog creation and smart semantic versioning based on commits (with the ability to override).

@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports['default'] = void 0;
 var defaults = {
   core_asset: 'PPY',
   address_prefix: 'PPY',
@@ -74,4 +74,4 @@ var ChainConfig = /*#__PURE__*/function () {
 
 var _default = new ChainConfig();
 
-exports["default"] = _default;
+exports['default'] = _default;
