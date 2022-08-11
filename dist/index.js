@@ -1,7 +1,7 @@
 'use strict';
 
 exports.__esModule = true;
-exports.ChainConfig = exports.ConnectionManager = exports.Apis = exports.Login = exports.FetchChain = exports.ChainValidation = exports.TransactionHelper = exports.NumberUtils = exports.ObjectId = exports.EmitterInstance = exports.ChainTypes = exports.FetchChainObjects = exports.TransactionBuilder = exports.ChainStore = exports.key = exports.hash = exports.brainKey = exports.Signature = exports.PublicKey = exports.PrivateKey = exports.Aes = exports.Address = exports.SerializerValidation = exports.template = exports.ops = exports.types = exports.fp = exports.Serializer = undefined;
+exports.WhaleVaultConfig = exports.ChainConfig = exports.ConnectionManager = exports.Apis = exports.Login = exports.FetchChain = exports.ChainValidation = exports.TransactionHelper = exports.NumberUtils = exports.ObjectId = exports.EmitterInstance = exports.ChainTypes = exports.FetchChainObjects = exports.TransactionBuilder = exports.ChainStore = exports.key = exports.hash = exports.brainKey = exports.Signature = exports.PublicKey = exports.PrivateKey = exports.Aes = exports.Address = exports.SerializerValidation = exports.template = exports.ops = exports.types = exports.fp = exports.Serializer = undefined;
 
 var _serializer = require('./serializer/src/serializer');
 
@@ -95,6 +95,10 @@ var _AccountLogin = require('./chain/src/AccountLogin');
 
 var _AccountLogin2 = _interopRequireDefault(_AccountLogin);
 
+var _WhaleVaultConfig = require('./whaleVault/WhaleVaultConfig');
+
+var _WhaleVaultConfig2 = _interopRequireDefault(_WhaleVaultConfig);
+
 var _ApiInstances = require('./ws/ApiInstances');
 
 var _ApiInstances2 = _interopRequireDefault(_ApiInstances);
@@ -111,15 +115,18 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/* WhaleVault */
+var FetchChainObjects = _ChainStore2.default.FetchChainObjects,
+    FetchChain = _ChainStore2.default.FetchChain;
+
+/* Websocket Lib */
+
+
 /* Chain */
 
 
 /* ECC */
 /* Serializer */
-var FetchChainObjects = _ChainStore2.default.FetchChainObjects,
-    FetchChain = _ChainStore2.default.FetchChain;
-
-/* Websocket Lib */
 
 exports.Serializer = _serializer2.default;
 exports.fp = _FastParser2.default;
@@ -149,3 +156,4 @@ exports.Login = _AccountLogin2.default;
 exports.Apis = _ApiInstances2.default;
 exports.ConnectionManager = _ConnectionManager2.default;
 exports.ChainConfig = _ChainConfig2.default;
+exports.WhaleVaultConfig = _WhaleVaultConfig2.default;
