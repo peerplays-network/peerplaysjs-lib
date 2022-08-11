@@ -73,7 +73,8 @@ function sign(curve, hash, d, nonce) {
   var n = curve.n;
   var G = curve.G;
   var r;
-  var s;
+  var s; // deepcode ignore MissingArgument: <please specify a reason of ignoring this>
+
   deterministicGenerateK(curve, hash, d, function (key) {
     // find canonically valid signature
     var Q = G.multiply(key);

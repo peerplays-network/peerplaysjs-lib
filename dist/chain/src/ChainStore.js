@@ -27,8 +27,10 @@ var limit_order = parseInt(object_type.limit_order, 10);
 var call_order = parseInt(object_type.call_order, 10);
 var proposal = parseInt(object_type.proposal, 10);
 /* eslint-disable no-unused-vars */
+
 var balance_type = parseInt(object_type.balance, 10);
 /* eslint-enable no-unused-vars */
+
 var vesting_balance_type = parseInt(object_type.vesting_balance, 10);
 var witness_object_type = parseInt(object_type.witness, 10);
 var worker_object_type = parseInt(object_type.worker, 10);
@@ -48,7 +50,11 @@ var account_transaction_history_prefix = "2." + parseInt(impl_object_type.accoun
 var asset_dynamic_data_prefix = "2." + parseInt(impl_object_type.asset_dynamic_data, 10) + ".";
 var bitasset_data_prefix = "2." + parseInt(impl_object_type.asset_bitasset_data, 10) + ".";
 var block_summary_prefix = "2." + parseInt(impl_object_type.block_summary, 10) + ".";
+/* eslint-disable no-unused-vars */
+
 var vesting_balance_prefix = "1." + vesting_balance_type + ".";
+/* eslint-enable no-unused-vars */
+
 var witness_prefix = "1." + witness_object_type + ".";
 var worker_prefix = "1." + worker_object_type + ".";
 var committee_prefix = "1." + committee_member_object_type + ".";
@@ -440,7 +446,7 @@ var ChainStore = /*#__PURE__*/function () {
 
         _this3.simple_objects_by_id = _this3.simple_objects_by_id.set(id, object);
         success(object);
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.error(error);
       });
     });
@@ -640,7 +646,7 @@ var ChainStore = /*#__PURE__*/function () {
       if (tournament_id !== originalTournamentIdsInState) {
         _this7.notifySubscribers();
       }
-    }).catch(function (error) {
+    })["catch"](function (error) {
       console.error(error);
     });
 
@@ -669,7 +675,7 @@ var ChainStore = /*#__PURE__*/function () {
 
         _this8.notifySubscribers();
       }
-    }).catch(function (error) {
+    })["catch"](function (error) {
       console.error(error);
     });
 
@@ -867,10 +873,10 @@ var ChainStore = /*#__PURE__*/function () {
         _this10.getSimpleObjectById(witness.witness_account).then(function (fetched_account) {
           _this10.account_by_witness_id = _this10.account_by_witness_id.set(witness_id, fetched_account);
           success(fetched_account);
-        }).catch(function (error) {
+        })["catch"](function (error) {
           console.error(error);
         });
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.error(error);
       });
     });
@@ -959,13 +965,13 @@ var ChainStore = /*#__PURE__*/function () {
               if (on_update && committee) {
                 on_update();
               }
-            }).catch(function (error) {
+            })["catch"](function (error) {
               console.error(error);
             });
           }
         }, function () {
           _this11.committee_by_account_id.set(id_or_account, null);
-        }).catch(function (error) {
+        })["catch"](function (error) {
           console.error(error);
         });
       } else {
@@ -983,7 +989,7 @@ var ChainStore = /*#__PURE__*/function () {
             if (on_update && committee) {
               on_update();
             }
-          }).catch(function (error) {
+          })["catch"](function (error) {
             console.error(error);
           });
         }
@@ -1030,7 +1036,7 @@ var ChainStore = /*#__PURE__*/function () {
         } else {
           resolve(null);
         }
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.error(error);
       });
     });
@@ -1061,7 +1067,7 @@ var ChainStore = /*#__PURE__*/function () {
 
           resolve(null);
         }
-      }, reject).catch(function (error) {
+      }, reject)["catch"](function (error) {
         console.error(error);
       });
     });
@@ -1092,7 +1098,7 @@ var ChainStore = /*#__PURE__*/function () {
 
           resolve(null);
         }
-      }, reject).catch(function (error) {
+      }, reject)["catch"](function (error) {
         console.error(error);
       });
     });
@@ -1252,7 +1258,7 @@ var ChainStore = /*#__PURE__*/function () {
         } else {
           _this15.accounts_by_name = _this15.accounts_by_name["delete"](name_or_id);
         }
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.error(error);
       });
     }
@@ -1384,13 +1390,13 @@ var ChainStore = /*#__PURE__*/function () {
           // it looks like some more history may have come in while we were
           // waiting on the result, lets fetch anything new before we resolve
           // this query.
-          _this16.fetchRecentHistory(updated_account, limit).then(resolve, reject).catch(function (error) {
+          _this16.fetchRecentHistory(updated_account, limit).then(resolve, reject)["catch"](function (error) {
             console.error(error);
           });
         } else {
           resolve(updated_account);
         }
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.error(error);
       }); // end then
 
@@ -1411,7 +1417,7 @@ var ChainStore = /*#__PURE__*/function () {
         } else {
           resolve(null);
         }
-      }, reject).catch(function (error) {
+      }, reject)["catch"](function (error) {
         console.error(error);
       });
     });
@@ -1521,7 +1527,7 @@ var ChainStore = /*#__PURE__*/function () {
         } else {
           resolve(null);
         }
-      }, reject).catch(function (error) {
+      }, reject)["catch"](function (error) {
         console.error(error);
       });
     });
@@ -1535,7 +1541,7 @@ var ChainStore = /*#__PURE__*/function () {
         } else {
           resolve(null);
         }
-      }, reject).catch(function (error) {
+      }, reject)["catch"](function (error) {
         console.error(error);
       });
     });
@@ -1549,7 +1555,7 @@ var ChainStore = /*#__PURE__*/function () {
         } else {
           resolve(null);
         }
-      }, reject).catch(function (error) {
+      }, reject)["catch"](function (error) {
         console.error(error);
       });
     });
@@ -1563,7 +1569,7 @@ var ChainStore = /*#__PURE__*/function () {
         } else {
           resolve(null);
         }
-      }, reject).catch(function (error) {
+      }, reject)["catch"](function (error) {
         console.error(error);
       });
     });
@@ -1577,7 +1583,7 @@ var ChainStore = /*#__PURE__*/function () {
         } else {
           resolve(null);
         }
-      }, reject).catch(function (error) {
+      }, reject)["catch"](function (error) {
         console.error(error);
       });
     });
@@ -1591,7 +1597,7 @@ var ChainStore = /*#__PURE__*/function () {
         } else {
           resolve(null);
         }
-      }, reject).catch(function (error) {
+      }, reject)["catch"](function (error) {
         console.error(error);
       });
     });
@@ -1605,7 +1611,7 @@ var ChainStore = /*#__PURE__*/function () {
         } else {
           resolve(null);
         }
-      }, reject).catch(function (error) {
+      }, reject)["catch"](function (error) {
         console.error(error);
       });
     });
@@ -1619,7 +1625,7 @@ var ChainStore = /*#__PURE__*/function () {
         } else {
           resolve(null);
         }
-      }, reject).catch(function (error) {
+      }, reject)["catch"](function (error) {
         console.error(error);
       });
     });
@@ -1637,7 +1643,7 @@ var ChainStore = /*#__PURE__*/function () {
         } else {
           resolve(null);
         }
-      }, reject).catch(function (error) {
+      }, reject)["catch"](function (error) {
         console.error(error);
       });
     });
@@ -2023,7 +2029,7 @@ var ChainStore = /*#__PURE__*/function () {
       }
 
       return list;
-    }).catch(function (error) {
+    })["catch"](function (error) {
       console.error(error);
     });
   };
@@ -2043,7 +2049,7 @@ var ChainStore = /*#__PURE__*/function () {
           }
 
           resolve(_this21.last_tournament_id);
-        }).catch(function (error) {
+        })["catch"](function (error) {
           console.error(error);
         });
       } else {
@@ -2136,7 +2142,8 @@ var ChainStore = /*#__PURE__*/function () {
 
   ChainStore.timeStringToDate = function timeStringToDate(time_string) {
     if (!time_string) {
-      return new Date('1970-01-01T00:00:00.000Z');
+      var newLocal = new Date('1970-01-01T00:00:00.000Z');
+      return newLocal;
     } // does not end in Z
 
 
@@ -2171,7 +2178,7 @@ var ChainStore = /*#__PURE__*/function () {
           lastBlock: _this24.last_processed_block,
           scanToBlock: scanToBlock
         });
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.error(error);
       });
     });
@@ -2244,13 +2251,13 @@ var ChainStore = /*#__PURE__*/function () {
 
           _this25.__bindBlock(lastBlock, scanToBlock, isInit).then(function () {
             return success();
-          }).catch(function (error) {
+          })["catch"](function (error) {
             console.error(error);
           });
-        }).catch(function (error) {
+        })["catch"](function (error) {
           console.error(error);
         });
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.error(error);
       });
     });
@@ -2277,10 +2284,10 @@ var ChainStore = /*#__PURE__*/function () {
         if (isInit) {
           _this26.store_initialized = true;
         }
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.error(error);
       });
-    }).catch(function (error) {
+    })["catch"](function (error) {
       console.error(error);
     });
   };
@@ -2298,13 +2305,14 @@ var ChainStore = /*#__PURE__*/function () {
   };
 
   _proto.getLastIdLottery = function getLastIdLottery() {
+    // eslint-disable-next-line max-len
     return _ws.Apis.instance().db_api().exec('get_lotteries', ['1.3.0', 1, '1.3.0']).then(function (lotteries) {
       if (!lotteries || !lotteries.length) {
         return '1.3.0';
       }
 
       return lotteries[0]['id'];
-    }).catch(function (error) {
+    })["catch"](function (error) {
       console.error(error);
     });
   };
@@ -2324,9 +2332,9 @@ var ChainStore = /*#__PURE__*/function () {
           if (isLastRequest) {
             self.lotteries_ids_initialized = true;
             return resolve(self.lotteries_ids);
-          }
+          } // eslint-disable-next-line max-len
 
-          // eslint-disable-next-line max-len
+
           return _ws.Apis.instance().db_api().exec('get_lotteries', [prevId, limit, nextId]).then(function (lotteries) {
             if (!lotteries.length) {
               self.lotteries_ids_initialized = true;
@@ -2344,15 +2352,16 @@ var ChainStore = /*#__PURE__*/function () {
 
             var firstId = lotteries[0]['id'],
                 firstIdNum = parseInt(firstId.split('.')[2]),
-                nextNumId = firstIdNum - limit;
+                nextNumId = firstIdNum - limit; // eslint-disable-next-line max-len
+
             return fetchLotteries('1.3.0', limit, '1.3.' + Math.max(nextNumId, 0), firstIdNum - limit < 0 || !nextNumId);
-          }).catch(function (error) {
+          })["catch"](function (error) {
             console.error(error);
           });
         };
 
         fetchLotteries('1.3.0', 100, lastId, false);
-      }).catch(function (error) {
+      })["catch"](function (error) {
         console.error(error);
       });
     });

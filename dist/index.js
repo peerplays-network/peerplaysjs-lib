@@ -95,6 +95,10 @@ var _AccountLogin = _interopRequireDefault(require("./chain/src/AccountLogin"));
 
 exports.Login = _AccountLogin["default"];
 
+var _WhaleVaultConfig = _interopRequireDefault(require("./whaleVault/WhaleVaultConfig"));
+
+exports.WhaleVaultConfig = _WhaleVaultConfig["default"];
+
 var _ApiInstances = _interopRequireDefault(require("./ws/ApiInstances"));
 
 exports.Apis = _ApiInstances["default"];
@@ -118,6 +122,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 /* ECC */
 
 /* Chain */
+
+/* WhaleVault */
 
 /* Websocket Lib */
 var FetchChainObjects = _ChainStore["default"].FetchChainObjects,

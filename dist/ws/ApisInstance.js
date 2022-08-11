@@ -51,7 +51,7 @@ var ApisInstance = /*#__PURE__*/function () {
             if (_this.statusCb) {
               _this.statusCb('reconnect');
             }
-          }).catch(function (error) {
+          })["catch"](function (error) {
             console.error(error);
           });
 
@@ -62,7 +62,7 @@ var ApisInstance = /*#__PURE__*/function () {
           _this._crypt.init();
 
           _this._bookie.init();
-        }).catch(function (error) {
+        })["catch"](function (error) {
           console.error(error);
         });
       };

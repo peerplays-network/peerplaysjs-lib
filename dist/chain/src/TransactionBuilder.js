@@ -7,6 +7,8 @@ var _assert = _interopRequireDefault(require("assert"));
 
 var _ws = require("../../ws");
 
+var _whaleVault = require("../../whaleVault");
+
 var _ecc = require("../../ecc");
 
 var _serializer = require("../../serializer");
@@ -90,10 +92,9 @@ var TransactionBuilder = /*#__PURE__*/function () {
 
         for (var i = 0, len = keys.length; i < len; i++) {
           var pubkey_string = pubkeys[i];
+          var private_key = cwallet.getPrivateKey(pubkey_string);
 
-          var _private_key = cwallet.getPrivateKey(pubkey_string);
-
-          _this.add_signer(_private_key, pubkey_string);
+          _this.add_signer(private_key, pubkey_string);
 
           signer_pubkeys_added[pubkey_string] = true;
         }
@@ -110,15 +111,15 @@ var TransactionBuilder = /*#__PURE__*/function () {
             var _pubkey_string = keys[_i];
 
             if (!signer_pubkeys_added[_pubkey_string]) {
-              var _private_key2 = cwallet.getPrivateKey(_pubkey_string); // This should not happen, get_required_signatures will only
+              var _private_key = cwallet.getPrivateKey(_pubkey_string); // This should not happen, get_required_signatures will only
               // returned keys from my_pubkeys
 
 
-              if (!_private_key2) {
+              if (!_private_key) {
                 throw new Error("Missing signing key for " + _pubkey_string);
               }
 
-              _this.add_signer(_private_key2, _pubkey_string);
+              _this.add_signer(_private_key, _pubkey_string);
             }
           }
         });
@@ -309,9 +310,9 @@ var TransactionBuilder = /*#__PURE__*/function () {
         var max = Math.max(this.commitee_min_review, one_day, _ws.ChainConfig.review_in_secs_committee);
         operation.review_period_seconds = extraReview + max;
         /*
-                * Expiration time must be at least equal to
-                * now + review_period_seconds, so we add one hour to make sure
-                */
+         * Expiration time must be at least equal to
+         * now + review_period_seconds, so we add one hour to make sure
+         */
 
         operation.expiration_time += 60 * 60 + extraReview;
       }
@@ -519,22 +520,27 @@ var TransactionBuilder = /*#__PURE__*/function () {
 
   _proto.add_signer = function add_signer(private_key, public_key) {
     if (public_key === void 0) {
-      public_key = private_key.toPublicKey();
+      public_key = null;
     }
 
-    (0, _assert["default"])(private_key.d, 'required PrivateKey object');
+    if (Object.keys(private_key)[0] === 'whaleVaultInfo' && _whaleVault.WhaleVaultConfig.getWhaleVault() !== null) {
+      this.signer_private_keys.push(private_key);
+    } else {
+      (0, _assert["default"])(private_key.d, 'required PrivateKey object');
 
       if (this.signed) {
         throw new Error('already signed');
       }
 
-    if (!public_key.Q) {
-      public_key = _ecc.PublicKey.fromPublicKeyString(public_key);
-    } // prevent duplicates
+      public_key = private_key.toPublicKey();
+
+      if (!public_key.Q) {
+        public_key = _ecc.PublicKey.fromPublicKeyString(public_key);
+      } // prevent duplicates
 
 
-    var spHex = private_key.toHex();
-    var keys = Object.keys(this.signer_private_keys);
+      var spHex = private_key.toHex();
+      var keys = Object.keys(this.signer_private_keys);
 
       for (var i = 0, len = keys.length; i < len; i++) {
         var sp = this.signer_private_keys[keys[i]];
@@ -569,16 +575,55 @@ var TransactionBuilder = /*#__PURE__*/function () {
 
     for (var i = 0; end > 0 ? i < end : i > end; end > 0 ? i++ : i++) {
       var _this$signer_private_ = this.signer_private_keys[i],
-          _private_key3 = _this$signer_private_[0],
+          private_key = _this$signer_private_[0],
           public_key = _this$signer_private_[1];
 
-      var sig = _ecc.Signature.signBuffer(Buffer.concat([Buffer.from(chain_id, 'hex'), this.tr_buffer]), _private_key3, public_key);
+      var sig = _ecc.Signature.signBuffer(Buffer.concat([Buffer.from(chain_id, 'hex'), this.tr_buffer]), private_key, public_key);
 
       this.signatures.push(sig.toBuffer());
     }
 
     this.signer_private_keys = [];
     this.signed = true;
+  };
+
+  _proto.signWithWhaleVault = function signWithWhaleVault(chain_id) {
+    if (chain_id === void 0) {
+      chain_id = _ws.Apis.instance().chain_id;
+    }
+
+    if (!this.tr_buffer) {
+      throw new Error('not finalized');
+    }
+
+    if (this.signed) {
+      throw new Error('already signed');
+    }
+
+    if (!this.signer_private_keys.length) {
+      throw new Error('Transaction was not signed. Do you have a private key? [no_signers]');
+    }
+
+    if (!_whaleVault.WhaleVaultConfig.getWhaleVault()) {
+      throw new Error('WhaleVault not installed');
+    }
+
+    var promises = [];
+    var end = this.signer_private_keys.length;
+    var messageBuffer = Buffer.concat([Buffer.from(chain_id, 'hex'), this.tr_buffer]);
+
+    for (var i = 0; end > 0 ? i < end : i > end; end > 0 ? i++ : i++) {
+      var private_key = this.signer_private_keys[i];
+      var keyType = private_key.whaleVaultInfo.keyType;
+
+      var promise = _whaleVault.WhaleVaultConfig.getWhaleVault().promiseRequestSignBuffer('peerplaysjs', "ppy:" + private_key.whaleVaultInfo.account, JSON.stringify(messageBuffer), keyType, 'signBuf', 'raw');
+
+      promises.push(promise);
+    }
+
+    this.signer_private_keys = [];
+    this.signed = true;
+    return Promise.all(promises);
   };
 
   _proto.serialize = function serialize() {
@@ -613,7 +658,7 @@ var TransactionBuilder = /*#__PURE__*/function () {
                 _this6.signatures.push(Buffer.from(response.result, 'hex'));
               } else {
                 console.error(response);
-                throw new Error('' + response.error);
+                throw new Error("" + response.error);
               }
             });
 
@@ -629,8 +674,9 @@ var TransactionBuilder = /*#__PURE__*/function () {
               throw new Error('no operations');
             }
 
-            var tr_object = _serializer.ops.signed_transaction.toObject(_this6);
-            // console.log('... broadcast_transaction_with_callback !!!')
+            var tr_object = _serializer.ops.signed_transaction.toObject(_this6); // console.log('... broadcast_transaction_with_callback !!!')
+
+
             _ws.Apis.instance().network_api().exec('broadcast_transaction_with_callback', [function (res) {
               return resolve(res);
             }, tr_object]).then(function () {
@@ -638,22 +684,22 @@ var TransactionBuilder = /*#__PURE__*/function () {
               if (was_broadcast_callback) {
                 was_broadcast_callback();
               }
-            }).catch(function (error) {
+            })["catch"](function (error) {
               // console.log may be redundant for network errors, other errors could occur
               console.log(error);
               var message = error.message;
-
 
               if (!message) {
                 message = '';
               }
 
-              reject(new Error(message + '\n' + 'peerplays-crypto ' + (' digest ' + _ecc.hash.sha256(_this6.tr_buffer).toString('hex') + ' transaction ' + _this6.tr_buffer.toString('hex') + ' ' + JSON.stringify(tr_object))));
+              reject(new Error(message + "\n" + 'peerplays-crypto ' + (" digest " + _ecc.hash.sha256(_this6.tr_buffer).toString('hex') + " transaction " + _this6.tr_buffer.toString('hex') + " " + JSON.stringify(tr_object))));
             });
-          }).catch(function (error) {
+          })["catch"](function (error) {
             console.log(error);
             reject(error);
           }); // end of signWithWhaleVault().then
+
         } else {
           if (!_this6.tr_buffer) {
             throw new Error('not finalized');
@@ -667,26 +713,68 @@ var TransactionBuilder = /*#__PURE__*/function () {
             throw new Error('no operations');
           }
 
-      var tr_object = _serializer.ops.signed_transaction.toObject(_this6); // console.log('... broadcast_transaction_with_callback !!!')
+          var tr_object = _serializer.ops.signed_transaction.toObject(_this6); // console.log('... broadcast_transaction_with_callback !!!')
 
 
-      _ws.Apis.instance().network_api().exec('broadcast_transaction_with_callback', [function (res) {
-        return resolve(res);
-      }, tr_object]).then(function () {
-        // console.log('... broadcast success, waiting for callback')
-        if (was_broadcast_callback) {
-          was_broadcast_callback();
+          _ws.Apis.instance().network_api().exec('broadcast_transaction_with_callback', [function (res) {
+            return resolve(res);
+          }, tr_object]).then(function () {
+            // console.log('... broadcast success, waiting for callback')
+            if (was_broadcast_callback) {
+              was_broadcast_callback();
+            }
+          })["catch"](function (error) {
+            // console.log may be redundant for network errors, other errors could occur
+            console.log(error);
+            var message = error.message;
+
+            if (!message) {
+              message = '';
+            }
+
+            reject(new Error(message + "\n" + 'peerplays-crypto ' + (" digest " + _ecc.hash.sha256(_this6.tr_buffer).toString('hex') + " transaction " + _this6.tr_buffer.toString('hex') + " " + JSON.stringify(tr_object))));
+          });
         }
-      })["catch"](function (error) {
-        // console.log may be redundant for network errors, other errors could occur
-        console.log(error);
-        var message = error.message;
-
-        if (!message) {
-          message = '';
+      }); // end of new Promise
+    } else {
+      return new Promise(function (resolve, reject) {
+        if (!_this6.signed) {
+          _this6.sign();
         }
 
-        reject(new Error(message + "\n" + 'peerplays-crypto ' + (" digest " + _ecc.hash.sha256(_this6.tr_buffer).toString('hex') + " transaction " + _this6.tr_buffer.toString('hex') + " " + JSON.stringify(tr_object))));
+        if (!_this6.tr_buffer) {
+          throw new Error('not finalized');
+        }
+
+        if (!_this6.signatures.length) {
+          throw new Error('not signed');
+        }
+
+        if (!_this6.operations.length) {
+          throw new Error('no operations');
+        }
+
+        var tr_object = _serializer.ops.signed_transaction.toObject(_this6); // console.log('... broadcast_transaction_with_callback !!!')
+
+
+        _ws.Apis.instance().network_api().exec('broadcast_transaction_with_callback', [function (res) {
+          return resolve(res);
+        }, tr_object]).then(function () {
+          // console.log('... broadcast success, waiting for callback')
+          if (was_broadcast_callback) {
+            was_broadcast_callback();
+          }
+        })["catch"](function (error) {
+          // console.log may be redundant for network errors, other errors could occur
+          console.log(error);
+          var message = error.message;
+
+          if (!message) {
+            message = '';
+          }
+
+          reject(new Error(message + "\n" + 'peerplays-crypto ' + (" digest " + _ecc.hash.sha256(_this6.tr_buffer).toString('hex') + " transaction " + _this6.tr_buffer.toString('hex') + " " + JSON.stringify(tr_object))));
+        });
       });
     }
   };

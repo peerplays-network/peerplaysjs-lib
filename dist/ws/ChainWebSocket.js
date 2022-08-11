@@ -195,8 +195,8 @@ var ChainWebSocket = /*#__PURE__*/function () {
   ;
 
   _proto.onConnectionTimeout = function onConnectionTimeout() {
-    this.debug('!!! ChainWebSocket timeout');
-    // deepcode ignore ExceptionIsNotThrown: <please specify a reason of ignoring this>
+    this.debug('!!! ChainWebSocket timeout'); // deepcode ignore ExceptionIsNotThrown: <please specify a reason of ignoring this>
+
     this.onConnectionClose(new Error('Connection timed out.'));
   }
   /**
@@ -207,8 +207,8 @@ var ChainWebSocket = /*#__PURE__*/function () {
   ;
 
   _proto.onConnectionTerminate = function onConnectionTerminate() {
-    this.debug('!!! ChainWebSocket terminate');
-    // deepcode ignore ExceptionIsNotThrown: <please specify a reason of ignoring this>
+    this.debug('!!! ChainWebSocket terminate'); // deepcode ignore ExceptionIsNotThrown: <please specify a reason of ignoring this>
+
     this.onConnectionClose(new Error('Connection was terminated.'));
   }
   /**
