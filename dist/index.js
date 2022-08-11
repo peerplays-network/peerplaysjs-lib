@@ -1,159 +1,126 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
-exports.WhaleVaultConfig = exports.ChainConfig = exports.ConnectionManager = exports.Apis = exports.Login = exports.FetchChain = exports.ChainValidation = exports.TransactionHelper = exports.NumberUtils = exports.ObjectId = exports.EmitterInstance = exports.ChainTypes = exports.FetchChainObjects = exports.TransactionBuilder = exports.ChainStore = exports.key = exports.hash = exports.brainKey = exports.Signature = exports.PublicKey = exports.PrivateKey = exports.Aes = exports.Address = exports.SerializerValidation = exports.template = exports.ops = exports.types = exports.fp = exports.Serializer = undefined;
+exports.ops = exports.hash = exports.FetchChainObjects = exports.FetchChain = void 0;
 
-var _serializer = require('./serializer/src/serializer');
+var _serializer = _interopRequireDefault(require("./serializer/src/serializer"));
 
-var _serializer2 = _interopRequireDefault(_serializer);
+exports.Serializer = _serializer["default"];
 
-var _FastParser = require('./serializer/src/FastParser');
+var _FastParser = _interopRequireDefault(require("./serializer/src/FastParser"));
 
-var _FastParser2 = _interopRequireDefault(_FastParser);
+exports.fp = _FastParser["default"];
 
-var _types = require('./serializer/src/types');
+var _types = _interopRequireDefault(require("./serializer/src/types"));
 
-var _types2 = _interopRequireDefault(_types);
+exports.types = _types["default"];
 
-var _operations = require('./serializer/src/operations');
+var ops = _interopRequireWildcard(require("./serializer/src/operations"));
 
-var ops = _interopRequireWildcard(_operations);
+exports.ops = ops;
 
-var _template = require('./serializer/src/template');
+var _template = _interopRequireDefault(require("./serializer/src/template"));
 
-var _template2 = _interopRequireDefault(_template);
+exports.template = _template["default"];
 
-var _SerializerValidation = require('./serializer/src/SerializerValidation');
+var _SerializerValidation = _interopRequireDefault(require("./serializer/src/SerializerValidation"));
 
-var _SerializerValidation2 = _interopRequireDefault(_SerializerValidation);
+exports.SerializerValidation = _SerializerValidation["default"];
 
-var _address = require('./ecc/src/address');
+var _address = _interopRequireDefault(require("./ecc/src/address"));
 
-var _address2 = _interopRequireDefault(_address);
+exports.Address = _address["default"];
 
-var _aes = require('./ecc/src/aes');
+var _aes = _interopRequireDefault(require("./ecc/src/aes"));
 
-var _aes2 = _interopRequireDefault(_aes);
+exports.Aes = _aes["default"];
 
-var _PrivateKey = require('./ecc/src/PrivateKey');
+var _PrivateKey = _interopRequireDefault(require("./ecc/src/PrivateKey"));
 
-var _PrivateKey2 = _interopRequireDefault(_PrivateKey);
+exports.PrivateKey = _PrivateKey["default"];
 
-var _PublicKey = require('./ecc/src/PublicKey');
+var _PublicKey = _interopRequireDefault(require("./ecc/src/PublicKey"));
 
-var _PublicKey2 = _interopRequireDefault(_PublicKey);
+exports.PublicKey = _PublicKey["default"];
 
-var _signature = require('./ecc/src/signature');
+var _signature = _interopRequireDefault(require("./ecc/src/signature"));
 
-var _signature2 = _interopRequireDefault(_signature);
+exports.Signature = _signature["default"];
 
-var _BrainKey = require('./ecc/src/BrainKey');
+var _BrainKey = _interopRequireDefault(require("./ecc/src/BrainKey"));
 
-var _BrainKey2 = _interopRequireDefault(_BrainKey);
+exports.brainKey = _BrainKey["default"];
 
-var _hash = require('./ecc/src/hash');
+var hash = _interopRequireWildcard(require("./ecc/src/hash"));
 
-var hash = _interopRequireWildcard(_hash);
+exports.hash = hash;
 
-var _KeyUtils = require('./ecc/src/KeyUtils');
+var _KeyUtils = _interopRequireDefault(require("./ecc/src/KeyUtils"));
 
-var _KeyUtils2 = _interopRequireDefault(_KeyUtils);
+exports.key = _KeyUtils["default"];
 
-var _ChainStore = require('./chain/src/ChainStore');
+var _ChainStore = _interopRequireDefault(require("./chain/src/ChainStore"));
 
-var _ChainStore2 = _interopRequireDefault(_ChainStore);
+exports.ChainStore = _ChainStore["default"];
 
-var _TransactionBuilder = require('./chain/src/TransactionBuilder');
+var _TransactionBuilder = _interopRequireDefault(require("./chain/src/TransactionBuilder"));
 
-var _TransactionBuilder2 = _interopRequireDefault(_TransactionBuilder);
+exports.TransactionBuilder = _TransactionBuilder["default"];
 
-var _ChainTypes = require('./chain/src/ChainTypes');
+var _ChainTypes = _interopRequireDefault(require("./chain/src/ChainTypes"));
 
-var _ChainTypes2 = _interopRequireDefault(_ChainTypes);
+exports.ChainTypes = _ChainTypes["default"];
 
-var _ObjectId = require('./chain/src/ObjectId');
+var _ObjectId = _interopRequireDefault(require("./chain/src/ObjectId"));
 
-var _ObjectId2 = _interopRequireDefault(_ObjectId);
+exports.ObjectId = _ObjectId["default"];
 
-var _NumberUtils = require('./chain/src/NumberUtils');
+var _NumberUtils = _interopRequireDefault(require("./chain/src/NumberUtils"));
 
-var _NumberUtils2 = _interopRequireDefault(_NumberUtils);
+exports.NumberUtils = _NumberUtils["default"];
 
-var _TransactionHelper = require('./chain/src/TransactionHelper');
+var _TransactionHelper = _interopRequireDefault(require("./chain/src/TransactionHelper"));
 
-var _TransactionHelper2 = _interopRequireDefault(_TransactionHelper);
+exports.TransactionHelper = _TransactionHelper["default"];
 
-var _ChainValidation = require('./chain/src/ChainValidation');
+var _ChainValidation = _interopRequireDefault(require("./chain/src/ChainValidation"));
 
-var _ChainValidation2 = _interopRequireDefault(_ChainValidation);
+exports.ChainValidation = _ChainValidation["default"];
 
-var _EmitterInstance = require('./chain/src/EmitterInstance');
+var _EmitterInstance = _interopRequireDefault(require("./chain/src/EmitterInstance"));
 
-var _EmitterInstance2 = _interopRequireDefault(_EmitterInstance);
+exports.EmitterInstance = _EmitterInstance["default"];
 
-var _AccountLogin = require('./chain/src/AccountLogin');
+var _AccountLogin = _interopRequireDefault(require("./chain/src/AccountLogin"));
 
-var _AccountLogin2 = _interopRequireDefault(_AccountLogin);
+exports.Login = _AccountLogin["default"];
 
-var _WhaleVaultConfig = require('./whaleVault/WhaleVaultConfig');
+var _ApiInstances = _interopRequireDefault(require("./ws/ApiInstances"));
 
-var _WhaleVaultConfig2 = _interopRequireDefault(_WhaleVaultConfig);
+exports.Apis = _ApiInstances["default"];
 
-var _ApiInstances = require('./ws/ApiInstances');
+var _ConnectionManager = _interopRequireDefault(require("./ws/ConnectionManager"));
 
-var _ApiInstances2 = _interopRequireDefault(_ApiInstances);
+exports.ConnectionManager = _ConnectionManager["default"];
 
-var _ConnectionManager = require('./ws/ConnectionManager');
+var _ChainConfig = _interopRequireDefault(require("./ws/ChainConfig"));
 
-var _ConnectionManager2 = _interopRequireDefault(_ConnectionManager);
+exports.ChainConfig = _ChainConfig["default"];
 
-var _ChainConfig = require('./ws/ChainConfig');
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
-var _ChainConfig2 = _interopRequireDefault(_ChainConfig);
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+/* Serializer */
 
-/* WhaleVault */
-var FetchChainObjects = _ChainStore2.default.FetchChainObjects,
-    FetchChain = _ChainStore2.default.FetchChain;
-
-/* Websocket Lib */
-
+/* ECC */
 
 /* Chain */
 
-
-/* ECC */
-/* Serializer */
-
-exports.Serializer = _serializer2.default;
-exports.fp = _FastParser2.default;
-exports.types = _types2.default;
-exports.ops = ops;
-exports.template = _template2.default;
-exports.SerializerValidation = _SerializerValidation2.default;
-exports.Address = _address2.default;
-exports.Aes = _aes2.default;
-exports.PrivateKey = _PrivateKey2.default;
-exports.PublicKey = _PublicKey2.default;
-exports.Signature = _signature2.default;
-exports.brainKey = _BrainKey2.default;
-exports.hash = hash;
-exports.key = _KeyUtils2.default;
-exports.ChainStore = _ChainStore2.default;
-exports.TransactionBuilder = _TransactionBuilder2.default;
-exports.FetchChainObjects = FetchChainObjects;
-exports.ChainTypes = _ChainTypes2.default;
-exports.EmitterInstance = _EmitterInstance2.default;
-exports.ObjectId = _ObjectId2.default;
-exports.NumberUtils = _NumberUtils2.default;
-exports.TransactionHelper = _TransactionHelper2.default;
-exports.ChainValidation = _ChainValidation2.default;
+/* Websocket Lib */
+var FetchChainObjects = _ChainStore["default"].FetchChainObjects,
+    FetchChain = _ChainStore["default"].FetchChain;
 exports.FetchChain = FetchChain;
-exports.Login = _AccountLogin2.default;
-exports.Apis = _ApiInstances2.default;
-exports.ConnectionManager = _ConnectionManager2.default;
-exports.ChainConfig = _ChainConfig2.default;
-exports.WhaleVaultConfig = _WhaleVaultConfig2.default;
+exports.FetchChainObjects = FetchChainObjects;

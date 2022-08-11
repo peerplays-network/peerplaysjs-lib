@@ -1,6 +1,6 @@
 # PeerplaysJS (peerplaysjs-lib)
 
-Pure JavaScript Bitshares/Graphene library for node.js and browsers. Can be used to construct, sign and broadcast transactions in JavaScript, and to easily obtain data from the blockchain via public apis.
+Pure JavaScript Peerplays/Graphene library for node.js and browsers. Can be used to construct, sign and broadcast transactions in JavaScript, and to easily obtain data from the blockchain via public apis.
 
 Most of this code was written by [jcalfee](https://github.com/jcalfee).
 
@@ -30,7 +30,7 @@ npm install peerplaysjs-lib
 
 ## Getting Started
 
-It is recommended to use Node v8.9.x.
+It is recommended to use Node v16+.
 
 On Ubuntu and OSX, the easiest way to install Node is to use the [Node Version Manager](https://github.com/creationix/nvm).
 For Windows users there is [NVM-Windows](https://github.com/coreybutler/nvm-windows).
@@ -39,14 +39,14 @@ To install NVM for Linux/OSX, simply copy paste the following in a terminal:
 
 ```bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
-nvm install v8
-nvm use v8
+nvm install v16+
+nvm use v16+
 ```
 
 Once you have Node installed, you can clone the repo:
 
 ```bash
-git clone https://github.com/peerplays-network/peerplaysjs-lib
+git clone https://gitlab.com/PBSA/tools-libs/peerplaysjs-lib.git
 cd peerplaysjs-lib
 ```
 
@@ -200,27 +200,4 @@ console.log("Public key :", pkey.toPublicKey().toString(), "\n");
 
 TODO transaction signing example
 
-## ESDoc (beta)
 
-```bash
-npm i -g esdoc esdoc-es7-plugin
-esdoc -c ./esdoc.json
-open out/esdoc/index.html
-```
-
-## Releases
-
-This repository uses a [standard version](https://www.npmjs.com/package/standard-version) to aid in version control and release management.
-
-When using standard version to cut a release, there is automated changelog modifitions made based on commit messages.
-
-```csharp
-// If you typically use npm version to cut a new release, do this instead:
-npm run release
-// To cut a release and bump the version by major, minor, or patch, use the following respectively:
-npm run release-major // major bump
-npm run release-minor // minor bump
-npm run release-patch // patch bump
-// To cut a pre-release:
-npm run pre-release // v0.2.1 to v0.2.2-rc.0
-```

@@ -1,14 +1,14 @@
 "use strict";
 
 exports.__esModule = true;
+exports["default"] = void 0;
 var reserved_spaces = {
   relative_protocol_ids: 0,
   protocol_ids: 1,
   implementation_ids: 2
 };
-
 var object_type = {
-  null: 0,
+  "null": 0,
   base: 1,
   account: 2,
   asset: 3,
@@ -49,7 +49,6 @@ var object_type = {
   sidechain_address: 38,
   sidechain_transaction: 39
 };
-
 var impl_object_type = {
   global_property: 0,
   dynamic_global_property: 1,
@@ -79,13 +78,11 @@ var impl_object_type = {
   son_statistics: 25,
   son_schedule: 26
 };
-
 var vote_type = {
   committee: 0,
   witness: 1,
   worker: 2
 };
-
 var operations = {
   transfer: 0,
   limit_order_create: 1,
@@ -208,7 +205,6 @@ var operations = {
   sidechain_transaction_send: 118,
   sidechain_transaction_settle: 119
 };
-
 var ChainTypes = {
   reserved_spaces: reserved_spaces,
   object_type: object_type,
@@ -216,6 +212,5 @@ var ChainTypes = {
   vote_type: vote_type,
   operations: operations
 };
-
-exports.default = ChainTypes;
-module.exports = exports.default;
+var _default = ChainTypes;
+exports["default"] = _default;
