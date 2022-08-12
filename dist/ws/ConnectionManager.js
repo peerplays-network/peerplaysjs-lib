@@ -132,9 +132,9 @@ var ConnectionManager = /*#__PURE__*/function () {
     }
   }
   /**
-  * sorts the nodes into a list based on latency
-  * @memberof ConnectionManager
-  */
+   * sorts the nodes into a list based on latency
+   * @memberof ConnectionManager
+   */
   ;
 
   _proto.sortNodesByLatency = function sortNodesByLatency(resolve, reject) {
