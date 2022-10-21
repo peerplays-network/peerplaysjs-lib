@@ -581,7 +581,8 @@ var signed_block = new Serializer('signed_block', {
   transaction_merkle_root: bytes(20),
   extensions: set(future_extensions),
   witness_signature: bytes(65),
-  transactions: array(processed_transaction)
+  transactions: array(processed_transaction),
+  transaction_ids: array(bytes(65))
 });
 exports.signed_block = signed_block;
 var block_header = new Serializer('block_header', {
