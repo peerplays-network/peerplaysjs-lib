@@ -584,7 +584,7 @@ var signed_block = new Serializer('signed_block', {
   transactions: array(processed_transaction),
   block_id: bytes(20),
   signing_key: public_key,
-  transaction_ids: array(bytes(65))
+  transaction_ids: array(bytes(20))
 });
 exports.signed_block = signed_block;
 var block_header = new Serializer('block_header', {
