@@ -59,7 +59,7 @@
     "create-hash": "^1.1.2",
     "create-hmac": "^1.1.4",
     "cross-env": "^7.0.3",
-    "crypto-js": "^3.1.9-1",
+    "crypto-js": "^4.1.1",
     "deep-equal": "^1.1.0",
     "ecurve": "^1.0.2",
     "eslint-config-prettier": "^8.5.0",
