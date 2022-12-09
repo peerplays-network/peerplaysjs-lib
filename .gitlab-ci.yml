@@ -1,13 +1,10 @@
-workflow:
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
-      when: never
-    - if: $CI_COMMIT_BRANCH
+#workflow:
+ # rules:
+  #  - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+   # - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+    #  when: never
+    #- if: $CI_COMMIT_BRANCH
 
-variables:
-  SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
-  GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
 
 # gitlab scanning
 include:
@@ -31,6 +28,9 @@ build:
   tags:
     - docker
 
+variables:
+  SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+  GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
 sonarcloud-check:
   image:
     name: sonarsource/sonar-scanner-cli:latest
@@ -40,8 +40,6 @@ sonarcloud-check:
     paths:
       - .sonar/cache
   script:
-    - ls -la
-    - sonar-scanner -X
+    - sonar-scanner
   only:
-    - merge_requests
-    - branches
+    - sonar-support
