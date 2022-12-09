@@ -41,7 +41,6 @@ sonarcloud-check:
       - .sonar/cache
   script:
     - ls -la
-    - cp sonar-scanner.properties /opt/sonar-scanner/conf/sonar-scanner.properties
     - sonar-scanner -X
   only:
     - merge_requests
