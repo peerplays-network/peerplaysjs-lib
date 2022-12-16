@@ -1,39 +1,80 @@
 'use strict';
 
 exports.__esModule = true;
-exports.SerializerValidation = exports.template = exports.ops = exports.types = exports.fp = exports.Serializer = undefined;
+exports.ops = void 0;
 
-var _serializer = require('./src/serializer');
+var _serializer = _interopRequireDefault(require('./src/serializer'));
 
-var _serializer2 = _interopRequireDefault(_serializer);
+exports.Serializer = _serializer['default'];
 
-var _FastParser = require('./src/FastParser');
+var _FastParser = _interopRequireDefault(require('./src/FastParser'));
 
-var _FastParser2 = _interopRequireDefault(_FastParser);
+exports.fp = _FastParser['default'];
 
-var _types = require('./src/types');
+var _types = _interopRequireDefault(require('./src/types'));
 
-var _types2 = _interopRequireDefault(_types);
+exports.types = _types['default'];
 
-var _operations = require('./src/operations');
+var ops = _interopRequireWildcard(require('./src/operations'));
 
-var ops = _interopRequireWildcard(_operations);
-
-var _template = require('./src/template');
-
-var _template2 = _interopRequireDefault(_template);
-
-var _SerializerValidation = require('./src/SerializerValidation');
-
-var _SerializerValidation2 = _interopRequireDefault(_SerializerValidation);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.Serializer = _serializer2.default;
-exports.fp = _FastParser2.default;
-exports.types = _types2.default;
 exports.ops = ops;
-exports.template = _template2.default;
-exports.SerializerValidation = _SerializerValidation2.default;
+
+var _template = _interopRequireDefault(require('./src/template'));
+
+exports.template = _template['default'];
+
+var _SerializerValidation = _interopRequireDefault(require('./src/SerializerValidation'));
+
+exports.SerializerValidation = _SerializerValidation['default'];
+
+function _getRequireWildcardCache(nodeInterop) {
+  if (typeof WeakMap !== 'function') {
+    return null;
+  }
+
+  var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop; 
+  })(nodeInterop); 
+}
+
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
+    return obj; 
+  }
+
+  if (obj === null || typeof obj !== 'object' && typeof obj !== 'function') {
+    return {'default': obj}; 
+  }
+
+  var cache = _getRequireWildcardCache(nodeInterop);
+
+  if (cache && cache.has(obj)) {
+    return cache.get(obj); 
+  }
+
+  var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+
+  for (var key in obj) {
+    if (key !== 'default' && Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc); 
+      } else {
+        newObj[key] = obj[key]; 
+      } 
+    } 
+  }
+
+  newObj['default'] = obj;
+
+  if (cache) {
+    cache.set(obj, newObj); 
+  }
+
+  return newObj; 
+}
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {'default': obj}; 
+}

@@ -1,56 +1,49 @@
 'use strict';
 
 exports.__esModule = true;
-exports.GameMoves = exports.Login = exports.FetchChain = exports.ChainValidation = exports.TransactionHelper = exports.NumberUtils = exports.ObjectId = exports.ChainTypes = exports.FetchChainObjects = exports.TransactionBuilder = exports.ChainStore = undefined;
+exports.FetchChainObjects = exports.FetchChain = void 0;
 
-var _ChainStore = require('./src/ChainStore');
+var _ChainStore = _interopRequireDefault(require('./src/ChainStore'));
 
-var _ChainStore2 = _interopRequireDefault(_ChainStore);
+exports.ChainStore = _ChainStore['default'];
 
-var _TransactionBuilder = require('./src/TransactionBuilder');
+var _TransactionBuilder = _interopRequireDefault(require('./src/TransactionBuilder'));
 
-var _TransactionBuilder2 = _interopRequireDefault(_TransactionBuilder);
+exports.TransactionBuilder = _TransactionBuilder['default'];
 
-var _ChainTypes = require('./src/ChainTypes');
+var _ChainTypes = _interopRequireDefault(require('./src/ChainTypes'));
 
-var _ChainTypes2 = _interopRequireDefault(_ChainTypes);
+exports.ChainTypes = _ChainTypes['default'];
 
-var _ObjectId = require('./src/ObjectId');
+var _ObjectId = _interopRequireDefault(require('./src/ObjectId'));
 
-var _ObjectId2 = _interopRequireDefault(_ObjectId);
+exports.ObjectId = _ObjectId['default'];
 
-var _NumberUtils = require('./src/NumberUtils');
+var _NumberUtils = _interopRequireDefault(require('./src/NumberUtils'));
 
-var _NumberUtils2 = _interopRequireDefault(_NumberUtils);
+exports.NumberUtils = _NumberUtils['default'];
 
-var _TransactionHelper = require('./src/TransactionHelper');
+var _TransactionHelper = _interopRequireDefault(require('./src/TransactionHelper'));
 
-var _TransactionHelper2 = _interopRequireDefault(_TransactionHelper);
+exports.TransactionHelper = _TransactionHelper['default'];
 
-var _ChainValidation = require('./src/ChainValidation');
+var _ChainValidation = _interopRequireDefault(require('./src/ChainValidation'));
 
-var _ChainValidation2 = _interopRequireDefault(_ChainValidation);
+exports.ChainValidation = _ChainValidation['default'];
 
-var _AccountLogin = require('./src/AccountLogin');
+var _AccountLogin = _interopRequireDefault(require('./src/AccountLogin'));
 
-var _AccountLogin2 = _interopRequireDefault(_AccountLogin);
+exports.Login = _AccountLogin['default'];
 
-var _GameMoves = require('./src/GameMoves');
+var _GameMoves = _interopRequireDefault(require('./src/GameMoves'));
 
-var _GameMoves2 = _interopRequireDefault(_GameMoves);
+exports.GameMoves = _GameMoves['default'];
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {'default': obj}; 
+}
 
-var FetchChainObjects = _ChainStore2.default.FetchChainObjects,
-    FetchChain = _ChainStore2.default.FetchChain;
-exports.ChainStore = _ChainStore2.default;
-exports.TransactionBuilder = _TransactionBuilder2.default;
-exports.FetchChainObjects = FetchChainObjects;
-exports.ChainTypes = _ChainTypes2.default;
-exports.ObjectId = _ObjectId2.default;
-exports.NumberUtils = _NumberUtils2.default;
-exports.TransactionHelper = _TransactionHelper2.default;
-exports.ChainValidation = _ChainValidation2.default;
+var FetchChainObjects = _ChainStore['default'].FetchChainObjects,
+  FetchChain = _ChainStore['default'].FetchChain;
 exports.FetchChain = FetchChain;
-exports.Login = _AccountLogin2.default;
-exports.GameMoves = _GameMoves2.default;
+exports.FetchChainObjects = FetchChainObjects;
