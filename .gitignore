@@ -1,4 +1,26 @@
+# IDE
+/.vscode
+
+
+# dependencies
+/node_modules
+/.pnp
+/.dccache
+.pnp.js
+.env
 .npmrc
 npm-debug.log
 node_modules
-/.dccache
+
+# testing
+/coverage
+
+# production
+/build
+/dist
+
+
+
+
+
+

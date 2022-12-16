@@ -8,7 +8,7 @@
   },
   "scripts": {
     "sonar": "node scripts/sonar.js",
-    "lint": "eslint lib/**/*.js --fix && eslint dist/**/*.js --fix",
+    "lint": "eslint lib/**/*.js --fix",
     "init": "npm i",
     "test": "cross-env BABEL_ENV=test mocha --require @babel/register --recursive",
     "test:chain": "cross-env BABEL_ENV=test mocha --require @babel/register ./test/chain --recursive --watch",
