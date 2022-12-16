@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
-exports.default = enforce;
+exports["default"] = enforce;
 
 function getName(fn) {
   // Why not fn.name: https://kangax.github.io/compat-table/es6/#function_name_property
@@ -65,6 +65,5 @@ function enforce(type, value) {
       }
   }
 
-  throw new TypeError('Expected ' + (getName(type) || type) + ', got ' + value);
+  throw new TypeError("Expected " + (getName(type) || type) + ", got " + value);
 }
-module.exports = exports.default;
