@@ -6,9 +6,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
+- Support for NFTs
+
 ### Bug Fixes
 * add support for node 16 ([7d776a3d](https://gitlab.com/PBSA/tools-libs/peerplaysjs-lib/-/commit/7d776a3d013ffd2c363d98951cc819af025a23b0))
-* fix synk issues ([a993eef7](https://gitlab.com/PBSA/tools-libs/peerplaysjs-lib/-/commit/a993eef7c32918c09bc2cdaabfe1a2a7c1a3eab2))
+* fixed vulnerabilities and various secuirty issues ([a993eef7](https://gitlab.com/PBSA/tools-libs/peerplaysjs-lib/-/commit/a993eef7c32918c09bc2cdaabfe1a2a7c1a3eab2))
 
 
 ### [0.6.4](https://github.com/peerplays-network/peerplaysjs-lib/compare/v0.6.2...v0.6.4) (2019-12-16)
