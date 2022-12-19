@@ -11,10 +11,6 @@ include:
   - template: Jobs/SAST.latest.gitlab-ci.yml
   - template: Jobs/Secret-Detection.latest.gitlab-ci.yml
 
-
-# node docker image on which this would be run
-
-
 stages:
   - build
   - test
@@ -43,6 +39,7 @@ deploy:
     - npm publish
   rules:
     - if: $CI_COMMIT_BRANCH == "master" 
+  when: manual
 
 
 variables:
