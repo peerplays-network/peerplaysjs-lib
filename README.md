@@ -11,12 +11,10 @@ Most of this code was written by [jcalfee](https://github.com/jcalfee).
 
 <hr/>
 
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=peerplays-network_peerplaysjs-lib)
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/overall?id=PBSA_peerplaysjs-lib)
 
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=peerplays-network_peerplaysjs-lib&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=peerplays-network_peerplaysjs-lib) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=peerplays-network_peerplaysjs-lib&metric=alert_status)](https://sonarcloud.io/dashboard?id=peerplays-network_peerplaysjs-lib) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=peerplays-network_peerplaysjs-lib&metric=security_rating)](https://sonarcloud.io/dashboard?id=peerplays-network_peerplaysjs-lib)
 
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=peerplays-network_peerplaysjs-lib&metric=bugs)](https://sonarcloud.io/dashboard?id=peerplays-network_peerplaysjs-lib) [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=peerplays-network_peerplaysjs-lib&metric=ncloc)](https://sonarcloud.io/dashboard?id=peerplays-network_peerplaysjs-lib) [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=peerplays-network_peerplaysjs-lib&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=peerplays-network_peerplaysjs-lib)
-
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=PBSA_peerplaysjs-lib&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=PBSA_peerplaysjs-lib) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=PBSA_peerplaysjs-lib&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=PBSA_peerplaysjs-lib)[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=PBSA_peerplaysjs-lib&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=PBSA_peerplaysjs-lib)[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=PBSA_peerplaysjs-lib&metric=bugs)](https://sonarcloud.io/summary/new_code?id=PBSA_peerplaysjs-lib)[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=PBSA_peerplaysjs-lib&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=PBSA_peerplaysjs-lib)[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=PBSA_peerplaysjs-lib&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=PBSA_peerplaysjs-lib)
 <hr/>
 
 ## Setup
