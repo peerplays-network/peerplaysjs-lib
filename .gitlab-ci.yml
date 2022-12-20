@@ -28,8 +28,6 @@ build:
     expire_in: 30 days
     paths:
       - build/
-  tags:
-    - docker
 
 deploy:
   image: node:16
@@ -40,6 +38,7 @@ deploy:
   rules:
     - if: $CI_COMMIT_BRANCH == "master" 
   when: manual
+  dependencies: []
 
 
 variables:
