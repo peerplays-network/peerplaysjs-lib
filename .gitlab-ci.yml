@@ -5,29 +5,42 @@ workflow:
       when: never
     - if: $CI_COMMIT_BRANCH
 
-
-# gitlab scanning
 include:
   - template: Jobs/Dependency-Scanning.latest.gitlab-ci.yml
   - template: Jobs/License-Scanning.latest.gitlab-ci.yml
   - template: Jobs/SAST.latest.gitlab-ci.yml
   - template: Jobs/Secret-Detection.latest.gitlab-ci.yml
 
-
-# node docker image on which this would be run
-image: node:16
-
 stages:
   - build
   - test
+  - publish
 
-# builds app
 build:
+  image: node:16
   stage: build
   script:
     - npm install
+    - npm run build
+  artifacts:
+    untracked: false
+    when: on_success
+    expire_in: 30 days
+    paths:
+      - build/
   tags:
     - docker
+
+deploy:
+  image: node:16
+  stage: publish
+  script:
+    - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+    - npm publish
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master" 
+  when: manual
+
 
 variables:
   SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
