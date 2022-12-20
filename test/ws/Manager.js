@@ -1,7 +1,7 @@
 import assert from 'assert';
-import {ConnectionManager} from '../lib';
+import {ConnectionManager} from '../../lib';
 
-let defaultUrl = 'wss://api.ppytest.blckchnd.com';
+let defaultUrl = 'wss://pma.blockveritas.co/ws';
 let faultyNodeList = [
   {url: 'wss://bitsqsdqsdhares.openledger.info/ws', location: 'Nuremberg, Germany'},
   {url: 'wss://bitazdazdshares.openledger.info/ws', location: 'Nuremberg, Germany'},
@@ -28,7 +28,7 @@ let noWorkingNodes = [
 ];
 
 let goodNodeList = [
-  {url: defaultUrl, location: 'unknown'},
+  {url: defaultUrl, location: 'unknown'}
   // {url: 'wss://bit.btsabc.org/ws', location: 'Hong Kong'},
   // {url: 'wss://bts.transwiser.com/ws', location: 'Hangzhou, China'},
   // {url: 'wss://bitshares.dacplay.org:8089/ws', location: 'Hangzhou, China'},

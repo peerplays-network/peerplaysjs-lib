@@ -67,7 +67,15 @@ Apis.instance('wss://testnet.bitshares.eu/ws', true)
           tr.add_signer(pKey, pKey.toPublicKey().toPublicKeyString());
           console.log('serialized transaction:', tr.serialize());
           tr.broadcast();
+        }).catch((error) => {
+          console.error(error);
         });
+      }).catch((error) => {
+        console.error(error);
       });
+    }).catch((error) => {
+      console.error(error);
     });
+  }).catch((error) => {
+    console.error(error);
   });
