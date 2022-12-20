@@ -10,7 +10,7 @@ function template(op) {
   console.log(' ', op.operation_name, '\t', JSON.stringify(obj), '\n');
 }
 
-describe('operation test', () => {  
+describe('operation test', () => {
   it('templates', () => {
     let keys = Object.keys(ops);
 
@@ -21,7 +21,12 @@ describe('operation test', () => {
         case '__esModule':
         case 'operation':
           return;
+        default:
+        // do nothing
       }
+
+
+
 
       template(ops[op]);
     }

@@ -15,4 +15,6 @@ Apis.instance(wsString, true).init_promise.then((res) => {
   Apis.instance()
     .db_api()
     .exec('set_subscribe_callback', [updateListener, true]);
+}).catch((error) => {
+  console.error(error);
 });
