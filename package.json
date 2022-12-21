@@ -27,7 +27,7 @@
     "example:transfer": "babel-node examples/transfer",
     "example:chainStore": "babel-node examples/chainStore",
     "example:privKey": "babel-node examples/privKey",
-    "prepare": "chmod +x .husky/_/husky.sh | .husky/_/husky.sh install",
+    "prepare": "husky install",
     "pre-commit": "npm run lint"
   },
   "repository": {
