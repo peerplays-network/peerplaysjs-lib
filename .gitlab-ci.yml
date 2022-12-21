@@ -20,7 +20,7 @@ build:
   image: node:16
   stage: build
   script:
-    - npm install --ignore-scripts
+    - npm install
     - npm run build
   artifacts:
     untracked: false
@@ -35,6 +35,7 @@ deploy:
   stage: publish
   script:
     - echo "//registry.npmjs.org/:_authToken='$NPM_TOKEN'" > .npmrc
+    - npm install --omit=dev --ignore-scripts
     - npm publish
   rules:
     - if: $CI_COMMIT_BRANCH == "master" 

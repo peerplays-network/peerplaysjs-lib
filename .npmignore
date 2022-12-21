@@ -8,6 +8,7 @@ commitlint.config.js
 config.fish
 sonar-scanner
 sonar-project.properties
+node_modules
 .husky
 .scannerwork
 .sonarlint
