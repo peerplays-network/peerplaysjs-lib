@@ -28,6 +28,7 @@ build:
     expire_in: 30 days
     paths:
       - build/
+      - dist/
 
 deploy:
   image: node:16
@@ -38,7 +39,7 @@ deploy:
   rules:
     - if: $CI_COMMIT_BRANCH == "master" 
   when: manual
-  dependencies: []
+  dependencies: [build]
 
 
 variables:
