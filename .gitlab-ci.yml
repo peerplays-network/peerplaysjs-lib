@@ -28,18 +28,18 @@ build:
     expire_in: 30 days
     paths:
       - build/
-  tags:
-    - docker
+      - dist/
 
 deploy:
   image: node:16
   stage: publish
   script:
-    - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+    - echo "//registry.npmjs.org/:_authToken='$NPM_TOKEN'" > .npmrc
     - npm publish
   rules:
     - if: $CI_COMMIT_BRANCH == "master" 
   when: manual
+  dependencies: [build]
 
 
 variables:
