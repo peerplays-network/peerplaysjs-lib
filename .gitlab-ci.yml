@@ -20,7 +20,7 @@ build:
   image: node:16
   stage: build
   script:
-    - npm install
+    - npm install --omit=dev --ignore-scripts
     - npm run build
   artifacts:
     untracked: false
@@ -31,17 +31,15 @@ build:
       - dist/
 
 deploy:
+  image: node:16
   stage: publish
   script:
-    - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+    - echo "//registry.npmjs.org/:_authToken='$NPM_TOKEN'" > .npmrc
     - npm publish
   rules:
     - if: $CI_COMMIT_BRANCH == "master" 
   when: manual
   dependencies: [build]
-  tags:
-    - publish
-
 
 variables:
   SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
