@@ -22,20 +22,21 @@ build:
   script:
     - npm install
     - npm run build
+    - npm pack
   artifacts:
     untracked: false
     when: on_success
     expire_in: 30 days
     paths:
-      - build/
-      - dist/
+      - *.tgz
 
 deploy:
   image: node:16
   stage: publish
   script:
+    - tar -xvzf *.tgz
+    - cd package
     - echo "//registry.npmjs.org/:_authToken='$NPM_TOKEN'" > .npmrc
-    - npm install --omit=dev --ignore-scripts
     - npm publish
   rules:
     - if: $CI_COMMIT_BRANCH == "master" 
