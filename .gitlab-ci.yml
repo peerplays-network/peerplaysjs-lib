@@ -17,7 +17,7 @@ stages:
   - publish
 
 build:
-  image: node:16
+  image: node:19.3.0
   stage: build
   script:
     - npm install
@@ -31,7 +31,7 @@ build:
       - dist/
 
 deploy:
-  image: node:16
+  image: node:19.3.0
   stage: publish
   script:
     - echo "//registry.npmjs.org/:_authToken='$NPM_TOKEN'" > .npmrc
