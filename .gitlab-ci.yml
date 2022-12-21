@@ -28,16 +28,14 @@ build:
     when: on_success
     expire_in: 30 days
     paths:
-      - "*.tgz"
+      - peerplaysjs-lib-*.tgz
 
 deploy:
   image: node:16
   stage: publish
   script:
-    - tar -xvzf *.tgz
-    - cd package
     - echo "//registry.npmjs.org/:_authToken='$NPM_TOKEN'" > .npmrc
-    - npm publish
+    - npm publish $(ls | grep peerplaysjs-lib-*.tgz) 
   rules:
     - if: $CI_COMMIT_BRANCH == "master" 
   when: manual
