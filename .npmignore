@@ -7,12 +7,14 @@ scripts
 commitlint.config.js
 config.fish
 sonar-scanner
+sonar-project.properties
+.husky
 .scannerwork
 .sonarlint
 .babelrc
 .prettierrc
 .gitignore
+.gitlab-ci.yml
 .eslintrc
 .editorconfig
-.sonarcloud.properties
 .prettierrc
