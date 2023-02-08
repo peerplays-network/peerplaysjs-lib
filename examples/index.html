@@ -22,14 +22,12 @@
 
       let server = "wss://bitshares.openledger.info/ws";
 
-      // deepcode ignore PromiseNotCaughtGeneral/test: <please specify a reason of ignoring this>
       Api.instance(server, true).init_promise.then((res) => {
         console.log("Api ready:", res);
         var sucessDiv = document.getElementById("success");
         sucessDiv.innerText = "Successfully connected to the Openledger API, now fetching the global properties:"
 
         function updateObject() {
-          // deepcode ignore PromiseNotCaughtGeneral/test: <please specify a reason of ignoring this>
           Api.instance().db_api().exec("get_objects", [["2.1.0"]]).then(response => {
             sucessDiv.innerText = "Successfully connected to the Openledger API";
             console.log("get_object", response);

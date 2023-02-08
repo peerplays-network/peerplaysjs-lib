@@ -22,10 +22,6 @@ Apis.instance(wsString, true).init_promise.then((res) => {
       .exec('unsubscribe_from_market', [updateListener, '1.3.0', '1.3.19'])
       .then((unsub) => {
         console.log('unsub result:', unsub);
-      }).catch((error) => {
-        console.error(error);
       });
   }, 1500);
-}).catch((error) => {
-  console.error(error);
 });

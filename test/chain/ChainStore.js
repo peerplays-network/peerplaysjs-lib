@@ -34,8 +34,6 @@ describe('ChainStore', () => {
         });
 
         assert(ChainStore.getAsset('NOTFOUND') === undefined);
-      }).catch((error) => {
-        console.error(error);
       });
     }));
 

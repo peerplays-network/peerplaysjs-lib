@@ -1,20 +1,23 @@
 # PeerplaysJS (peerplaysjs-lib)
 
-Pure JavaScript Peerplays/Graphene library for node.js and browsers. Can be used to construct, sign and broadcast transactions in JavaScript, and to easily obtain data from the blockchain via public apis.
+Pure JavaScript Bitshares/Graphene library for node.js and browsers. Can be used to construct, sign and broadcast transactions in JavaScript, and to easily obtain data from the blockchain via public apis.
 
 Most of this code was written by [jcalfee](https://github.com/jcalfee).
 
 [![npm version](https://img.shields.io/npm/v/peerplaysjs-lib.svg?style=flat-square)](https://www.npmjs.com/package/peerplaysjs-lib)
 [![npm version](https://img.shields.io/node/v/peerplaysjs-lib.svg?style=flat-square)](https://www.npmjs.com/package/peerplaysjs-lib)
 [![npm downloads](https://img.shields.io/npm/dm/peerplaysjs-lib.svg?style=flat-square)](https://www.npmjs.com/package/peerplaysjs-lib)
-
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) 
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 <hr/>
 
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/overall?id=PBSA_peerplaysjs-lib)
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=peerplays-network_peerplaysjs-lib)
 
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=peerplays-network_peerplaysjs-lib&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=peerplays-network_peerplaysjs-lib) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=peerplays-network_peerplaysjs-lib&metric=alert_status)](https://sonarcloud.io/dashboard?id=peerplays-network_peerplaysjs-lib) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=peerplays-network_peerplaysjs-lib&metric=security_rating)](https://sonarcloud.io/dashboard?id=peerplays-network_peerplaysjs-lib)
 
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=PBSA_peerplaysjs-lib&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=PBSA_peerplaysjs-lib) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=PBSA_peerplaysjs-lib&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=PBSA_peerplaysjs-lib)[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=PBSA_peerplaysjs-lib&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=PBSA_peerplaysjs-lib)[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=PBSA_peerplaysjs-lib&metric=bugs)](https://sonarcloud.io/summary/new_code?id=PBSA_peerplaysjs-lib)[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=PBSA_peerplaysjs-lib&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=PBSA_peerplaysjs-lib)[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=PBSA_peerplaysjs-lib&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=PBSA_peerplaysjs-lib)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=peerplays-network_peerplaysjs-lib&metric=bugs)](https://sonarcloud.io/dashboard?id=peerplays-network_peerplaysjs-lib) [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=peerplays-network_peerplaysjs-lib&metric=ncloc)](https://sonarcloud.io/dashboard?id=peerplays-network_peerplaysjs-lib) [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=peerplays-network_peerplaysjs-lib&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=peerplays-network_peerplaysjs-lib)
+
 <hr/>
 
 ## Setup
@@ -27,7 +30,7 @@ npm install peerplaysjs-lib
 
 ## Getting Started
 
-It is recommended to use Node v16+.
+It is recommended to use Node v8.9.x.
 
 On Ubuntu and OSX, the easiest way to install Node is to use the [Node Version Manager](https://github.com/creationix/nvm).
 For Windows users there is [NVM-Windows](https://github.com/coreybutler/nvm-windows).
@@ -36,27 +39,41 @@ To install NVM for Linux/OSX, simply copy paste the following in a terminal:
 
 ```bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
-nvm install v16+
-nvm use v16+
+nvm install v8
+nvm use v8
 ```
 
 Once you have Node installed, you can clone the repo:
 
 ```bash
-git clone https://gitlab.com/PBSA/tools-libs/peerplaysjs-lib.git
+git clone https://github.com/peerplays-network/peerplaysjs-lib
 cd peerplaysjs-lib
 ```
 
 ## Development
 
-Initialize the application by running `npm run init`.
+Initialize the application by running `npm run init`. Doing so will install commitizen globally on your environment so you can later commit via `git cz`.
 
 ### Commits
 
-> Please run `npx husky add .husky/commit-msg ".git/hooks/commit-msg \$1"` before commiting  
-> Run `git commit -a -m "<commit-mesasge>"` for commiting 
+> If you have run the init script, you can commit via `git cz`.  
+> If you have not run the init script, you must commit via `npm run commit`.  
+> If you do neither, commit message consistency will be difficult for you.
 
-This repository uses the git-commit-msg-linter package to aid in consistent commit messages. The reason we do this is so we can have dynamic changelog creation and smart semantic versioning based on commits (with the ability to override).
+This repository uses a combination of tools to aid in consistent commit messages. The reason we do this is so we can have dynamic changelog creation and smart semantic versioning based on commits (with the ability to override).
+The following tools are used:
+
+1. [commitizen](https://www.npmjs.com/package/commitizen)  
+   Used for prompting recommended entries within a commit message to ensure it contains the necessary information.
+   - [conventional changelog](https://www.npmjs.com/package/cz-conventional-changelog)  
+     - Prompts for conventional changelog standard.
+2. [husky](https://www.npmjs.com/package/husky)  
+   By using the hooks from this package we intercept commits being made and verify them with commitlint.
+   - Prevent bad commits/pushes.
+3. [commitlint](https://www.npmjs.com/package/@commitlint/cli)
+   - cli
+   - [config-conventional](https://www.npmjs.com/package/@commitlint/config-conventional)
+     - rule preset in use
 
 ## Usage
 
@@ -183,5 +200,27 @@ console.log("Public key :", pkey.toPublicKey().toString(), "\n");
 
 TODO transaction signing example
 
+## ESDoc (beta)
 
+```bash
+npm i -g esdoc esdoc-es7-plugin
+esdoc -c ./esdoc.json
+open out/esdoc/index.html
+```
 
+## Releases
+
+This repository uses a [standard version](https://www.npmjs.com/package/standard-version) to aid in version control and release management.
+
+When using standard version to cut a release, there is automated changelog modifitions made based on commit messages.
+
+```csharp
+// If you typically use npm version to cut a new release, do this instead:
+npm run release
+// To cut a release and bump the version by major, minor, or patch, use the following respectively:
+npm run release-major // major bump
+npm run release-minor // minor bump
+npm run release-patch // patch bump
+// To cut a pre-release:
+npm run pre-release // v0.2.1 to v0.2.2-rc.0
+```
